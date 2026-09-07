@@ -1,0 +1,115 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as LinkProviderStories from './LinkProvider.stories';
+
+<Meta of={LinkProviderStories} />
+
+# Link Provider
+
+A React context provider that injects a framework-specific link component into the RDS component tree. Wraps your application once at the root and automatically propagates to every RDS component that renders a link — no per-component configuration required.
+
+## Why it exists
+
+RDS components that render links (`Badge`, `SocialIcons.Item`, `CookieBanner`) need to work with whatever routing library the consuming application uses. Without `LinkProvider` they fall back to a plain `<a>` element. Wrapping the tree with `LinkProvider` swaps that default for your framework's `<Link>` — enabling client-side navigation, prefetching, and any other router-specific behaviour.
+
+## Import
+
+```tsx
+import { LinkProvider } from '@cuweb/raven-design-system';
+```
+
+## Setup
+
+Wrap your application root once. The `component` prop accepts any component that is compatible with standard anchor props (`href`, `className`, `children`, etc.).
+
+### Next.js
+
+```tsx
+// app/layout.tsx
+import Link from 'next/link';
+import { LinkProvider } from '@cuweb/raven-design-system';
+
+export default function RootLayout({ children }) {
+    return (
+        <html>
+            <body>
+                <LinkProvider component={Link}>{children}</LinkProvider>
+            </body>
+        </html>
+    );
+}
+```
+
+### React Router
+
+```tsx
+import { Link } from 'react-router-dom';
+import { LinkProvider } from '@cuweb/raven-design-system';
+
+<LinkProvider component={Link}>
+    <App />
+</LinkProvider>;
+```
+
+### Plain anchor (default — no setup required)
+
+Without a `LinkProvider` in the tree, all RDS link-rendering components fall back to a standard `<a>` element. No configuration is needed for this behaviour.
+
+## Examples
+
+### Default — plain anchor
+
+Without a provider, `Badge` and other link components render a native `<a>`.
+
+<Canvas of={LinkProviderStories.DefaultFallback} />
+
+### With custom link component
+
+The `MockRouterLink` in this story adds a `data-mock-router` attribute — inspect the rendered HTML to confirm the injected component is being used instead of a plain anchor.
+
+<Canvas of={LinkProviderStories.WithCustomComponent} />
+
+## Components that use LinkProvider
+
+Any RDS component that renders a link reads from this context via `useLinkContext`:
+
+- [`Badge`](?path=/docs/components-elements-badge--docs) — when `href` is provided
+- [`SocialIcons.Item`](?path=/docs/components-elements-social-icons--docs) — all items
+- [`CookieBanner`](?path=/docs/components-utilities-cookie-banner--docs) — the policy link
+
+## Using `useLinkContext` in custom components
+
+If you are building a component on top of RDS that also needs to render links, import the hook directly rather than hardcoding `<a>`:
+
+```tsx
+import { useLinkContext } from '@cuweb/raven-design-system';
+
+export const MyCard = ({ href, children }) => {
+    const LinkComponent = useLinkContext();
+
+    return (
+        <article>
+            <LinkComponent href={href}>{children}</LinkComponent>
+        </article>
+    );
+};
+```
+
+The component will automatically use whatever link component is provided by the nearest `LinkProvider`, or fall back to `<a>` if none is present.
+
+## Type reference
+
+```ts
+// The shape any injected link component must satisfy
+type LinkComponent = ComponentType<ComponentProps<'a'>>;
+
+// Provider props
+interface LinkProviderProps {
+    component: LinkComponent;
+    children: ReactNode;
+}
+```
+
+## Accessibility
+
+- `LinkProvider` renders no DOM element of its own — it is a pure context boundary with no visual or semantic output.
+- The injected `LinkComponent` is responsible for its own accessible behaviour. Ensure it forwards standard anchor attributes (`href`, `aria-label`, etc.) to the underlying element so consumers like `SocialIcons.Item` can pass their `aria-label` through correctly.

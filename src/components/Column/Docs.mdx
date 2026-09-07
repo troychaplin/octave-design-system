@@ -1,0 +1,137 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as ColumnStories from './Column.stories';
+
+<Meta of={ColumnStories} />
+
+# Column
+
+A responsive CSS grid container that arranges its children into equal or fractional column splits. Includes a `Column.Content` sub-component that enables DOM-order-independent visual reordering — content-first on mobile, sidebar-first on desktop.
+
+## When to use
+
+Use `Column` inside a `Section` whenever you need a multi-column layout — a card grid, a two-thirds/one-third article-plus-sidebar split, or a four-up icon row. For a single full-width column, the `cols="1"` default is rarely needed; just place content directly in `Section`.
+
+## Import
+
+```tsx
+import { Column } from '@troychaplin/octave-design-system';
+```
+
+## Basic usage
+
+```tsx
+// Equal columns
+<Section>
+  <Column cols="3">
+    <Column.Content>...</Column.Content>
+    <Column.Content>...</Column.Content>
+    <Column.Content>...</Column.Content>
+  </Column>
+</Section>
+
+// Two-thirds / one-third split
+<Section>
+  <Column cols="2/3">
+    <Column.Content>Main content</Column.Content>
+    <Column.Content>Sidebar</Column.Content>
+  </Column>
+</Section>
+```
+
+## Examples
+
+### Two columns
+
+Stacks to a single column below the `sm` breakpoint.
+
+<Canvas of={ColumnStories.TwoColumns} />
+
+### Three columns
+
+Stacks to a single column below the `md` breakpoint.
+
+<Canvas of={ColumnStories.ThreeColumns} />
+
+### Four columns
+
+Renders 2×2 at `sm`, full four columns at `lg`.
+
+<Canvas of={ColumnStories.FourColumns} />
+
+### Two thirds / One third
+
+A 66% / auto split — the typical article-plus-sidebar layout. Stacks below `md`.
+
+<Canvas of={ColumnStories.TwoThirds} />
+
+### One third / Two thirds
+
+A 33% / auto split — sidebar on the left. Stacks below `md`.
+
+<Canvas of={ColumnStories.OneThird} />
+
+### Content first — `isFirst`
+
+The `isFirst` prop on `Column.Content` controls visual order independently of DOM order. In the example below the sidebar is second in the DOM (better for screen readers and mobile stacking) but appears first visually on desktop via CSS `order`.
+
+<Canvas of={ColumnStories.ContentFirst} />
+
+```tsx
+<Column cols="1/3">
+    {/* First in DOM → first on mobile, second on desktop */}
+    <Column.Content>
+        <p>Main content</p>
+    </Column.Content>
+
+    {/* Second in DOM → second on mobile, first on desktop via isFirst */}
+    <Column.Content isFirst>
+        <p>Sidebar</p>
+    </Column.Content>
+</Column>
+```
+
+## Column configurations
+
+| `cols`  | Mobile   | Tablet (`sm`) | Desktop (`md`+)   |
+| ------- | -------- | ------------- | ----------------- |
+| `"1"`   | 1 column | 1 column      | 1 column          |
+| `"2"`   | 1 column | 2 columns     | 2 columns         |
+| `"3"`   | 1 column | 1 column      | 3 columns         |
+| `"4"`   | 1 column | 2 columns     | 4 columns (`lg`+) |
+| `"1/3"` | 1 column | 1 column      | 33% / auto        |
+| `"2/3"` | 1 column | 1 column      | 66% / auto        |
+
+## Sub-component — Column.Content
+
+`Column.Content` is a lightweight wrapper `<div>` that participates in the grid's ordering system.
+
+| Prop      | Default | Description                                                                     |
+| --------- | ------- | ------------------------------------------------------------------------------- |
+| `isFirst` | `false` | Sets `order: 0` so this child appears first visually regardless of DOM position |
+
+All direct `<div>` children of `.octave-column` have `order: 1` by default, so adding `isFirst` to any child moves it to the front without affecting others.
+
+## CSS classes
+
+| Class                       | When applied                              |
+| --------------------------- | ----------------------------------------- |
+| `octave-column`             | Always — base grid container              |
+| `octave-column--one`        | `cols="1"`                                |
+| `octave-column--two`        | `cols="2"`                                |
+| `octave-column--three`      | `cols="3"`                                |
+| `octave-column--four`       | `cols="4"`                                |
+| `octave-column--one-third`  | `cols="1/3"`                              |
+| `octave-column--two-thirds` | `cols="2/3"`                              |
+| `is-first`                  | On `Column.Content` when `isFirst={true}` |
+
+## Design tokens
+
+| Token                     | Used for            |
+| ------------------------- | ------------------- |
+| `--octave--spacing-large` | Gap between columns |
+
+## Accessibility
+
+- `Column` renders a plain `<div>` — no landmark role. Landmark semantics belong to the content inside (`Article`, `Aside`, etc.).
+- The `isFirst` pattern preserves a logical DOM order for screen readers and keyboard users while allowing visual reordering for sighted users. Use it when a sidebar should appear on the left on desktop but after the main content on mobile.
+- Avoid placing interactive content (forms, navigation) in a column order that diverges significantly from the visual order, as tab order follows the DOM, not the visual layout.

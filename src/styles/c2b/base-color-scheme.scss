@@ -1,0 +1,28 @@
+// Dark color scheme context
+//
+// Apply data-color-scheme="dark" to any element to flip its descendant
+// text/heading/link colours to light values. Works at any level:
+//   - <html data-color-scheme="dark">  → full-page dark mode
+//   - <section data-color-scheme="dark">  → component-scoped (e.g. WideWave)
+//
+// Components with permanently dark backgrounds should add this attribute to
+// their root element. Components with an optional dark background can add it
+// conditionally based on a prop.
+
+[data-color-scheme='dark'] {
+    color: var(--octave--color-white);
+    background-color: var(--octave--color-black);
+
+    :where(h1, h2, h3, h4, h5, h6) {
+        color: var(--octave--color-white);
+    }
+
+    a:not([class]) {
+        color: var(--octave--color-white);
+        text-decoration: underline;
+
+        &:hover {
+            color: var(--octave--color-grey-lighter);
+        }
+    }
+}

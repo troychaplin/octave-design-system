@@ -1,0 +1,56 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Overview/Getting Started/Installation" />
+
+# Installation
+
+How to install `@troychaplin/octave-design-system` in any consumer project.
+
+## 1. Install
+
+```sh
+pnpm add @troychaplin/octave-design-system
+```
+
+React and React DOM are peer dependencies — React 18 or 19.
+
+## 2. Import styles
+
+Once, near the top of your application:
+
+```tsx
+import '@troychaplin/octave-design-system/styles';
+```
+
+This imports the bundled stylesheet — design tokens, base element styles, and every component's CSS.
+
+## 3. Use components
+
+```tsx
+import { Badge, Button } from '@troychaplin/octave-design-system';
+
+<Badge text="New" color="green" />
+<Button title="Get started" />
+```
+
+For framework-specific setup, see [Next.js](?path=/docs/overview-getting-started-next-js--docs) or [WordPress](?path=/docs/overview-getting-started-wordpress--docs).
+
+## Individual stylesheets (optional)
+
+If you don't want the full bundled stylesheet, import only what you need. Per-component CSS:
+
+```tsx
+import { Badge } from '@troychaplin/octave-design-system';
+import '@troychaplin/octave-design-system/Badge.css';
+```
+
+The token, base-style, layout, and typography layers are also published separately:
+
+```tsx
+import '@troychaplin/octave-design-system/tokens.css';
+import '@troychaplin/octave-design-system/base-styles.css';
+import '@troychaplin/octave-design-system/layout.css';
+import '@troychaplin/octave-design-system/typography.css';
+```
+
+This is most useful inside WordPress block bundles, where you want only the CSS a given block uses.

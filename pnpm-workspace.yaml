@@ -1,0 +1,13 @@
+engineStrict: true
+
+allowBuilds:
+    '@parcel/watcher': true
+    esbuild: true
+
+peerDependencyRules:
+    allowedVersions:
+        eslint-plugin-jsx-a11y>eslint: '10'
+        eslint-plugin-react>eslint: '10'
+
+minimumReleaseAgeExclude:
+    - '@troychaplin/*'

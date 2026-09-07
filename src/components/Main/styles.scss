@@ -1,0 +1,21 @@
+.octave-main > * + * {
+    margin-block-start: var(--octave--spacing-medium);
+    margin-block-end: 0;
+}
+
+.octave-main a {
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.octave-main a:hover {
+    color: var(--octave--color-primary-dark);
+    text-decoration: underline;
+    transition: color 0.25s ease;
+}
+
+.octave-main--padding {
+    padding-top: var(--octave--spacing-large);
+    padding-bottom: var(--octave--spacing-large);
+}

@@ -1,0 +1,104 @@
+a.octave-badge {
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.octave-badge {
+    display: block;
+    font-family: var(--octave--font-family-inter);
+    font-size: var(--octave--font-size-x-small);
+    font-weight: var(--octave--font-weight-bold);
+    line-height: var(--octave--line-height-x-small);
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: var(--octave--radius-md);
+    border-width: 1px;
+    border-style: solid;
+    white-space: nowrap;
+}
+
+.octave-badge--radius-sm {
+    border-radius: var(--octave--radius-sm);
+}
+
+.octave-badge--radius-md {
+    border-radius: var(--octave--radius-md);
+}
+
+.octave-badge--radius-lg {
+    border-radius: var(--octave--radius-lg);
+}
+
+.octave-badge--radius-full {
+    border-radius: var(--octave--radius-full);
+}
+
+.octave-badge--radius-none {
+    border-radius: 0;
+}
+
+.octave-badge--grey {
+    background-color: var(--octave--color-grey-pale);
+    border-color: var(--octave--color-grey-pale);
+    color: var(--octave--color-grey-dark);
+}
+
+.octave-badge--white {
+    background-color: var(--octave--color-white);
+    border-color: var(--octave--color-white);
+    color: var(--octave--color-grey-dark);
+}
+
+.octave-badge--green {
+    background-color: var(--octave--color-success-dark);
+    border-color: var(--octave--color-success-dark);
+    color: var(--octave--color-white);
+}
+
+.octave-badge--red {
+    background-color: var(--octave--color-error-dark);
+    border-color: var(--octave--color-error-dark);
+    color: var(--octave--color-white);
+}
+
+.octave-badge--yellow {
+    background-color: var(--octave--color-warning);
+    border-color: var(--octave--color-warning);
+    color: var(--octave--color-black);
+}
+
+.octave-badge--blue {
+    background-color: var(--octave--color-info);
+    border-color: var(--octave--color-info);
+    color: var(--octave--color-black);
+}
+
+.octave-badge--purple {
+    background-color: var(--octave--color-purple);
+    border-color: var(--octave--color-purple);
+    color: var(--octave--color-white);
+}
+
+.octave-badge--teal {
+    background-color: var(--octave--color-teal);
+    border-color: var(--octave--color-teal);
+    color: var(--octave--color-white);
+}
+
+.octave-badge--black80 {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-color: rgba(0, 0, 0, 0.8);
+    color: var(--octave--color-white);
+}
+
+.octave-badge--white80 {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(255, 255, 255, 0.8);
+    color: var(--octave--color-grey-dark);
+}

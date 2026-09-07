@@ -1,0 +1,93 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as BadgeGroupStories from './BadgeGroup.stories';
+
+<Meta of={BadgeGroupStories} />
+
+# Badge Group
+
+A flex container that wraps one or more `Badge` components into a horizontal, wrapping row. Its primary use is overlaying a set of badges on a card image — `Card` automatically positions an adjacent `BadgeGroup` over the figure.
+
+## When to use
+
+Use `BadgeGroup` whenever you need more than one badge to appear together — as a tag list below a heading, or as an overlay cluster on a card figure. For a single badge, `BadgeGroup` is optional but harmless.
+
+## Import
+
+```tsx
+import { Badge } from '@troychaplin/octave-design-system';
+import { BadgeGroup } from '@troychaplin/octave-design-system';
+```
+
+## Basic usage
+
+```tsx
+// Inline tag list
+<BadgeGroup>
+  <Badge text="Research" color="grey" />
+  <Badge text="Open Access" color="green" />
+</BadgeGroup>
+
+// Overlay on a card image — use BadgeGroup as is, card will apply the correct styles
+<Card>
+    <Card.Figure>
+        <img src={NewsData[0].image} alt={NewsData[0].alt} width="600" height="400" />
+    </Card.Figure>
+    <BadgeGroup>
+        <Badge text="Featured" color="black80" rounded="full" />
+        <Badge text="New" color="teal" rounded="full" />
+    </BadgeGroup>
+    <Card.Header title={NewsData[0].title} link={NewsData[0].link} />
+</Card>
+```
+
+## Examples
+
+### Default
+
+An inline, wrapping row of badges. Use the controls to explore the `isAbsolute` positioning props — though for card overlays the adjacent-sibling pattern below is preferred.
+
+<Canvas of={BadgeGroupStories.Default} />
+<Controls of={BadgeGroupStories.Default} />
+
+### On card
+
+The recommended pattern for badge overlays. Place `BadgeGroup` immediately adjacent to `Card.Figure` (before or after it) inside any `Card` — an adjacent-sibling CSS rule handles absolute positioning (`top` and `left`) using the `--octave--spacing-x-small` token, so the offset stays in sync with the design system spacing scale. No wrapper element is needed.
+
+<Canvas of={BadgeGroupStories.OnCard} />
+
+```tsx
+<Card>
+    <Card.Figure>
+        <img src={image} alt={alt} width="600" height="400" />
+    </Card.Figure>
+    <BadgeGroup>
+        <Badge text="Featured" color="black80" rounded="full" />
+        <Badge text="New" color="teal" rounded="full" />
+    </BadgeGroup>
+    <Card.Header title={title} link={link} />
+    <Card.Body>
+        <Card.Excerpt text={excerpt} />
+    </Card.Body>
+</Card>
+```
+
+## CSS classes
+
+| Class                | When applied                                    |
+| -------------------- | ----------------------------------------------- |
+| `octave-badge-group` | Always — base class on the `BadgeGroup` element |
+
+`Card`'s own styles define an adjacent-sibling rule (`.octave-card__figure + .octave-badge-group`, and the reverse order) that sets `position: absolute`, `z-index: 3`, and `top`/`left` offsets via `--octave--spacing-x-small` whenever a `BadgeGroup` sits directly next to `Card.Figure`.
+
+## Design tokens
+
+| Token                         | Used for                                                               |
+| ----------------------------- | ---------------------------------------------------------------------- |
+| `--octave--spacing-2-x-small` | Gap between badges in the group                                        |
+| `--octave--spacing-x-small`   | `top` and `left` offset when `BadgeGroup` is adjacent to `Card.Figure` |
+
+## Accessibility
+
+- `BadgeGroup` renders a plain `<div>` with no ARIA role — it is a visual layout wrapper only.
+- Individual `Badge` components within the group retain their own semantics (inline text or link).
+- When placing `BadgeGroup` adjacent to `Card.Figure` for overlay positioning, ensure the badges are placed in a logical reading order relative to the surrounding card content in the DOM.

@@ -1,0 +1,23 @@
+@use '../../styles/c2b/octave-variables' as *;
+
+.octave-buttongroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--octave--spacing-2-x-small);
+
+    @include above-tablet {
+        flex: 1 1 0%;
+    }
+}
+
+.octave-buttongroup--justify-start {
+    justify-content: flex-start;
+}
+
+.octave-buttongroup--justify-center {
+    justify-content: center;
+}
+
+.octave-buttongroup--justify-end {
+    justify-content: flex-end;
+}

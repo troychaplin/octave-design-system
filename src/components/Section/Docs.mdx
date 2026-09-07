@@ -1,0 +1,187 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as SectionStories from './Section.stories';
+
+<Meta of={SectionStories} />
+
+# Section
+
+A page-level content container that controls width, background, and vertical rhythm. Nests inside `Main` and wraps layout components like `Column`, `Article`, and `Aside`. Three max-width presets align with the WordPress block editor's alignment system.
+
+## When to use
+
+Use `Section` to group related content into a distinct visual band — a card grid, an article body, a call-to-action strip. Stack multiple `Section` components inside `Main` to build alternating white and grey content rows. Use `maxWidth="alignfull"` with `bgType="grey"` for full-bleed accent sections. Add `contentWidth` when you want the section background to span one width while the children are constrained to a narrower readable column.
+
+## Import
+
+```tsx
+import { Section } from '@troychaplin/octave-design-system';
+```
+
+## Basic usage
+
+```tsx
+// Default — content width, white background
+<Main>
+  <Section>
+    <Column cols="3">...</Column>
+  </Section>
+</Main>
+
+// Grey background
+<Main>
+  <Section bgType="grey">
+    <Column cols="2">...</Column>
+  </Section>
+</Main>
+
+// Black background (automatically inverts text to white)
+<Main>
+  <Section bgType="black">
+    <Column cols="2">...</Column>
+  </Section>
+</Main>
+
+// Light gradient background
+<Main>
+  <Section bgType="light-gradient">
+    <Column cols="2">...</Column>
+  </Section>
+</Main>
+
+// Full-bleed grey band
+<Main>
+  <Section maxWidth="alignfull" bgType="grey">
+    <Column cols="3">...</Column>
+  </Section>
+</Main>
+
+// Full-bleed grey band with content constrained to 1024px
+<Main>
+  <Section maxWidth="alignfull" bgType="grey" contentWidth="aligncontent">
+    <Column cols="2">...</Column>
+  </Section>
+</Main>
+
+// Full-bleed grey band with content constrained to 1280px
+<Main>
+  <Section maxWidth="alignfull" bgType="grey" contentWidth="alignwide">
+    <Column cols="2">...</Column>
+  </Section>
+</Main>
+```
+
+## Examples
+
+### Default
+
+Content width (`aligncontent`), white background. Use the controls to explore `as`, `bgType`, `maxWidth`, and `contentWidth`.
+
+<Canvas of={SectionStories.Default} />
+<Controls of={SectionStories.Default} />
+
+### Grey
+
+`bgType="grey"` adds a grey background, internal padding, and a border radius. The border radius is removed automatically when `maxWidth="alignfull"`.
+
+<Canvas of={SectionStories.Grey} />
+
+### Black
+
+`bgType="black"` adds a black background and automatically applies `data-color-scheme="dark"` to invert text and headings to white.
+
+<Canvas of={SectionStories.Black} />
+
+### Light gradient
+
+`bgType="light-gradient"` applies a subtle white-to-pale-grey gradient background.
+
+<Canvas of={SectionStories.LightGradient} />
+
+### Wide
+
+`maxWidth="alignwide"` expands the section to the wide layout width (`--octave--layout-wide-size`).
+
+<Canvas of={SectionStories.Wide} />
+
+### Full width
+
+`maxWidth="alignfull"` runs edge to edge. Combined with `bgType="grey"` this is the standard full-bleed accent band. When a full-width styled section is the last child of `Main`, a negative bottom margin is applied automatically to eliminate the double-spacing gap at the page foot.
+
+<Canvas of={SectionStories.FullWidth} />
+
+### Full width with constrained content (1024px)
+
+`contentWidth="aligncontent"` wraps children in an inner div constrained to 1024px — useful when you want a full-bleed background but a readable column of content.
+
+<Canvas of={SectionStories.FullWidthConstrained} />
+
+### Full width with constrained content (1280px)
+
+`contentWidth="alignwide"` uses the wider 1280px column.
+
+<Canvas of={SectionStories.FullWidthConstrainedWide} />
+
+### Alternating sections
+
+The most common page pattern — alternating white and grey bands, ending with a full-bleed grey footer band.
+
+<Canvas of={SectionStories.AlternatingGreySections} />
+
+## Max-width presets
+
+| `maxWidth`       | Token                           | Description                                    |
+| ---------------- | ------------------------------- | ---------------------------------------------- |
+| `"aligncontent"` | `--octave--layout-content-size` | Default — standard readable content width      |
+| `"alignwide"`    | `--octave--layout-wide-size`    | Wider — for card grids and media-rich sections |
+| `"alignfull"`    | `--octave--layout-full-size`    | Full viewport width — hero and accent bands    |
+
+These names and tokens mirror the WordPress block editor's alignment system so that React templates and WordPress block themes share the same layout vocabulary.
+
+## The `as` prop
+
+By default `Section` renders a `<section>` element. Pass `as="div"` when a section landmark is semantically inappropriate — for example, a purely decorative spacer row or a wrapper that forms part of a larger landmark region.
+
+## The `contentWidth` prop
+
+When set, `contentWidth` wraps all children in a `octave-section__content` div independently constrained within the outer layout:
+
+| Value            | Inner content width                                   |
+| ---------------- | ----------------------------------------------------- |
+| `"aligncontent"` | 1024px — standard readable content width              |
+| `"alignwide"`    | 1280px — wider, for card grids and media-rich layouts |
+| `"alignfull"`    | Full viewport width                                   |
+
+Omitting `contentWidth` keeps the existing behaviour: children are direct children of the root and the root's `is-layout-constrained` applies.
+
+## CSS classes
+
+| Class                            | When applied                                          |
+| -------------------------------- | ----------------------------------------------------- |
+| `octave-section`                 | Always                                                |
+| `octave-section--grey`           | `bgType="grey"`                                       |
+| `octave-section--black`          | `bgType="black"`                                      |
+| `octave-section--light-gradient` | `bgType="light-gradient"`                             |
+| `aligncontent`                   | `maxWidth="aligncontent"` (default)                   |
+| `alignwide`                      | `maxWidth="alignwide"`                                |
+| `alignfull`                      | `maxWidth="alignfull"`                                |
+| `has-global-padding`             | When `bgType` is set — horizontal gutter              |
+| `is-layout-constrained`          | Always — constrains children to content / wide widths |
+
+## Design tokens
+
+| Token                                   | Used for                                        |
+| --------------------------------------- | ----------------------------------------------- |
+| `--octave--color-grey-pale`             | Grey section background                         |
+| `--octave--color-black`                 | Black section background                        |
+| `--octave--gradient-white-to-pale-grey` | Light gradient section background               |
+| `--octave--spacing-large`               | Internal padding on styled sections             |
+| `--octave--radius-md`                   | Border radius on non-full-width styled sections |
+| `--octave--layout-content-size`         | `aligncontent` max-width                        |
+| `--octave--layout-wide-size`            | `alignwide` max-width                           |
+| `--octave--layout-full-size`            | `alignfull` max-width (100%)                    |
+
+## Accessibility
+
+- `<section>` is a landmark element when it has an accessible name — add `aria-label` or `aria-labelledby` via the standard HTML prop when the section's purpose should be surfaced to screen reader navigation.
+- Without an accessible name, `<section>` is not exposed as a landmark, which is acceptable for generic layout sections. Use `as="div"` if you actively want to suppress any landmark semantics.
+- When stacking many sections on a single page, ensure each meaningful `<section>` landmark has a distinct label so screen reader users can distinguish between them in landmark navigation.

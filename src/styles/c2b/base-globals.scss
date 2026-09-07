@@ -1,0 +1,31 @@
+html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+
+    @media (prefers-reduced-motion: reduce) {
+        scroll-behavior: auto;
+    }
+}
+
+:focus-visible {
+    outline: 2px solid var(--octave--color-primary);
+    outline-offset: 2px;
+}
+
+::selection {
+    background-color: var(--octave--color-primary);
+    color: var(--octave--color-white);
+}
+
+// Full Width Utility
+article {
+    width: 100%;
+}
+
+// Body scroll lock while a Modal or Dialog is open (see src/utils/dialog/useDialogElement.ts)
+body.octave-dialog-open {
+    overflow: hidden;
+}

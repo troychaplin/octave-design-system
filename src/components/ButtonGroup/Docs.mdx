@@ -1,0 +1,82 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as ButtonGroupStories from './ButtonGroup.stories';
+
+<Meta of={ButtonGroupStories} />
+
+# Button Group
+
+A flex container that lays out two or more [`Button`](?path=/docs/components-elements-button--docs) components in a horizontal, wrapping row with consistent spacing. Handles gap and alignment so you never need to manage button spacing manually.
+
+## When to use
+
+Use `ButtonGroup` any time two or more buttons appear side by side — a primary/secondary pair, a toolbar, or a form action row. For a single button, `ButtonGroup` is unnecessary. For a right-aligned confirm/cancel pair, use `align="end"`.
+
+## Import
+
+```tsx
+import { Button } from '@troychaplin/octave-design-system';
+import { ButtonGroup } from '@troychaplin/octave-design-system';
+```
+
+## Basic usage
+
+```tsx
+// Left-aligned (default)
+<ButtonGroup>
+  <Button title="Primary" color="red" />
+  <Button title="Secondary" color="dark-grey" />
+</ButtonGroup>
+
+// Centered
+<ButtonGroup align="center">
+  <Button title="Learn more" color="grey" />
+</ButtonGroup>
+
+// Right-aligned — confirm / cancel
+<ButtonGroup align="end">
+  <Button title="Cancel" color="grey" />
+  <Button title="Submit" color="red" />
+</ButtonGroup>
+```
+
+## Examples
+
+### Default
+
+Left-aligned group using the `start` default. Use the controls to switch alignment and observe how the group reflows.
+
+<Canvas of={ButtonGroupStories.Default} />
+<Controls of={ButtonGroupStories.Default} />
+
+### Centered
+
+<Canvas of={ButtonGroupStories.Centered} />
+
+### End
+
+Right-aligned — the natural layout for a form footer or dialog action row where the primary action should sit at the trailing edge.
+
+<Canvas of={ButtonGroupStories.End} />
+
+## CSS classes
+
+| Class                                | When applied              |
+| ------------------------------------ | ------------------------- |
+| `octave-buttongroup`                 | Always — base class       |
+| `octave-buttongroup--justify-start`  | `align="start"` (default) |
+| `octave-buttongroup--justify-center` | `align="center"`          |
+| `octave-buttongroup--justify-end`    | `align="end"`             |
+
+The same contextual margin rule that applies to `Button` also applies here: a top margin (`2rem` mobile, `2.5rem` desktop) is automatically added when `ButtonGroup` directly follows a `Column` or `StackedList` element.
+
+## Design tokens
+
+| Token                         | Used for                         |
+| ----------------------------- | -------------------------------- |
+| `--octave--spacing-2-x-small` | Gap between buttons in the group |
+
+## Accessibility
+
+- `ButtonGroup` renders a plain `<div>` — it carries no ARIA role and adds no semantics of its own. Each child `Button` retains its individual accessible name and `role="button"`.
+- For a group of related actions (e.g. a toolbar), consider wrapping in a `<div role="group" aria-label="...">` at the application level if the grouping relationship needs to be surfaced to screen readers.
+- Order buttons so the primary action comes last in an `align="end"` layout — this matches the reading order users with assistive technology follow and places the most important action at the trailing focus stop.

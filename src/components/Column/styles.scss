@@ -1,0 +1,69 @@
+@use '../../styles/c2b/octave-variables' as *;
+
+.octave-column {
+    display: grid;
+    gap: var(--octave--spacing-large);
+    margin-left: auto;
+    margin-right: auto;
+
+    &--one {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    &--two {
+        grid-template-columns: 1fr;
+
+        @include above-mobile {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    &--three {
+        grid-template-columns: 1fr;
+
+        @include above-tablet {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+
+    &--four {
+        grid-template-columns: 1fr;
+
+        @include above-mobile {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    &--one-third {
+        grid-template-columns: 1fr;
+
+        @include above-tablet {
+            grid-template-columns: 33% auto;
+        }
+    }
+
+    &--two-thirds {
+        grid-template-columns: 1fr;
+
+        @include above-tablet {
+            grid-template-columns: 66% auto;
+        }
+    }
+}
+
+.octave-column > .octave-column__content *:first-child {
+    margin-top: 0;
+}
+
+.octave-column > .octave-column__content *:last-child {
+    margin-bottom: 0;
+}
+
+/* Ordering */
+.octave-column > .octave-column__content {
+    order: 1;
+}
+
+.octave-column > div.is-first {
+    order: 0;
+}

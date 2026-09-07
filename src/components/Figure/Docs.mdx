@@ -1,0 +1,55 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as FigureStories from './Figure.stories';
+
+<Meta of={FigureStories} />
+
+# Figure
+
+An image or media wrapper with optional caption, float alignment, and border radius. Renders a semantic `<figure>` element around any image or media content.
+
+## When to use
+
+- Inline images within article or body copy that need float-left or float-right layout
+- Full-width images that benefit from a shadow and rounded corners
+- Any image that carries a descriptive caption
+
+## Import
+
+```tsx
+import { Figure } from '@troychaplin/octave-design-system';
+```
+
+## Basic usage
+
+<Canvas of={FigureStories.Default} />
+<Controls of={FigureStories.Default} />
+
+## With caption
+
+Use `caption` to add a descriptive line beneath the image inside the figure wrapper.
+
+<Canvas of={FigureStories.WithCaption} />
+
+## Float left
+
+Float the figure left with surrounding text wrapping around it. Float activates at the `lg` breakpoint (1024px+); on smaller screens the figure stacks full-width.
+
+<Canvas of={FigureStories.FloatLeft} />
+
+## Float right
+
+<Canvas of={FigureStories.FloatRight} />
+
+## Centered
+
+<Canvas of={FigureStories.Centered} />
+
+## Props
+
+| Prop       | Type                                   | Default | Description                                       |
+| ---------- | -------------------------------------- | ------- | ------------------------------------------------- |
+| `children` | `ReactNode`                            | —       | Image or media content                            |
+| `caption`  | `string`                               | —       | Optional caption rendered in a `<figcaption>`     |
+| `size`     | `xs \| sm \| md \| lg \| full`         | `full`  | Max-width constraint (activates at lg+ for xs–lg) |
+| `align`    | `none \| left \| right \| center`      | `none`  | Float alignment; floats activate at lg+           |
+| `rounded`  | `none \| sm \| md \| lg \| xl \| full` | `none`  | Border radius on the inner wrapper                |

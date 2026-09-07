@@ -1,0 +1,44 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as BodyStories from './Body.stories';
+
+<Meta of={BodyStories} />
+
+# Body
+
+A thin wrapper that renders the HTML `<body>` element. Used in server-rendered page templates — typically WordPress block themes — where the full document structure is composed in React.
+
+## When to use
+
+Use `Body` at the root of a server-rendered template alongside `Main`. In a standard client-side React app the `<body>` is managed by the HTML document itself; `Body` is primarily useful in WordPress or Next.js layouts where the full document tree is rendered as components.
+
+## Import
+
+```tsx
+import { Body } from '@troychaplin/octave-design-system';
+```
+
+## Basic usage
+
+```tsx
+<Body className="octave-utils--alignfull">
+    <Main>
+        <Section>...</Section>
+    </Main>
+</Body>
+```
+
+## Examples
+
+### Default
+
+<Canvas of={BodyStories.Default} />
+<Controls of={BodyStories.Default} />
+
+## CSS classes
+
+`Body` applies no classes of its own beyond the optional `className` prop passthrough. The example above uses `octave-utils--alignfull`, a global utility class that removes default body margin and sets the layout to full width.
+
+## Accessibility
+
+- `<body>` carries no ARIA role — it is the document root, not a landmark.
+- Axe accessibility tests are disabled for this component in Storybook because rendering a `<body>` element inside Storybook's own `<body>` creates invalid HTML nesting that triggers false positives unrelated to the component itself.

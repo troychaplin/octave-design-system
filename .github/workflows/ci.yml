@@ -1,0 +1,36 @@
+name: CI
+
+on:
+    pull_request:
+        types: [opened, synchronize, reopened]
+
+permissions:
+    contents: read
+    packages: read
+
+jobs:
+    build:
+        name: Lint, Typecheck & Build
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: pnpm/action-setup@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+                  cache: pnpm
+                  registry-url: 'https://npm.pkg.github.com'
+                  scope: 'troychaplin'
+
+            - run: pnpm install --frozen-lockfile
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            - run: pnpm lint
+            - run: pnpm typecheck
+            - run: pnpm build
+            - run: pnpm build-storybook
+            - run: pnpm exec playwright install chromium --with-deps
+            - run: pnpm test:storybook

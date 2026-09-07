@@ -1,0 +1,73 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as ArticleStories from './Article.stories';
+
+<Meta of={ArticleStories} />
+
+# Article
+
+A semantic `<article>` wrapper for self-contained page content. Accepts either JSX children or a raw HTML string via the `content` prop — the latter is intended for server-rendered or CMS-sourced content that arrives as a string.
+
+## When to use
+
+Use `Article` as the primary content region inside a page layout — typically nested inside `Main` and `Section`. It wraps body copy, blog posts, news stories, or any block of content that would make sense on its own if lifted out of the page.
+
+## Import
+
+```tsx
+import { Article } from '@troychaplin/octave-design-system';
+```
+
+## Basic usage
+
+```tsx
+// JSX children
+<Main>
+  <Section>
+    <Article>
+      <h2>Heading</h2>
+      <p>Body copy...</p>
+    </Article>
+  </Section>
+</Main>
+
+// CMS / server-rendered HTML string
+<Article content={htmlString} />
+```
+
+## Examples
+
+### Default
+
+<Canvas of={ArticleStories.Default} />
+<Controls of={ArticleStories.Default} />
+
+### With Main and Section
+
+The typical page layout context — `Article` sits inside `Section` inside `Main`.
+
+<Canvas of={ArticleStories.WithMainAndSection} />
+
+### Content as a prop
+
+When `content` is provided, the component renders via `dangerouslySetInnerHTML`. This bypasses React's escaping — only use it with content from a trusted source.
+
+<Canvas of={ArticleStories.ContentProp} />
+
+## Content modes
+
+| Mode         | How                                | When                           |
+| ------------ | ---------------------------------- | ------------------------------ |
+| JSX children | `<Article><p>...</p></Article>`    | Composing content in React     |
+| HTML string  | `<Article content={htmlString} />` | CMS or server-rendered content |
+
+If both `children` and `content` are passed, `content` wins — the component checks `content` first.
+
+## CSS classes
+
+`Article` applies no classes of its own — it renders a plain `<article>` element. Prose styling (headings, links, lists, spacing) comes from the global base styles applied to the layout context.
+
+## Accessibility
+
+- `<article>` is a landmark element. Screen readers expose it as a distinct region users can navigate to directly.
+- A page should only contain one primary `<article>` for the main content. Multiple articles (e.g. a news feed) are valid but each should have a discernible heading so screen reader landmark navigation is meaningful.
+- When using the `content` prop, ensure the HTML string comes from a trusted, sanitised source — `dangerouslySetInnerHTML` bypasses React's XSS protections entirely.

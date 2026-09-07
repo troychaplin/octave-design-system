@@ -1,0 +1,11 @@
+@use '../../styles/c2b/octave-variables' as *;
+
+.octave-badge-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--octave--spacing-2-x-small);
+
+    @include above-tablet {
+        flex: 1 1 0%;
+    }
+}

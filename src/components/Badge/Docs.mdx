@@ -1,0 +1,103 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as BadgeStories from './Badge.stories';
+
+<Meta of={BadgeStories} />
+
+# Badge
+
+A small inline label used to categorize content, indicate status, or tag items with metadata. Renders as a `<span>` by default, or as a link when an `href` is provided.
+
+## When to use
+
+Use `Badge` to surface a short, scannable label — a category tag, a content type, a semantic state (success, warning, error), or an overlay annotation on an image. Keep the text brief; badges are not a substitute for body copy or tooltips.
+
+## Import
+
+```tsx
+import { Badge } from '@troychaplin/octave-design-system';
+```
+
+## Basic usage
+
+```tsx
+// Static label
+<Badge text="Research" />
+
+// Link badge
+<Badge text="Events" href="/events" />
+
+// Semantic state
+<Badge text="Open" color="green" rounded="full" />
+
+// Overlay on a dark background
+<Badge text="Featured" color="black80" rounded="full" />
+```
+
+## Examples
+
+### Default
+
+<Canvas of={BadgeStories.Default} />
+<Controls of={BadgeStories.Default} />
+
+### With link
+
+When `href` is provided the badge renders as a link using the `LinkProvider` context — meaning it adopts whatever link component your framework injects (e.g. Next.js `<Link>`). Without a `LinkProvider` it falls back to a plain `<a>`.
+
+<Canvas of={BadgeStories.WithLink} />
+
+### All colors
+
+Ten color options span decorative, semantic, and overlay use cases. `green`, `red`, `yellow`, and `blue` map to the semantic token scale (success, error, warning, info). `black80` and `white80` are semi-transparent and intended for overlay use on image or dark backgrounds — see [Badge Group → On Card](?path=/story/components-elements-badge-group--on-card) for a real example.
+
+<Canvas of={BadgeStories.AllColors} />
+
+### All border radii
+
+<Canvas of={BadgeStories.AllRadii} />
+
+## CSS classes
+
+| Class                       | When applied                                              |
+| --------------------------- | --------------------------------------------------------- |
+| `octave-badge`              | Always — base class                                       |
+| `octave-badge--{color}`     | The active `color` prop value, e.g. `octave-badge--green` |
+| `octave-badge--radius-sm`   | `rounded="sm"`                                            |
+| `octave-badge--radius-md`   | `rounded="md"` (default)                                  |
+| `octave-badge--radius-lg`   | `rounded="lg"`                                            |
+| `octave-badge--radius-full` | `rounded="full"`                                          |
+| `octave-badge--radius-none` | `rounded="none"`                                          |
+
+When rendered as a link, the `a.octave-badge` selector additionally removes underline decoration at rest and restores it on hover.
+
+## Design tokens
+
+| Token                           | Used for                                  |
+| ------------------------------- | ----------------------------------------- |
+| `--octave--font-family-inter`   | Font family                               |
+| `--octave--font-size-x-small`   | Font size                                 |
+| `--octave--font-weight-bold`    | Font weight                               |
+| `--octave--line-height-x-small` | Line height                               |
+| `--octave--radius-sm`           | `rounded="sm"` border radius              |
+| `--octave--radius-md`           | `rounded="md"` border radius              |
+| `--octave--radius-lg`           | `rounded="lg"` border radius              |
+| `--octave--radius-full`         | `rounded="full"` border radius            |
+| `--octave--color-grey-pale`     | `grey` background                         |
+| `--octave--color-grey-dark`     | `grey` and `white` text; `white80` text   |
+| `--octave--color-white`         | `white` background; text on dark variants |
+| `--octave--color-success-dark`  | `green` background                        |
+| `--octave--color-error-dark`    | `red` background                          |
+| `--octave--color-warning`       | `yellow` background                       |
+| `--octave--color-info`          | `blue` background                         |
+| `--octave--color-purple`        | `purple` background                       |
+| `--octave--color-teal`          | `teal` background                         |
+| `--octave--color-black`         | `yellow` and `blue` text                  |
+
+`black80` and `white80` use raw `rgba()` values rather than design tokens.
+
+## Accessibility
+
+- A badge with no `href` is a `<span>` — it carries no interactive role and is read inline by screen readers. Do not rely on it to convey critical information through color alone; always include meaningful `text`.
+- When `href` is provided the badge becomes a focusable link. Ensure the `text` value is descriptive enough to make sense out of context (e.g. "Research" rather than "Click here").
+- `black80` and `white80` are semi-transparent. Verify sufficient contrast against whatever background they appear on — the design system cannot guarantee contrast for arbitrary backgrounds.
+- Semantic color variants (`green`, `red`, `yellow`, `blue`) reinforce meaning visually but the text itself must still convey the state, since color is invisible to some users.

@@ -1,0 +1,115 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+A flexible action trigger that renders a native `<button>` element. Supports six color variants (with an optional outline treatment), optional Font Awesome icons, size and width modifiers, and a disabled state.
+
+## When to use
+
+Use `Button` when you need an interactive control that triggers an in-page action — submitting a form, opening a dialog, or kicking off a process. For links that navigate to a URL, prefer a semantic `<a>` element or your framework's `Link` component instead. When placing two or more buttons side by side, wrap them in a [`ButtonGroup`](?path=/docs/components-elements-button-group--docs) rather than managing spacing manually.
+
+## Import
+
+```tsx
+import { Button } from '@troychaplin/octave-design-system';
+```
+
+## Basic usage
+
+```tsx
+<Button title="Get started" color="red" />
+<Button title="Download" color="dark-grey" icon="circle-down" />
+<Button icon="circle-down" ariaLabel="Download file" color="dark-grey" />
+<Button title="Cancel" color="red" isOutline />
+```
+
+## Examples
+
+### Default
+
+The default color is `red`.
+
+<Canvas of={ButtonStories.Default} />
+<Controls of={ButtonStories.Default} />
+
+### With icon
+
+Pass any valid `IconName` to the `icon` prop. The icon renders to the left of the label at 20px (16px when `isSmall`).
+
+<Canvas of={ButtonStories.WithIcon} />
+
+### Icon only
+
+When `title` is omitted, `icon` and `ariaLabel` are both required — enforced by the TypeScript union type. The `ariaLabel` provides the accessible name for screen readers and assistive technology.
+
+<Canvas of={ButtonStories.IconOnly} />
+
+### Small
+
+`isSmall` reduces the padding and locks font size to `--octave--font-size-small` regardless of viewport width.
+
+<Canvas of={ButtonStories.Small} />
+
+### Full width
+
+`isFull` stretches the button to 100% of its container.
+
+<Canvas of={ButtonStories.FullWidth} />
+
+### Disabled
+
+`isDisabled` sets both the visual disabled style and the native `disabled` attribute, preventing interaction and click events.
+
+<Canvas of={ButtonStories.Disabled} />
+
+### All color variants
+
+<Canvas of={ButtonStories.AllColors} />
+
+## CSS classes
+
+| Class                      | When applied                               |
+| -------------------------- | ------------------------------------------ |
+| `octave-button`            | Always — base class                        |
+| `octave-button--red`       | `color="red"` (default)                    |
+| `octave-button--grey`      | `color="grey"`                             |
+| `octave-button--dark-grey` | `color="dark-grey"`                        |
+| `octave-button--blue`      | `color="blue"`                             |
+| `octave-button--black`     | `color="black"`                            |
+| `octave-button--white`     | `color="white"`                            |
+| `octave-button--disabled`  | `isDisabled={true}`                        |
+| `octave-button--outline`   | `isOutline={true}` (ignored when disabled) |
+| `octave-button--small`     | `isSmall={true}`                           |
+| `octave-button--full`      | `isFull={true}`                            |
+
+A top margin (`2rem` mobile, `2.5rem` desktop) is automatically applied when a `Button` or `ButtonGroup` directly follows a `Column` or `StackedList` element — no extra spacing class needed.
+
+## Design tokens
+
+These `--octave--*` custom properties drive the Button's appearance. Overriding them at a higher scope will change every Button on the page.
+
+| Token                             | Used for                                                                        |
+| --------------------------------- | ------------------------------------------------------------------------------- |
+| `--octave--font-family-inter`     | Font family                                                                     |
+| `--octave--font-size-small`       | Font size on mobile and when `isSmall`                                          |
+| `--octave--font-size-medium`      | Font size on desktop (≥ md breakpoint)                                          |
+| `--octave--font-weight-medium`    | Font weight                                                                     |
+| `--octave--line-height-tight`     | Line height                                                                     |
+| `--octave--radius-md`             | Border radius                                                                   |
+| `--octave--color-primary`         | `red` variant background; hover state for `grey`, `dark-grey`, `black`, `white` |
+| `--octave--color-grey-dark`       | `dark-grey` variant background; `grey` variant text                             |
+| `--octave--color-grey-pale`       | `grey` variant background                                                       |
+| `--octave--color-grey-light`      | Disabled state background                                                       |
+| `--octave--color-white`           | `white` variant background; text on dark variants                               |
+| `--octave--color-black`           | `black` variant background; `white` variant text                                |
+| `--octave--color-experience-blue` | `blue` variant background                                                       |
+
+## Accessibility
+
+- `Button` renders a native `<button>` element — keyboard focus, `Enter`/`Space` activation, and screen reader announcement are built in.
+- **Icon-only buttons require `ariaLabel`.** Without it, screen readers announce only the icon name (or nothing), which is not meaningful. The TypeScript union type enforces this at compile time.
+- The native `disabled` attribute prevents the button from receiving focus or firing events. Do not use CSS-only disabled styling, as it leaves the button keyboard-reachable.
+- Avoid using `Button` for navigation — screen readers expose `role="button"` to users, who expect it to perform an action rather than navigate.

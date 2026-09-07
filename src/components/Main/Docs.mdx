@@ -1,0 +1,97 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as MainStories from './Main.stories';
+
+<Meta of={MainStories} />
+
+# Main
+
+The primary page content wrapper. Renders a `<main>` landmark containing an inner layout div wired up for the WordPress block editor's alignment and spacing system. All layout components — `Section`, `Column`, `Article`, `Aside` — nest inside `Main`.
+
+## When to use
+
+Use `Main` once per page as the outermost content container. It sits inside `Body` (for full document templates) or directly in the app root. Everything visible on the page except the site header and footer should live inside `Main`.
+
+## Import
+
+```tsx
+import { Main } from '@troychaplin/octave-design-system';
+```
+
+## Basic usage
+
+```tsx
+// Default — with vertical padding
+<Main>
+  <Section>...</Section>
+</Main>
+
+// No padding — when the first section is full-bleed
+<Main hasPadding={false}>
+  <Section>...</Section>
+</Main>
+```
+
+## Examples
+
+### Default
+
+`hasPadding` is `true` by default, adding `--octave--spacing-large` top and bottom padding.
+
+<Canvas of={MainStories.Default} />
+<Controls of={MainStories.Default} />
+
+### No padding
+
+Use `hasPadding={false}` when the first or last section handles its own spacing, or when a hero image needs to run to the top edge.
+
+<Canvas of={MainStories.NoPadding} />
+
+## The `as` prop
+
+By default `Main` renders a `<main>` element. Pass `as="div"` when a `<main>` landmark is already
+provided elsewhere on the page and this instance would create a duplicate.
+
+## The `className` prop
+
+An optional passthrough appended to the root element's class list, alongside `octave-main` and
+`octave-main--padding` — useful for one-off spacing or utility overrides without wrapping `Main` in an
+extra element.
+
+## Inner layout div
+
+`Main` wraps its children in a fixed inner `<div>` that carries four WordPress block editor classes:
+
+```html
+<div class="alignfull has-global-padding is-layout-constrained entry-content"></div>
+```
+
+| Class                   | Effect                                                                                        |
+| ----------------------- | --------------------------------------------------------------------------------------------- |
+| `alignfull`             | Sets `max-width` to `--octave--layout-full-size` (100%)                                       |
+| `has-global-padding`    | Applies horizontal padding via `--octave--layout-gutter`; lets `alignfull` children break out |
+| `is-layout-constrained` | Constrains child elements to content or wide max-widths; applies heading margin scale         |
+| `entry-content`         | Applies stacked child margin rhythm                                                           |
+
+These classes are defined in the auto-generated `layout.css` and `typography.css` files produced by `@troychaplin/component2block`. They mirror WordPress's block editor layout system so that React and WordPress share the same spacing rules.
+
+## CSS classes
+
+| Class                  | When applied                    |
+| ---------------------- | ------------------------------- |
+| `octave-main`          | Always — base class on `<main>` |
+| `octave-main--padding` | `hasPadding={true}` (default)   |
+
+`octave-main` also applies link styles to all descendant anchors: bold weight, no underline at rest, `--octave--color-primary-dark` on hover with underline.
+
+## Design tokens
+
+| Token                          | Used for                                                |
+| ------------------------------ | ------------------------------------------------------- |
+| `--octave--spacing-large`      | Top and bottom padding when `hasPadding` is true        |
+| `--octave--spacing-medium`     | Margin between stacked direct children of `octave-main` |
+| `--octave--color-primary-dark` | Link hover colour                                       |
+
+## Accessibility
+
+- `<main>` is a landmark element. There should be exactly one `<main>` per page — screen readers use it as a skip-navigation target.
+- The inner layout div is presentational and carries no ARIA role.

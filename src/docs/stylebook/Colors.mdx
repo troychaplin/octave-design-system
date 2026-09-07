@@ -1,0 +1,67 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ColorSwatches } from './components/ColorSwatches';
+
+<Meta title="Overview/Stylebook/Colors" />
+
+# Colors
+
+Color tokens are defined in `c2b.config.json` and generate CSS custom properties
+prefixed with `--octave--color-*`. Use these tokens for all color references to
+maintain consistency across the design system.
+
+<ColorSwatches
+    names={['primary', 'primary-dark']}
+    title="Primary Colors"
+    description="The primary palette and its variants."
+/>
+
+<ColorSwatches
+    names={[
+        'black',
+        'grey-dark',
+        'grey',
+        'grey-light',
+        'grey-lighter',
+        'grey-pale',
+        'grey-faint',
+        'white',
+    ]}
+    title="Neutrals"
+    description="Background and text colors."
+/>
+
+<ColorSwatches
+    names={['purple', 'purple-light', 'teal', 'teal-light', 'exp-blue', 'exp-blue-light']}
+    title="Extended Palette"
+    description="Secondary and supporting brand colors."
+/>
+
+<ColorSwatches
+    names={['success', 'warning', 'error', 'info']}
+    title="Semantic Colors"
+    description="Used for feedback states — success, warning, error, and info."
+/>
+
+<ColorSwatches
+    names={[
+        'linkedin',
+        'facebook',
+        'bluesky',
+        'twitter',
+        'instagram',
+        'youtube',
+        'tiktok',
+        'orcid',
+    ]}
+    title="Social Brands"
+    description="Official brand colors for social media platforms."
+/>
+
+## Usage
+
+```css
+.my-element {
+    color: var(--octave--color-primary);
+    background: var(--octave--color-grey-faint);
+}
+```

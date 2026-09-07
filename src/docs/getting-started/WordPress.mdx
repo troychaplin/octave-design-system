@@ -1,0 +1,50 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Overview/Getting Started/WordPress" />
+
+# WordPress integration
+
+Octave ships WordPress-ready CSS bundles and a `theme.json` alongside the React build, so the
+Site Editor, the block editor, and the frontend all read from the same design tokens.
+
+## Prerequisites
+
+Follow the base [Installation](?path=/docs/overview-getting-started-installation--docs) flow:
+
+```sh
+pnpm add @troychaplin/octave-design-system
+```
+
+## What ships for WordPress
+
+The build produces two stylesheet entry points, compiled from `src/styles/wordpress/`:
+
+| Export                                               | Use for                                                    |
+| ---------------------------------------------------- | ---------------------------------------------------------- |
+| `@troychaplin/octave-design-system/block-theme.css`  | Full block themes — `theme.json` plus block templates only |
+| `@troychaplin/octave-design-system/hybrid-theme.css` | Hybrid themes — classic PHP templates alongside blocks     |
+
+Each entry is a plain SCSS file you can read and adjust: add or remove `@use` lines to control
+exactly which layers ship. Both start from the generated token layer and pull in the
+hand-written global styles as needed.
+
+`@troychaplin/component2block` also emits a `theme.json` from the same `c2b.config.json` token
+definitions, so the Site Editor's palette, gradients, fluid typography, spacing scale, and shadow
+presets stay in sync with the React components without being maintained twice.
+
+## Enqueuing
+
+```php
+wp_enqueue_style(
+    'octave',
+    get_theme_file_uri( 'node_modules/@troychaplin/octave-design-system/dist/wordpress/block-theme.css' ),
+    [],
+    null
+);
+```
+
+## Per-block CSS
+
+Blocks that use only a component or two can enqueue that component's stylesheet instead of the
+full bundle — see the per-component imports in
+[Installation](?path=/docs/overview-getting-started-installation--docs).

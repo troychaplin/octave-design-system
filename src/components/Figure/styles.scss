@@ -1,0 +1,82 @@
+@use '../../styles/c2b/octave-variables' as *;
+
+.octave-figure {
+    max-width: 100%; // safety net — never overflow container
+    margin: 0;
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+// Explicit width so octave-figure__inner (and the caption inside it) is always
+// bounded to the same width as the image. max-width: 100% on the root
+// handles the case where the viewport is narrower than the declared size.
+.octave-figure--xs {
+    width: 320px;
+}
+.octave-figure--sm {
+    width: 440px;
+}
+.octave-figure--md {
+    width: 512px;
+}
+.octave-figure--lg {
+    width: 48rem;
+}
+.octave-figure--full {
+    width: 100%;
+}
+
+// Below the float breakpoint, collapse all sized variants to full width
+// so they stack naturally without overflowing narrow viewports.
+@include below-tablet {
+    .octave-figure--xs,
+    .octave-figure--sm,
+    .octave-figure--md,
+    .octave-figure--lg {
+        width: 100%;
+    }
+}
+
+// Float alignment — activates at md+
+.octave-figure--left {
+    margin: var(--octave--spacing-medium) 0;
+
+    @include above-tablet {
+        float: left;
+        clear: left;
+        margin-top: 0;
+        margin-right: var(--octave--spacing-large);
+    }
+}
+
+.octave-figure--right {
+    margin: var(--octave--spacing-medium) 0;
+
+    @include above-tablet {
+        float: right;
+        clear: right;
+        margin-top: 0;
+        margin-left: var(--octave--spacing-large);
+    }
+}
+
+.octave-figure--center {
+    margin: var(--octave--spacing-medium) 0;
+}
+
+.octave-figure__inner {
+    overflow: hidden;
+    border-radius: var(--octave--radius-md);
+}
+
+.octave-figure__caption {
+    background-color: var(--octave--color-grey-pale);
+    padding: var(--octave--spacing-small) var(--octave--spacing-medium);
+    font-size: var(--octave--font-size-medium);
+    font-style: italic;
+    color: var(--octave--color-grey-dark);
+}

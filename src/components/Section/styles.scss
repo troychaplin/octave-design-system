@@ -1,0 +1,101 @@
+@use '../../styles/c2b/octave-variables' as *;
+
+.octave-section--grey,
+.octave-section--black,
+.octave-section--light-gradient,
+.octave-section--hero {
+    padding: var(--octave--spacing-large);
+
+    @include above-tablet {
+        padding: var(--octave--spacing-x-large);
+    }
+}
+
+.octave-section--grey,
+.octave-section--black,
+.octave-section--light-gradient {
+    &.aligncontent {
+        max-width: calc(
+            var(--octave--layout-content-size) + (var(--octave--spacing-large) * 2)
+        ) !important;
+
+        @include above-tablet {
+            max-width: calc(
+                var(--octave--layout-content-size) + (var(--octave--spacing-x-large) * 2)
+            ) !important;
+        }
+    }
+}
+
+.octave-section--grey {
+    background-color: var(--octave--color-grey-pale);
+
+    & + .octave-section--grey {
+        padding-top: 0;
+    }
+
+    & + .octave-section--grey.alignwide {
+        margin-block-start: 0;
+    }
+}
+
+.octave-section--black {
+    background-color: var(--octave--color-black);
+
+    & + .octave-section--black {
+        padding-top: 0;
+    }
+
+    & + .octave-section--black.alignwide {
+        margin-block-start: 0;
+    }
+}
+
+.octave-section--light-gradient {
+    background-image: var(--octave--gradient-white-to-pale-grey);
+
+    & + .octave-section--light-gradient {
+        padding-top: 0;
+    }
+
+    & + .octave-section--light-gradient.alignwide {
+        margin-block-start: 0;
+    }
+}
+
+.octave-section > * + * {
+    margin-block-start: var(--octave--spacing-medium);
+    margin-block-end: 0;
+}
+
+.octave-section > .has-global-padding,
+.has-global-padding > .octave-section.alignfull > .has-global-padding {
+    padding-left: 0;
+    padding-right: 0;
+
+    > *:first-child {
+        margin-top: 0;
+    }
+
+    > *:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.octave-section--grey:not(.alignfull),
+.octave-section--black:not(.alignfull),
+.octave-section--light-gradient:not(.alignfull) {
+    border-radius: var(--octave--radius-md);
+}
+
+.octave-main .octave-section--grey.alignfull:last-child,
+.octave-main .octave-section--black.alignfull:last-child,
+.octave-main .octave-section--light-gradient.alignfull:last-child {
+    margin-bottom: calc(-1 * var(--octave--spacing-large));
+}
+
+.octave-main .octave-section--grey.alignfull:first-child,
+.octave-main .octave-section--black.alignfull:first-child,
+.octave-main .octave-section--light-gradient.alignfull:first-child {
+    margin-top: calc(-1 * var(--octave--spacing-large));
+}

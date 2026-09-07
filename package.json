@@ -1,0 +1,144 @@
+{
+    "name": "@troychaplin/octave-design-system",
+    "version": "0.1.0",
+    "description": "Octave design system and React component library",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/@troychaplin/octave-design-system.git"
+    },
+    "type": "module",
+    "private": false,
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com",
+        "access": "restricted"
+    },
+    "sideEffects": [
+        "**/*.css",
+        "**/*.scss"
+    ],
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.cjs"
+        },
+        "./styles.css": "./dist/style.css",
+        "./hybrid-theme.css": "./dist/wordpress/hybrid-theme.css",
+        "./block-theme.css": "./dist/wordpress/block-theme.css",
+        "./tokens.css": "./dist/styles/octave-tokens.css",
+        "./base-styles.css": "./dist/styles/octave-base-styles.css",
+        "./layout.css": "./dist/styles/octave-layout.css",
+        "./typography.css": "./dist/styles/octave-typography.css",
+        "./fonts.css": "./dist/fonts.css",
+        "./*": {
+            "types": "./dist/components/*/index.d.ts",
+            "import": "./dist/components/*/index.mjs",
+            "require": "./dist/components/*/index.cjs"
+        },
+        "./*.css": "./dist/components/*/styles.css",
+        "./*.scss": "./dist/components/*/styles.scss"
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "dev": "npm run c2b && storybook dev -p 6006",
+        "build": "vite build && vite build -c vite.config.components.ts && node scripts/build-components-scss.mjs && node scripts/build-components-dts.mjs && npm run c2b && node scripts/build-wordpress-scss.mjs && node scripts/build-inject-fonts.mjs && node scripts/build-cleanup.mjs",
+        "build-storybook": "storybook build",
+        "c2b": "c2b generate",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "test:storybook": "vitest --project=storybook",
+        "test:coverage": "vitest run --coverage",
+        "lint": "eslint src/",
+        "lint:fix": "eslint src/ --fix",
+        "format": "prettier --write 'src/**/*.{ts,tsx,scss}'",
+        "format:check": "prettier --check 'src/**/*.{ts,tsx,scss}'",
+        "typecheck": "tsc --noEmit",
+        "size": "size-limit",
+        "size:check": "size-limit --limit",
+        "prepare": "husky",
+        "release": "node release.mjs"
+    },
+    "lint-staged": {
+        "src/**/*.{ts,tsx}": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "src/**/*.scss": [
+            "prettier --write"
+        ],
+        "*.{json,md,mdx}": [
+            "prettier --write"
+        ]
+    },
+    "size-limit": [
+        {
+            "path": "dist/index.mjs",
+            "limit": "25 kB"
+        },
+        {
+            "path": "dist/style.css",
+            "limit": "7 kB"
+        }
+    ],
+    "peerDependencies": {
+        "react": "^18.0.0 || ^19.0.0",
+        "react-dom": "^18.0.0 || ^19.0.0"
+    },
+    "keywords": [
+        "react",
+        "nextjs",
+        "component-library",
+        "design-system",
+        "octave",
+        "wordpress",
+        "storybook"
+    ],
+    "author": "Troy Chaplin",
+    "license": "SEE LICENSE IN LICENSE",
+    "packageManager": "pnpm@11.26.0",
+    "devDependencies": {
+        "@chromatic-com/storybook": "^5.3.1",
+        "@eslint/js": "^10.0.1",
+        "@size-limit/file": "^13.0.3",
+        "@storybook/addon-a11y": "^10.6.0",
+        "@storybook/addon-docs": "^10.6.0",
+        "@storybook/addon-mcp": "^10.6.0",
+        "@storybook/addon-vitest": "^10.6.0",
+        "@storybook/react-vite": "^10.6.0",
+        "@testing-library/jest-dom": "^7.0.1",
+        "@testing-library/react": "^16.3.3",
+        "@testing-library/user-event": "^14.6.7",
+        "@troychaplin/component2block": "^0.7.2",
+        "@types/react": "^19.2.18",
+        "@types/react-dom": "^19.2.7",
+        "@vitejs/plugin-react": "^6.1.1",
+        "@vitest/browser-playwright": "^5.0.0",
+        "@vitest/coverage-v8": "^5.0.0",
+        "eslint": "^10.10.0",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-jsx-a11y": "^6.10.2",
+        "eslint-plugin-react": "^7.37.5",
+        "eslint-plugin-react-hooks": "^7.1.1",
+        "eslint-plugin-storybook": "^10.6.0",
+        "husky": "^9.1.7",
+        "lint-staged": "^17.5.0",
+        "modern-normalize": "^3.0.1",
+        "playwright": "^1.63.0",
+        "prettier": "^3.9.6",
+        "react": "^19.2.8",
+        "react-dom": "^19.2.8",
+        "remark-gfm": "^4.0.1",
+        "rollup": "^4.63.1",
+        "rollup-plugin-dts": "^6.5.1",
+        "sass": "^1.104.0",
+        "size-limit": "^13.0.3",
+        "storybook": "^10.6.0",
+        "typescript": "^6.0.3",
+        "typescript-eslint": "^8.69.0",
+        "vite": "^8.2.2",
+        "vite-plugin-dts": "^5.1.0",
+        "vitest": "^5.0.0"
+    }
+}
