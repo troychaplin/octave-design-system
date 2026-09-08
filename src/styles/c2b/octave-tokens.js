@@ -4,6 +4,19 @@ export const octaveTokens = {
     color: {
         black: '#191919',
         white: '#ffffff',
+        accentPrimary: '#a34f3e',
+        accentSecondary: '#ca2135',
+        neutral50: '#f9f7f3',
+        neutral100: '#f2f0ea',
+        neutral200: '#efeae2',
+        neutral300: '#e0d6c8',
+        neutral400: '#d8d5cf',
+        neutral500: '#8d7661',
+        neutral600: '#766051',
+        neutral700: '#5e4c42',
+        neutral800: '#51413a',
+        neutral900: '#473a35',
+        neutral950: '#271f1c',
         info: '#2571eb',
         success: '#16a34a',
         warning: '#fff154',
@@ -17,7 +30,7 @@ export const octaveTokens = {
         tiktok: '#010101'
     },
     gradient: {
-        whiteToPaleGrey: 'linear-gradient(135deg,rgb(250,250,250) 0%,rgb(245,245,245) 90%)'
+        whiteToNeutral50: 'linear-gradient(135deg,rgb(250,250,250) 0%,rgb(249, 247, 243) 90%)'
     },
     spacing: {
         x3Small: '0.175rem',
@@ -39,17 +52,17 @@ export const octaveTokens = {
         jetbrainsMono: 'JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace'
     },
     fontSize: {
-        xSmall: 'clamp(0.7rem, 0.7rem + ((1vw - 0.2rem) * 0.096), 0.75rem)',
-        small: 'clamp(0.8rem, 0.8rem + ((1vw - 0.2rem) * 0.192), 0.9rem)',
-        medium: 'clamp(0.85rem, 0.85rem + ((1vw - 0.2rem) * 0.288), 1rem)',
-        large: 'clamp(0.9rem, 0.9rem + ((1vw - 0.2rem) * 0.433), 1.125rem)',
-        xLarge: 'clamp(1.05rem, 1.05rem + ((1vw - 0.2rem) * 0.385), 1.25rem)',
-        x2Large: 'clamp(1.25rem, 1.25rem + ((1vw - 0.2rem) * 0.481), 1.5rem)',
-        headingSmall: 'clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.962), 1.5rem)',
-        headingMedium: 'clamp(1.25rem, 1.25rem + ((1vw - 0.2rem) * 0.962), 1.75rem)',
-        headingLarge: 'clamp(1.5rem, 1.5rem + ((1vw - 0.2rem) * 1.442), 2.25rem)',
-        headingXLarge: 'clamp(1.75rem, 1.75rem + ((1vw - 0.2rem) * 1.442), 2.5rem)',
-        headingPrimary: 'clamp(1.75rem, 1.75rem + ((1vw - 0.2rem) * 2.404), 3rem)'
+        x2Small: 'clamp(0.6875rem, 0.6875rem + ((1vw - 0.2rem) * 0.12), 0.75rem)',
+        xSmall: 'clamp(0.8125rem, 0.8125rem + ((1vw - 0.2rem) * 0.12), 0.875rem)',
+        small: 'clamp(0.875rem, 0.875rem + ((1vw - 0.2rem) * 0.24), 1rem)',
+        medium: 'clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.481), 1.25rem)',
+        large: 'clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.962), 1.5rem)',
+        xLarge: 'clamp(1.4375rem, 1.4375rem + ((1vw - 0.2rem) * 1.082), 2rem)',
+        x2Large: 'clamp(1.75rem, 1.75rem + ((1vw - 0.2rem) * 1.803), 2.6875rem)',
+        x3Large: 'clamp(2.0625rem, 2.0625rem + ((1vw - 0.2rem) * 2.885), 3.5625rem)',
+        x4Large: 'clamp(2.5rem, 2.5rem + ((1vw - 0.2rem) * 4.327), 4.75rem)',
+        x5Large: 'clamp(2.375rem, 2.375rem + ((1vw - 0.2rem) * 6.418), 5.7125rem)',
+        hero: 'clamp(3.5625rem, 3.5625rem + ((1vw - 0.2rem) * 9.375), 8.4375rem)'
     },
     shadow: {
         natural: '6px 6px 9px rgba(0, 0, 0, 0.2)',

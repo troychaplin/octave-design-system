@@ -1,0 +1,51 @@
+@use '../c2b/octave-variables' as *;
+
+// Global width classes for Gutenberg alignments, to be used in Section component
+.alignsmall {
+    max-width: var(--octave--layout-small-size) !important;
+}
+
+.aligncontent {
+    max-width: var(--octave--layout-content-size);
+}
+
+.alignwide {
+    max-width: var(--octave--layout-wide-size);
+}
+
+.alignfull {
+    max-width: var(--octave--layout-full-size);
+}
+
+// .octave-main > * > .octave-layout + .octave-layout,
+// .octave-main > * > .octave-layout + :not(.octave-layout),
+// .octave-main > * > :not(.octave-layout) + .octave-layout {
+//     margin-top: var(--octave--spacing-medium);
+
+//     @media (min-width: $rds-media-query-md) {
+//         margin-top: var(--octave--spacing-large);
+//     }
+// }
+
+// .octave-main > * > .octave-layout.alignfull + .octave-layout.alignfull {
+//     margin-top: 0;
+// }
+
+// .octave-layout > .has-global-padding {
+//     > * + * {
+//         margin-block-start: var(--octave--spacing-medium);
+//     }
+
+//     > .octave-layout + *,
+//     > * + .octave-layout {
+//         margin-block-start: var(--octave--spacing-medium);
+
+//         @media (min-width: $rds-media-query-md) {
+//             margin-block-start: var(--octave--spacing-large);
+//         }
+//     }
+// }
+
+// .octave-main--padding .octave-layout.alignfull:first-child {
+//     margin-top: calc(-1 * var(--octave--spacing-large));
+// }

@@ -11,21 +11,11 @@ html {
 }
 
 :focus-visible {
-    outline: 2px solid var(--octave--color-primary);
+    outline: 2px solid var(--octave--color-accent-primary);
     outline-offset: 2px;
 }
 
 ::selection {
-    background-color: var(--octave--color-primary);
+    background-color: var(--octave--color-accent-primary);
     color: var(--octave--color-white);
-}
-
-// Full Width Utility
-article {
-    width: 100%;
-}
-
-// Body scroll lock while a Modal or Dialog is open (see src/utils/dialog/useDialogElement.ts)
-body.octave-dialog-open {
-    overflow: hidden;
 }
