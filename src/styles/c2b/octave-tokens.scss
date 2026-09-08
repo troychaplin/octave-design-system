@@ -63,6 +63,11 @@
   --octave--font-size-4-x-large: clamp(2.5rem, 2.5rem + ((1vw - 0.2rem) * 4.327), 4.75rem);
   --octave--font-size-5-x-large: clamp(2.375rem, 2.375rem + ((1vw - 0.2rem) * 6.418), 5.7125rem);
   --octave--font-size-hero: clamp(3.5625rem, 3.5625rem + ((1vw - 0.2rem) * 9.375), 8.4375rem);
+  --octave--font-size-heading-small: clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.962), 1.5rem);
+  --octave--font-size-heading-medium: clamp(1.25rem, 1.25rem + ((1vw - 0.2rem) * 0.962), 1.75rem);
+  --octave--font-size-heading-large: clamp(1.5rem, 1.5rem + ((1vw - 0.2rem) * 1.442), 2.25rem);
+  --octave--font-size-heading-x-large: clamp(1.75rem, 1.75rem + ((1vw - 0.2rem) * 1.442), 2.5rem);
+  --octave--font-size-heading-primary: clamp(1.75rem, 1.75rem + ((1vw - 0.2rem) * 2.404), 3rem);
 
   /* Shadows */
   --octave--shadow-natural: 6px 6px 9px rgba(0, 0, 0, 0.2);

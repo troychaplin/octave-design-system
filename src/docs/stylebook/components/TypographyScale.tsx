@@ -4,6 +4,7 @@ import '../stylebook.css';
 const prefix = config.prefix;
 const fontSizes = config.tokens.fontSize;
 const fontFamilies = config.tokens.fontFamily;
+const baseStyles = config.baseStyles;
 
 const SAMPLE_PARAGRAPH =
     'The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs. How vexingly quick daft zebras jump! Sphinx of black quartz, judge my vow.';
@@ -67,6 +68,102 @@ function SectionWrapper({
     );
 }
 
+/* ---------- Base styles ---------- */
+
+// Element rules from `baseStyles` in c2b.config.json. Only the typographic
+// properties are modelled here; the same object also carries spacing and
+// colour keys this page doesn't render.
+type BaseStyleRule = {
+    fontFamily?: string;
+    fontSize?: string;
+    fontWeight?: string;
+    fontStyle?: string;
+    lineHeight?: string;
+    color?: string;
+};
+
+// Token categories whose values can be referenced by name from baseStyles.
+type TokenCategory = 'fontFamily' | 'fontWeight' | 'lineHeight' | 'color';
+
+const HEADING_ELEMENTS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
+
+// A baseStyles value is either a token name or a literal CSS value — c2b emits
+// `font-weight: var(--octave--font-weight-light)` for "light" but a bare
+// `font-weight: 600` for "600". Mirror that by checking the token map first.
+function resolveValue(category: TokenCategory, value: string): string {
+    const tokens = config.tokens[category] as Record<string, unknown>;
+    if (!(value in tokens)) return value;
+    const segment = category.replace(/([A-Z])/g, '-$1').toLowerCase();
+    return `var(--${prefix}--${segment}-${value})`;
+}
+
+// c2b emits the shared heading declarations in a `:where(h1, …, h6)` block, so
+// the `heading` rule has to be merged under each element to match the output.
+function getBaseStyleRule(element: string): BaseStyleRule {
+    const rules = baseStyles as Record<string, BaseStyleRule>;
+    const shared = element === 'body' ? undefined : rules.heading;
+    return { ...shared, ...rules[element] };
+}
+
+function toSampleStyle(rule: BaseStyleRule): React.CSSProperties {
+    return {
+        fontFamily: rule.fontFamily ? resolveValue('fontFamily', rule.fontFamily) : undefined,
+        fontSize: rule.fontSize ? `var(--${prefix}--font-size-${rule.fontSize})` : undefined,
+        fontWeight: rule.fontWeight ? resolveValue('fontWeight', rule.fontWeight) : undefined,
+        fontStyle: rule.fontStyle ?? 'normal',
+        lineHeight: rule.lineHeight ? resolveValue('lineHeight', rule.lineHeight) : undefined,
+        color: rule.color ? resolveValue('color', rule.color) : undefined,
+    };
+}
+
+// The fluid min → max range behind a font-size token name, or null if the
+// token named by baseStyles isn't in the fontSize scale.
+function getRangeLabel(tokenName: string): string | null {
+    const size = (fontSizes as Record<string, FontSizeValue>)[tokenName];
+    if (!size) return null;
+    const { min, max } = getFluidRange(size);
+    return `${min} → ${max}`;
+}
+
+/**
+ * Base styles — the typography c2b actually applies to `body` and `h1`–`h6`,
+ * read from `baseStyles` in c2b.config.json. This is the applied scale, which
+ * is a subset of the font-size tokens shown by `FontSizeTokens`.
+ */
+export function BaseStyles({ title, description }: SectionProps) {
+    const elements = [...HEADING_ELEMENTS, 'body'];
+
+    return (
+        <SectionWrapper title={title} description={description}>
+            {elements.map((element) => {
+                const rule = getBaseStyleRule(element);
+                const range = rule.fontSize ? getRangeLabel(rule.fontSize) : null;
+
+                return (
+                    <div key={element} className="sb-stack__item">
+                        <p className="sb-stack__sample" style={toSampleStyle(rule)}>
+                            {element === 'body' ? SAMPLE_PARAGRAPH : `Heading ${element.slice(1)}`}
+                        </p>
+                        <code className="sb-stack__meta">
+                            {element}
+                            {rule.fontSize && (
+                                <>
+                                    {' · '}
+                                    var(--{prefix}--font-size-{rule.fontSize})
+                                </>
+                            )}
+                            {range && ` · ${range}`}
+                            {rule.fontWeight && ` · ${rule.fontWeight}`}
+                        </code>
+                    </div>
+                );
+            })}
+        </SectionWrapper>
+    );
+}
+
+/* ---------- Font size tokens ---------- */
+
 type FontSizesProps = SectionProps & {
     /** Filter by token naming convention. Default `'all'`. */
     filter?: FontSizeFilter;
@@ -75,60 +172,6 @@ type FontSizesProps = SectionProps & {
     /** Explicit list of token names to exclude. Applied after filter/include. */
     exclude?: string[];
 };
-
-export function FontSizes({
-    filter = 'all',
-    include,
-    exclude,
-    title,
-    description,
-}: FontSizesProps) {
-    const isHeadingView = filter === 'heading';
-    const lineHeight = isHeadingView ? 'tight' : 'normal';
-
-    const entries = (Object.entries(fontSizes) as [string, FontSizeValue][])
-        .filter(([name]) => {
-            if (include) return include.includes(name);
-            if (!matchesFilter(name, filter)) return false;
-            if (exclude?.includes(name)) return false;
-            return true;
-        })
-        .sort(([, a], [, b]) => sizeToNumber(b) - sizeToNumber(a));
-
-    return (
-        <SectionWrapper title={title} description={description}>
-            {entries.map(([name]) => (
-                <div key={name} className="sb-stack__item">
-                    <p
-                        className="sb-stack__sample"
-                        style={{
-                            fontSize: `var(--${prefix}--font-size-${name})`,
-                            lineHeight: `var(--${prefix}--line-height-${lineHeight})`,
-                        }}
-                    >
-                        {isHeadingView ? formatTokenName(name) : SAMPLE_PARAGRAPH}
-                    </p>
-                </div>
-            ))}
-        </SectionWrapper>
-    );
-}
-
-/**
- * Heading scale — shows font-size tokens whose names start with `heading-`.
- * Pass `include` or `exclude` to override the default naming filter.
- */
-export function HeadingScale(props: Omit<FontSizesProps, 'filter'> & { filter?: FontSizeFilter }) {
-    return <FontSizes {...props} filter={props.filter ?? 'heading'} />;
-}
-
-/**
- * Body sizes — shows font-size tokens whose names don't start with `heading-`.
- * Pass `include` or `exclude` to override the default naming filter.
- */
-export function BodySizes(props: Omit<FontSizesProps, 'filter'> & { filter?: FontSizeFilter }) {
-    return <FontSizes {...props} filter={props.filter ?? 'body'} />;
-}
 
 export function FontSizeTokens({
     filter = 'all',

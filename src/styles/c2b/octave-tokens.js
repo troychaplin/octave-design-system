@@ -62,7 +62,12 @@ export const octaveTokens = {
         x3Large: 'clamp(2.0625rem, 2.0625rem + ((1vw - 0.2rem) * 2.885), 3.5625rem)',
         x4Large: 'clamp(2.5rem, 2.5rem + ((1vw - 0.2rem) * 4.327), 4.75rem)',
         x5Large: 'clamp(2.375rem, 2.375rem + ((1vw - 0.2rem) * 6.418), 5.7125rem)',
-        hero: 'clamp(3.5625rem, 3.5625rem + ((1vw - 0.2rem) * 9.375), 8.4375rem)'
+        hero: 'clamp(3.5625rem, 3.5625rem + ((1vw - 0.2rem) * 9.375), 8.4375rem)',
+        headingSmall: 'clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.962), 1.5rem)',
+        headingMedium: 'clamp(1.25rem, 1.25rem + ((1vw - 0.2rem) * 0.962), 1.75rem)',
+        headingLarge: 'clamp(1.5rem, 1.5rem + ((1vw - 0.2rem) * 1.442), 2.25rem)',
+        headingXLarge: 'clamp(1.75rem, 1.75rem + ((1vw - 0.2rem) * 1.442), 2.5rem)',
+        headingPrimary: 'clamp(1.75rem, 1.75rem + ((1vw - 0.2rem) * 2.404), 3rem)'
     },
     shadow: {
         natural: '6px 6px 9px rgba(0, 0, 0, 0.2)',

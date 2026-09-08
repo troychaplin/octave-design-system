@@ -147,7 +147,18 @@
             "hero": {
                 "value": "8.4375rem",
                 "fluid": { "min": "3.5625rem", "max": "8.4375rem" }
-            }
+            },
+            "heading-small": { "value": "1.5rem", "fluid": { "min": "1rem", "max": "1.5rem" } },
+            "heading-medium": {
+                "value": "1.75rem",
+                "fluid": { "min": "1.25rem", "max": "1.75rem" }
+            },
+            "heading-large": { "value": "2.25rem", "fluid": { "min": "1.5rem", "max": "2.25rem" } },
+            "heading-x-large": {
+                "value": "2.5rem",
+                "fluid": { "min": "1.75rem", "max": "2.5rem" }
+            },
+            "heading-primary": { "value": "3rem", "fluid": { "min": "1.75rem", "max": "3rem" } }
         },
 
         "spacing": {
@@ -237,7 +248,7 @@
         },
         "heading": {
             "fontFamily": "inter-tight",
-            "color": "black",
+            "color": "neutral-800",
             "lineHeight": "1.1"
         },
         "h1": {
