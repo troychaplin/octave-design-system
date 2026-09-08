@@ -252,32 +252,32 @@
             "lineHeight": "1.1"
         },
         "h1": {
-            "fontSize": "hero",
+            "fontSize": "4-x-large",
             "fontWeight": "600",
             "marginBlockStart": "large"
         },
         "h2": {
-            "fontSize": "4-x-large",
-            "fontWeight": "600",
-            "marginBlockStart": "medium"
-        },
-        "h3": {
             "fontSize": "3-x-large",
             "fontWeight": "600",
             "marginBlockStart": "medium"
         },
-        "h4": {
+        "h3": {
             "fontSize": "2-x-large",
             "fontWeight": "600",
             "marginBlockStart": "medium"
         },
-        "h5": {
+        "h4": {
             "fontSize": "x-large",
             "fontWeight": "600",
             "marginBlockStart": "medium"
         },
+        "h5": {
+            "fontSize": "large",
+            "fontWeight": "600",
+            "marginBlockStart": "medium"
+        },
         "h6": {
-            "fontSize": "x-large",
+            "fontSize": "large",
             "fontWeight": "600",
             "fontStyle": "italic",
             "marginBlockStart": "medium"

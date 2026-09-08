@@ -16,37 +16,37 @@ body {
 }
 
 :where(h1) {
-  font-size: var(--octave--font-size-hero);
-  font-style: normal;
-  font-weight: 600;
-}
-
-:where(h2) {
   font-size: var(--octave--font-size-4-x-large);
   font-style: normal;
   font-weight: 600;
 }
 
-:where(h3) {
+:where(h2) {
   font-size: var(--octave--font-size-3-x-large);
   font-style: normal;
   font-weight: 600;
 }
 
-:where(h4) {
+:where(h3) {
   font-size: var(--octave--font-size-2-x-large);
   font-style: normal;
   font-weight: 600;
 }
 
-:where(h5) {
+:where(h4) {
   font-size: var(--octave--font-size-x-large);
   font-style: normal;
   font-weight: 600;
 }
 
+:where(h5) {
+  font-size: var(--octave--font-size-large);
+  font-style: normal;
+  font-weight: 600;
+}
+
 :where(h6) {
-  font-size: var(--octave--font-size-x-large);
+  font-size: var(--octave--font-size-large);
   font-style: italic;
   font-weight: 600;
 }
