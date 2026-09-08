@@ -6,7 +6,6 @@ on:
 
 permissions:
     contents: read
-    packages: read
 
 jobs:
     build:
@@ -21,12 +20,8 @@ jobs:
               with:
                   node-version-file: .nvmrc
                   cache: pnpm
-                  registry-url: 'https://npm.pkg.github.com'
-                  scope: 'troychaplin'
 
             - run: pnpm install --frozen-lockfile
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
             - run: pnpm lint
             - run: pnpm typecheck
