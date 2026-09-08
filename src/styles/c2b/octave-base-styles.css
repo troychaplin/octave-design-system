@@ -2,7 +2,7 @@
 
 body {
   font-family: var(--octave--font-family-source-serif-4);
-  font-size: var(--octave--font-size-small);
+  font-size: var(--octave--font-size-medium);
   font-weight: 300;
   line-height: var(--octave--line-height-normal);
   color: var(--octave--color-black);

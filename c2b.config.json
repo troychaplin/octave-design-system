@@ -240,7 +240,7 @@
     "baseStyles": {
         "body": {
             "fontFamily": "source-serif-4",
-            "fontSize": "small",
+            "fontSize": "medium",
             "fontWeight": "300",
             "lineHeight": "normal",
             "color": "black",
