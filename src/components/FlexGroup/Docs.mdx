@@ -1,0 +1,190 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as FlexGroupStories from './FlexGroup.stories';
+
+<Meta of={FlexGroupStories} />
+
+# FlexGroup
+
+A general-purpose flex container that arranges its children in a row or a column with a chosen gap and alignment. Renders a `<div>` by default, or any of the sectioning elements the WordPress Group block offers. It mirrors the flex half of that block; a sibling `GridGroup` will cover the grid half.
+
+## When to use
+
+- Reach for `FlexGroup` whenever you need arbitrary children laid out in a row or stack — a toolbar, a card footer, a media object, a label-and-value pair.
+- Use it for content-sized items that sit next to each other. Use [`Column`](?path=/docs/components-layout-column--docs) instead when you want equal-width tracks that collapse responsively, since that is a grid and this is not.
+- Use it inside a [`Section`](?path=/docs/components-layout-section--docs), not instead of one. `Section` owns page-level width, background and vertical rhythm; `FlexGroup` owns the arrangement of the children within it.
+- It is **not** a styling wrapper. It has no background, border, shadow or typography props by design — those belong to `Section` or to the consumer's own CSS.
+
+## Import
+
+```tsx
+import { FlexGroup } from '@troychaplin/octave-design-system';
+```
+
+## Basic usage
+
+```tsx
+// A row of items with a gap
+<FlexGroup gap="normal">
+  <Badge text="One" />
+  <Badge text="Two" />
+</FlexGroup>
+
+// A vertical stack
+<FlexGroup direction="column" gap="large">
+  <p>First</p>
+  <p>Second</p>
+</FlexGroup>
+
+// Pushed apart, vertically centred — the common header row
+<FlexGroup justify="space-between" align="center" padding="normal">
+  <strong>Title</strong>
+  <Button text="Action" />
+</FlexGroup>
+
+// A row that must not wrap
+<FlexGroup wrap="nowrap" gap="x-small">
+  <Badge text="One" />
+  <Badge text="Two" />
+</FlexGroup>
+```
+
+## Examples
+
+### Default
+
+A row with `gap="normal"`. Use the controls to explore every prop.
+
+<Canvas of={FlexGroupStories.Default} />
+<Controls of={FlexGroupStories.Default} />
+
+### Row
+
+`direction="row"` is the default — children run along the inline axis and wrap when they run out of room.
+
+<Canvas of={FlexGroupStories.Row} />
+
+### Column
+
+`direction="column"` stacks children along the block axis.
+
+<Canvas of={FlexGroupStories.Column} />
+
+### Wrapping
+
+Wrapping is on by default. `wrap="nowrap"` keeps everything on one line and lets the container overflow instead.
+
+<Canvas of={FlexGroupStories.NoWrap} />
+
+### Justify in a row
+
+`justify` always controls the **main** axis. In a row that is horizontal distribution.
+
+<Canvas of={FlexGroupStories.JustifyInARow} />
+
+### Justify in a column
+
+The same prop in a column distributes children **vertically**, because the main axis has rotated. This is the one place `FlexGroup` deliberately behaves differently from the Group block — see [Differences from the Group block](#differences-from-the-group-block).
+
+<Canvas of={FlexGroupStories.JustifyInAColumn} />
+
+### Align
+
+`align` always controls the **cross** axis — vertical in a row, horizontal in a column.
+
+<Canvas of={FlexGroupStories.Align} />
+
+### Gap
+
+`gap` takes a step from the spacing scale rather than a raw CSS length, so spacing stays on the system's scale.
+
+<Canvas of={FlexGroupStories.GapScale} />
+
+### Padding and margin
+
+`padding` applies to all four sides. `margin` applies to the **block axis only** (top and bottom), mirroring the block's `spacing.margin: ['top','bottom']` support. Inline margins are reserved for the centring that `maxWidth` relies on.
+
+<Canvas of={FlexGroupStories.PaddingAndMargin} />
+
+### Max width
+
+`maxWidth` applies the shared WordPress alignment classes, the same vocabulary `Section` and `Column` use.
+
+<Canvas of={FlexGroupStories.MaxWidth} />
+
+### The `as` prop
+
+`as` swaps the rendered element. Prefer Octave's dedicated `Main`, `Article`, `Aside` and `Section` components when one of them fits — reach for `as` only when you need a sectioning element that also happens to be a flex container.
+
+<Canvas of={FlexGroupStories.AsElement} />
+
+## Props
+
+| Prop        | Type                                                                        | Default  | Notes                                          |
+| ----------- | --------------------------------------------------------------------------- | -------- | ---------------------------------------------- |
+| `as`        | `div` `header` `main` `section` `article` `aside` `footer`                   | `div`    | Matches the block's `tagName` options          |
+| `direction` | `row` \| `column`                                                            | `row`    | The block calls this `orientation`             |
+| `wrap`      | `wrap` \| `nowrap`                                                           | `wrap`   |                                                |
+| `justify`   | `start` `center` `end` `space-between`                                       | unset    | Main axis — `justify-content`                  |
+| `align`     | `start` `center` `end` `stretch`                                             | unset    | Cross axis — `align-items`                     |
+| `gap`       | `none` plus the 12 spacing steps                                             | unset    |                                                |
+| `padding`   | `none` plus the 12 spacing steps                                             | unset    | All four sides                                 |
+| `margin`    | `none` plus the 12 spacing steps                                             | unset    | Block axis only                                |
+| `maxWidth`  | `alignsmall` `aligncontent` `alignwide` `alignfull`                          | unset    | Unset means the container does not cap itself  |
+
+All other props are spread onto the rendered element, so `id`, `aria-*`, `style` and DOM event handlers pass through. A `className` you pass is appended to the generated classes rather than replacing them.
+
+The spacing steps are `none`, `3-x-small`, `2-x-small`, `x-small`, `small`, `normal`, `medium`, `large`, `x-large`, `2-x-large`, `3-x-large`, `4-x-large`, `5-x-large`.
+
+## Differences from the Group block
+
+Four places where this component deliberately departs from the block it mirrors:
+
+1. **No axis swap.** In a vertical flex layout the block maps `justifyContent` onto `align-items` and `verticalAlignment` onto `justify-content`, so that "left" keeps meaning left in both orientations. `FlexGroup` does not: `justify` is always `justify-content` and `align` is always `align-items`, which is what standard flexbox naming leads you to expect.
+2. **`align` has no default.** The block's base CSS forces `align-items: center`. `FlexGroup` leaves it unset, so children stretch — the CSS initial value. **Worth knowing:** `Button` renders as `display: inline-flex` with no height, so a `Button` sitting beside a taller sibling will stretch to match it. Pass `align="center"` for rows that mix control heights.
+3. **`direction`, not `orientation`,** with values `row`/`column` rather than `horizontal`/`vertical` — CSS vocabulary throughout, consistent with `justify`, `align` and `gap`.
+4. **Spacing props take scale steps, not lengths.** `gap="large"`, never `gap="1.5rem"`.
+
+Also not carried over: `row-reverse` and `column-reverse` (the block has no equivalent), axial gap (`blockGap: ['horizontal','vertical']`), axial padding, `minHeight`/`minWidth`, and `position: sticky`.
+
+## CSS classes
+
+| Class                                  | When applied                                                  |
+| -------------------------------------- | ------------------------------------------------------------- |
+| `octave-layout`                         | Always — shared marker on layout components                   |
+| `octave-flex-group`                     | Always — base class, carries `display: flex`                  |
+| `octave-flex-group--{row\|column}`      | Always — reflects `direction`                                 |
+| `octave-flex-group--{wrap\|nowrap}`     | Always — reflects `wrap`                                      |
+| `octave-flex-group--justify-{value}`    | When `justify` is set                                         |
+| `octave-flex-group--align-{value}`      | When `align` is set                                           |
+| `octave-flex-group--gap-{step}`         | When `gap` is set                                             |
+| `octave-flex-group--padding-{step}`     | When `padding` is set                                         |
+| `octave-flex-group--margin-{step}`      | When `margin` is set                                          |
+| `aligncontent` / `alignwide` / `alignfull` / `alignsmall` | The `maxWidth` value, as a bare shared class |
+
+Two notes on the stylesheet behind these:
+
+- `direction` and `wrap` always emit a class rather than relying on a default declared on the base rule, so no modifier ever ties with the base at equal specificity.
+- The `margin` modifiers are written as a **doubled selector** (`.octave-flex-group.octave-flex-group--margin-large`) to reach specificity (0,2,0). `octave-typography.css` ships `.is-layout-constrained > :is(h1,h2,h3,h4,h5,h6) + *` at (0,1,1), which would otherwise beat a single-class modifier and silently reset the top margin of any `FlexGroup` placed after a heading inside `Main`.
+
+The component applies no `is-layout-flex` class. Doing so would be inert inside Octave, and on a live WordPress front end it would pull in core's global styles — `align-items: center` and `flex-wrap: wrap` at the same specificity as this component's own modifiers, plus `.is-layout-flex > :is(*, div) { margin: 0 }`, which zeroes the margins of every direct child.
+
+## Design tokens
+
+| Token                          | Used for                                                       |
+| ------------------------------ | -------------------------------------------------------------- |
+| `--octave--spacing-*`          | Every `gap`, `padding` and `margin` step — all 12 scale values |
+| `--octave--layout-content-size` | `maxWidth="aligncontent"`                                      |
+| `--octave--layout-wide-size`    | `maxWidth="alignwide"`                                         |
+| `--octave--layout-full-size`    | `maxWidth="alignfull"`                                         |
+| `--octave--layout-small-size`   | `maxWidth="alignsmall"`                                        |
+
+The spacing modifier classes are generated by reading `$octave-spacing-*` back out of `src/styles/c2b/_octave-variables.scss` with `meta.module-variables()`, so the scale is defined in exactly one place — `c2b.config.json` — and regenerating tokens updates the classes without an edit here. The four layout tokens come from the shared `.align*` classes in `src/styles/base/spacing.scss`; this component does not redeclare them.
+
+The one value not on the token scale is `flex-wrap`/`flex-direction`, which are keywords rather than measurements.
+
+## Accessibility
+
+- Renders a plain `<div>` by default, which adds no semantics — correct for a layout wrapper. Layout should not change the accessibility tree.
+- `as` can promote it to a sectioning element. `<section>` becomes a landmark only when it has an accessible name, so pass `aria-label` or `aria-labelledby` alongside it when the region should be reachable by landmark navigation. Prefer `Main`, `Article` or `Aside` when one of those fits — a second `<main>` on a page is a landmark violation.
+- **Visual order can diverge from DOM order.** `justify`, `align` and `direction` never reorder children, but a `column` on narrow screens and a `row` on wide ones can put the focus order at odds with what is seen. Keep the DOM in reading order and let the layout follow it.
+- All props are presentational, so nothing here affects screen reader output. Contrast and focus visibility are the responsibility of the children.

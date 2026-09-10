@@ -16,3 +16,10 @@ Prefix the change with one of these keywords:
 - _Security_: in case of vulnerabilities.
 
 ## [Unreleased]
+
+_Added_ `FlexGroup` layout component — a flex container mirroring the flex half of the
+WordPress Group block, with `direction`, `wrap`, `justify`, `align`, `gap`, `padding`,
+`margin` and `maxWidth` props. Unlike the block it uses CSS axis semantics (`justify` is
+always `justify-content`) rather than swapping the axes in a vertical layout.
+
+_Added_ `spacingClasses`, `flexJustifyClasses` and `flexAlignClasses` to `propClasses`.

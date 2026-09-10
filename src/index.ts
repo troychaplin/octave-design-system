@@ -9,6 +9,7 @@ export { SiteHeader } from './components/SiteHeader/SiteHeader';
 
 // Layout
 export { Column } from './components/Column/Column';
+export { FlexGroup, type FlexGroupProps } from './components/FlexGroup/FlexGroup';
 export { Section } from './components/Section/Section';
 
 // Elements
