@@ -244,7 +244,7 @@
             "fontWeight": "300",
             "lineHeight": "normal",
             "color": "black",
-            "background": "white"
+            "background": "neutral-50"
         },
         "heading": {
             "fontFamily": "inter-tight",

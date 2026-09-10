@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Main } from './Main';
+import { SiteHeader } from './SiteHeader';
 import { MultiParagraph } from '../../data/SampleContent';
 
-const meta: Meta<typeof Main> = {
-    title: 'Components/Template Parts/Main',
-    component: Main,
+const meta: Meta<typeof SiteHeader> = {
+    title: 'Components/Template Parts/SiteHeader',
+    component: SiteHeader,
     tags: ['!autodocs'],
     parameters: {
         controls: {
@@ -14,17 +14,10 @@ const meta: Meta<typeof Main> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Main>;
+type Story = StoryObj<typeof SiteHeader>;
 
 export const Default: Story = {
     args: {
-        children: <MultiParagraph count={2} />,
-    },
-};
-
-export const NoPadding: Story = {
-    args: {
-        hasPadding: false,
         children: <MultiParagraph count={2} />,
     },
 };

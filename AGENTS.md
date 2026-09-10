@@ -93,7 +93,7 @@ Full conventions in `references/stories.md`. The rules that break things when ig
 - **Render functions must be expression-bodied** — the `unwrapRender` source transform in `.storybook/preview.ts` regex-matches `render: (args) => <expr>`; a block body breaks the docs code panel
 - **Inline `args`** inside the story object, never `Primary.args = {...}`
 - **`argTypes` for every union prop**, options matching the TypeScript union exactly
-- Shared content from `src/data/storyContent.tsx` — `SingleParagraph`, `MultiParagraph`, `UnorderedList`, `OrderedList`
+- Shared content from `src/data/SampleContent.tsx` — `SingleParagraph`, `MultiParagraph`, `UnorderedList`, `OrderedList`
 
 ---
 

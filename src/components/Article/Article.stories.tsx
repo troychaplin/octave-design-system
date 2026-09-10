@@ -3,7 +3,7 @@ import { Article } from './Article';
 import { Main } from '../Main/Main';
 import { Section } from '../Section/Section';
 import { ArticleData as data } from '../../data/ArticleData';
-import { MultiParagraph } from '../../data/storyContent';
+import { MultiParagraph } from '../../data/SampleContent';
 
 const meta: Meta<typeof Article> = {
     title: 'Components/Template Parts/Article',

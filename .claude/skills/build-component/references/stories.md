@@ -150,11 +150,11 @@ const meta: Meta<typeof Component> = {
 
 ## Shared story content
 
-Use the helpers in `src/data/storyContent.tsx` instead of inlining lorem ipsum. Exports:
+Use the helpers in `src/data/SampleContent.tsx` instead of inlining lorem ipsum. Exports:
 `SingleParagraph`, `MultiParagraph`, `UnorderedList`, `OrderedList`.
 
 ```tsx
-import { MultiParagraph } from '../../data/storyContent';
+import { MultiParagraph } from '../../data/SampleContent';
 
 render: () => (
     <Section>

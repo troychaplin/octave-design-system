@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Main } from '../Main/Main';
 import { Section } from './Section';
-import { MultiParagraph } from '../../data/storyContent';
+import { MultiParagraph } from '../../data/SampleContent';
 
 const meta: Meta<typeof Section> = {
     title: 'Components/Layout/Section',

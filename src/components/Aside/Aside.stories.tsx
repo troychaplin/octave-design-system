@@ -3,7 +3,7 @@ import { Main } from '../Main/Main';
 import { Section } from '../Section/Section';
 import { Column } from '../Column/Column';
 import { Aside } from './Aside';
-import { MultiParagraph, UnorderedList } from '../../data/storyContent';
+import { MultiParagraph, UnorderedList } from '../../data/SampleContent';
 
 const meta: Meta<typeof Aside> = {
     title: 'Components/Template Parts/Aside',

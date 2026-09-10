@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Main } from '../Main/Main';
 import { Column } from './Column';
-import { MultiParagraph } from '../../data/storyContent';
+import { MultiParagraph } from '../../data/SampleContent';
 
 const meta: Meta<typeof Column> = {
     title: 'Components/Layout/Column',
