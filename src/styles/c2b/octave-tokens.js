@@ -117,7 +117,32 @@ export const octaveTokens = {
     viewport: {
         mobile: '600px',
         tablet: '768px'
+    },
+    root: {
+        paddingX: 'var(--octave--spacing-medium)',
+        paddingY: '0',
+        paddingTop: 'var(--octave--root-padding-y)',
+        paddingRight: 'var(--octave--root-padding-x)',
+        paddingBottom: 'var(--octave--root-padding-y)',
+        paddingLeft: 'var(--octave--root-padding-x)',
+        blockGap: '0'
     }
+};
+
+export const octaveTokenKeys = {
+    color: { black: 'black', white: 'white', 'accent-primary': 'accent-primary', 'accent-secondary': 'accent-secondary', 'neutral-50': 'neutral-50', 'neutral-100': 'neutral-100', 'neutral-200': 'neutral-200', 'neutral-300': 'neutral-300', 'neutral-400': 'neutral-400', 'neutral-500': 'neutral-500', 'neutral-600': 'neutral-600', 'neutral-700': 'neutral-700', 'neutral-800': 'neutral-800', 'neutral-900': 'neutral-900', 'neutral-950': 'neutral-950', info: 'info', success: 'success', warning: 'warning', error: 'error', linkedin: 'linkedin', facebook: 'facebook', bluesky: 'bluesky', twitter: 'twitter', instagram: 'instagram', youtube: 'youtube', tiktok: 'tiktok' },
+    gradient: { 'white-to-neutral-50': 'white-to-neutral-50' },
+    spacing: { '3-x-small': '3-x-small', '2-x-small': '2-x-small', 'x-small': 'x-small', small: 'small', normal: 'normal', medium: 'medium', large: 'large', 'x-large': 'x-large', '2-x-large': '2-x-large', '3-x-large': '3-x-large', '4-x-large': '4-x-large', '5-x-large': '5-x-large' },
+    fontFamily: { 'inter-tight': 'inter-tight', 'source-serif-4': 'source-serif-4', 'jetbrains-mono': 'jetbrains-mono' },
+    fontSize: { '2-x-small': '2-x-small', 'x-small': 'x-small', small: 'small', medium: 'medium', large: 'large', 'x-large': 'x-large', '2-x-large': '2-x-large', '3-x-large': '3-x-large', '4-x-large': '4-x-large', '5-x-large': '5-x-large', hero: 'hero', 'heading-small': 'heading-small', 'heading-medium': 'heading-medium', 'heading-large': 'heading-large', 'heading-x-large': 'heading-x-large', 'heading-primary': 'heading-primary' },
+    shadow: { natural: 'natural', deep: 'deep', sharp: 'sharp', outlined: 'outlined', crisp: 'crisp' },
+    fontWeight: { thin: 'thin', 'extra-light': 'extra-light', light: 'light', normal: 'normal', medium: 'medium', semibold: 'semibold', bold: 'bold', 'extra-bold': 'extra-bold', black: 'black' },
+    lineHeight: { tight: 'tight', normal: 'normal', loose: 'loose' },
+    radius: { sm: 'sm', md: 'md', lg: 'lg', xl: 'xl', full: 'full' },
+    transition: { fast: 'fast', base: 'base' },
+    z: { '100': '100', '200': '200', '500': '500' },
+    layout: { 'content-size': 'content-size', 'wide-size': 'wide-size', 'small-size': 'small-size', 'full-size': 'full-size' },
+    viewport: { mobile: 'mobile', tablet: 'tablet' }
 };
 
 export default octaveTokens;

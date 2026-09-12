@@ -12,10 +12,6 @@ const meta: Meta<typeof Container> = {
             control: 'inline-radio',
             options: ['section', 'div'],
         },
-        bgType: {
-            control: 'select',
-            options: ['grey', 'black', 'light-gradient'],
-        },
         maxWidth: {
             control: 'select',
             options: ['aligncontent', 'alignwide', 'alignfull'],
@@ -49,7 +45,7 @@ export const Default: Story = {
 export const Grey: Story = {
     render: () => (
         <Main>
-            <Container bgType="grey">
+            <Container>
                 <MultiParagraph count={2} />
             </Container>
         </Main>
@@ -59,7 +55,7 @@ export const Grey: Story = {
 export const Black: Story = {
     render: () => (
         <Main>
-            <Container bgType="black">
+            <Container>
                 <MultiParagraph count={2} />
             </Container>
         </Main>
@@ -69,7 +65,7 @@ export const Black: Story = {
 export const LightGradient: Story = {
     render: () => (
         <Main>
-            <Container bgType="light-gradient">
+            <Container>
                 <MultiParagraph count={2} />
             </Container>
         </Main>
@@ -89,7 +85,7 @@ export const Wide: Story = {
 export const FullWidth: Story = {
     render: () => (
         <Main>
-            <Container maxWidth="alignfull" bgType="grey">
+            <Container maxWidth="alignfull">
                 <MultiParagraph count={2} />
             </Container>
         </Main>
@@ -99,7 +95,7 @@ export const FullWidth: Story = {
 export const FullWidthConstrained: Story = {
     render: () => (
         <Main>
-            <Container maxWidth="alignfull" bgType="grey" contentWidth="aligncontent">
+            <Container maxWidth="alignfull" contentWidth="aligncontent">
                 <MultiParagraph count={2} />
             </Container>
         </Main>
@@ -109,7 +105,7 @@ export const FullWidthConstrained: Story = {
 export const FullWidthConstrainedWide: Story = {
     render: () => (
         <Main>
-            <Container maxWidth="alignfull" bgType="grey" contentWidth="alignwide">
+            <Container maxWidth="alignfull" contentWidth="alignwide">
                 <MultiParagraph count={2} />
             </Container>
         </Main>
@@ -122,13 +118,13 @@ export const AlternatingGreyContainers: Story = {
             <Container>
                 <MultiParagraph count={2} />
             </Container>
-            <Container bgType="grey">
+            <Container>
                 <MultiParagraph count={2} />
             </Container>
             <Container>
                 <MultiParagraph count={2} />
             </Container>
-            <Container bgType="grey" maxWidth="alignfull">
+            <Container>
                 <MultiParagraph count={2} />
             </Container>
         </Main>

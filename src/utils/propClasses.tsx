@@ -1,3 +1,5 @@
+import { octaveTokenKeys } from '../styles/c2b/octave-tokens';
+
 export const maxWidthClasses = {
     alignsmall: 'alignsmall',
     aligncontent: 'aligncontent',
@@ -14,6 +16,8 @@ export const elementClasses = {
     article: 'article',
     nav: 'nav',
     aside: 'aside',
+    ul: 'ul',
+    ol: 'ol',
 };
 
 export const gridColumnClasses = {
@@ -25,39 +29,20 @@ export const gridColumnClasses = {
     '2/3': 'two-thirds',
 };
 
+export const spacingClasses = {
+    none: 'none',
+    ...octaveTokenKeys.spacing,
+};
+
 export const borderRadiusClasses = {
     none: 'none',
-    sm: 'sm',
-    md: 'md',
-    lg: 'lg',
-    full: 'full',
+    ...octaveTokenKeys.radius,
 };
 
 export const justifyClasses = {
     start: 'start',
     end: 'end',
     center: 'center',
-};
-
-// Spacing scale steps, used by gap/padding/margin props on layout components.
-// The scale itself is generated: $octave-spacing-* in
-// src/styles/c2b/_octave-variables.scss is the source of truth. Keep this map in
-// sync when c2b.config.json changes the scale — a key with no matching token
-// compiles to a class with no rule behind it rather than a type error.
-export const spacingClasses = {
-    none: 'none',
-    '3-x-small': '3-x-small',
-    '2-x-small': '2-x-small',
-    'x-small': 'x-small',
-    small: 'small',
-    normal: 'normal',
-    medium: 'medium',
-    large: 'large',
-    'x-large': 'x-large',
-    '2-x-large': '2-x-large',
-    '3-x-large': '3-x-large',
-    '4-x-large': '4-x-large',
-    '5-x-large': '5-x-large',
 };
 
 // Flex main-axis alignment (justify-content). Distinct from justifyClasses, which

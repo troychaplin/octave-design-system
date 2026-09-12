@@ -117,4 +117,13 @@
   /* Viewport */
   --octave--viewport-mobile: 600px;
   --octave--viewport-tablet: 768px;
+
+  /* Root Spacing */
+  --octave--root-padding-x: var(--octave--spacing-medium);
+  --octave--root-padding-y: 0;
+  --octave--root-padding-top: var(--octave--root-padding-y);
+  --octave--root-padding-right: var(--octave--root-padding-x);
+  --octave--root-padding-bottom: var(--octave--root-padding-y);
+  --octave--root-padding-left: var(--octave--root-padding-x);
+  --octave--root-block-gap: 0;
 }

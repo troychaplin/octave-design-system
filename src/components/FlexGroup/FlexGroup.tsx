@@ -1,4 +1,5 @@
 import {
+    elementClasses,
     flexAlignClasses,
     flexJustifyClasses,
     maxWidthClasses,
@@ -6,6 +7,7 @@ import {
 } from '../../utils/propClasses';
 import './styles.scss';
 
+type elementKeys = keyof typeof elementClasses;
 type flexJustifyKeys = keyof typeof flexJustifyClasses;
 type flexAlignKeys = keyof typeof flexAlignClasses;
 type spacingKeys = keyof typeof spacingClasses;
@@ -13,7 +15,7 @@ type maxWidthKeys = keyof typeof maxWidthClasses;
 
 export interface FlexGroupProps extends React.HTMLAttributes<HTMLElement> {
     children: React.ReactNode;
-    as?: 'div' | 'header' | 'main' | 'section' | 'article' | 'aside' | 'footer';
+    as?: elementKeys;
     direction?: 'row' | 'column';
     wrap?: 'wrap' | 'nowrap';
     justify?: flexJustifyKeys;
@@ -44,12 +46,12 @@ export const FlexGroup = ({
         'octave-layout octave-flex-group',
         `octave-flex-group--${direction}`,
         `octave-flex-group--${wrap}`,
+        maxWidth && maxWidthClasses[maxWidth],
         justify && `octave-flex-group--justify-${flexJustifyClasses[justify]}`,
         align && `octave-flex-group--align-${flexAlignClasses[align]}`,
         gap && `octave-flex-group--gap-${spacingClasses[gap]}`,
         padding && `octave-flex-group--padding-${spacingClasses[padding]}`,
         margin && `octave-flex-group--margin-${spacingClasses[margin]}`,
-        maxWidth && maxWidthClasses[maxWidth],
         className,
     ]
         .filter(Boolean)
