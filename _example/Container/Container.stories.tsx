@@ -134,18 +134,3 @@ export const AlternatingGreyContainers: Story = {
         </Main>
     ),
 };
-
-export const WithInlineStyles: Story = {
-    render: () => (
-        <Main>
-            <Container
-                style={{
-                    backgroundColor: 'var(--octave--color-neutral-200)',
-                    paddingBlock: 'var(--octave--spacing-large)',
-                }}
-            >
-                <MultiParagraph count={2} />
-            </Container>
-        </Main>
-    ),
-};

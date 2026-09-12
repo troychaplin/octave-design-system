@@ -23,3 +23,8 @@ WordPress Group block, with `direction`, `wrap`, `justify`, `align`, `gap`, `pad
 always `justify-content`) rather than swapping the axes in a vertical layout.
 
 _Added_ `spacingClasses`, `flexJustifyClasses` and `flexAlignClasses` to `propClasses`.
+
+_Changed_ `Section` is renamed `Container`.
+
+_Added_ `Container` spreads remaining props onto its root element, so `style`, `id`, `aria-*`,
+`data-*` and event handlers pass through.

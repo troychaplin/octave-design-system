@@ -68,13 +68,6 @@ import { Container } from '@troychaplin/octave-design-system';
     <Column cols="2">...</Column>
   </Container>
 </Main>
-
-// Inline styles and other HTML attributes land on the root element
-<Main>
-  <Container id="highlights" style={{ backgroundColor: 'var(--octave--color-neutral-200)' }}>
-    <Column cols="2">...</Column>
-  </Container>
-</Main>
 ```
 
 ## Examples
@@ -134,12 +127,6 @@ The most common page pattern — alternating white and grey bands, ending with a
 
 <Canvas of={ContainerStories.AlternatingGreyContainers} />
 
-### Inline styles
-
-`style` and any other HTML attribute pass straight through to the root element. Here an inline background and block padding turn the default full-width container into a tinted band, while the content stays constrained to `contentWidth`.
-
-<Canvas of={ContainerStories.WithInlineStyles} />
-
 ## Max-width presets
 
 | `maxWidth`       | Token                           | Description                                    |
@@ -165,17 +152,6 @@ When set, `contentWidth` wraps all children in a `octave-section__content` div i
 | `"alignfull"`    | Full viewport width                                   |
 
 Omitting `contentWidth` keeps the existing behaviour: children are direct children of the root and the root's `is-layout-constrained` applies.
-
-## HTML attributes and inline styles
-
-All other props are spread onto the rendered element, so `style`, `id`, `aria-*`, `data-*` and DOM event handlers pass through. A `className` you pass is appended to the generated classes rather than replacing them.
-
-Everything lands on the root element, not the inner `has-global-padding` wrapper that holds the children. A root-level background therefore spans the full `maxWidth` while the content stays constrained to `contentWidth`.
-
-Two layout rules use `!important`, so inline styles can't override them:
-
-- Inside a constrained parent such as `Main`, any `maxWidth` other than `"alignfull"` is centred with `margin-left: auto !important` and `margin-right: auto !important`, so inline horizontal margins have no effect.
-- `maxWidth="alignsmall"` sets its `max-width` with `!important`, so an inline `maxWidth` has no effect with that preset.
 
 ## CSS classes
 

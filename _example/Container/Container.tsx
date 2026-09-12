@@ -4,22 +4,20 @@ import './styles.scss';
 type maxWidthKeys = keyof typeof maxWidthClasses;
 type elementKeys = keyof typeof elementClasses;
 
-export interface ContainerProps extends React.HTMLAttributes<HTMLElement> {
+export interface ContainerProps {
     children?: React.ReactNode;
     as?: elementKeys;
     maxWidth?: maxWidthKeys;
     contentWidth?: maxWidthKeys;
-    useRootPadding?: boolean;
+    className?: string;
 }
 
 export const Container = ({
     children,
     as = 'div',
-    maxWidth = 'aligncontent',
+    maxWidth = 'alignfull',
     contentWidth = 'aligncontent',
-    useRootPadding = false,
-    className,
-    ...rest
+    className = '',
 }: ContainerProps) => {
     const ContainerWrapper = as;
 
@@ -32,17 +30,9 @@ export const Container = ({
         .filter(Boolean)
         .join(' ');
 
-    const contentClasses = [
-        'has-global-padding',
-        contentWidth,
-        useRootPadding && 'has-root-padding',
-    ]
-        .filter(Boolean)
-        .join(' ');
-
     return (
-        <ContainerWrapper className={rootClasses} {...rest}>
-            <div className={contentClasses}>{children}</div>
+        <ContainerWrapper className={rootClasses}>
+            <div className={`has-global-padding ${contentWidth}`}>{children}</div>
         </ContainerWrapper>
     );
 };

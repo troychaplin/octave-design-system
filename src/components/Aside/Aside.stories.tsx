@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Main } from '../Main/Main';
-import { Section } from '../Container/Container';
+import { Container } from '../Container/Container';
 import { Column } from '../Column/Column';
 import { Aside } from './Aside';
 import { MultiParagraph, UnorderedList } from '../../data/SampleContent';
@@ -40,7 +40,7 @@ export const RightSidebar: Story = {
     },
     render: () => (
         <Main>
-            <Section>
+            <Container>
                 <Column cols="2/3">
                     <Column.Content>
                         <MultiParagraph count={4} />
@@ -50,7 +50,7 @@ export const RightSidebar: Story = {
                         <UnorderedList />
                     </Aside>
                 </Column>
-            </Section>
+            </Container>
         </Main>
     ),
 };
@@ -69,7 +69,7 @@ export const LeftSidebarSticky: Story = {
     },
     render: (args) => (
         <Main>
-            <Section>
+            <Container>
                 <Column cols="1/3">
                     <Aside {...args}>
                         <MultiParagraph count={1} />
@@ -79,7 +79,7 @@ export const LeftSidebarSticky: Story = {
                         <MultiParagraph count={4} />
                     </Column.Content>
                 </Column>
-            </Section>
+            </Container>
         </Main>
     ),
 };

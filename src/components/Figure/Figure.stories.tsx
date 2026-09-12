@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Figure } from './Figure';
 import { Main } from '../Main/Main';
-import { Section } from '../Container/Container';
+import { Container } from '../Container/Container';
 
 const meta: Meta<typeof Figure> = {
     title: 'Components/Content/Figure',
@@ -88,7 +88,7 @@ export const FloatLeft: Story = {
         caption: 'A scenic landscape with a caption.',
     },
     render: (args) => (
-        <Section>
+        <Container>
             <Figure {...args}>
                 <img
                     src="https://picsum.photos/id/15/400/300"
@@ -100,7 +100,7 @@ export const FloatLeft: Story = {
             <LoremPara />
             <LoremPara />
             <LoremPara />
-        </Section>
+        </Container>
     ),
 };
 
@@ -111,7 +111,7 @@ export const FloatRight: Story = {
         caption: 'A scenic landscape with a caption.',
     },
     render: (args) => (
-        <Section>
+        <Container>
             <Figure {...args}>
                 <img
                     src="https://picsum.photos/id/15/400/300"
@@ -123,7 +123,7 @@ export const FloatRight: Story = {
             <LoremPara />
             <LoremPara />
             <LoremPara />
-        </Section>
+        </Container>
     ),
 };
 
@@ -133,7 +133,7 @@ export const Centered: Story = {
         align: 'center',
     },
     render: (args) => (
-        <Section>
+        <Container>
             <Figure {...args}>
                 <img
                     src="https://picsum.photos/id/15/400/300"
@@ -145,6 +145,6 @@ export const Centered: Story = {
             <LoremPara />
             <LoremPara />
             <LoremPara />
-        </Section>
+        </Container>
     ),
 };

@@ -10,7 +10,7 @@ export { SiteHeader } from './components/SiteHeader/SiteHeader';
 // Layout
 export { Column } from './components/Column/Column';
 export { FlexGroup, type FlexGroupProps } from './components/FlexGroup/FlexGroup';
-export { Section } from './components/Container/Container';
+export { Container, type ContainerProps } from './components/Container/Container';
 
 // Elements
 export { Badge, type BadgeProps } from './components/Badge/Badge';

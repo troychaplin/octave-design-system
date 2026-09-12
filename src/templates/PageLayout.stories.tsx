@@ -46,7 +46,12 @@ export const PageLayout: Story = {
                     It might say something like this:
                 </p>
 
-                <Container contentWidth="alignwide" maxWidth="alignwide">
+                <Container
+                    style={{
+                        backgroundColor: 'var(--octave--color-neutral-200)',
+                        paddingBlock: 'var(--octave--spacing-2-x-large)',
+                    }}
+                >
                     <p>
                         This is an example page. It is different from a blog post because it will
                         stay in one place and will show up in your site navigation (in most themes).
@@ -55,7 +60,31 @@ export const PageLayout: Story = {
                     </p>
                 </Container>
 
-                <Container contentWidth="alignfull" maxWidth="alignfull">
+                <Container
+                    contentWidth="alignwide"
+                    maxWidth="alignwide"
+                    useRootPadding
+                    style={{
+                        backgroundColor: 'var(--octave--color-white)',
+                        paddingBlock: 'var(--octave--spacing-2-x-large)',
+                    }}
+                >
+                    <p>
+                        This is an example page. It is different from a blog post because it will
+                        stay in one place and will show up in your site navigation (in most themes).
+                        Most people start with an About page that introduces them to potential site
+                        visitors. It might say something like this:
+                    </p>
+                </Container>
+
+                <Container
+                    contentWidth="alignfull"
+                    maxWidth="alignfull"
+                    style={{
+                        backgroundColor: 'var(--octave--color-neutral-200)',
+                        paddingBlock: 'var(--octave--spacing-2-x-large)',
+                    }}
+                >
                     <p>
                         This is an example page. It is different from a blog post because it will
                         stay in one place and will show up in your site navigation (in most themes).

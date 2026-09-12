@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Article } from './Article';
 import { Main } from '../Main/Main';
-import { Section } from '../Container/Container';
+import { Container } from '../Container/Container';
 import { ArticleData as data } from '../../data/ArticleData';
 import { MultiParagraph } from '../../data/SampleContent';
 
@@ -28,11 +28,11 @@ export const Default: Story = {
 export const WithMainAndSection: Story = {
     render: () => (
         <Main>
-            <Section>
+            <Container>
                 <Article>
                     <MultiParagraph count={2} />
                 </Article>
-            </Section>
+            </Container>
         </Main>
     ),
 };
@@ -44,9 +44,9 @@ export const ContentProp: Story = {
     },
     render: (args) => (
         <Main>
-            <Section>
+            <Container>
                 <Article {...args} />
-            </Section>
+            </Container>
         </Main>
     ),
 };
