@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Main } from '../Main/Main';
-import { Section } from '../Section/Section';
+import { Section } from '../Container/Container';
 import { Column } from '../Column/Column';
 import { Aside } from './Aside';
 import { MultiParagraph, UnorderedList } from '../../data/SampleContent';

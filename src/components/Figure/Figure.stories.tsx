@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Figure } from './Figure';
 import { Main } from '../Main/Main';
-import { Section } from '../Section/Section';
+import { Section } from '../Container/Container';
 
 const meta: Meta<typeof Figure> = {
     title: 'Components/Content/Figure',

@@ -5,6 +5,17 @@ export const maxWidthClasses = {
     alignfull: 'alignfull',
 };
 
+export const elementClasses = {
+    div: 'div',
+    section: 'section',
+    header: 'header',
+    main: 'main',
+    footer: 'footer',
+    article: 'article',
+    nav: 'nav',
+    aside: 'aside',
+};
+
 export const gridColumnClasses = {
     '1': 'one',
     '2': 'two',

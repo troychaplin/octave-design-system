@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Article } from './Article';
 import { Main } from '../Main/Main';
-import { Section } from '../Section/Section';
+import { Section } from '../Container/Container';
 import { ArticleData as data } from '../../data/ArticleData';
 import { MultiParagraph } from '../../data/SampleContent';
 

@@ -6,12 +6,6 @@ export interface SiteHeaderProps {
     className?: string;
 }
 
-export const SiteHeader = ({ className = '' }: SiteHeaderProps) => {
-    return (
-        <header className={`octave-site-header ${className}`}>
-            <p>Brand Name</p>
-            <p>Navigation</p>
-            <p>Extras</p>
-        </header>
-    );
+export const SiteHeader = ({ className = '', children }: SiteHeaderProps) => {
+    return <header className={`octave-site-header ${className}`}>{children}</header>;
 };

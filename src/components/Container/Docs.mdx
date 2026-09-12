@@ -1,20 +1,20 @@
 import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
-import * as SectionStories from './Section.stories';
+import * as ContainerStories from './Container.stories';
 
-<Meta of={SectionStories} />
+<Meta of={ContainerStories} />
 
-# Section
+# Container
 
 A page-level content container that controls width, background, and vertical rhythm. Nests inside `Main` and wraps layout components like `Column`, `Article`, and `Aside`. Three max-width presets align with the WordPress block editor's alignment system.
 
 ## When to use
 
-Use `Section` to group related content into a distinct visual band — a card grid, an article body, a call-to-action strip. Stack multiple `Section` components inside `Main` to build alternating white and grey content rows. Use `maxWidth="alignfull"` with `bgType="grey"` for full-bleed accent sections. Add `contentWidth` when you want the section background to span one width while the children are constrained to a narrower readable column.
+Use `Container` to group related content into a distinct visual band — a card grid, an article body, a call-to-action strip. Stack multiple `Container` components inside `Main` to build alternating white and grey content rows. Use `maxWidth="alignfull"` with `bgType="grey"` for full-bleed accent sections. Add `contentWidth` when you want the section background to span one width while the children are constrained to a narrower readable column.
 
 ## Import
 
 ```tsx
-import { Section } from '@troychaplin/octave-design-system';
+import { Container } from '@troychaplin/octave-design-system';
 ```
 
 ## Basic usage
@@ -22,51 +22,51 @@ import { Section } from '@troychaplin/octave-design-system';
 ```tsx
 // Default — content width, white background
 <Main>
-  <Section>
+  <Container>
     <Column cols="3">...</Column>
-  </Section>
+  </Container>
 </Main>
 
 // Grey background
 <Main>
-  <Section bgType="grey">
+  <Container bgType="grey">
     <Column cols="2">...</Column>
-  </Section>
+  </Container>
 </Main>
 
 // Black background (automatically inverts text to white)
 <Main>
-  <Section bgType="black">
+  <Container bgType="black">
     <Column cols="2">...</Column>
-  </Section>
+  </Container>
 </Main>
 
 // Light gradient background
 <Main>
-  <Section bgType="light-gradient">
+  <Container bgType="light-gradient">
     <Column cols="2">...</Column>
-  </Section>
+  </Container>
 </Main>
 
 // Full-bleed grey band
 <Main>
-  <Section maxWidth="alignfull" bgType="grey">
+  <Container maxWidth="alignfull" bgType="grey">
     <Column cols="3">...</Column>
-  </Section>
+  </Container>
 </Main>
 
 // Full-bleed grey band with content constrained to 1024px
 <Main>
-  <Section maxWidth="alignfull" bgType="grey" contentWidth="aligncontent">
+  <Container maxWidth="alignfull" bgType="grey" contentWidth="aligncontent">
     <Column cols="2">...</Column>
-  </Section>
+  </Container>
 </Main>
 
 // Full-bleed grey band with content constrained to 1280px
 <Main>
-  <Section maxWidth="alignfull" bgType="grey" contentWidth="alignwide">
+  <Container maxWidth="alignfull" bgType="grey" contentWidth="alignwide">
     <Column cols="2">...</Column>
-  </Section>
+  </Container>
 </Main>
 ```
 
@@ -76,56 +76,56 @@ import { Section } from '@troychaplin/octave-design-system';
 
 Content width (`aligncontent`), white background. Use the controls to explore `as`, `bgType`, `maxWidth`, and `contentWidth`.
 
-<Canvas of={SectionStories.Default} />
-<Controls of={SectionStories.Default} />
+<Canvas of={ContainerStories.Default} />
+<Controls of={ContainerStories.Default} />
 
 ### Grey
 
 `bgType="grey"` adds a grey background, internal padding, and a border radius. The border radius is removed automatically when `maxWidth="alignfull"`.
 
-<Canvas of={SectionStories.Grey} />
+<Canvas of={ContainerStories.Grey} />
 
 ### Black
 
 `bgType="black"` adds a black background and automatically applies `data-color-scheme="dark"` to invert text and headings to white.
 
-<Canvas of={SectionStories.Black} />
+<Canvas of={ContainerStories.Black} />
 
 ### Light gradient
 
 `bgType="light-gradient"` applies a subtle white-to-pale-grey gradient background.
 
-<Canvas of={SectionStories.LightGradient} />
+<Canvas of={ContainerStories.LightGradient} />
 
 ### Wide
 
 `maxWidth="alignwide"` expands the section to the wide layout width (`--octave--layout-wide-size`).
 
-<Canvas of={SectionStories.Wide} />
+<Canvas of={ContainerStories.Wide} />
 
 ### Full width
 
 `maxWidth="alignfull"` runs edge to edge. Combined with `bgType="grey"` this is the standard full-bleed accent band. When a full-width styled section is the last child of `Main`, a negative bottom margin is applied automatically to eliminate the double-spacing gap at the page foot.
 
-<Canvas of={SectionStories.FullWidth} />
+<Canvas of={ContainerStories.FullWidth} />
 
 ### Full width with constrained content (1024px)
 
 `contentWidth="aligncontent"` wraps children in an inner div constrained to 1024px — useful when you want a full-bleed background but a readable column of content.
 
-<Canvas of={SectionStories.FullWidthConstrained} />
+<Canvas of={ContainerStories.FullWidthConstrained} />
 
 ### Full width with constrained content (1280px)
 
 `contentWidth="alignwide"` uses the wider 1280px column.
 
-<Canvas of={SectionStories.FullWidthConstrainedWide} />
+<Canvas of={ContainerStories.FullWidthConstrainedWide} />
 
 ### Alternating sections
 
 The most common page pattern — alternating white and grey bands, ending with a full-bleed grey footer band.
 
-<Canvas of={SectionStories.AlternatingGreySections} />
+<Canvas of={ContainerStories.AlternatingGreyContainers} />
 
 ## Max-width presets
 
@@ -139,7 +139,7 @@ These names and tokens mirror the WordPress block editor's alignment system so t
 
 ## The `as` prop
 
-By default `Section` renders a `<section>` element. Pass `as="div"` when a section landmark is semantically inappropriate — for example, a purely decorative spacer row or a wrapper that forms part of a larger landmark region.
+By default `Container` renders a `<section>` element. Pass `as="div"` when a section landmark is semantically inappropriate — for example, a purely decorative spacer row or a wrapper that forms part of a larger landmark region.
 
 ## The `contentWidth` prop
 

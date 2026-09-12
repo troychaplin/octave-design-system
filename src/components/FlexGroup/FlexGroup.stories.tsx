@@ -24,6 +24,7 @@ const spacingOptions = [
 const Item = ({ children }: { children: React.ReactNode }) => (
     <div
         style={{
+            fontSize: 'var(--octave--font-size-small)',
             backgroundColor: 'var(--octave--color-neutral-100)',
             color: 'var(--octave--color-neutral-950)',
             padding: 'var(--octave--spacing-x-small) var(--octave--spacing-normal)',
