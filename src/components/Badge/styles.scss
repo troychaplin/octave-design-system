@@ -9,10 +9,10 @@ a.octave-badge {
 
 .octave-badge {
     display: block;
-    font-family: var(--octave--font-family-inter);
+    font-family: var(--octave--font-family-inter-tight);
     font-size: var(--octave--font-size-x-small);
     font-weight: var(--octave--font-weight-bold);
-    line-height: var(--octave--line-height-x-small);
+    line-height: var(--octave--line-height-tight);
     padding-left: 12px;
     padding-right: 12px;
     padding-top: 3px;
@@ -43,62 +43,50 @@ a.octave-badge {
     border-radius: 0;
 }
 
-.octave-badge--grey {
-    background-color: var(--octave--color-grey-pale);
-    border-color: var(--octave--color-grey-pale);
-    color: var(--octave--color-grey-dark);
+.octave-badge--neutral {
+    background-color: var(--octave--color-neutral-100);
+    border-color: var(--octave--color-neutral-100);
+    color: var(--octave--color-neutral-800);
 }
 
-.octave-badge--white {
+.octave-badge--light {
     background-color: var(--octave--color-white);
     border-color: var(--octave--color-white);
-    color: var(--octave--color-grey-dark);
+    color: var(--octave--color-neutral-800);
 }
 
-.octave-badge--green {
-    background-color: var(--octave--color-success-dark);
-    border-color: var(--octave--color-success-dark);
+.octave-badge--info {
+    background-color: var(--octave--color-info);
+    border-color: var(--octave--color-info);
     color: var(--octave--color-white);
 }
 
-.octave-badge--red {
-    background-color: var(--octave--color-error-dark);
-    border-color: var(--octave--color-error-dark);
-    color: var(--octave--color-white);
+.octave-badge--success {
+    background-color: var(--octave--color-success);
+    border-color: var(--octave--color-success);
+    color: var(--octave--color-black);
 }
 
-.octave-badge--yellow {
+.octave-badge--warning {
     background-color: var(--octave--color-warning);
     border-color: var(--octave--color-warning);
     color: var(--octave--color-black);
 }
 
-.octave-badge--blue {
-    background-color: var(--octave--color-info);
-    border-color: var(--octave--color-info);
-    color: var(--octave--color-black);
-}
-
-.octave-badge--purple {
-    background-color: var(--octave--color-purple);
-    border-color: var(--octave--color-purple);
+.octave-badge--error {
+    background-color: var(--octave--color-error);
+    border-color: var(--octave--color-error);
     color: var(--octave--color-white);
 }
 
-.octave-badge--teal {
-    background-color: var(--octave--color-teal);
-    border-color: var(--octave--color-teal);
-    color: var(--octave--color-white);
-}
-
-.octave-badge--black80 {
+.octave-badge--overlay-dark {
     background-color: rgba(0, 0, 0, 0.8);
     border-color: rgba(0, 0, 0, 0.8);
     color: var(--octave--color-white);
 }
 
-.octave-badge--white80 {
+.octave-badge--overlay-light {
     background-color: rgba(255, 255, 255, 0.8);
     border-color: rgba(255, 255, 255, 0.8);
-    color: var(--octave--color-grey-dark);
+    color: var(--octave--color-neutral-800);
 }

@@ -76,11 +76,11 @@ A table of every BEM class the component applies and the condition that triggers
 base class as "Always", and note any selector-level behaviour that isn't a class the component
 adds (e.g. what `a.octave-badge` does differently from `span.octave-badge`) in a sentence below the table.
 
-| Class                     | When applied                                              |
-| ------------------------- | --------------------------------------------------------- |
-| `octave-badge`            | Always — base class                                       |
-| `octave-badge--{color}`   | The active `color` prop value, e.g. `octave-badge--green` |
-| `octave-badge--radius-md` | `rounded="md"` (default)                                  |
+| Class                     | When applied                                                |
+| ------------------------- | ----------------------------------------------------------- |
+| `octave-badge`            | Always — base class                                         |
+| `octave-badge--{color}`   | The active `color` prop value, e.g. `octave-badge--success` |
+| `octave-badge--radius-md` | `rounded="md"` (default)                                    |
 
 ### 7. `## Design tokens`
 

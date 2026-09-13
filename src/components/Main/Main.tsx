@@ -1,23 +1,22 @@
 import React from 'react';
 import './styles.scss';
 
-export interface MainProps {
+export interface MainProps extends React.HTMLAttributes<HTMLElement> {
     children: React.ReactNode;
-    as?: 'main' | 'div';
     hasPadding?: boolean;
     className?: string;
 }
 
-export const Main = ({ children, as = 'main', hasPadding = true, className = '' }: MainProps) => {
-    const MainWrapper = as;
+export const Main = ({ children, hasPadding = true, className, ...rest }: MainProps) => {
+    const rootClasses = ['octave-main', hasPadding && 'octave-main--padding', className]
+        .filter(Boolean)
+        .join(' ');
 
     return (
-        <MainWrapper
-            className={`${hasPadding ? 'octave-main octave-main--padding' : 'octave-main'} ${className}`}
-        >
+        <main className={rootClasses} {...rest}>
             <div className="alignfull has-global-padding is-layout-constrained entry-content">
                 {children}
             </div>
-        </MainWrapper>
+        </main>
     );
 };

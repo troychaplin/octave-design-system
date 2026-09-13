@@ -10,30 +10,29 @@ prefixed with `--octave--color-*`. Use these tokens for all color references to
 maintain consistency across the design system.
 
 <ColorSwatches
-    names={['primary', 'primary-dark']}
-    title="Primary Colors"
-    description="The primary palette and its variants."
+    names={['accent-primary', 'accent-secondary']}
+    title="Accent Colors"
+    description="The brand accent colors."
 />
 
 <ColorSwatches
     names={[
-        'black',
-        'grey-dark',
-        'grey',
-        'grey-light',
-        'grey-lighter',
-        'grey-pale',
-        'grey-faint',
         'white',
+        'neutral-50',
+        'neutral-100',
+        'neutral-200',
+        'neutral-300',
+        'neutral-400',
+        'neutral-500',
+        'neutral-600',
+        'neutral-700',
+        'neutral-800',
+        'neutral-900',
+        'neutral-950',
+        'black',
     ]}
     title="Neutrals"
     description="Background and text colors."
-/>
-
-<ColorSwatches
-    names={['purple', 'purple-light', 'teal', 'teal-light', 'exp-blue', 'exp-blue-light']}
-    title="Extended Palette"
-    description="Secondary and supporting brand colors."
 />
 
 <ColorSwatches
@@ -43,16 +42,7 @@ maintain consistency across the design system.
 />
 
 <ColorSwatches
-    names={[
-        'linkedin',
-        'facebook',
-        'bluesky',
-        'twitter',
-        'instagram',
-        'youtube',
-        'tiktok',
-        'orcid',
-    ]}
+    names={['linkedin', 'facebook', 'bluesky', 'twitter', 'instagram', 'youtube', 'tiktok']}
     title="Social Brands"
     description="Official brand colors for social media platforms."
 />
@@ -61,7 +51,7 @@ maintain consistency across the design system.
 
 ```css
 .my-element {
-    color: var(--octave--color-primary);
-    background: var(--octave--color-grey-faint);
+    color: var(--octave--color-accent-primary);
+    background: var(--octave--color-neutral-50);
 }
 ```

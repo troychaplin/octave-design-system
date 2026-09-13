@@ -27,10 +27,10 @@ import { Badge } from '@troychaplin/octave-design-system';
 <Badge text="Events" href="/events" />
 
 // Semantic state
-<Badge text="Open" color="green" rounded="full" />
+<Badge text="Open" color="success" rounded="full" />
 
 // Overlay on a dark background
-<Badge text="Featured" color="black80" rounded="full" />
+<Badge text="Featured" color="overlay-dark" rounded="full" />
 ```
 
 ## Examples
@@ -48,7 +48,7 @@ When `href` is provided the badge renders as a link using the `LinkProvider` con
 
 ### All colors
 
-Ten color options span decorative, semantic, and overlay use cases. `green`, `red`, `yellow`, and `blue` map to the semantic token scale (success, error, warning, info). `black80` and `white80` are semi-transparent and intended for overlay use on image or dark backgrounds — see [Badge Group → On Card](?path=/story/components-elements-badge-group--on-card) for a real example.
+Eight color options span neutral, semantic, and overlay use cases. `info`, `success`, `warning`, and `error` use the semantic color tokens of the same name. `overlay-dark` and `overlay-light` are semi-transparent and intended for overlay use on image or dark backgrounds — see [`BadgeGroup`](?path=/docs/components-elements-badge-group--docs) for positioning badges over an image.
 
 <Canvas of={BadgeStories.AllColors} />
 
@@ -58,46 +58,44 @@ Ten color options span decorative, semantic, and overlay use cases. `green`, `re
 
 ## CSS classes
 
-| Class                       | When applied                                              |
-| --------------------------- | --------------------------------------------------------- |
-| `octave-badge`              | Always — base class                                       |
-| `octave-badge--{color}`     | The active `color` prop value, e.g. `octave-badge--green` |
-| `octave-badge--radius-sm`   | `rounded="sm"`                                            |
-| `octave-badge--radius-md`   | `rounded="md"` (default)                                  |
-| `octave-badge--radius-lg`   | `rounded="lg"`                                            |
-| `octave-badge--radius-full` | `rounded="full"`                                          |
-| `octave-badge--radius-none` | `rounded="none"`                                          |
+| Class                       | When applied                                                |
+| --------------------------- | ----------------------------------------------------------- |
+| `octave-badge`              | Always — base class                                         |
+| `octave-badge--{color}`     | The active `color` prop value, e.g. `octave-badge--success` |
+| `octave-badge--radius-sm`   | `rounded="sm"`                                              |
+| `octave-badge--radius-md`   | `rounded="md"` (default)                                    |
+| `octave-badge--radius-lg`   | `rounded="lg"`                                              |
+| `octave-badge--radius-full` | `rounded="full"`                                            |
+| `octave-badge--radius-none` | `rounded="none"`                                            |
 
 When rendered as a link, the `a.octave-badge` selector additionally removes underline decoration at rest and restores it on hover.
 
 ## Design tokens
 
-| Token                           | Used for                                  |
-| ------------------------------- | ----------------------------------------- |
-| `--octave--font-family-inter`   | Font family                               |
-| `--octave--font-size-x-small`   | Font size                                 |
-| `--octave--font-weight-bold`    | Font weight                               |
-| `--octave--line-height-x-small` | Line height                               |
-| `--octave--radius-sm`           | `rounded="sm"` border radius              |
-| `--octave--radius-md`           | `rounded="md"` border radius              |
-| `--octave--radius-lg`           | `rounded="lg"` border radius              |
-| `--octave--radius-full`         | `rounded="full"` border radius            |
-| `--octave--color-grey-pale`     | `grey` background                         |
-| `--octave--color-grey-dark`     | `grey` and `white` text; `white80` text   |
-| `--octave--color-white`         | `white` background; text on dark variants |
-| `--octave--color-success-dark`  | `green` background                        |
-| `--octave--color-error-dark`    | `red` background                          |
-| `--octave--color-warning`       | `yellow` background                       |
-| `--octave--color-info`          | `blue` background                         |
-| `--octave--color-purple`        | `purple` background                       |
-| `--octave--color-teal`          | `teal` background                         |
-| `--octave--color-black`         | `yellow` and `blue` text                  |
+| Token                               | Used for                                                    |
+| ----------------------------------- | ----------------------------------------------------------- |
+| `--octave--font-family-inter-tight` | Font family                                                 |
+| `--octave--font-size-x-small`       | Font size                                                   |
+| `--octave--font-weight-bold`        | Font weight                                                 |
+| `--octave--line-height-tight`       | Line height                                                 |
+| `--octave--radius-sm`               | `rounded="sm"` border radius                                |
+| `--octave--radius-md`               | `rounded="md"` border radius                                |
+| `--octave--radius-lg`               | `rounded="lg"` border radius                                |
+| `--octave--radius-full`             | `rounded="full"` border radius                              |
+| `--octave--color-neutral-100`       | `neutral` background                                        |
+| `--octave--color-neutral-800`       | `neutral`, `light` and `overlay-light` text                 |
+| `--octave--color-white`             | `light` background; `info`, `error` and `overlay-dark` text |
+| `--octave--color-info`              | `info` background                                           |
+| `--octave--color-success`           | `success` background                                        |
+| `--octave--color-warning`           | `warning` background                                        |
+| `--octave--color-error`             | `error` background                                          |
+| `--octave--color-black`             | `success` and `warning` text                                |
 
-`black80` and `white80` use raw `rgba()` values rather than design tokens.
+The badge padding (`3px 12px`) and the `overlay-dark` / `overlay-light` backgrounds use raw values rather than design tokens.
 
 ## Accessibility
 
 - A badge with no `href` is a `<span>` — it carries no interactive role and is read inline by screen readers. Do not rely on it to convey critical information through color alone; always include meaningful `text`.
 - When `href` is provided the badge becomes a focusable link. Ensure the `text` value is descriptive enough to make sense out of context (e.g. "Research" rather than "Click here").
-- `black80` and `white80` are semi-transparent. Verify sufficient contrast against whatever background they appear on — the design system cannot guarantee contrast for arbitrary backgrounds.
-- Semantic color variants (`green`, `red`, `yellow`, `blue`) reinforce meaning visually but the text itself must still convey the state, since color is invisible to some users.
+- `overlay-dark` and `overlay-light` are semi-transparent. Verify sufficient contrast against whatever background they appear on — the design system cannot guarantee contrast for arbitrary backgrounds.
+- Semantic color variants (`info`, `success`, `warning`, `error`) reinforce meaning visually but the text itself must still convey the state, since color is invisible to some users.

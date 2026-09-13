@@ -24,7 +24,7 @@
 .sb-section .sb-header p {
   margin: 0;
   margin-top: var(--octave--spacing-x-small);
-  color: var(--octave--color-grey-dark);
+  color: var(--octave--color-neutral-800);
 }
 
 .sb-section .sb-grid {
@@ -57,12 +57,12 @@
 .sb-section .sb-swatch__var,
 .sb-section .sb-swatch__value {
   font-size: var(--octave--font-size-x-small);
-  color: var(--octave--color-grey);
+  color: var(--octave--color-neutral-600);
 }
 
 .sb-section .sb-swatch__flag {
   font-size: var(--octave--font-size-x-small);
-  color: var(--octave--color-grey);
+  color: var(--octave--color-neutral-600);
   font-style: italic;
 }
 
@@ -98,7 +98,7 @@
 
 .sb-section .sb-stack__meta {
   font-size: var(--octave--font-size-small);
-  color: var(--octave--color-grey-dark);
+  color: var(--octave--color-neutral-800);
 }
 
 .sb-section .sb-spacing-row {
@@ -116,7 +116,7 @@
 .sb-section .sb-spacing-demo__block {
   width: 48px;
   height: 48px;
-  background-color: var(--octave--color-grey);
+  background-color: var(--octave--color-neutral-600);
   border-radius: var(--octave--radius-md);
 }
 
@@ -130,7 +130,7 @@
 
 .sb-section .sb-padding-demo__content {
   display: block;
-  background-color: var(--octave--color-grey);
+  background-color: var(--octave--color-neutral-600);
   color: var(--octave--color-white);
   border-radius: var(--octave--radius-md);
   font-size: var(--octave--font-size-small);
@@ -149,17 +149,17 @@
 .sb-section .sb-token-table td {
   padding: var(--octave--spacing-x-small) var(--octave--spacing-small);
   text-align: left;
-  border-bottom: 1px solid var(--octave--color-grey-lighter);
+  border-bottom: 1px solid var(--octave--color-neutral-200);
 }
 
 .sb-section .sb-token-table th {
   font-weight: var(--octave--font-weight-semibold);
-  color: var(--octave--color-grey-dark);
-  background-color: var(--octave--color-grey-pale);
+  color: var(--octave--color-neutral-800);
+  background-color: var(--octave--color-neutral-100);
 }
 
 .sb-section .sb-token-table td:last-child {
-  color: var(--octave--color-grey);
+  color: var(--octave--color-neutral-600);
 }
 
 .sb-section .sb-token-table code {
@@ -170,13 +170,13 @@
 
 .welcome-hero {
   padding: var(--octave--spacing-2-x-large) 0;
-  border-bottom: 1px solid var(--octave--color-grey-lighter);
+  border-bottom: 1px solid var(--octave--color-neutral-200);
   margin-bottom: var(--octave--spacing-2-x-large);
 }
 
 .welcome-hero .welcome-hero__title {
-  color: var(--octave--color-primary);
-  font-size: var(--octave--font-size-6x-large);
+  color: var(--octave--color-accent-primary);
+  font-size: var(--octave--font-size-hero);
   font-weight: var(--octave--font-weight-bold);
   line-height: var(--octave--line-height-tight);
   margin: 0 0 var(--octave--spacing-medium);
@@ -184,7 +184,7 @@
 
 .welcome-hero .welcome-hero__tagline {
   font-size: var(--octave--font-size-x-large);
-  color: var(--octave--color-grey-dark);
+  color: var(--octave--color-neutral-800);
   line-height: var(--octave--line-height-normal);
   margin: 0 0 var(--octave--spacing-medium);
   max-width: 60ch;
@@ -208,8 +208,8 @@
 .welcome-highlights .welcome-highlight {
   display: block;
   padding: var(--octave--spacing-large);
-  background-color: var(--octave--color-grey-pale);
-  border: 1px solid var(--octave--color-grey-lighter);
+  background-color: var(--octave--color-neutral-100);
+  border: 1px solid var(--octave--color-neutral-200);
   border-radius: var(--octave--radius-lg);
   text-decoration: none;
   color: var(--octave--color-black);
@@ -217,14 +217,14 @@
 }
 
 .welcome-highlights .welcome-highlight:hover {
-  background-color: var(--octave--color-grey-lighter);
-  border-color: var(--octave--color-primary);
+  background-color: var(--octave--color-neutral-200);
+  border-color: var(--octave--color-accent-primary);
   transform: translateY(-2px);
 }
 
 .welcome-highlights .welcome-highlight__title {
   display: block;
-  color: var(--octave--color-primary);
+  color: var(--octave--color-accent-primary);
   font-size: var(--octave--font-size-large);
   font-weight: var(--octave--font-weight-bold);
   margin-bottom: var(--octave--spacing-x-small);
@@ -233,6 +233,6 @@
 .welcome-highlights .welcome-highlight__description {
   display: block;
   font-size: var(--octave--font-size-small);
-  color: var(--octave--color-grey-dark);
+  color: var(--octave--color-neutral-800);
   line-height: var(--octave--line-height-normal);
 }

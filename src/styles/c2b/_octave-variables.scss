@@ -14,9 +14,29 @@ $octave-spacing-3-x-large: clamp(1.4375rem, 1.4375rem + ((1vw - 0.2rem) * 3.005)
 $octave-spacing-4-x-large: clamp(1.625rem, 1.625rem + ((1vw - 0.2rem) * 4.567), 4rem);
 $octave-spacing-5-x-large: clamp(1.75rem, 1.75rem + ((1vw - 0.2rem) * 6.250), 5rem);
 
+$octave-spacing: (
+  '3-x-small': $octave-spacing-3-x-small,
+  '2-x-small': $octave-spacing-2-x-small,
+  'x-small': $octave-spacing-x-small,
+  'small': $octave-spacing-small,
+  'normal': $octave-spacing-normal,
+  'medium': $octave-spacing-medium,
+  'large': $octave-spacing-large,
+  'x-large': $octave-spacing-x-large,
+  '2-x-large': $octave-spacing-2-x-large,
+  '3-x-large': $octave-spacing-3-x-large,
+  '4-x-large': $octave-spacing-4-x-large,
+  '5-x-large': $octave-spacing-5-x-large,
+);
+
 // Viewport
 $octave-viewport-mobile: 600px;
 $octave-viewport-tablet: 768px;
+
+$octave-viewport: (
+  'mobile': $octave-viewport-mobile,
+  'tablet': $octave-viewport-tablet,
+);
 
 // Viewport media queries
 // Built from the settings.viewport breakpoints WordPress uses for responsive

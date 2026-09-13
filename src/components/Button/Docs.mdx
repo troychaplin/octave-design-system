@@ -5,7 +5,7 @@ import * as ButtonStories from './Button.stories';
 
 # Button
 
-A flexible action trigger that renders a native `<button>` element. Supports six color variants (with an optional outline treatment), optional Font Awesome icons, size and width modifiers, and a disabled state.
+A flexible action trigger that renders a native `<button>` element. Supports five color variants (with an optional outline treatment), size and width modifiers, and a disabled state.
 
 ## When to use
 
@@ -20,32 +20,19 @@ import { Button } from '@troychaplin/octave-design-system';
 ## Basic usage
 
 ```tsx
-<Button title="Get started" color="red" />
-<Button title="Download" color="dark-grey" icon="circle-down" />
-<Button icon="circle-down" ariaLabel="Download file" color="dark-grey" />
-<Button title="Cancel" color="red" isOutline />
+<Button title="Get started" color="primary" />
+<Button title="Download" color="dark" />
+<Button title="Cancel" color="primary" isOutline />
 ```
 
 ## Examples
 
 ### Default
 
-The default color is `red`.
+The default color is `primary`.
 
 <Canvas of={ButtonStories.Default} />
 <Controls of={ButtonStories.Default} />
-
-### With icon
-
-Pass any valid `IconName` to the `icon` prop. The icon renders to the left of the label at 20px (16px when `isSmall`).
-
-<Canvas of={ButtonStories.WithIcon} />
-
-### Icon only
-
-When `title` is omitted, `icon` and `ariaLabel` are both required — enforced by the TypeScript union type. The `ariaLabel` provides the accessible name for screen readers and assistive technology.
-
-<Canvas of={ButtonStories.IconOnly} />
 
 ### Small
 
@@ -74,12 +61,11 @@ When `title` is omitted, `icon` and `ariaLabel` are both required — enforced b
 | Class                      | When applied                               |
 | -------------------------- | ------------------------------------------ |
 | `octave-button`            | Always — base class                        |
-| `octave-button--red`       | `color="red"` (default)                    |
-| `octave-button--grey`      | `color="grey"`                             |
-| `octave-button--dark-grey` | `color="dark-grey"`                        |
-| `octave-button--blue`      | `color="blue"`                             |
-| `octave-button--black`     | `color="black"`                            |
-| `octave-button--white`     | `color="white"`                            |
+| `octave-button--primary`   | `color="primary"` (default)                |
+| `octave-button--secondary` | `color="secondary"`                        |
+| `octave-button--neutral`   | `color="neutral"`                          |
+| `octave-button--dark`      | `color="dark"`                             |
+| `octave-button--light`     | `color="light"`                            |
 | `octave-button--disabled`  | `isDisabled={true}`                        |
 | `octave-button--outline`   | `isOutline={true}` (ignored when disabled) |
 | `octave-button--small`     | `isSmall={true}`                           |
@@ -91,25 +77,31 @@ A top margin (`2rem` mobile, `2.5rem` desktop) is automatically applied when a `
 
 These `--octave--*` custom properties drive the Button's appearance. Overriding them at a higher scope will change every Button on the page.
 
-| Token                             | Used for                                                                        |
-| --------------------------------- | ------------------------------------------------------------------------------- |
-| `--octave--font-family-inter`     | Font family                                                                     |
-| `--octave--font-size-small`       | Font size on mobile and when `isSmall`                                          |
-| `--octave--font-size-medium`      | Font size on desktop (≥ md breakpoint)                                          |
-| `--octave--font-weight-medium`    | Font weight                                                                     |
-| `--octave--line-height-tight`     | Line height                                                                     |
-| `--octave--radius-md`             | Border radius                                                                   |
-| `--octave--color-primary`         | `red` variant background; hover state for `grey`, `dark-grey`, `black`, `white` |
-| `--octave--color-grey-dark`       | `dark-grey` variant background; `grey` variant text                             |
-| `--octave--color-grey-pale`       | `grey` variant background                                                       |
-| `--octave--color-grey-light`      | Disabled state background                                                       |
-| `--octave--color-white`           | `white` variant background; text on dark variants                               |
-| `--octave--color-black`           | `black` variant background; `white` variant text                                |
-| `--octave--color-experience-blue` | `blue` variant background                                                       |
+| Token                               | Used for                                                                                       |
+| ----------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `--octave--spacing-x-small`         | Vertical padding on mobile                                                                     |
+| `--octave--spacing-medium`          | Horizontal padding on mobile                                                                   |
+| `--octave--spacing-small`           | Vertical padding above the tablet breakpoint                                                   |
+| `--octave--spacing-large`           | Horizontal padding above the tablet breakpoint                                                 |
+| `--octave--font-family-inter-tight` | Font family                                                                                    |
+| `--octave--font-size-small`         | Font size on mobile and when `isSmall`                                                         |
+| `--octave--font-size-medium`        | Font size above the tablet breakpoint                                                          |
+| `--octave--font-weight-medium`      | Font weight                                                                                    |
+| `--octave--line-height-tight`       | Line height                                                                                    |
+| `--octave--radius-md`               | Border radius                                                                                  |
+| `--octave--color-accent-primary`    | `primary` background; hover background for `neutral`, `dark` and `light`                       |
+| `--octave--color-accent-secondary`  | `secondary` background                                                                         |
+| `--octave--color-neutral-800`       | `dark` background; `neutral` and disabled text; hover background for `primary` and `secondary` |
+| `--octave--color-neutral-100`       | `neutral` background                                                                           |
+| `--octave--color-neutral-300`       | Disabled background                                                                            |
+| `--octave--color-white`             | `light` background; text on filled variants; outline background                                |
+| `--octave--color-black`             | `light` text                                                                                   |
+
+The `gap`, the `isSmall` padding and the top margin after a `Column` or `StackedList` use raw values rather than design tokens.
 
 ## Accessibility
 
 - `Button` renders a native `<button>` element — keyboard focus, `Enter`/`Space` activation, and screen reader announcement are built in.
-- **Icon-only buttons require `ariaLabel`.** Without it, screen readers announce only the icon name (or nothing), which is not meaningful. The TypeScript union type enforces this at compile time.
+- **Buttons without a `title` require `ariaLabel`.** It gives the button its accessible name, and the TypeScript union type enforces this at compile time.
 - The native `disabled` attribute prevents the button from receiving focus or firing events. Do not use CSS-only disabled styling, as it leaves the button keyboard-reachable.
 - Avoid using `Button` for navigation — screen readers expose `role="button"` to users, who expect it to perform an action rather than navigate.

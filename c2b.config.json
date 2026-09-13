@@ -289,7 +289,7 @@
             "color": "warning"
         },
         "button": { "color": "white", "background": "black" },
-        "link": { "color": "success", "hoverColor": "error" },
+        "link": { "color": "accent-primary", "hoverColor": "error" },
         "spacing": {
             "blockGap": "0",
             "afterHeading": "small",
@@ -297,9 +297,9 @@
             "listItem": "x-small",
             "padding": {
                 "top": "0",
-                "right": "medium",
+                "right": "x-large",
                 "bottom": "0",
-                "left": "medium"
+                "left": "x-large"
             }
         }
     }

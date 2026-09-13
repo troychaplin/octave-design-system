@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Main } from '../Main/Main';
-import { Section } from './Section';
+import { Container } from './Container';
 import { MultiParagraph } from '../../data/SampleContent';
 
-const meta: Meta<typeof Section> = {
-    title: 'Components/Layout/Section',
-    component: Section,
+const meta: Meta<typeof Container> = {
+    title: 'Components/Layout/Container',
+    component: Container,
     tags: ['!autodocs'],
     argTypes: {
         as: {
@@ -34,14 +34,14 @@ const meta: Meta<typeof Section> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Section>;
+type Story = StoryObj<typeof Container>;
 
 export const Default: Story = {
     render: (args) => (
         <Main>
-            <Section {...args}>
+            <Container {...args}>
                 <MultiParagraph count={2} />
-            </Section>
+            </Container>
         </Main>
     ),
 };
@@ -49,9 +49,9 @@ export const Default: Story = {
 export const Grey: Story = {
     render: () => (
         <Main>
-            <Section bgType="grey">
+            <Container bgType="grey">
                 <MultiParagraph count={2} />
-            </Section>
+            </Container>
         </Main>
     ),
 };
@@ -59,9 +59,9 @@ export const Grey: Story = {
 export const Black: Story = {
     render: () => (
         <Main>
-            <Section bgType="black">
+            <Container bgType="black">
                 <MultiParagraph count={2} />
-            </Section>
+            </Container>
         </Main>
     ),
 };
@@ -69,9 +69,9 @@ export const Black: Story = {
 export const LightGradient: Story = {
     render: () => (
         <Main>
-            <Section bgType="light-gradient">
+            <Container bgType="light-gradient">
                 <MultiParagraph count={2} />
-            </Section>
+            </Container>
         </Main>
     ),
 };
@@ -79,9 +79,9 @@ export const LightGradient: Story = {
 export const Wide: Story = {
     render: () => (
         <Main>
-            <Section maxWidth="alignwide">
+            <Container maxWidth="alignwide">
                 <MultiParagraph count={2} />
-            </Section>
+            </Container>
         </Main>
     ),
 };
@@ -89,9 +89,9 @@ export const Wide: Story = {
 export const FullWidth: Story = {
     render: () => (
         <Main>
-            <Section maxWidth="alignfull" bgType="grey">
+            <Container maxWidth="alignfull" bgType="grey">
                 <MultiParagraph count={2} />
-            </Section>
+            </Container>
         </Main>
     ),
 };
@@ -99,9 +99,9 @@ export const FullWidth: Story = {
 export const FullWidthConstrained: Story = {
     render: () => (
         <Main>
-            <Section maxWidth="alignfull" bgType="grey" contentWidth="aligncontent">
+            <Container maxWidth="alignfull" bgType="grey" contentWidth="aligncontent">
                 <MultiParagraph count={2} />
-            </Section>
+            </Container>
         </Main>
     ),
 };
@@ -109,28 +109,28 @@ export const FullWidthConstrained: Story = {
 export const FullWidthConstrainedWide: Story = {
     render: () => (
         <Main>
-            <Section maxWidth="alignfull" bgType="grey" contentWidth="alignwide">
+            <Container maxWidth="alignfull" bgType="grey" contentWidth="alignwide">
                 <MultiParagraph count={2} />
-            </Section>
+            </Container>
         </Main>
     ),
 };
 
-export const AlternatingGreySections: Story = {
+export const AlternatingGreyContainers: Story = {
     render: () => (
         <Main>
-            <Section>
+            <Container>
                 <MultiParagraph count={2} />
-            </Section>
-            <Section bgType="grey">
+            </Container>
+            <Container bgType="grey">
                 <MultiParagraph count={2} />
-            </Section>
-            <Section>
+            </Container>
+            <Container>
                 <MultiParagraph count={2} />
-            </Section>
-            <Section bgType="grey" maxWidth="alignfull">
+            </Container>
+            <Container bgType="grey" maxWidth="alignfull">
                 <MultiParagraph count={2} />
-            </Section>
+            </Container>
         </Main>
     ),
 };

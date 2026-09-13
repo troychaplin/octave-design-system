@@ -16,3 +16,36 @@ Prefix the change with one of these keywords:
 - _Security_: in case of vulnerabilities.
 
 ## [Unreleased]
+
+_Added_ `FlexGroup` layout component — a flex container mirroring the flex half of the
+WordPress Group block, with `direction`, `wrap`, `justify`, `align`, `gap`, `padding`,
+`margin` and `maxWidth` props. Unlike the block it uses CSS axis semantics (`justify` is
+always `justify-content`) rather than swapping the axes in a vertical layout.
+
+_Added_ `spacingClasses`, `flexJustifyClasses` and `flexAlignClasses` to `propClasses`.
+
+_Changed_ `Section` is renamed `Container`.
+
+_Added_ `Container` spreads remaining props onto its root element, so `style`, `id`, `aria-*`,
+`data-*` and event handlers pass through.
+
+_Breaking_ `Button` `color` variants are renamed to semantic names that map onto the palette:
+`primary` (was `red`, still the default), `neutral` (was `grey`), `dark` (was `dark-grey`) and
+`light` (was `white`), plus a new `secondary`. `blue` and `black` are removed.
+
+_Breaking_ `Badge` `color` variants are renamed to semantic names: `neutral` (was `grey`, still the
+default), `light` (was `white`), `info`, `success`, `warning` and `error` (were `blue`, `green`,
+`yellow` and `red`), and `overlay-dark` / `overlay-light` (were `black80` / `white80`). `purple`
+and `teal` are removed.
+
+_Fixed_ `Button`, `Badge`, `Figure`, `Main` and the stylebook referenced color tokens that no
+longer exist, so backgrounds rendered transparent and text fell back to inherited colors. They now
+use the `accent-*` and `neutral-*` tokens, and `Main` link hover uses the base link hover color.
+
+_Fixed_ Links use `accent-primary` instead of `success` green, meeting the WCAG AA 4.5:1 contrast
+ratio on the page background.
+
+_Fixed_ The `BadgeGroup` and `Button` docs pages no longer crash on `<Canvas>` blocks that
+referenced stories that don't exist (`OnCard`, `WithIcon`, `IconOnly`), and the Button docs no
+longer describe an `icon` prop. Dead links in the `Badge`, `FlexGroup` and `LinkProvider` docs are
+fixed.

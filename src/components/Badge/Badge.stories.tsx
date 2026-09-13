@@ -1,20 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Badge } from './Badge';
-
-const colorOptions = [
-    'grey',
-    'white',
-    'black80',
-    'white80',
-    'green',
-    'red',
-    'yellow',
-    'blue',
-    'purple',
-    'teal',
-] as const;
-
-const radiusOptions = ['sm', 'md', 'lg', 'full', 'none'] as const;
+import { borderRadiusClasses, colorClasses } from '../../utils/propClasses';
 
 const meta: Meta<typeof Badge> = {
     title: 'Components/Elements/Badge',
@@ -23,11 +9,11 @@ const meta: Meta<typeof Badge> = {
     argTypes: {
         color: {
             control: 'select',
-            options: colorOptions,
+            options: Object.keys(colorClasses),
         },
         rounded: {
             control: 'inline-radio',
-            options: radiusOptions,
+            options: Object.keys(borderRadiusClasses),
         },
         href: {
             control: 'text',
@@ -46,7 +32,7 @@ type Story = StoryObj<typeof Badge>;
 export const Default: Story = {
     args: {
         text: 'Badge',
-        color: 'grey',
+        color: 'neutral-50',
         rounded: 'md',
     },
 };
@@ -55,7 +41,7 @@ export const WithLink: Story = {
     args: {
         text: 'Badge',
         href: 'https://github.com/@troychaplin/octave-design-system',
-        color: 'grey',
+        color: 'neutral-50',
         rounded: 'full',
     },
 };
@@ -63,8 +49,8 @@ export const WithLink: Story = {
 export const AllColors: Story = {
     render: () => (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-            {colorOptions.map((color) => (
-                <Badge key={color} text={color} color={color} />
+            {Object.keys(colorClasses).map((color) => (
+                <Badge key={color} text={color} />
             ))}
         </div>
     ),
@@ -73,8 +59,8 @@ export const AllColors: Story = {
 export const AllRadii: Story = {
     render: () => (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-            {radiusOptions.map((rounded) => (
-                <Badge key={rounded} text={rounded} rounded={rounded} />
+            {Object.keys(borderRadiusClasses).map((rounded) => (
+                <Badge key={rounded} text={rounded} />
             ))}
         </div>
     ),

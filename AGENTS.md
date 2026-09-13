@@ -62,7 +62,7 @@ config update needed, but a missing barrel file silently drops the component fro
 - **`undefined` not `''`** for conditional `className` — prevents `class=""` in the DOM
 - **Early returns** over ternaries for branching render logic
 - **No dead code** — remove commented-out code; never leave `// TODO` stubs
-- **BEM class prefix:** `octave-` (e.g. `octave-badge`, `octave-badge--green`, `octave-badge__icon`)
+- **BEM class prefix:** `octave-` (e.g. `octave-badge`, `octave-badge--success`, `octave-badge__icon`)
 - **CSS tokens:** `var(--octave--*)` — never hardcode colors, sizes, or font stacks
 
 ---
@@ -130,6 +130,14 @@ _Fixed_ Brief description of what was fixed.
 ```
 
 Prefixes: `_Added_`, `_Changed_`, `_Fixed_`, `_Removed_`, `_Deprecated_`, `_Breaking_`, `_Security_`. Use `_Breaking_` alongside a major version bump.
+
+---
+
+## Pull requests
+
+PR descriptions follow `.github/pull_request_template.md`. `gh pr create --body` skips GitHub's
+template, so read the file and fill in its sections yourself. Only tick checklist items that are
+actually done.
 
 ---
 
