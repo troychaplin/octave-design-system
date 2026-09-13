@@ -133,6 +133,14 @@ Prefixes: `_Added_`, `_Changed_`, `_Fixed_`, `_Removed_`, `_Deprecated_`, `_Brea
 
 ---
 
+## Pull requests
+
+PR descriptions follow `.github/pull_request_template.md`. `gh pr create --body` skips GitHub's
+template, so read the file and fill in its sections yourself. Only tick checklist items that are
+actually done.
+
+---
+
 ## Key gotchas
 
 - **Node 22.14 specifically** — `eslint-visitor-keys` (transitive dep) requires 22.13+; earlier minors fail on install
