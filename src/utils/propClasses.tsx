@@ -29,6 +29,10 @@ export const gridColumnClasses = {
     '2/3': 'two-thirds',
 };
 
+export const colorClasses = {
+    ...octaveTokenKeys.color,
+};
+
 export const spacingClasses = {
     none: 'none',
     ...octaveTokenKeys.spacing,

@@ -11,8 +11,8 @@ A general-purpose flex container that arranges its children in a row or a column
 
 - Reach for `FlexGroup` whenever you need arbitrary children laid out in a row or stack — a toolbar, a card footer, a media object, a label-and-value pair.
 - Use it for content-sized items that sit next to each other. Use [`Column`](?path=/docs/components-layout-column--docs) instead when you want equal-width tracks that collapse responsively, since that is a grid and this is not.
-- Use it inside a [`Section`](?path=/docs/components-layout-section--docs), not instead of one. `Section` owns page-level width, background and vertical rhythm; `FlexGroup` owns the arrangement of the children within it.
-- It is **not** a styling wrapper. It has no background, border, shadow or typography props by design — those belong to `Section` or to the consumer's own CSS.
+- Use it inside a [`Container`](?path=/docs/components-layout-container--docs), not instead of one. `Container` owns page-level width and padding; `FlexGroup` owns the arrangement of the children within it.
+- It is **not** a styling wrapper. It has no background, border, shadow or typography props by design — those belong to the consumer's own CSS.
 
 ## Import
 
@@ -119,17 +119,17 @@ The same prop in a column distributes children **vertically**, because the main 
 
 ## Props
 
-| Prop        | Type                                                                        | Default  | Notes                                          |
-| ----------- | --------------------------------------------------------------------------- | -------- | ---------------------------------------------- |
-| `as`        | `div` `header` `main` `section` `article` `aside` `footer`                   | `div`    | Matches the block's `tagName` options          |
-| `direction` | `row` \| `column`                                                            | `row`    | The block calls this `orientation`             |
-| `wrap`      | `wrap` \| `nowrap`                                                           | `wrap`   |                                                |
-| `justify`   | `start` `center` `end` `space-between`                                       | unset    | Main axis — `justify-content`                  |
-| `align`     | `start` `center` `end` `stretch`                                             | unset    | Cross axis — `align-items`                     |
-| `gap`       | `none` plus the 12 spacing steps                                             | unset    |                                                |
-| `padding`   | `none` plus the 12 spacing steps                                             | unset    | All four sides                                 |
-| `margin`    | `none` plus the 12 spacing steps                                             | unset    | Block axis only                                |
-| `maxWidth`  | `alignsmall` `aligncontent` `alignwide` `alignfull`                          | unset    | Unset means the container does not cap itself  |
+| Prop        | Type                                                       | Default | Notes                                         |
+| ----------- | ---------------------------------------------------------- | ------- | --------------------------------------------- |
+| `as`        | `div` `header` `main` `section` `article` `aside` `footer` | `div`   | Matches the block's `tagName` options         |
+| `direction` | `row` \| `column`                                          | `row`   | The block calls this `orientation`            |
+| `wrap`      | `wrap` \| `nowrap`                                         | `wrap`  |                                               |
+| `justify`   | `start` `center` `end` `space-between`                     | unset   | Main axis — `justify-content`                 |
+| `align`     | `start` `center` `end` `stretch`                           | unset   | Cross axis — `align-items`                    |
+| `gap`       | `none` plus the 12 spacing steps                           | unset   |                                               |
+| `padding`   | `none` plus the 12 spacing steps                           | unset   | All four sides                                |
+| `margin`    | `none` plus the 12 spacing steps                           | unset   | Block axis only                               |
+| `maxWidth`  | `alignsmall` `aligncontent` `alignwide` `alignfull`        | unset   | Unset means the container does not cap itself |
 
 All other props are spread onto the rendered element, so `id`, `aria-*`, `style` and DOM event handlers pass through. A `className` you pass is appended to the generated classes rather than replacing them.
 
@@ -148,17 +148,17 @@ Also not carried over: `row-reverse` and `column-reverse` (the block has no equi
 
 ## CSS classes
 
-| Class                                  | When applied                                                  |
-| -------------------------------------- | ------------------------------------------------------------- |
-| `octave-layout`                         | Always — shared marker on layout components                   |
-| `octave-flex-group`                     | Always — base class, carries `display: flex`                  |
-| `octave-flex-group--{row\|column}`      | Always — reflects `direction`                                 |
-| `octave-flex-group--{wrap\|nowrap}`     | Always — reflects `wrap`                                      |
-| `octave-flex-group--justify-{value}`    | When `justify` is set                                         |
-| `octave-flex-group--align-{value}`      | When `align` is set                                           |
-| `octave-flex-group--gap-{step}`         | When `gap` is set                                             |
-| `octave-flex-group--padding-{step}`     | When `padding` is set                                         |
-| `octave-flex-group--margin-{step}`      | When `margin` is set                                          |
+| Class                                                     | When applied                                 |
+| --------------------------------------------------------- | -------------------------------------------- |
+| `octave-layout`                                           | Always — shared marker on layout components  |
+| `octave-flex-group`                                       | Always — base class, carries `display: flex` |
+| `octave-flex-group--{row\|column}`                        | Always — reflects `direction`                |
+| `octave-flex-group--{wrap\|nowrap}`                       | Always — reflects `wrap`                     |
+| `octave-flex-group--justify-{value}`                      | When `justify` is set                        |
+| `octave-flex-group--align-{value}`                        | When `align` is set                          |
+| `octave-flex-group--gap-{step}`                           | When `gap` is set                            |
+| `octave-flex-group--padding-{step}`                       | When `padding` is set                        |
+| `octave-flex-group--margin-{step}`                        | When `margin` is set                         |
 | `aligncontent` / `alignwide` / `alignfull` / `alignsmall` | The `maxWidth` value, as a bare shared class |
 
 Two notes on the stylesheet behind these:
@@ -170,9 +170,9 @@ The component applies no `is-layout-flex` class. Doing so would be inert inside 
 
 ## Design tokens
 
-| Token                          | Used for                                                       |
-| ------------------------------ | -------------------------------------------------------------- |
-| `--octave--spacing-*`          | Every `gap`, `padding` and `margin` step — all 12 scale values |
+| Token                           | Used for                                                       |
+| ------------------------------- | -------------------------------------------------------------- |
+| `--octave--spacing-*`           | Every `gap`, `padding` and `margin` step — all 12 scale values |
 | `--octave--layout-content-size` | `maxWidth="aligncontent"`                                      |
 | `--octave--layout-wide-size`    | `maxWidth="alignwide"`                                         |
 | `--octave--layout-full-size`    | `maxWidth="alignfull"`                                         |

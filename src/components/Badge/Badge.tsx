@@ -1,27 +1,23 @@
 import { useLinkContext } from '../LinkProvider/useLinkContext';
-import { borderRadiusClasses } from '../../utils/propClasses';
+import { borderRadiusClasses, colorClasses } from '../../utils/propClasses';
 import './styles.scss';
 
 type borderRadiusKeys = keyof typeof borderRadiusClasses;
+type colorKeys = keyof typeof colorClasses;
 
 export interface BadgeProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
     text: string;
     href?: string;
     rounded?: borderRadiusKeys;
-    color?:
-        | 'neutral'
-        | 'light'
-        | 'info'
-        | 'success'
-        | 'warning'
-        | 'error'
-        | 'overlay-dark'
-        | 'overlay-light';
+    color?: colorKeys;
 }
 
-export const Badge = ({ text, href, rounded = 'md', color = 'neutral', ...rest }: BadgeProps) => {
+export const Badge = ({ text, href, rounded = 'md', color, ...rest }: BadgeProps) => {
     const LinkComponent = useLinkContext();
-    const classes = `octave-badge octave-badge--${color} octave-badge--radius-${rounded}`;
+    const classes = `octave-badge octave-badge--radius-${rounded}`;
+    const inlineStyles = {
+        ...(color && { backgroundColor: `var(--octave--color-${color})` }),
+    };
 
     if (href) {
         return (
@@ -33,7 +29,7 @@ export const Badge = ({ text, href, rounded = 'md', color = 'neutral', ...rest }
     }
 
     return (
-        <span className={classes} {...rest}>
+        <span className={classes} style={inlineStyles && inlineStyles} {...rest}>
             {text}
         </span>
     );

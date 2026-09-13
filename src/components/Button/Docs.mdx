@@ -5,7 +5,7 @@ import * as ButtonStories from './Button.stories';
 
 # Button
 
-A flexible action trigger that renders a native `<button>` element. Supports five color variants (with an optional outline treatment), optional Font Awesome icons, size and width modifiers, and a disabled state.
+A flexible action trigger that renders a native `<button>` element. Supports five color variants (with an optional outline treatment), size and width modifiers, and a disabled state.
 
 ## When to use
 
@@ -21,8 +21,7 @@ import { Button } from '@troychaplin/octave-design-system';
 
 ```tsx
 <Button title="Get started" color="primary" />
-<Button title="Download" color="dark" icon="circle-down" />
-<Button icon="circle-down" ariaLabel="Download file" color="dark" />
+<Button title="Download" color="dark" />
 <Button title="Cancel" color="primary" isOutline />
 ```
 
@@ -34,18 +33,6 @@ The default color is `primary`.
 
 <Canvas of={ButtonStories.Default} />
 <Controls of={ButtonStories.Default} />
-
-### With icon
-
-Pass any valid `IconName` to the `icon` prop. The icon renders to the left of the label at 20px (16px when `isSmall`).
-
-<Canvas of={ButtonStories.WithIcon} />
-
-### Icon only
-
-When `title` is omitted, `icon` and `ariaLabel` are both required — enforced by the TypeScript union type. The `ariaLabel` provides the accessible name for screen readers and assistive technology.
-
-<Canvas of={ButtonStories.IconOnly} />
 
 ### Small
 
@@ -115,6 +102,6 @@ The `gap`, the `isSmall` padding and the top margin after a `Column` or `Stacked
 ## Accessibility
 
 - `Button` renders a native `<button>` element — keyboard focus, `Enter`/`Space` activation, and screen reader announcement are built in.
-- **Icon-only buttons require `ariaLabel`.** Without it, screen readers announce only the icon name (or nothing), which is not meaningful. The TypeScript union type enforces this at compile time.
+- **Buttons without a `title` require `ariaLabel`.** It gives the button its accessible name, and the TypeScript union type enforces this at compile time.
 - The native `disabled` attribute prevents the button from receiving focus or firing events. Do not use CSS-only disabled styling, as it leaves the button keyboard-reachable.
 - Avoid using `Button` for navigation — screen readers expose `role="button"` to users, who expect it to perform an action rather than navigate.
