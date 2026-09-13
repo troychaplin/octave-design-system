@@ -2,16 +2,14 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Badge } from './Badge';
 
 const colorOptions = [
-    'grey',
-    'white',
-    'black80',
-    'white80',
-    'green',
-    'red',
-    'yellow',
-    'blue',
-    'purple',
-    'teal',
+    'neutral',
+    'light',
+    'info',
+    'success',
+    'warning',
+    'error',
+    'overlay-dark',
+    'overlay-light',
 ] as const;
 
 const radiusOptions = ['sm', 'md', 'lg', 'full', 'none'] as const;
@@ -46,7 +44,7 @@ type Story = StoryObj<typeof Badge>;
 export const Default: Story = {
     args: {
         text: 'Badge',
-        color: 'grey',
+        color: 'neutral',
         rounded: 'md',
     },
 };
@@ -55,7 +53,7 @@ export const WithLink: Story = {
     args: {
         text: 'Badge',
         href: 'https://github.com/@troychaplin/octave-design-system',
-        color: 'grey',
+        color: 'neutral',
         rounded: 'full',
     },
 };

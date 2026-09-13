@@ -10,7 +10,7 @@ value, or a font stack.
 
 ```scss
 // Correct
-color: var(--octave--color-primary);
+color: var(--octave--color-accent-primary);
 gap: var(--octave--spacing-large);
 font-size: var(--octave--font-size-large);
 border-radius: var(--octave--radius-md);

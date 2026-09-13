@@ -57,7 +57,7 @@ Inline `args` inside the story object. Never the external-assignment pattern:
 export const Default: Story = {
     args: {
         text: 'Badge',
-        color: 'green',
+        color: 'success',
     },
 };
 
@@ -82,7 +82,7 @@ dropdown.
 argTypes: {
     color: {
         control: 'select',
-        options: ['grey', 'green', 'red', 'yellow', 'blue'],
+        options: ['neutral', 'info', 'success', 'warning', 'error'],
     },
     rounded: {
         control: 'inline-radio',

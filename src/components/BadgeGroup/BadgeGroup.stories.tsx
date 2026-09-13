@@ -25,13 +25,11 @@ type Story = StoryObj<typeof BadgeGroup>;
 export const Default: Story = {
     render: (args) => (
         <BadgeGroup {...args}>
-            <Badge text="Grey" color="grey" />
-            <Badge text="Green" color="green" />
-            <Badge text="Red" color="red" />
-            <Badge text="Yellow" color="yellow" />
-            <Badge text="Blue" color="blue" />
-            <Badge text="Purple" color="purple" />
-            <Badge text="Teal" color="teal" />
+            <Badge text="Neutral" color="neutral" />
+            <Badge text="Info" color="info" />
+            <Badge text="Success" color="success" />
+            <Badge text="Warning" color="warning" />
+            <Badge text="Error" color="error" />
         </BadgeGroup>
     ),
 };

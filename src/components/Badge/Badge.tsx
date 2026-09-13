@@ -9,19 +9,17 @@ export interface BadgeProps extends React.AnchorHTMLAttributes<HTMLAnchorElement
     href?: string;
     rounded?: borderRadiusKeys;
     color?:
-        | 'grey'
-        | 'white'
-        | 'black80'
-        | 'white80'
-        | 'green'
-        | 'red'
-        | 'yellow'
-        | 'blue'
-        | 'purple'
-        | 'teal';
+        | 'neutral'
+        | 'light'
+        | 'info'
+        | 'success'
+        | 'warning'
+        | 'error'
+        | 'overlay-dark'
+        | 'overlay-light';
 }
 
-export const Badge = ({ text, href, rounded = 'md', color = 'grey', ...rest }: BadgeProps) => {
+export const Badge = ({ text, href, rounded = 'md', color = 'neutral', ...rest }: BadgeProps) => {
     const LinkComponent = useLinkContext();
     const classes = `octave-badge octave-badge--${color} octave-badge--radius-${rounded}`;
 

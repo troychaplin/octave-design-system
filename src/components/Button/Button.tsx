@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.scss';
 
 export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
-    color?: 'red' | 'grey' | 'dark-grey' | 'blue' | 'black' | 'white';
+    color?: 'primary' | 'secondary' | 'neutral' | 'dark' | 'light';
     type?: 'button' | 'submit' | 'reset';
     isSmall?: boolean;
     isFull?: boolean;
@@ -21,7 +21,7 @@ export interface ButtonNoTitleProps extends ButtonProps {
 }
 
 export const Button = ({
-    color = 'red',
+    color = 'primary',
     title,
     type = 'button',
     isSmall,

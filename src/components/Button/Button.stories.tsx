@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from './Button';
 
-const colorOptions = ['red', 'grey', 'dark-grey', 'blue', 'black', 'white'] as const;
+const colorOptions = ['primary', 'secondary', 'neutral', 'dark', 'light'] as const;
 
 const meta: Meta<typeof Button> = {
     title: 'Components/Elements/Button',
@@ -30,15 +30,15 @@ type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
     args: {
-        title: 'Primary Red',
-        color: 'red',
+        title: 'Primary',
+        color: 'primary',
     },
 };
 
 export const Small: Story = {
     args: {
         title: 'Download',
-        color: 'dark-grey',
+        color: 'dark',
         isSmall: true,
     },
 };
@@ -46,7 +46,7 @@ export const Small: Story = {
 export const FullWidth: Story = {
     args: {
         title: 'Submit',
-        color: 'red',
+        color: 'primary',
         isFull: true,
     },
 };

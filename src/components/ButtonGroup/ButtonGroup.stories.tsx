@@ -27,9 +27,9 @@ type Story = StoryObj<typeof ButtonGroup>;
 export const Default: Story = {
     render: (args) => (
         <ButtonGroup {...args}>
-            <Button title="Primary Red" />
-            <Button title="Dark Grey" color="dark-grey" />
-            <Button title="Light Grey" color="grey" />
+            <Button title="Primary" />
+            <Button title="Dark" color="dark" />
+            <Button title="Neutral" color="neutral" />
         </ButtonGroup>
     ),
 };
@@ -40,9 +40,9 @@ export const Centered: Story = {
     },
     render: (args) => (
         <ButtonGroup {...args}>
-            <Button title="Primary Red" />
-            <Button title="Dark Grey" color="dark-grey" />
-            <Button title="Light Grey" color="grey" />
+            <Button title="Primary" />
+            <Button title="Dark" color="dark" />
+            <Button title="Neutral" color="neutral" />
         </ButtonGroup>
     ),
 };
@@ -53,8 +53,8 @@ export const End: Story = {
     },
     render: (args) => (
         <ButtonGroup {...args}>
-            <Button title="Cancel" color="grey" />
-            <Button title="Submit" color="red" />
+            <Button title="Cancel" color="neutral" />
+            <Button title="Submit" color="primary" />
         </ButtonGroup>
     ),
 };

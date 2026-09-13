@@ -64,7 +64,7 @@ body {
 }
 
 :where(a) {
-  color: var(--octave--color-success);
+  color: var(--octave--color-accent-primary);
 }
 
 :where(a:hover) {

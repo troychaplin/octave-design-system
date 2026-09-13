@@ -62,7 +62,7 @@ config update needed, but a missing barrel file silently drops the component fro
 - **`undefined` not `''`** for conditional `className` — prevents `class=""` in the DOM
 - **Early returns** over ternaries for branching render logic
 - **No dead code** — remove commented-out code; never leave `// TODO` stubs
-- **BEM class prefix:** `octave-` (e.g. `octave-badge`, `octave-badge--green`, `octave-badge__icon`)
+- **BEM class prefix:** `octave-` (e.g. `octave-badge`, `octave-badge--success`, `octave-badge__icon`)
 - **CSS tokens:** `var(--octave--*)` — never hardcode colors, sizes, or font stacks
 
 ---
