@@ -297,9 +297,9 @@
             "listItem": "x-small",
             "padding": {
                 "top": "0",
-                "right": "medium",
+                "right": "x-large",
                 "bottom": "0",
-                "left": "medium"
+                "left": "x-large"
             }
         }
     }

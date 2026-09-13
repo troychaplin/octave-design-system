@@ -119,7 +119,7 @@
   --octave--viewport-tablet: 768px;
 
   /* Root Spacing */
-  --octave--root-padding-x: var(--octave--spacing-medium);
+  --octave--root-padding-x: var(--octave--spacing-x-large);
   --octave--root-padding-y: 0;
   --octave--root-padding-top: var(--octave--root-padding-y);
   --octave--root-padding-right: var(--octave--root-padding-x);

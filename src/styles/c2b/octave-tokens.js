@@ -119,7 +119,7 @@ export const octaveTokens = {
         tablet: '768px'
     },
     root: {
-        paddingX: 'var(--octave--spacing-medium)',
+        paddingX: 'var(--octave--spacing-x-large)',
         paddingY: '0',
         paddingTop: 'var(--octave--root-padding-y)',
         paddingRight: 'var(--octave--root-padding-x)',

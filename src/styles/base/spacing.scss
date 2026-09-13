@@ -17,15 +17,16 @@
     max-width: var(--octave--layout-full-size);
 }
 
-// .octave-main > * > .octave-layout + .octave-layout,
-// .octave-main > * > .octave-layout + :not(.octave-layout),
-// .octave-main > * > :not(.octave-layout) + .octave-layout {
-//     margin-top: var(--octave--spacing-medium);
+// Spacing between octave layout sections
+.octave-main > div > .octave-layout + .octave-layout,
+.octave-main > div > .octave-layout + :not(.octave-layout),
+.octave-main > div > :not(.octave-layout) + .octave-layout {
+    margin-top: var(--octave--spacing-large);
 
-//     @media (min-width: $rds-media-query-md) {
-//         margin-top: var(--octave--spacing-large);
-//     }
-// }
+    @include above-mobile {
+        margin-top: var(--octave--spacing-2-x-large);
+    }
+}
 
 // .octave-main > * > .octave-layout.alignfull + .octave-layout.alignfull {
 //     margin-top: 0;
@@ -40,7 +41,7 @@
 //     > * + .octave-layout {
 //         margin-block-start: var(--octave--spacing-medium);
 
-//         @media (min-width: $rds-media-query-md) {
+//         @include above-tablet {
 //             margin-block-start: var(--octave--spacing-large);
 //         }
 //     }

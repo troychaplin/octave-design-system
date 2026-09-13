@@ -47,9 +47,10 @@ export const PageLayout: Story = {
                 </p>
 
                 <Container
+                    useRootPadding
                     style={{
                         backgroundColor: 'var(--octave--color-neutral-200)',
-                        paddingBlock: 'var(--octave--spacing-2-x-large)',
+                        paddingBlock: 'var(--octave--spacing-x-large)',
                     }}
                 >
                     <p>
@@ -66,7 +67,7 @@ export const PageLayout: Story = {
                     useRootPadding
                     style={{
                         backgroundColor: 'var(--octave--color-white)',
-                        paddingBlock: 'var(--octave--spacing-2-x-large)',
+                        paddingBlock: 'var(--octave--spacing-x-large)',
                     }}
                 >
                     <p>
@@ -82,7 +83,7 @@ export const PageLayout: Story = {
                     maxWidth="alignfull"
                     style={{
                         backgroundColor: 'var(--octave--color-neutral-200)',
-                        paddingBlock: 'var(--octave--spacing-2-x-large)',
+                        paddingBlock: 'var(--octave--spacing-x-large)',
                     }}
                 >
                     <p>
