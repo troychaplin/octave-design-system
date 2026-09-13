@@ -11,6 +11,3 @@ peerDependencyRules:
 
 minimumReleaseAgeExclude:
   - '@troychaplin/*'
-
-overrides:
-  '@troychaplin/component2block': link:../component2block
