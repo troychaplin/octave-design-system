@@ -40,7 +40,7 @@ This walks every story, mounts it in headless Playwright, and runs axe. Slow (~3
 
 Components handle structure and styling; you supply meaning. Specifically:
 
-- **Provide labels.** A `<Button>` with only an icon needs a label — use the `ariaLabel` prop (the component's discriminated union enforces this at the type level). Don't ship icon-only buttons without naming.
+- **Provide labels.** Every `<Button>` requires `text`, which becomes its accessible name. When the visible text is ambiguous out of context (several "Read more" buttons on one page), add an `aria-label` that starts with the visible text so voice-control users can still target it.
 - **Use the right component.** Wrapping content in `<Main>` once per page; using `<Article>` for self-contained content; `<Aside>` for related-but-separate content.
 - **Test with a real screen reader.** Automated checks catch a lot but not everything. VoiceOver (Mac) and NVDA (Windows) are free.
 

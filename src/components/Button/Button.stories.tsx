@@ -15,6 +15,14 @@ const meta: Meta<typeof Button> = {
         type: {
             control: 'inline-radio',
             options: ['button', 'submit', 'reset'],
+            table: {
+                type: { summary: '"button" | "submit" | "reset"' },
+                defaultValue: { summary: '"button"' },
+            },
+        },
+        disabled: {
+            control: 'boolean',
+            table: { type: { summary: 'boolean' } },
         },
         onClick: { action: 'clicked' },
     },
@@ -30,14 +38,14 @@ type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
     args: {
-        title: 'Primary',
+        text: 'Primary',
         color: 'primary',
     },
 };
 
 export const Small: Story = {
     args: {
-        title: 'Download',
+        text: 'Download',
         color: 'dark',
         isSmall: true,
     },
@@ -45,7 +53,7 @@ export const Small: Story = {
 
 export const FullWidth: Story = {
     args: {
-        title: 'Submit',
+        text: 'Submit',
         color: 'primary',
         isFull: true,
     },
@@ -53,8 +61,15 @@ export const FullWidth: Story = {
 
 export const Disabled: Story = {
     args: {
-        title: 'Unavailable',
-        isDisabled: true,
+        text: 'Unavailable',
+        disabled: true,
+    },
+};
+
+export const WithLink: Story = {
+    args: {
+        text: 'View on GitHub',
+        href: 'https://github.com/troychaplin/octave-design-system',
     },
 };
 
@@ -62,7 +77,7 @@ export const AllColors: Story = {
     render: () => (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
             {colorOptions.map((color) => (
-                <Button key={color} title={color} color={color} />
+                <Button key={color} text={color} color={color} />
             ))}
         </div>
     ),

@@ -124,6 +124,9 @@ comment in JSX children renders as text:
 </p>
 ```
 
+Inside a callback, such as `.map()` over a list of links, the rule doesn't report at all, so leave
+the directive off. ESLint would flag it there as an unused directive.
+
 Note the early return rather than a ternary — that is the house style for branching renders.
 
 ## Worked example

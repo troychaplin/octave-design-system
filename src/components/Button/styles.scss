@@ -1,7 +1,6 @@
 @use '../../styles/c2b/octave-variables' as *;
 
-.octave-button,
-a.octave-button {
+.octave-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -9,7 +8,6 @@ a.octave-button {
     padding: var(--octave--spacing-x-small) var(--octave--spacing-medium);
     font-family: var(--octave--font-family-inter-tight);
     font-size: var(--octave--font-size-small);
-    font-weight: var(--octave--font-weight-medium);
     line-height: var(--octave--line-height-tight);
     border: 1px solid transparent;
     border-radius: var(--octave--radius-md);
@@ -19,11 +17,21 @@ a.octave-button {
     &:hover {
         text-decoration: none;
     }
+}
 
-    @include above-tablet {
-        padding: var(--octave--spacing-small) var(--octave--spacing-large);
-        font-size: var(--octave--font-size-medium);
-    }
+.octave-button,
+a.octave-button {
+    font-weight: var(--octave--font-weight-normal);
+    text-decoration: none;
+}
+
+.octave-button--small {
+    padding: var(--octave--spacing-x-small) var(--octave--spacing-small);
+    font-size: var(--octave--font-size-x-small);
+}
+
+.octave-button--full {
+    width: 100%;
 }
 
 .octave-button--primary {
@@ -147,21 +155,6 @@ a.octave-button {
     background-color: var(--octave--color-neutral-300);
     border-color: var(--octave--color-neutral-300);
     cursor: default;
-}
-
-.octave-button--full {
-    width: 100%;
-}
-
-.octave-button--center {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.octave-button--small {
-    padding: 0.5rem 0.75rem;
-    font-size: var(--octave--font-size-small);
 }
 
 .octave-column + .octave-button,

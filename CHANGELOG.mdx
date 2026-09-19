@@ -33,6 +33,19 @@ _Breaking_ `Button` `color` variants are renamed to semantic names that map onto
 `primary` (was `red`, still the default), `neutral` (was `grey`), `dark` (was `dark-grey`) and
 `light` (was `white`), plus a new `secondary`. `blue` and `black` are removed.
 
+_Breaking_ `Button`'s label prop is renamed from `title` to a required `text`, matching `Badge`.
+The native `title` attribute now passes through as a tooltip. `ariaLabel` and the
+`ButtonTitleProps` / `ButtonNoTitleProps` types are removed — pass `aria-label` instead.
+
+_Breaking_ `Button` `isDisabled` is replaced by the native `disabled` attribute.
+
+_Added_ `Button` renders a link through `LinkProvider` when `href` is provided. TypeScript rejects
+the button-only `type` and `disabled` props on a link.
+
+_Fixed_ `Button` appends a consumer's `className` instead of replacing its own classes.
+
+_Removed_ The unused `octave-button--center` class.
+
 _Breaking_ `Badge` `color` variants are renamed to semantic names: `neutral` (was `grey`, still the
 default), `light` (was `white`), `info`, `success`, `warning` and `error` (were `blue`, `green`,
 `yellow` and `red`), and `overlay-dark` / `overlay-light` (were `black80` / `white80`). `purple`
