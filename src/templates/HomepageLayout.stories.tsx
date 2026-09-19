@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Main } from '../components/Main/Main';
 import { Container } from '../components/Container/Container';
-import { FlexGroup } from '../components/FlexGroup/FlexGroup';
 import { SiteHeader } from '../components/SiteHeader';
 
 const meta: Meta = {
@@ -16,7 +15,7 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const PageLayout: Story = {
+export const HomepageLayout: Story = {
     parameters: {
         a11y: {
             config: {
@@ -26,22 +25,44 @@ export const PageLayout: Story = {
     },
     render: () => (
         <>
-            <SiteHeader>
+            <SiteHeader />
+            {/* <SiteHeader>
                 <FlexGroup gap="normal" maxWidth="alignfull" justify="space-between">
-                    <div>Bleh</div>
+                    <div>
+                        <p>
+                            <LinkComponent href="/">Troy Chaplin</LinkComponent>
+                        </p>
+                    </div>
                     <div>Meh</div>
                     <div>Pfft</div>
                 </FlexGroup>
-            </SiteHeader>
+            </SiteHeader> */}
 
             <Main>
-                <h2>Heading Two</h2>
-                <p>
-                    This is an example page. It is different from a blog post because it will stay
-                    in one place and will show up in your site navigation (in most themes). Most
-                    people start with an About page that introduces them to potential site visitors.
-                    It might say something like this:
-                </p>
+                <Container color="neutral-200">
+                    <h2>Heading Two</h2>
+                    <p>
+                        This is an example page. It is different from a blog post because it will
+                        stay in one place and will show up in your site navigation (in most themes).
+                        Most people start with an About page that introduces them to potential site
+                        visitors. It might say something like this:
+                    </p>
+                </Container>
+
+                <Container
+                    style={{
+                        backgroundColor: 'var(--octave--color-neutral-50)',
+                        paddingBlock: 'var(--octave--spacing-x-large)',
+                    }}
+                >
+                    <h2>Heading Two</h2>
+                    <p>
+                        This is an example page. It is different from a blog post because it will
+                        stay in one place and will show up in your site navigation (in most themes).
+                        Most people start with an About page that introduces them to potential site
+                        visitors. It might say something like this:
+                    </p>
+                </Container>
 
                 <Container
                     style={{
@@ -89,13 +110,6 @@ export const PageLayout: Story = {
                         visitors. It might say something like this:
                     </p>
                 </Container>
-
-                <p>
-                    This is an example page. It is different from a blog post because it will stay
-                    in one place and will show up in your site navigation (in most themes). Most
-                    people start with an About page that introduces them to potential site visitors.
-                    It might say something like this:
-                </p>
             </Main>
         </>
     ),
