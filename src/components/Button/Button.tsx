@@ -1,12 +1,16 @@
 import type { ComponentPropsWithoutRef } from 'react';
-
 import { useLinkContext } from '../LinkProvider/useLinkContext';
-
+import { borderRadiusClasses, colorClasses } from '../../utils/propClasses';
 import './styles.scss';
+
+type borderRadiusKeys = keyof typeof borderRadiusClasses;
+type colorKeys = keyof typeof colorClasses;
 
 interface ButtonBaseProps {
     text: string;
-    color?: 'primary' | 'secondary' | 'neutral' | 'dark' | 'light';
+    // color?: 'primary' | 'secondary' | 'neutral' | 'dark' | 'light';
+    rounded?: borderRadiusKeys;
+    color?: colorKeys;
     isSmall?: boolean;
     isFull?: boolean;
     isOutline?: boolean;
@@ -28,7 +32,8 @@ export type ButtonProps = ButtonElementProps | ButtonLinkProps;
 
 export const Button = ({
     text,
-    color = 'primary',
+    color = 'accent-primary',
+    rounded = 'sm',
     type = 'button',
     isSmall,
     isFull,
@@ -41,6 +46,7 @@ export const Button = ({
     const classes = [
         'octave-button',
         disabled ? 'octave-button--disabled' : `octave-button--${color}`,
+        rounded && `octave-button--radius-${rounded}`,
         isOutline && !disabled && 'octave-button--outline',
         isSmall && 'octave-button--small',
         isFull && 'octave-button--full',

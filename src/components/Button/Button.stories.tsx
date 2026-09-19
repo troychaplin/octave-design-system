@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from './Button';
-
-const colorOptions = ['primary', 'secondary', 'neutral', 'dark', 'light'] as const;
+import { borderRadiusClasses, colorClasses } from '../../utils/propClasses';
 
 const meta: Meta<typeof Button> = {
     title: 'Components/Elements/Button',
@@ -10,7 +9,11 @@ const meta: Meta<typeof Button> = {
     argTypes: {
         color: {
             control: 'select',
-            options: colorOptions,
+            options: Object.keys(colorClasses),
+        },
+        rounded: {
+            control: 'inline-radio',
+            options: Object.keys(borderRadiusClasses),
         },
         type: {
             control: 'inline-radio',
@@ -39,14 +42,14 @@ type Story = StoryObj<typeof Button>;
 export const Default: Story = {
     args: {
         text: 'Primary',
-        color: 'primary',
+        color: 'accent-primary',
     },
 };
 
 export const Small: Story = {
     args: {
         text: 'Download',
-        color: 'dark',
+        color: 'neutral-800',
         isSmall: true,
     },
 };
@@ -54,7 +57,7 @@ export const Small: Story = {
 export const FullWidth: Story = {
     args: {
         text: 'Submit',
-        color: 'primary',
+        color: 'accent-primary',
         isFull: true,
     },
 };
@@ -76,8 +79,8 @@ export const WithLink: Story = {
 export const AllColors: Story = {
     render: () => (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-            {colorOptions.map((color) => (
-                <Button key={color} text={color} color={color} />
+            {Object.keys(colorClasses).map((color) => (
+                <Button key={color} text={color} />
             ))}
         </div>
     ),

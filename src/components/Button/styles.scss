@@ -10,7 +10,7 @@
     font-size: var(--octave--font-size-small);
     line-height: var(--octave--line-height-tight);
     border: 1px solid transparent;
-    border-radius: var(--octave--radius-md);
+    border-radius: var(--octave--radius-sm);
     white-space: nowrap;
     cursor: pointer;
 
@@ -32,6 +32,26 @@ a.octave-button {
 
 .octave-button--full {
     width: 100%;
+}
+
+.octave-button--radius-sm {
+    border-radius: var(--octave--radius-sm);
+}
+
+.octave-button--radius-md {
+    border-radius: var(--octave--radius-md);
+}
+
+.octave-button--radius-lg {
+    border-radius: var(--octave--radius-lg);
+}
+
+.octave-button--radius-full {
+    border-radius: var(--octave--radius-full);
+}
+
+.octave-button--radius-none {
+    border-radius: 0;
 }
 
 .octave-button--primary {

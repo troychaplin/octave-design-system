@@ -28,8 +28,8 @@ export const Default: Story = {
     render: (args) => (
         <ButtonGroup {...args}>
             <Button text="Primary" />
-            <Button text="Dark" color="dark" />
-            <Button text="Neutral" color="neutral" />
+            <Button text="Dark" color="neutral-800" />
+            <Button text="Neutral" color="neutral-300" />
         </ButtonGroup>
     ),
 };
@@ -41,8 +41,8 @@ export const Centered: Story = {
     render: (args) => (
         <ButtonGroup {...args}>
             <Button text="Primary" />
-            <Button text="Dark" color="dark" />
-            <Button text="Neutral" color="neutral" />
+            <Button text="Dark" color="neutral-800" />
+            <Button text="Neutral" color="neutral-300" />
         </ButtonGroup>
     ),
 };
@@ -53,8 +53,8 @@ export const End: Story = {
     },
     render: (args) => (
         <ButtonGroup {...args}>
-            <Button text="Cancel" color="neutral" />
-            <Button text="Submit" color="primary" />
+            <Button text="Cancel" color="neutral-300" />
+            <Button text="Submit" color="accent-primary" />
         </ButtonGroup>
     ),
 };
