@@ -1,50 +1,71 @@
-import React from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
+import { useLinkContext } from '../LinkProvider/useLinkContext';
+import { borderRadiusClasses } from '../../utils/propClasses';
 import './styles.scss';
 
-export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
-    color?: 'primary' | 'secondary' | 'neutral' | 'dark' | 'light';
-    type?: 'button' | 'submit' | 'reset';
+type borderRadiusKeys = keyof typeof borderRadiusClasses;
+type colorKeys = 'light' | 'medium' | 'dark' | 'white' | 'link';
+
+interface ButtonBaseProps {
+    text: string;
+    rounded?: borderRadiusKeys;
+    color?: colorKeys;
     isSmall?: boolean;
     isFull?: boolean;
-    isDisabled?: boolean;
     isOutline?: boolean;
 }
 
-export interface ButtonTitleProps extends ButtonProps {
-    title: string;
-    ariaLabel?: string;
-}
+type ButtonElementProps = ButtonBaseProps &
+    Omit<ComponentPropsWithoutRef<'button'>, keyof ButtonBaseProps> & {
+        href?: never;
+    };
 
-export interface ButtonNoTitleProps extends ButtonProps {
-    title?: string;
-    ariaLabel: string;
-}
+type ButtonLinkProps = ButtonBaseProps &
+    Omit<ComponentPropsWithoutRef<'a'>, keyof ButtonBaseProps | 'type'> & {
+        href: string;
+        type?: never;
+        disabled?: never;
+    };
+
+export type ButtonProps = ButtonElementProps | ButtonLinkProps;
 
 export const Button = ({
-    color = 'primary',
-    title,
+    text,
+    color = 'medium',
+    rounded = 'sm',
     type = 'button',
     isSmall,
     isFull,
-    isDisabled,
     isOutline,
-    ariaLabel,
+    disabled,
+    className,
     ...rest
-}: ButtonNoTitleProps | ButtonTitleProps) => {
-    const variantClass = isDisabled ? 'octave-button--disabled' : `octave-button--${color}`;
-    const outlineClass = isOutline && !isDisabled ? 'octave-button--outline' : '';
-    const sizeClass = isSmall ? 'octave-button--small' : '';
-    const widthClass = isFull ? 'octave-button--full' : '';
+}: ButtonProps) => {
+    const LinkComponent = useLinkContext();
+    const classes = [
+        'octave-button',
+        disabled ? 'octave-button--disabled' : `octave-button--${color}`,
+        rounded && `octave-button--radius-${rounded}`,
+        isOutline && !disabled && 'octave-button--outline',
+        isSmall && 'octave-button--small',
+        isFull && 'octave-button--full',
+        className,
+    ]
+        .filter(Boolean)
+        .join(' ');
+
+    if (rest.href !== undefined) {
+        return (
+            // eslint-disable-next-line react-hooks/static-components -- LinkComponent is injected via context, stable across renders
+            <LinkComponent className={classes} {...rest}>
+                {text}
+            </LinkComponent>
+        );
+    }
 
     return (
-        <button
-            type={type}
-            aria-label={ariaLabel}
-            className={`octave-button ${variantClass} ${outlineClass} ${sizeClass} ${widthClass}`.trim()}
-            disabled={isDisabled}
-            {...rest}
-        >
-            {title}
+        <button type={type} className={classes} disabled={disabled} {...rest}>
+            {text}
         </button>
     );
 };

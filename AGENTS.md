@@ -100,13 +100,21 @@ Full conventions in `references/stories.md`. The rules that break things when ig
 ## LinkProvider
 
 Components that render links should use `useLinkContext()` so consumers can swap in Next.js `Link`,
-React Router `Link`, or a plain `<a>`:
+React Router `Link`, or a plain `<a>`. `react-hooks/static-components` can't tell the component from
+context is stable, so disable it on the line above the JSX tag (not the hook call). See
+`references/tsx.md` for the nested-JSX comment form:
 
 ```tsx
 import { useLinkContext } from '../LinkProvider/useLinkContext';
 
 const LinkComponent = useLinkContext();
-return href ? <LinkComponent href={href}>...</LinkComponent> : <span>...</span>;
+
+if (href) {
+    // eslint-disable-next-line react-hooks/static-components -- injected via context, stable across renders
+    return <LinkComponent href={href}>...</LinkComponent>;
+}
+
+return <span>...</span>;
 ```
 
 ---

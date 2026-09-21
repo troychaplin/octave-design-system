@@ -20,10 +20,7 @@ export const PageLayout: Story = {
     parameters: {
         a11y: {
             config: {
-                rules: [
-                    { id: 'color-contrast', enabled: false },
-                    { id: 'landmark-complementary-is-top-level', enabled: false },
-                ],
+                rules: [{ id: 'color-contrast', enabled: false }],
             },
         },
     },
@@ -47,7 +44,6 @@ export const PageLayout: Story = {
                 </p>
 
                 <Container
-                    useRootPadding
                     style={{
                         backgroundColor: 'var(--octave--color-neutral-200)',
                         paddingBlock: 'var(--octave--spacing-x-large)',
@@ -64,7 +60,7 @@ export const PageLayout: Story = {
                 <Container
                     contentWidth="alignwide"
                     maxWidth="alignwide"
-                    useRootPadding
+
                     style={{
                         backgroundColor: 'var(--octave--color-white)',
                         paddingBlock: 'var(--octave--spacing-x-large)',

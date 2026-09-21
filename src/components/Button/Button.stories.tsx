@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from './Button';
 
-const colorOptions = ['primary', 'secondary', 'neutral', 'dark', 'light'] as const;
-
 const meta: Meta<typeof Button> = {
     title: 'Components/Elements/Button',
     component: Button,
@@ -10,11 +8,21 @@ const meta: Meta<typeof Button> = {
     argTypes: {
         color: {
             control: 'select',
-            options: colorOptions,
+        },
+        rounded: {
+            control: 'inline-radio',
         },
         type: {
             control: 'inline-radio',
             options: ['button', 'submit', 'reset'],
+            table: {
+                type: { summary: '"button" | "submit" | "reset"' },
+                defaultValue: { summary: '"button"' },
+            },
+        },
+        disabled: {
+            control: 'boolean',
+            table: { type: { summary: 'boolean' } },
         },
         onClick: { action: 'clicked' },
     },
@@ -30,40 +38,30 @@ type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
     args: {
-        title: 'Primary',
-        color: 'primary',
+        text: 'Dark Button',
+        color: 'dark',
     },
 };
 
 export const Small: Story = {
     args: {
-        title: 'Download',
-        color: 'dark',
+        text: 'Small Size',
+        color: 'medium',
         isSmall: true,
     },
 };
 
-export const FullWidth: Story = {
+export const WithLink: Story = {
     args: {
-        title: 'Submit',
-        color: 'primary',
-        isFull: true,
+        color: 'light',
+        text: 'View on GitHub',
+        href: 'https://github.com/troychaplin/octave-design-system',
     },
 };
 
 export const Disabled: Story = {
     args: {
-        title: 'Unavailable',
-        isDisabled: true,
+        text: 'Unavailable',
+        disabled: true,
     },
-};
-
-export const AllColors: Story = {
-    render: () => (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-            {colorOptions.map((color) => (
-                <Button key={color} title={color} color={color} />
-            ))}
-        </div>
-    ),
 };

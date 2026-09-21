@@ -1,6 +1,40 @@
 .octave-site-header {
-    background-color: var(--octave--color-white);
-    padding-top: var(--octave--spacing-x-small);
-    padding-bottom: var(--octave--spacing-x-small);
+    padding-block: var(--octave--spacing-medium);
     padding-inline: var(--octave--root-padding-x);
+    background-color: var(--octave--color-white);
+    border-bottom: 1px solid var(--octave--color-neutral-400);
+}
+
+.octave-site-header__branding p {
+    font-family: var(--octave--font-family-inter-tight);
+    font-size: var(--octave--font-size-large);
+    padding: 0;
+    margin: 0;
+
+    a {
+        font-weight: var(--octave--font-weight-medium);
+        color: var(--octave--color-neutral-950);
+        text-decoration: none;
+    }
+}
+
+.octave-site-header__nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: var(--octave--spacing-medium);
+
+    li {
+        font-family: var(--octave--font-family-inter-tight);
+        font-size: var(--octave--font-size-small);
+        padding: 0;
+        margin: 0;
+
+        a {
+            font-weight: var(--octave--font-weight-normal);
+            color: var(--octave--color-neutral-950);
+            text-decoration: none;
+        }
+    }
 }

@@ -20,6 +20,9 @@ const meta: Meta<typeof Container> = {
             control: 'select',
             options: ['aligncontent', 'alignwide', 'alignfull'],
         },
+        color: {
+            control: 'select',
+        },
     },
     parameters: {
         layout: 'fullscreen',

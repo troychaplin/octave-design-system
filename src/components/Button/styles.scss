@@ -6,50 +6,38 @@ a.octave-button {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: var(--octave--spacing-x-small) var(--octave--spacing-medium);
+    padding: var(--octave--spacing-small) var(--octave--spacing-medium);
     font-family: var(--octave--font-family-inter-tight);
-    font-size: var(--octave--font-size-small);
-    font-weight: var(--octave--font-weight-medium);
+    font-size: var(--octave--font-size-medium);
+    font-weight: var(--octave--font-weight-light);
     line-height: var(--octave--line-height-tight);
+    text-decoration: none;
     border: 1px solid transparent;
-    border-radius: var(--octave--radius-md);
+    border-radius: var(--octave--radius-sm);
     white-space: nowrap;
     cursor: pointer;
 
-    &:hover {
+    &:hover,
+    &.octave-button--outline:hover {
         text-decoration: none;
-    }
-
-    @include above-tablet {
-        padding: var(--octave--spacing-small) var(--octave--spacing-large);
-        font-size: var(--octave--font-size-medium);
+        color: var(--octave--color-white);
+        background-color: var(--octave--color-accent-secondary);
+        border-color: var(--octave--color-accent-secondary);
     }
 }
 
-.octave-button--primary {
-    color: var(--octave--color-white);
-    background-color: var(--octave--color-accent-primary);
-    border-color: var(--octave--color-accent-primary);
-
-    &:hover {
-        background-color: var(--octave--color-neutral-800);
-        border-color: var(--octave--color-neutral-800);
-    }
+.octave-button--light {
+    color: var(--octave--color-neutral-900);
+    background-color: var(--octave--color-neutral-100);
+    border-color: var(--octave--color-neutral-100);
 
     &.octave-button--outline {
-        color: var(--octave--color-accent-primary);
-        background-color: var(--octave--color-white);
-        border-color: var(--octave--color-accent-primary);
-
-        &:hover {
-            color: var(--octave--color-white);
-            background-color: var(--octave--color-accent-primary);
-            border-color: var(--octave--color-accent-primary);
-        }
+        color: var(--octave--color-neutral-900);
+        background-color: var(--octave--color-neutral-100);
     }
 }
 
-.octave-button--secondary {
+.octave-button--link {
     color: var(--octave--color-white);
     background-color: var(--octave--color-accent-secondary);
     border-color: var(--octave--color-accent-secondary);
@@ -62,83 +50,44 @@ a.octave-button {
     &.octave-button--outline {
         color: var(--octave--color-accent-secondary);
         background-color: var(--octave--color-white);
-        border-color: var(--octave--color-accent-secondary);
 
         &:hover {
-            color: var(--octave--color-white);
-            background-color: var(--octave--color-accent-secondary);
-            border-color: var(--octave--color-accent-secondary);
-        }
-    }
-}
-
-.octave-button--neutral {
-    color: var(--octave--color-neutral-800);
-    background-color: var(--octave--color-neutral-100);
-    border-color: var(--octave--color-neutral-100);
-
-    &:hover {
-        color: var(--octave--color-white);
-        background-color: var(--octave--color-accent-primary);
-        border-color: var(--octave--color-accent-primary);
-    }
-
-    &.octave-button--outline {
-        background-color: var(--octave--color-white);
-        border-color: var(--octave--color-neutral-100);
-
-        &:hover {
-            color: var(--octave--color-neutral-800);
-            background-color: var(--octave--color-neutral-100);
-            border-color: var(--octave--color-neutral-100);
-        }
-    }
-}
-
-.octave-button--dark {
-    color: var(--octave--color-white);
-    background-color: var(--octave--color-neutral-800);
-    border-color: var(--octave--color-neutral-800);
-
-    &:hover {
-        background-color: var(--octave--color-accent-primary);
-        border-color: var(--octave--color-accent-primary);
-    }
-
-    &.octave-button--outline {
-        color: var(--octave--color-neutral-800);
-        background-color: var(--octave--color-white);
-        border-color: var(--octave--color-neutral-800);
-
-        &:hover {
-            color: var(--octave--color-white);
             background-color: var(--octave--color-neutral-800);
             border-color: var(--octave--color-neutral-800);
         }
     }
 }
 
-.octave-button--light {
-    color: var(--octave--color-black);
+.octave-button--medium {
+    color: var(--octave--color-white);
+    background-color: var(--octave--color-neutral-800);
+    border-color: var(--octave--color-neutral-800);
+
+    &.octave-button--outline {
+        color: var(--octave--color-neutral-800);
+        background-color: var(--octave--color-white);
+    }
+}
+
+.octave-button--dark {
+    color: var(--octave--color-white);
+    background-color: var(--octave--color-neutral-900);
+    border-color: var(--octave--color-neutral-900);
+
+    &.octave-button--outline {
+        color: var(--octave--color-neutral-900);
+        background-color: var(--octave--color-white);
+    }
+}
+
+.octave-button--white {
+    color: var(--octave--color-neutral-800);
     background-color: var(--octave--color-white);
     border-color: var(--octave--color-white);
 
-    &:hover {
-        color: var(--octave--color-white);
-        background-color: var(--octave--color-accent-primary);
-        border-color: var(--octave--color-accent-primary);
-    }
-
     &.octave-button--outline {
-        color: var(--octave--color-black);
-        background-color: var(--octave--color-white);
-        border-color: var(--octave--color-white);
-
-        &:hover {
-            color: var(--octave--color-white);
-            background-color: var(--octave--color-accent-primary);
-            border-color: var(--octave--color-accent-primary);
-        }
+        color: var(--octave--color-white);
+        background-color: var(--octave--color-neutral-800);
     }
 }
 
@@ -149,28 +98,43 @@ a.octave-button {
     cursor: default;
 }
 
+.octave-button--small,
+a.octave-button--small {
+    padding: var(--octave--spacing-x-small) var(--octave--spacing-small);
+    font-size: var(--octave--font-size-small);
+}
+
 .octave-button--full {
     width: 100%;
 }
 
-.octave-button--center {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+.octave-button--radius-sm {
+    border-radius: var(--octave--radius-sm);
 }
 
-.octave-button--small {
-    padding: 0.5rem 0.75rem;
-    font-size: var(--octave--font-size-small);
+.octave-button--radius-md {
+    border-radius: var(--octave--radius-md);
 }
 
-.octave-column + .octave-button,
-.octave-column + .octave-buttongroup,
-.octave-stackedlist + .octave-button,
-.octave-stackedlist + .octave-buttongroup {
-    margin-top: 2rem;
-
-    @include above-tablet {
-        margin-top: 2.5rem;
-    }
+.octave-button--radius-lg {
+    border-radius: var(--octave--radius-lg);
 }
+
+.octave-button--radius-full {
+    border-radius: var(--octave--radius-full);
+}
+
+.octave-button--radius-none {
+    border-radius: 0;
+}
+
+// .octave-column + .octave-button,
+// .octave-column + .octave-buttongroup,
+// .octave-stackedlist + .octave-button,
+// .octave-stackedlist + .octave-buttongroup {
+//     margin-top: 2rem;
+
+//     @include above-tablet {
+//         margin-top: 2.5rem;
+//     }
+// }

@@ -13,9 +13,7 @@ export { FlexGroup, type FlexGroupProps } from './components/FlexGroup/FlexGroup
 export { Container, type ContainerProps } from './components/Container/Container';
 
 // Elements
-export { Badge, type BadgeProps } from './components/Badge/Badge';
-export { BadgeGroup } from './components/BadgeGroup/BadgeGroup';
-export { Button } from './components/Button/Button';
+export { Button, type ButtonProps } from './components/Button/Button';
 export { ButtonGroup } from './components/ButtonGroup/ButtonGroup';
 
 // Content

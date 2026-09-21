@@ -1,15 +1,18 @@
-import { maxWidthClasses, elementClasses } from '../../utils/propClasses';
+import { maxWidthClasses, elementClasses, borderRadiusClasses } from '../../utils/propClasses';
 import './styles.scss';
 
 type maxWidthKeys = keyof typeof maxWidthClasses;
 type elementKeys = keyof typeof elementClasses;
+type borderRadiusKeys = keyof typeof borderRadiusClasses;
+type colorKeys = 'light' | 'medium' | 'dark' | 'white';
 
 export interface ContainerProps extends React.HTMLAttributes<HTMLElement> {
     children?: React.ReactNode;
     as?: elementKeys;
     maxWidth?: maxWidthKeys;
     contentWidth?: maxWidthKeys;
-    useRootPadding?: boolean;
+    color?: colorKeys;
+    borderRadius?: borderRadiusKeys;
 }
 
 export const Container = ({
@@ -17,8 +20,9 @@ export const Container = ({
     as = 'div',
     maxWidth = 'aligncontent',
     contentWidth = 'aligncontent',
-    useRootPadding = false,
+    color,
     className,
+    borderRadius = 'md',
     ...rest
 }: ContainerProps) => {
     const ContainerWrapper = as;
@@ -27,16 +31,14 @@ export const Container = ({
         'octave-layout octave-container',
         'is-layout-constrained',
         maxWidth,
+        color && `octave-container--no-gap octave-container--${color}`,
+        borderRadius && `octave-container--radius-${borderRadius}`,
         className,
     ]
         .filter(Boolean)
         .join(' ');
 
-    const contentClasses = [
-        'has-global-padding',
-        contentWidth,
-        useRootPadding && 'has-root-padding',
-    ]
+    const contentClasses = ['has-global-padding', contentWidth, color && 'has-root-padding']
         .filter(Boolean)
         .join(' ');
 

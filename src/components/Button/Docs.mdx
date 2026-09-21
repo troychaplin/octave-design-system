@@ -5,11 +5,14 @@ import * as ButtonStories from './Button.stories';
 
 # Button
 
-A flexible action trigger that renders a native `<button>` element. Supports five color variants (with an optional outline treatment), size and width modifiers, and a disabled state.
+An action trigger that renders a native `<button>`, or a link styled as a button when an `href` is provided. Supports five color variants (with an optional outline treatment), size and width modifiers, and a disabled state.
 
 ## When to use
 
-Use `Button` when you need an interactive control that triggers an in-page action — submitting a form, opening a dialog, or kicking off a process. For links that navigate to a URL, prefer a semantic `<a>` element or your framework's `Link` component instead. When placing two or more buttons side by side, wrap them in a [`ButtonGroup`](?path=/docs/components-elements-button-group--docs) rather than managing spacing manually.
+- Trigger an in-page action — submitting a form, opening a dialog, or kicking off a process.
+- Pass `href` for a call-to-action link that should look like a button, such as "Get started" or "Download". It renders through [`LinkProvider`](?path=/docs/components-utilities-linkprovider--docs), so it uses your framework's router link.
+- Don't use it for links inside running text — a plain link reads as part of the sentence.
+- When placing two or more buttons side by side, wrap them in a [`ButtonGroup`](?path=/docs/components-elements-button-group--docs) rather than managing spacing manually.
 
 ## Import
 
@@ -20,9 +23,17 @@ import { Button } from '@troychaplin/octave-design-system';
 ## Basic usage
 
 ```tsx
-<Button title="Get started" color="primary" />
-<Button title="Download" color="dark" />
-<Button title="Cancel" color="primary" isOutline />
+// Action button
+<Button text="Get started" />
+
+// Outline variant
+<Button text="Cancel" color="neutral" isOutline />
+
+// Form submit — buttons default to type="button"
+<Button text="Save" type="submit" />
+
+// Link styled as a button
+<Button text="Download" color="dark" href="/downloads" />
 ```
 
 ## Examples
@@ -36,40 +47,32 @@ The default color is `primary`.
 
 ### Small
 
-`isSmall` reduces the padding and locks font size to `--octave--font-size-small` regardless of viewport width.
+`isSmall` reduces the horizontal padding and drops the font size to `--octave--font-size-x-small`.
 
 <Canvas of={ButtonStories.Small} />
 
-### Full width
-
-`isFull` stretches the button to 100% of its container.
-
-<Canvas of={ButtonStories.FullWidth} />
-
 ### Disabled
 
-`isDisabled` sets both the visual disabled style and the native `disabled` attribute, preventing interaction and click events.
+`disabled` is the native attribute: it applies the disabled style, removes the button from the tab order and blocks click events. Links can't be disabled, so TypeScript rejects `disabled` alongside `href`.
 
 <Canvas of={ButtonStories.Disabled} />
 
-### All color variants
-
-<Canvas of={ButtonStories.AllColors} />
-
 ## CSS classes
 
-| Class                      | When applied                               |
-| -------------------------- | ------------------------------------------ |
-| `octave-button`            | Always — base class                        |
-| `octave-button--primary`   | `color="primary"` (default)                |
-| `octave-button--secondary` | `color="secondary"`                        |
-| `octave-button--neutral`   | `color="neutral"`                          |
-| `octave-button--dark`      | `color="dark"`                             |
-| `octave-button--light`     | `color="light"`                            |
-| `octave-button--disabled`  | `isDisabled={true}`                        |
-| `octave-button--outline`   | `isOutline={true}` (ignored when disabled) |
-| `octave-button--small`     | `isSmall={true}`                           |
-| `octave-button--full`      | `isFull={true}`                            |
+| Class                      | When applied                                 |
+| -------------------------- | -------------------------------------------- |
+| `octave-button`            | Always — base class                          |
+| `octave-button--primary`   | `color="primary"` (default)                  |
+| `octave-button--secondary` | `color="secondary"`                          |
+| `octave-button--neutral`   | `color="neutral"`                            |
+| `octave-button--dark`      | `color="dark"`                               |
+| `octave-button--light`     | `color="light"`                              |
+| `octave-button--disabled`  | `disabled={true}` — replaces the color class |
+| `octave-button--outline`   | `isOutline={true}` (ignored when disabled)   |
+| `octave-button--small`     | `isSmall={true}`                             |
+| `octave-button--full`      | `isFull={true}`                              |
+
+A `className` you pass is appended after these classes rather than replacing them. When the button renders as a link, the `a.octave-button` selector applies the same base styles and keeps the underline off on hover.
 
 A top margin (`2rem` mobile, `2.5rem` desktop) is automatically applied when a `Button` or `ButtonGroup` directly follows a `Column` or `StackedList` element — no extra spacing class needed.
 
@@ -79,14 +82,13 @@ These `--octave--*` custom properties drive the Button's appearance. Overriding 
 
 | Token                               | Used for                                                                                       |
 | ----------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `--octave--spacing-x-small`         | Vertical padding on mobile                                                                     |
-| `--octave--spacing-medium`          | Horizontal padding on mobile                                                                   |
-| `--octave--spacing-small`           | Vertical padding above the tablet breakpoint                                                   |
-| `--octave--spacing-large`           | Horizontal padding above the tablet breakpoint                                                 |
+| `--octave--spacing-x-small`         | Vertical padding                                                                               |
+| `--octave--spacing-medium`          | Horizontal padding                                                                             |
+| `--octave--spacing-small`           | Horizontal padding when `isSmall`                                                              |
 | `--octave--font-family-inter-tight` | Font family                                                                                    |
-| `--octave--font-size-small`         | Font size on mobile and when `isSmall`                                                         |
-| `--octave--font-size-medium`        | Font size above the tablet breakpoint                                                          |
-| `--octave--font-weight-medium`      | Font weight                                                                                    |
+| `--octave--font-size-small`         | Font size                                                                                      |
+| `--octave--font-size-x-small`       | Font size when `isSmall`                                                                       |
+| `--octave--font-weight-normal`      | Font weight                                                                                    |
 | `--octave--line-height-tight`       | Line height                                                                                    |
 | `--octave--radius-md`               | Border radius                                                                                  |
 | `--octave--color-accent-primary`    | `primary` background; hover background for `neutral`, `dark` and `light`                       |
@@ -97,11 +99,12 @@ These `--octave--*` custom properties drive the Button's appearance. Overriding 
 | `--octave--color-white`             | `light` background; text on filled variants; outline background                                |
 | `--octave--color-black`             | `light` text                                                                                   |
 
-The `gap`, the `isSmall` padding and the top margin after a `Column` or `StackedList` use raw values rather than design tokens.
+The `gap`, the `1px` border width and the top margin after a `Column` or `StackedList` use raw values rather than design tokens.
 
 ## Accessibility
 
-- `Button` renders a native `<button>` element — keyboard focus, `Enter`/`Space` activation, and screen reader announcement are built in.
-- **Buttons without a `title` require `ariaLabel`.** It gives the button its accessible name, and the TypeScript union type enforces this at compile time.
-- The native `disabled` attribute prevents the button from receiving focus or firing events. Do not use CSS-only disabled styling, as it leaves the button keyboard-reachable.
-- Avoid using `Button` for navigation — screen readers expose `role="button"` to users, who expect it to perform an action rather than navigate.
+- Without `href`, `Button` renders a native `<button>` — keyboard focus, `Enter`/`Space` activation, and screen reader announcement are built in. It defaults to `type="button"`, so it won't submit a surrounding form unless you pass `type="submit"`.
+- With `href` it renders a link: screen readers announce it as a link and it activates on `Enter` only. Use it for navigation and the `<button>` form for actions — users expect a link to take them somewhere and a button to do something.
+- `text` is required and becomes the accessible name. If the visible text needs more context (several "Read more" buttons on one page), pass an `aria-label` that starts with the visible text, so voice-control users can still activate it by what they see.
+- The native `disabled` attribute removes the button from the tab order and blocks events. Do not use CSS-only disabled styling, as it leaves the button keyboard-reachable.
+- Color variants signal emphasis, not meaning — the `text` must say what the button does.

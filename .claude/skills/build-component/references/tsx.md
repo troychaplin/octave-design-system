@@ -89,15 +89,16 @@ ColumnWrapper.displayName = 'Column';
 ## LinkProvider
 
 Components that can render a link use `useLinkContext()` so the consumer's router component
-(Next.js `Link`, React Router `Link`) is used, falling back to a plain `<a>`. The two
-`eslint-disable` comments are part of the pattern — the rule can't see that the component from
-context is stable:
+(Next.js `Link`, React Router `Link`) is used, falling back to a plain `<a>`. The `eslint-disable`
+comment is part of the pattern: `react-hooks/static-components` treats any value returned from a
+call during render as a newly created component, so it can't see that the component from context
+is stable. The rule reports at the JSX tag, so the comment goes on the line above
+`<LinkComponent>`, not above the hook call (a comment there is flagged as an unused directive):
 
 ```tsx
 import { useLinkContext } from '../LinkProvider/useLinkContext';
 
 export const MyComponent = ({ href, ...rest }: MyComponentProps) => {
-    // eslint-disable-next-line react-hooks/static-components -- stable component from context
     const LinkComponent = useLinkContext();
 
     if (href) {
@@ -112,6 +113,19 @@ export const MyComponent = ({ href, ...rest }: MyComponentProps) => {
     return <span {...rest}>...</span>;
 };
 ```
+
+When `<LinkComponent>` is nested inside other JSX, use the JSX comment form instead. A `//`
+comment in JSX children renders as text:
+
+```tsx
+<p>
+    {/* eslint-disable-next-line react-hooks/static-components -- injected via context */}
+    <LinkComponent href="/">Home</LinkComponent>
+</p>
+```
+
+Inside a callback, such as `.map()` over a list of links, the rule doesn't report at all, so leave
+the directive off. ESLint would flag it there as an unused directive.
 
 Note the early return rather than a ternary — that is the house style for branching renders.
 

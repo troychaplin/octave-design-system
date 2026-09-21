@@ -1,5 +1,10 @@
 @use '../../styles/c2b/octave-variables' as *;
 
+.octave-container > * {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .octave-container > * + * {
     margin-block-start: var(--octave--spacing-medium);
     margin-block-end: 0;
@@ -19,10 +24,92 @@
     }
 }
 
-.octave-container > .has-root-padding.has-global-padding,
+// .octave-container > .has-root-padding.has-global-padding,
+.octave-container.aligncontent,
+.octave-container.alignwide,
 .octave-container.alignfull {
-    padding-right: var(--octave--root-padding-right);
-    padding-left: var(--octave--root-padding-left);
+    // padding-right: var(--octave--root-padding-right);
+    // padding-left: var(--octave--root-padding-left);
+    padding-right: var(--octave--spacing-3-x-large);
+    padding-left: var(--octave--spacing-3-x-large);
+
+    @include above-tablet {
+        padding-right: var(--octave--spacing-4-x-large);
+        padding-left: var(--octave--spacing-4-x-large);
+    }
+}
+
+.octave-main > div > .octave-container--no-gap + .octave-container--no-gap {
+    margin-top: var(--octave--spacing-2-x-large);
+}
+
+.octave-main > div > .octave-container--no-gap.alignfull + .octave-container--no-gap.alignfull {
+    margin-top: 0;
+}
+
+.octave-container--light,
+.octave-container--medium,
+.octave-container--dark,
+.octave-container--white {
+    padding-block: var(--octave--spacing-4-x-large);
+}
+
+.octave-container--light {
+    background-color: var(--octave--color-neutral-200);
+}
+
+.octave-container--medium {
+    background-color: var(--octave--color-neutral-900);
+    color: var(--octave--color-white);
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: var(--octave--color-white);
+    }
+}
+
+.octave-container--dark {
+    background-color: var(--octave--color-neutral-950);
+    color: var(--octave--color-white);
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: var(--octave--color-white);
+    }
+}
+
+.octave-container--white {
+    background-color: var(--octave--color-white);
+}
+
+.octave-container--full {
+    width: 100%;
+}
+
+.octave-container--radius-sm:not(.alignfull) {
+    border-radius: var(--octave--radius-sm);
+}
+
+.octave-container--radius-md:not(.alignfull) {
+    border-radius: var(--octave--radius-md);
+}
+
+.octave-container--radius-lg:not(.alignfull) {
+    border-radius: var(--octave--radius-lg);
+}
+
+.octave-container--radius-full:not(.alignfull) {
+    border-radius: var(--octave--radius-full);
+}
+
+.octave-container--radius-none:not(.alignfull) {
+    border-radius: 0;
 }
 
 // .octave-container--grey,
