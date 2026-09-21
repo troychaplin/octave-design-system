@@ -51,27 +51,11 @@ The default color is `primary`.
 
 <Canvas of={ButtonStories.Small} />
 
-### Full width
-
-`isFull` stretches the button to 100% of its container.
-
-<Canvas of={ButtonStories.FullWidth} />
-
 ### Disabled
 
 `disabled` is the native attribute: it applies the disabled style, removes the button from the tab order and blocks click events. Links can't be disabled, so TypeScript rejects `disabled` alongside `href`.
 
 <Canvas of={ButtonStories.Disabled} />
-
-### With link
-
-When `href` is provided the button renders as a link using the `LinkProvider` context — meaning it adopts whatever link component your framework injects (e.g. Next.js `<Link>`). Without a `LinkProvider` it falls back to a plain `<a>`. TypeScript rejects the button-only `type` and `disabled` props on a link.
-
-<Canvas of={ButtonStories.WithLink} />
-
-### All color variants
-
-<Canvas of={ButtonStories.AllColors} />
 
 ## CSS classes
 

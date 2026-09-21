@@ -1,14 +1,13 @@
 import type { ComponentPropsWithoutRef } from 'react';
 import { useLinkContext } from '../LinkProvider/useLinkContext';
-import { borderRadiusClasses, colorClasses } from '../../utils/propClasses';
+import { borderRadiusClasses } from '../../utils/propClasses';
 import './styles.scss';
 
 type borderRadiusKeys = keyof typeof borderRadiusClasses;
-type colorKeys = keyof typeof colorClasses;
+type colorKeys = 'light' | 'medium' | 'dark' | 'white' | 'link';
 
 interface ButtonBaseProps {
     text: string;
-    // color?: 'primary' | 'secondary' | 'neutral' | 'dark' | 'light';
     rounded?: borderRadiusKeys;
     color?: colorKeys;
     isSmall?: boolean;
@@ -32,7 +31,7 @@ export type ButtonProps = ButtonElementProps | ButtonLinkProps;
 
 export const Button = ({
     text,
-    color = 'accent-primary',
+    color = 'dark',
     rounded = 'sm',
     type = 'button',
     isSmall,

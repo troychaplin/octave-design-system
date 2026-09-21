@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from './Button';
-import { borderRadiusClasses, colorClasses } from '../../utils/propClasses';
 
 const meta: Meta<typeof Button> = {
     title: 'Components/Elements/Button',
@@ -9,11 +8,9 @@ const meta: Meta<typeof Button> = {
     argTypes: {
         color: {
             control: 'select',
-            options: Object.keys(colorClasses),
         },
         rounded: {
             control: 'inline-radio',
-            options: Object.keys(borderRadiusClasses),
         },
         type: {
             control: 'inline-radio',
@@ -41,24 +38,24 @@ type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
     args: {
-        text: 'Primary',
-        color: 'accent-primary',
+        text: 'Dark Button',
+        color: 'dark',
     },
 };
 
 export const Small: Story = {
     args: {
-        text: 'Download',
-        color: 'neutral-800',
+        text: 'Small Size',
+        color: 'medium',
         isSmall: true,
     },
 };
 
-export const FullWidth: Story = {
+export const WithLink: Story = {
     args: {
-        text: 'Submit',
-        color: 'accent-primary',
-        isFull: true,
+        color: 'light',
+        text: 'View on GitHub',
+        href: 'https://github.com/troychaplin/octave-design-system',
     },
 };
 
@@ -67,21 +64,4 @@ export const Disabled: Story = {
         text: 'Unavailable',
         disabled: true,
     },
-};
-
-export const WithLink: Story = {
-    args: {
-        text: 'View on GitHub',
-        href: 'https://github.com/troychaplin/octave-design-system',
-    },
-};
-
-export const AllColors: Story = {
-    render: () => (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-            {Object.keys(colorClasses).map((color) => (
-                <Button key={color} text={color} />
-            ))}
-        </div>
-    ),
 };

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { ComponentProps } from 'react';
 import { LinkProvider } from './index';
-import { Badge } from '../Badge/Badge';
+import { Button } from '../Button/Button';
 
 const meta: Meta<typeof LinkProvider> = {
     title: 'Components/Utilities/LinkProvider',
@@ -31,14 +31,14 @@ const MockRouterLink = ({ children, ...rest }: ComponentProps<'a'>) => (
 
 export const DefaultFallback: Story = {
     name: 'Default (plain anchor)',
-    render: () => <Badge text="Default anchor" href="https://carleton.ca" />,
+    render: () => <Button text="Default anchor" href="https://carleton.ca" />,
 };
 
 export const WithCustomComponent: Story = {
     name: 'With custom Link component',
     render: () => (
         <LinkProvider component={MockRouterLink}>
-            <Badge text="Injected router link" href="/docs" />
+            <Button text="Injected router link" href="/docs" />
         </LinkProvider>
     ),
 };

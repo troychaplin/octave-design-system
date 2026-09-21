@@ -54,7 +54,7 @@ export const HomepageLayout: Story = {
                     <Button text="Button Three" href="#" isSmall isOutline />
                 </ButtonGroup>
 
-                <Container color="neutral-200">
+                <Container color="neutral-200" maxWidth="alignfull">
                     <h2>Heading Two</h2>
                     <p>
                         This is an example page. It is different from a blog post because it will
