@@ -58,10 +58,28 @@
 
 .octave-container--medium {
     background-color: var(--octave--color-neutral-900);
+    color: var(--octave--color-white);
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: var(--octave--color-white);
+    }
 }
 
 .octave-container--dark {
     background-color: var(--octave--color-neutral-950);
+    color: var(--octave--color-white);
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: var(--octave--color-white);
+    }
 }
 
 .octave-container--white {
