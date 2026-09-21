@@ -1,9 +1,9 @@
-import { maxWidthClasses, elementClasses, colorClasses } from '../../utils/propClasses';
+import { maxWidthClasses, elementClasses } from '../../utils/propClasses';
 import './styles.scss';
 
 type maxWidthKeys = keyof typeof maxWidthClasses;
 type elementKeys = keyof typeof elementClasses;
-type colorKeys = keyof typeof colorClasses;
+type colorKeys = 'light' | 'medium' | 'dark' | 'white';
 
 export interface ContainerProps extends React.HTMLAttributes<HTMLElement> {
     children?: React.ReactNode;
@@ -28,7 +28,7 @@ export const Container = ({
         'octave-layout octave-container',
         'is-layout-constrained',
         maxWidth,
-        color,
+        color && `octave-container--no-gap octave-container--${color}`,
         className,
     ]
         .filter(Boolean)
@@ -38,15 +38,15 @@ export const Container = ({
         .filter(Boolean)
         .join(' ');
 
-    const inlineStyles = {
-        ...(color && {
-            backgroundColor: `var(--octave--color-${color})`,
-            paddingBlock: 'var(--octave--spacing-x-large)',
-        }),
-    };
+    // const inlineStyles = {
+    //     ...(color && {
+    //         backgroundColor: `var(--octave--color-${color})`,
+    //         paddingBlock: 'var(--octave--spacing-x-large)',
+    //     }),
+    // };
 
     return (
-        <ContainerWrapper className={rootClasses} style={inlineStyles} {...rest}>
+        <ContainerWrapper className={rootClasses} {...rest}>
             <div className={contentClasses}>{children}</div>
         </ContainerWrapper>
     );

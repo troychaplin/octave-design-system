@@ -37,6 +37,10 @@ export const HomepageLayout: Story = {
                     people start with an About page that introduces them to potential site visitors.
                     It might say something like this:
                 </p>
+                <p>
+                    Most people start with an About page that introduces them to potential site
+                    visitors. It might say something like this:
+                </p>
                 <ButtonGroup>
                     <Button text="Button One" href="#" />
                     <Button text="Button Two" href="#" />
@@ -54,8 +58,8 @@ export const HomepageLayout: Story = {
                     <Button text="Button Three" href="#" isSmall isOutline />
                 </ButtonGroup>
 
-                <Container color="neutral-200" maxWidth="alignfull">
-                    <h2>Heading Two</h2>
+                <Container color="white" maxWidth="alignfull">
+                    <h2>White Container</h2>
                     <p>
                         This is an example page. It is different from a blog post because it will
                         stay in one place and will show up in your site navigation (in most themes).
@@ -64,13 +68,8 @@ export const HomepageLayout: Story = {
                     </p>
                 </Container>
 
-                <Container
-                    style={{
-                        backgroundColor: 'var(--octave--color-neutral-50)',
-                        paddingBlock: 'var(--octave--spacing-x-large)',
-                    }}
-                >
-                    <h2>Heading Two</h2>
+                <Container color="light" maxWidth="alignfull" contentWidth="alignwide">
+                    <h2>Light Container</h2>
                     <p>
                         This is an example page. It is different from a blog post because it will
                         stay in one place and will show up in your site navigation (in most themes).
@@ -79,12 +78,8 @@ export const HomepageLayout: Story = {
                     </p>
                 </Container>
 
-                <Container
-                    style={{
-                        backgroundColor: 'var(--octave--color-neutral-200)',
-                        paddingBlock: 'var(--octave--spacing-x-large)',
-                    }}
-                >
+                <Container color="medium" maxWidth="alignfull">
+                    <h2>Medium Container</h2>
                     <p>
                         This is an example page. It is different from a blog post because it will
                         stay in one place and will show up in your site navigation (in most themes).
@@ -93,15 +88,8 @@ export const HomepageLayout: Story = {
                     </p>
                 </Container>
 
-                <Container
-                    contentWidth="alignwide"
-                    maxWidth="alignwide"
-
-                    style={{
-                        backgroundColor: 'var(--octave--color-white)',
-                        paddingBlock: 'var(--octave--spacing-x-large)',
-                    }}
-                >
+                <Container color="dark" maxWidth="alignfull" contentWidth="alignwide">
+                    <h2>Dark Container</h2>
                     <p>
                         This is an example page. It is different from a blog post because it will
                         stay in one place and will show up in your site navigation (in most themes).
@@ -110,14 +98,20 @@ export const HomepageLayout: Story = {
                     </p>
                 </Container>
 
-                <Container
-                    contentWidth="alignfull"
-                    maxWidth="alignfull"
-                    style={{
-                        backgroundColor: 'var(--octave--color-neutral-200)',
-                        paddingBlock: 'var(--octave--spacing-x-large)',
-                    }}
-                >
+                <h2>Heading Two</h2>
+                <p>
+                    This is an example page. It is different from a blog post because it will stay
+                    in one place and will show up in your site navigation (in most themes). Most
+                    people start with an About page that introduces them to potential site visitors.
+                    It might say something like this:
+                </p>
+                <p>
+                    Most people start with an About page that introduces them to potential site
+                    visitors. It might say something like this:
+                </p>
+
+                <Container color="white" maxWidth="alignwide">
+                    <h2>White Container</h2>
                     <p>
                         This is an example page. It is different from a blog post because it will
                         stay in one place and will show up in your site navigation (in most themes).
@@ -125,6 +119,100 @@ export const HomepageLayout: Story = {
                         visitors. It might say something like this:
                     </p>
                 </Container>
+
+                <Container color="light" maxWidth="alignwide" contentWidth="alignwide">
+                    <h2>Light Container</h2>
+                    <p>
+                        This is an example page. It is different from a blog post because it will
+                        stay in one place and will show up in your site navigation (in most themes).
+                        Most people start with an About page that introduces them to potential site
+                        visitors. It might say something like this:
+                    </p>
+                </Container>
+
+                <Container color="medium" maxWidth="alignwide">
+                    <h2>Medium Container</h2>
+                    <p>
+                        This is an example page. It is different from a blog post because it will
+                        stay in one place and will show up in your site navigation (in most themes).
+                        Most people start with an About page that introduces them to potential site
+                        visitors. It might say something like this:
+                    </p>
+                </Container>
+
+                <Container color="dark" maxWidth="alignwide" contentWidth="alignwide">
+                    <h2>Dark Container</h2>
+                    <p>
+                        This is an example page. It is different from a blog post because it will
+                        stay in one place and will show up in your site navigation (in most themes).
+                        Most people start with an About page that introduces them to potential site
+                        visitors. It might say something like this:
+                    </p>
+                </Container>
+
+                <h2>Heading Two</h2>
+                <p>
+                    This is an example page. It is different from a blog post because it will stay
+                    in one place and will show up in your site navigation (in most themes). Most
+                    people start with an About page that introduces them to potential site visitors.
+                    It might say something like this:
+                </p>
+                <p>
+                    Most people start with an About page that introduces them to potential site
+                    visitors. It might say something like this:
+                </p>
+
+                <Container color="white">
+                    <h2>White Container</h2>
+                    <p>
+                        This is an example page. It is different from a blog post because it will
+                        stay in one place and will show up in your site navigation (in most themes).
+                        Most people start with an About page that introduces them to potential site
+                        visitors. It might say something like this:
+                    </p>
+                </Container>
+
+                <Container color="light">
+                    <h2>Light Container</h2>
+                    <p>
+                        This is an example page. It is different from a blog post because it will
+                        stay in one place and will show up in your site navigation (in most themes).
+                        Most people start with an About page that introduces them to potential site
+                        visitors. It might say something like this:
+                    </p>
+                </Container>
+
+                <Container color="medium">
+                    <h2>Medium Container</h2>
+                    <p>
+                        This is an example page. It is different from a blog post because it will
+                        stay in one place and will show up in your site navigation (in most themes).
+                        Most people start with an About page that introduces them to potential site
+                        visitors. It might say something like this:
+                    </p>
+                </Container>
+
+                <Container color="dark">
+                    <h2>Dark Container</h2>
+                    <p>
+                        This is an example page. It is different from a blog post because it will
+                        stay in one place and will show up in your site navigation (in most themes).
+                        Most people start with an About page that introduces them to potential site
+                        visitors. It might say something like this:
+                    </p>
+                </Container>
+
+                <h2>Heading Two</h2>
+                <p>
+                    This is an example page. It is different from a blog post because it will stay
+                    in one place and will show up in your site navigation (in most themes). Most
+                    people start with an About page that introduces them to potential site visitors.
+                    It might say something like this:
+                </p>
+                <p>
+                    Most people start with an About page that introduces them to potential site
+                    visitors. It might say something like this:
+                </p>
             </Main>
         </>
     ),

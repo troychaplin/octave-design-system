@@ -1,0 +1,11 @@
+// The margin on headers is set as :where in the c2b can easily be overridden if needed.
+// This ensures consistent spacing across the design system while allowing flexibility.
+// TODO: consider adding option in c2b for forcing header margins without :where
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 0 !important;
+}

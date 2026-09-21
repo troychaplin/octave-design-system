@@ -31,7 +31,7 @@ export type ButtonProps = ButtonElementProps | ButtonLinkProps;
 
 export const Button = ({
     text,
-    color = 'dark',
+    color = 'medium',
     rounded = 'sm',
     type = 'button',
     isSmall,

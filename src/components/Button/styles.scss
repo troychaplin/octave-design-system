@@ -60,11 +60,11 @@ a.octave-button {
 
 .octave-button--medium {
     color: var(--octave--color-white);
-    background-color: var(--octave--color-neutral-600);
-    border-color: var(--octave--color-neutral-600);
+    background-color: var(--octave--color-neutral-700);
+    border-color: var(--octave--color-neutral-700);
 
     &.octave-button--outline {
-        color: var(--octave--color-neutral-600);
+        color: var(--octave--color-neutral-700);
         background-color: var(--octave--color-white);
     }
 }
