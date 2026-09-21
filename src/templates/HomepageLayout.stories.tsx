@@ -30,7 +30,7 @@ export const HomepageLayout: Story = {
             <SiteHeader siteTitle="Troy Chaplin" />
 
             <Main>
-                <h2>Heading Two</h2>
+                <h1>Heading Two</h1>
                 <p>
                     This is an example page. It is different from a blog post because it will stay
                     in one place and will show up in your site navigation (in most themes). Most

@@ -1,8 +1,9 @@
-import { maxWidthClasses, elementClasses } from '../../utils/propClasses';
+import { maxWidthClasses, elementClasses, borderRadiusClasses } from '../../utils/propClasses';
 import './styles.scss';
 
 type maxWidthKeys = keyof typeof maxWidthClasses;
 type elementKeys = keyof typeof elementClasses;
+type borderRadiusKeys = keyof typeof borderRadiusClasses;
 type colorKeys = 'light' | 'medium' | 'dark' | 'white';
 
 export interface ContainerProps extends React.HTMLAttributes<HTMLElement> {
@@ -11,6 +12,7 @@ export interface ContainerProps extends React.HTMLAttributes<HTMLElement> {
     maxWidth?: maxWidthKeys;
     contentWidth?: maxWidthKeys;
     color?: colorKeys;
+    borderRadius?: borderRadiusKeys;
 }
 
 export const Container = ({
@@ -20,6 +22,7 @@ export const Container = ({
     contentWidth = 'aligncontent',
     color,
     className,
+    borderRadius = 'md',
     ...rest
 }: ContainerProps) => {
     const ContainerWrapper = as;
@@ -29,6 +32,7 @@ export const Container = ({
         'is-layout-constrained',
         maxWidth,
         color && `octave-container--no-gap octave-container--${color}`,
+        borderRadius && `octave-container--radius-${borderRadius}`,
         className,
     ]
         .filter(Boolean)
@@ -37,13 +41,6 @@ export const Container = ({
     const contentClasses = ['has-global-padding', contentWidth, color && 'has-root-padding']
         .filter(Boolean)
         .join(' ');
-
-    // const inlineStyles = {
-    //     ...(color && {
-    //         backgroundColor: `var(--octave--color-${color})`,
-    //         paddingBlock: 'var(--octave--spacing-x-large)',
-    //     }),
-    // };
 
     return (
         <ContainerWrapper className={rootClasses} {...rest}>

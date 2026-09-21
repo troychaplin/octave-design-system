@@ -60,11 +60,11 @@ a.octave-button {
 
 .octave-button--medium {
     color: var(--octave--color-white);
-    background-color: var(--octave--color-neutral-700);
-    border-color: var(--octave--color-neutral-700);
+    background-color: var(--octave--color-neutral-800);
+    border-color: var(--octave--color-neutral-800);
 
     &.octave-button--outline {
-        color: var(--octave--color-neutral-700);
+        color: var(--octave--color-neutral-800);
         background-color: var(--octave--color-white);
     }
 }
@@ -102,6 +102,30 @@ a.octave-button {
 a.octave-button--small {
     padding: var(--octave--spacing-x-small) var(--octave--spacing-small);
     font-size: var(--octave--font-size-small);
+}
+
+.octave-button--full {
+    width: 100%;
+}
+
+.octave-button--radius-sm {
+    border-radius: var(--octave--radius-sm);
+}
+
+.octave-button--radius-md {
+    border-radius: var(--octave--radius-md);
+}
+
+.octave-button--radius-lg {
+    border-radius: var(--octave--radius-lg);
+}
+
+.octave-button--radius-full {
+    border-radius: var(--octave--radius-full);
+}
+
+.octave-button--radius-none {
+    border-radius: 0;
 }
 
 // .octave-column + .octave-button,

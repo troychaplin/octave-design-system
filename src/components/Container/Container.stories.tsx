@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Main } from '../Main/Main';
 import { Container } from './Container';
-import { colorClasses } from '../../utils/propClasses';
 import { MultiParagraph } from '../../data/SampleContent';
 
 const meta: Meta<typeof Container> = {
@@ -23,7 +22,6 @@ const meta: Meta<typeof Container> = {
         },
         color: {
             control: 'select',
-            options: Object.keys(colorClasses),
         },
     },
     parameters: {
