@@ -32,12 +32,12 @@ styling layer. Define a color, a type step, or a spacing value once in
 > build, and accessibility tooling are solid; the component catalogue is small and
 > growing. See the [changelog](CHANGELOG.mdx) for what has landed.
 
-Built with React 18 & 19, TypeScript 6, Vite 8, Storybook 10, and SCSS.
+Built with React 18 & 19, TypeScript 7, Vite 8, Storybook 10, and SCSS.
 
 ## Quick start
 
 ```bash
-# Requires Node 22+ (see .nvmrc)
+# Requires Node 24+ (see .nvmrc)
 nvm use
 
 pnpm install

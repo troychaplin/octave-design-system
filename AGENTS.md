@@ -18,7 +18,7 @@ disagree, the skill wins.
 
 **@troychaplin/octave-design-system** — a token-driven React component library.
 
-- **Build:** Vite library mode (ESM + CJS), TypeScript 6, pnpm
+- **Build:** Vite library mode (ESM + CJS), TypeScript 7, pnpm
 - **Runtime:** React 18+, SCSS + CSS custom properties (no Tailwind)
 - **Testing:** Storybook 10 + Vitest + Playwright; axe a11y at `"error"` threshold
 - **Tokens:** `@troychaplin/component2block` generates `src/styles/c2b/octave-tokens.*` and `_octave-variables.scss` from `c2b.config.json` — **never edit these files by hand**
@@ -33,7 +33,7 @@ pnpm typecheck          # tsc --noEmit
 pnpm lint               # ESLint over src/
 pnpm lint:fix           # ESLint with --fix
 pnpm test               # Vitest unit tests
-pnpm test:storybook     # all stories + axe a11y (requires Node 22+)
+pnpm test:storybook     # all stories + axe a11y (requires Node 24+)
 pnpm build              # Vite library build
 pnpm c2b                # regenerate tokens + variables
 ```
@@ -151,7 +151,8 @@ actually done.
 
 ## Key gotchas
 
-- **Node 22.14 specifically** — `eslint-visitor-keys` (transitive dep) requires 22.13+; earlier minors fail on install
+- **Node 24** (see `.nvmrc`) — `engineStrict: true` in `pnpm-workspace.yaml` fails the install on any Node a dependency's `engines` excludes (e.g. `lint-staged` needs ≥22.22.1)
+- **`typescript` is TS 6 on purpose** — TS 7.0 has no JS API, so `typescript` is aliased to `@typescript/typescript6` for typescript-eslint, Storybook docgen and the dts plugins; `tsc` comes from `@typescript/native` (TS 7). Don't set `typescript` to `^7` until those tools support the TS 7.1 API
 - **Storybook source transform** — expression-bodied render functions only; block bodies break the docs code panel
 - **CSS vars in media queries** — won't work; use SCSS variables from `_octave-variables.scss`
 - **TS 6 side-effect imports** — `declare module '*.scss';` (no body) in `src/scss.d.ts`

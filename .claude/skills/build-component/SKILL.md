@@ -59,7 +59,7 @@ format. Prefix with a keyword: `_Added_`, `_Changed_`, `_Fixed_`, `_Removed_`, `
 ```sh
 pnpm typecheck        # tsc --noEmit
 pnpm lint             # ESLint over src/
-pnpm test:storybook   # every story + axe a11y; requires Node 22+
+pnpm test:storybook   # every story + axe a11y; requires Node 24+
 ```
 
 All three must be clean before committing. Never run with `--no-verify` — the husky hooks exist
