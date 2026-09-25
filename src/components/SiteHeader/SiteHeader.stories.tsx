@@ -18,6 +18,7 @@ type Story = StoryObj<typeof SiteHeader>;
 
 export const Default: Story = {
     args: {
+        siteTitleAccent: 'Octave',
         children: <MultiParagraph count={2} />,
     },
 };

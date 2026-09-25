@@ -23,7 +23,7 @@ export const Hero = ({ className = '', children }: HeroProps) => {
             <FlexGroup gap="normal" maxWidth="alignwide" justify="space-between" align="center">
                 <div className="octave-hero__content">
                     <h1>
-                        Things I build, <span className="italic">and I help build.</span>
+                        Things I build, <span className="italic">and I help build</span>
                     </h1>
                     <p>
                         This is an example page. It is different from a blog post because it will

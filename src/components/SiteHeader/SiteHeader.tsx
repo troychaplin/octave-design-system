@@ -10,6 +10,7 @@ import './styles.scss';
 export interface SiteHeaderProps {
     children?: React.ReactNode;
     siteTitle?: string;
+    siteTitleAccent?: string;
     className?: string;
 }
 
@@ -19,9 +20,27 @@ const navItems = [
     { href: '/contact', label: 'Contact' },
 ];
 
-export const SiteHeader = ({ className = '', children, siteTitle }: SiteHeaderProps) => {
+// Splits the title around the first match of `accent`. With no match, the whole title comes back
+// as the only part.
+const splitTitle = (title: string, accent?: string): [string, string?, string?] => {
+    const start = accent ? title.indexOf(accent) : -1;
+
+    if (!accent || start === -1) {
+        return [title];
+    }
+
+    return [title.slice(0, start), accent, title.slice(start + accent.length)];
+};
+
+export const SiteHeader = ({
+    className = '',
+    children,
+    siteTitle = 'Octave Design System',
+    siteTitleAccent,
+}: SiteHeaderProps) => {
     const rootClasses = ['octave-site-header', className].filter(Boolean).join(' ');
     const LinkComponent = useLinkContext();
+    const [titleStart, titleAccent, titleEnd] = splitTitle(siteTitle, siteTitleAccent);
 
     return (
         <header className={rootClasses}>
@@ -30,7 +49,13 @@ export const SiteHeader = ({ className = '', children, siteTitle }: SiteHeaderPr
                     <p>
                         {/* eslint-disable-next-line react-hooks/static-components -- LinkComponent is injected via context, stable across renders */}
                         <LinkComponent href="/" rel="home">
-                            {siteTitle ?? 'Octave Design System'}
+                            {titleStart}
+                            {titleAccent && (
+                                <span className="octave-site-header__title-accent">
+                                    {titleAccent}
+                                </span>
+                            )}
+                            {titleEnd}
                         </LinkComponent>
                     </p>
                 </div>

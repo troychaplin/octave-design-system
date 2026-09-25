@@ -26,7 +26,7 @@ export const WorkLayout: Story = {
     },
     render: () => (
         <>
-            <SiteHeader siteTitle="troychaplin.work" />
+            <SiteHeader siteTitle="troychaplin.work" siteTitleAccent="troychaplin" />
 
             <Main>
                 <Hero />
