@@ -6,23 +6,36 @@
 }
 
 .octave-site-header__branding p {
-    font-family: var(--octave--font-family-inter-tight);
-    font-size: var(--octave--font-size-medium);
+    // font-family: var(--octave--font-family-inter-tight);
+    // font-size: var(--octave--font-size-medium);
     padding: 0;
     margin: 0;
 
-    a {
-        font-weight: var(--octave--font-weight-medium);
-        color: var(--octave--color-neutral-900);
-        text-decoration: none;
-    }
-}
-
-.octave-site-header__title-accent {
     font-family: var(--octave--font-family-source-serif-4);
     font-size: var(--octave--font-size-large);
-    color: var(--octave--color-accent-secondary);
     font-style: italic;
+
+    a {
+        font-weight: var(--octave--font-weight-normal);
+        color: var(--octave--color-accent-secondary);
+        text-decoration: none;
+
+        span.octave-site-header__title-accent {
+            font-family: var(--octave--font-family-inter-tight);
+            font-size: var(--octave--font-size-large);
+            font-style: normal;
+            color: var(--octave--color-neutral-900);
+        }
+
+        &:hover,
+        &:focus-visible {
+            color: var(--octave--color-accent-secondary);
+
+            span.octave-site-header__title-accent {
+                color: var(--octave--color-accent-secondary);
+            }
+        }
+    }
 }
 
 .octave-site-header__nav ul {
