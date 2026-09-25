@@ -63,7 +63,7 @@
 
         "fontFamily": {
             "inter-tight": {
-                "value": "Inter Tight, system-ui, Segoe UI, roboto, sans-serif",
+                "value": "'Inter Tight', system-ui, 'Segoe UI', roboto, sans-serif",
                 "fontFace": [
                     {
                         "weight": "100 900",
@@ -78,7 +78,7 @@
                 ]
             },
             "source-serif-4": {
-                "value": "Source Serif 4, ui-serif, georgia, serif",
+                "value": "'Source Serif 4', ui-serif, georgia, serif",
                 "fontFace": [
                     {
                         "weight": "200 900",
@@ -93,7 +93,7 @@
                 ]
             },
             "jetbrains-mono": {
-                "value": "JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
+                "value": "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
                 "fontFace": [
                     {
                         "weight": "100 800",

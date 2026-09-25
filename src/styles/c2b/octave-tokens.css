@@ -47,9 +47,9 @@
   --octave--spacing-5-x-large: clamp(1.75rem, 1.75rem + ((1vw - 0.2rem) * 6.250), 5rem);
 
   /* Font Families */
-  --octave--font-family-inter-tight: Inter Tight, system-ui, Segoe UI, roboto, sans-serif;
-  --octave--font-family-source-serif-4: Source Serif 4, ui-serif, georgia, serif;
-  --octave--font-family-jetbrains-mono: JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  --octave--font-family-inter-tight: 'Inter Tight', system-ui, 'Segoe UI', roboto, sans-serif;
+  --octave--font-family-source-serif-4: 'Source Serif 4', ui-serif, georgia, serif;
+  --octave--font-family-jetbrains-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 
   /* Font Sizes */
   --octave--font-size-2-x-small: clamp(0.6875rem, 0.6875rem + ((1vw - 0.2rem) * 0.12), 0.75rem);

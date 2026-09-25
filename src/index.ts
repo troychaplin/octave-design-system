@@ -18,6 +18,7 @@ export { ButtonGroup } from './components/ButtonGroup/ButtonGroup';
 
 // Content
 export { Figure, type FigureProps } from './components/Figure/Figure';
+export { Hero, type HeroProps } from './components/Hero/Hero';
 
 // Utilities
 export { LinkProvider } from './components/LinkProvider/index';

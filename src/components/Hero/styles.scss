@@ -1,0 +1,22 @@
+.octave-hero {
+    padding-block: var(--octave--spacing-x-large);
+}
+
+.octave-hero h1 {
+    font-size: var(--octave--font-size-5-x-large);
+    font-weight: var(--octave--font-weight-normal);
+    color: var(--octave--color-neutral-900);
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-top: 0;
+
+    span {
+        display: block;
+    }
+
+    span.italic {
+        font-family: var(--octave--font-family-source-serif-4);
+        font-weight: var(--octave--font-weight-extra-light);
+        font-style: italic;
+    }
+}

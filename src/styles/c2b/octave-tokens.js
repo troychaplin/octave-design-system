@@ -47,9 +47,9 @@ export const octaveTokens = {
         x5Large: 'clamp(1.75rem, 1.75rem + ((1vw - 0.2rem) * 6.250), 5rem)'
     },
     fontFamily: {
-        interTight: 'Inter Tight, system-ui, Segoe UI, roboto, sans-serif',
-        sourceSerif4: 'Source Serif 4, ui-serif, georgia, serif',
-        jetbrainsMono: 'JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace'
+        interTight: '\'Inter Tight\', system-ui, \'Segoe UI\', roboto, sans-serif',
+        sourceSerif4: '\'Source Serif 4\', ui-serif, georgia, serif',
+        jetbrainsMono: '\'JetBrains Mono\', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \'Liberation Mono\', \'Courier New\', monospace'
     },
     fontSize: {
         x2Small: 'clamp(0.6875rem, 0.6875rem + ((1vw - 0.2rem) * 0.12), 0.75rem)',

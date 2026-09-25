@@ -51,7 +51,7 @@
 .octave-container--medium,
 .octave-container--dark,
 .octave-container--white {
-    padding-block: var(--octave--spacing-4-x-large);
+    padding-block: var(--octave--spacing-5-x-large);
 }
 
 .octave-container--light {
@@ -86,6 +86,20 @@
 
 .octave-container--white {
     background-color: var(--octave--color-white);
+}
+
+.octave-container--light,
+.octave-container--white {
+    // border: 1px solid var(--octave--color-neutral-300);
+    border: 1px solid var(--octave--color-neutral-300);
+
+    &.alignfull {
+        border-inline: none;
+
+        & + .octave-container--has-border {
+            border-top: none;
+        }
+    }
 }
 
 .octave-container--full {
