@@ -17,6 +17,7 @@ export { Button, type ButtonProps } from './components/Button/Button';
 export { ButtonGroup } from './components/ButtonGroup/ButtonGroup';
 
 // Content
+export { CodeBlock, type CodeBlockProps } from './components/CodeBlock/CodeBlock';
 export { Figure, type FigureProps } from './components/Figure/Figure';
 export { Hero, type HeroProps } from './components/Hero/Hero';
 

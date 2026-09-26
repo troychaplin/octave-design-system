@@ -1,10 +1,15 @@
-import { maxWidthClasses, elementClasses, borderRadiusClasses } from '../../utils/propClasses';
+import {
+    maxWidthClasses,
+    elementClasses,
+    borderRadiusClasses,
+    backgroundColorClasses,
+} from '../../utils/propClasses';
 import './styles.scss';
 
 type maxWidthKeys = keyof typeof maxWidthClasses;
 type elementKeys = keyof typeof elementClasses;
 type borderRadiusKeys = keyof typeof borderRadiusClasses;
-type colorKeys = 'light' | 'medium' | 'dark' | 'white';
+type colorKeys = keyof typeof backgroundColorClasses;
 
 export interface ContainerProps extends React.HTMLAttributes<HTMLElement> {
     children?: React.ReactNode;

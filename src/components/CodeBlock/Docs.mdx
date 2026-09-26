@@ -1,0 +1,116 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as CodeBlockStories from './CodeBlock.stories';
+
+<Meta of={CodeBlockStories} />
+
+# CodeBlock
+
+Displays a block of code exactly as it's written. Renders a `<pre>` wrapping a `<code>`, so line breaks and indentation are kept.
+
+## When to use
+
+- Show a multi-line snippet in an article, a docs page or a panel such as the Hero's code view.
+- Not for code inside a sentence. Use a plain `<code>` element for inline code.
+- There's no syntax highlighting. The code is set in plain JetBrains Mono.
+
+## Import
+
+```tsx
+import { CodeBlock } from '@troychaplin/octave-design-system';
+```
+
+## Basic usage
+
+Pass the code as a string. A template literal (backticks) keeps its line breaks and indentation:
+
+```tsx
+const snippet = `private function init_allowed_blocks(): void {
+    add_filter( 'allowed_block_types_all', [ $this, 'filter_allowed_blocks' ], 10, 2 );
+}`;
+
+<CodeBlock code={snippet} />;
+
+// Dark background, white text
+<CodeBlock code={snippet} color="dark" />;
+
+// White background with a border
+<CodeBlock code={snippet} color="white" hasBorder />;
+
+// Rounded corners
+<CodeBlock code={snippet} borderRadius="md" />;
+```
+
+Don't write the code as JSX children instead. JSX reads `{` as the start of an expression and collapses whitespace, so braces break the build and the line breaks are lost. Inside a template literal, escape any backticks and `${` in the code as `` \` `` and `\${`.
+
+`color` takes the same four backgrounds as `Container`: `light`, `medium`, `dark` and `white`. Without it, the background is `neutral-200`, the same as `light`.
+
+`hasBorder` adds a 1px border. On the default, `light` and `white` backgrounds it's `neutral-300`, which outlines the block against the page. On `medium` and `dark` it matches the background, so it doesn't show, but a bordered block stays the same size whatever its color.
+
+`borderRadius` rounds the corners with the radius tokens: `none`, `sm`, `md`, `lg`, `xl` or `full`. Without it, the corners are square.
+
+All other props are spread onto the `<pre>`, so `id`, `className`, `data-*` attributes and event handlers pass through.
+
+## Examples
+
+### Default
+
+<Canvas of={CodeBlockStories.Default} />
+<Controls of={CodeBlockStories.Default} />
+
+### Colors
+
+The same backgrounds as `Container`. `medium` and `dark` switch the text to white.
+
+<Canvas of={CodeBlockStories.Colors} />
+
+### With border
+
+`hasBorder` on each color. The border shows on `light` and `white`, and matches the background on `medium` and `dark`.
+
+<Canvas of={CodeBlockStories.WithBorder} />
+
+### Border radius
+
+Each `borderRadius` value. Without the prop, the corners are square.
+
+<Canvas of={CodeBlockStories.BorderRadius} />
+
+### Long lines
+
+Lines are never wrapped. A line too long for the block scrolls sideways, and the block takes keyboard focus so it can be scrolled without a mouse.
+
+<Canvas of={CodeBlockStories.LongLines} />
+
+## CSS classes
+
+| Class                              | When applied                                                    |
+| ---------------------------------- | --------------------------------------------------------------- |
+| `octave-code-block`                | Always — on the `<pre>`                                         |
+| `octave-code-block--{color}`       | When `color` is set, e.g. `octave-code-block--dark`             |
+| `octave-code-block--has-border`    | When `hasBorder` is true                                        |
+| `octave-code-block--radius-{size}` | When `borderRadius` is set, e.g. `octave-code-block--radius-md` |
+
+The border's colour always comes from the base class or the `color` modifier; `--has-border` only gives it a style and width, so the two combine without any rule per color. A `className` you pass is added alongside them. The inner `<code>` has no class of its own: `.octave-code-block code` sets it to inherit the block's font, because modern-normalize otherwise gives `code` its own monospace stack.
+
+## Design tokens
+
+| Token                                  | Used for                                                              |
+| -------------------------------------- | --------------------------------------------------------------------- |
+| `--octave--font-family-jetbrains-mono` | Typeface                                                              |
+| `--octave--font-size-small`            | Font size                                                             |
+| `--octave--line-height-normal`         | Line height                                                           |
+| `--octave--spacing-x-large`            | Padding                                                               |
+| `--octave--radius-*`                   | Corners, one per `borderRadius` value: `sm`, `md`, `lg`, `xl`, `full` |
+| `--octave--color-neutral-950`          | Text by default; background and border for `dark`                     |
+| `--octave--color-neutral-300`          | Border by default and for `light` and `white`                         |
+| `--octave--color-neutral-200`          | Background by default and for `light`                                 |
+| `--octave--color-neutral-900`          | Background and border for `medium`                                    |
+| `--octave--color-white`                | Text for `medium` and `dark`; background for `white`                  |
+
+The border colours only show with `hasBorder`. Every value comes from a token except the 1px border width, which matches `Container`'s. The block sets no margins, so it keeps the spacing it gets from the layout it's placed in.
+
+## Accessibility
+
+- `<pre>` keeps the code's whitespace, and `<code>` marks the content as computer code. Screen readers read it as plain text.
+- The `<pre>` has `tabIndex={0}`, so keyboard users can Tab to it and scroll long lines with the arrow keys. The global focus outline shows while it has focus. Without this, a block that scrolls couldn't be reached from the keyboard. It's a tab stop even when every line fits.
+- Every background sets its own text color: `neutral-950` on the default, `light` and `white` backgrounds, and white on `medium` and `dark`. Each pairing is above 10:1 contrast, and because the block sets its own text color, it stays readable inside any `Container`.

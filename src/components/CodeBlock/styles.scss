@@ -1,0 +1,69 @@
+.octave-code-block {
+    padding-inline: var(--octave--spacing-x-large);
+    padding-block: var(--octave--spacing-x-large);
+    overflow-x: auto;
+    font-family: var(--octave--font-family-jetbrains-mono);
+    font-size: var(--octave--font-size-small);
+    line-height: var(--octave--line-height-normal);
+    color: var(--octave--color-neutral-950);
+    background-color: var(--octave--color-neutral-200);
+    border-color: var(--octave--color-neutral-300);
+
+    // modern-normalize gives code its own monospace stack
+    code {
+        display: block;
+        font-family: inherit;
+    }
+
+    // Background colours match Container's color variants. Each one also sets the colour
+    // a border would be; medium and dark match their background.
+    &--light {
+        background-color: var(--octave--color-neutral-200);
+    }
+
+    &--medium {
+        color: var(--octave--color-white);
+        background-color: var(--octave--color-neutral-900);
+        border-color: var(--octave--color-neutral-900);
+    }
+
+    &--dark {
+        color: var(--octave--color-white);
+        background-color: var(--octave--color-neutral-950);
+        border-color: var(--octave--color-neutral-950);
+    }
+
+    &--white {
+        background-color: var(--octave--color-white);
+    }
+
+    // Longhands, not the border shorthand, which would reset border-color
+    &--has-border {
+        border-style: solid;
+        border-width: 1px;
+    }
+
+    &--radius-sm {
+        border-radius: var(--octave--radius-sm);
+    }
+
+    &--radius-md {
+        border-radius: var(--octave--radius-md);
+    }
+
+    &--radius-lg {
+        border-radius: var(--octave--radius-lg);
+    }
+
+    &--radius-xl {
+        border-radius: var(--octave--radius-xl);
+    }
+
+    &--radius-full {
+        border-radius: var(--octave--radius-full);
+    }
+
+    &--radius-none {
+        border-radius: 0;
+    }
+}

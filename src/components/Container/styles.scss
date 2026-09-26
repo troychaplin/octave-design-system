@@ -118,6 +118,10 @@
     border-radius: var(--octave--radius-lg);
 }
 
+.octave-container--radius-xl:not(.alignfull) {
+    border-radius: var(--octave--radius-xl);
+}
+
 .octave-container--radius-full:not(.alignfull) {
     border-radius: var(--octave--radius-full);
 }

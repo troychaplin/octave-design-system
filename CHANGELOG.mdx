@@ -69,3 +69,14 @@ name without quotes can't contain a word that starts with a digit.
 
 _Added_ `SiteHeader` `siteTitleAccent` prop wraps the matching part of `siteTitle` in
 `octave-site-header__title-accent`, so that part can be styled on its own.
+
+_Added_ `CodeBlock` component: renders a string of code in `<pre><code>` in JetBrains Mono, keeping
+its line breaks and indentation, and scrolls sideways when a line is too long to fit. A `color` prop
+takes the same `light`, `medium`, `dark` and `white` backgrounds as `Container`, with white text on
+`medium` and `dark`. `hasBorder` adds a 1px border: `neutral-300` on the default, `light` and `white`
+backgrounds, and the background's own color on `medium` and `dark`, so a bordered block stays the
+same size whatever its color. `borderRadius` rounds the corners with the `none`, `sm`, `md`, `lg`,
+`xl` and `full` radius tokens.
+
+_Fixed_ `Container` `borderRadius="xl"` now rounds the corners. The value was accepted but had no
+style rule, so the corners stayed square.

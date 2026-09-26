@@ -65,3 +65,12 @@ export const flexAlignClasses = {
     end: 'end',
     stretch: 'stretch',
 };
+
+// Background colours shared by Container and CodeBlock. medium and dark switch the
+// text to white.
+export const backgroundColorClasses = {
+    light: 'light',
+    medium: 'medium',
+    dark: 'dark',
+    white: 'white',
+};
