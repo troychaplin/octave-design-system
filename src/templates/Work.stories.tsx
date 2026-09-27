@@ -4,6 +4,7 @@ import { Main } from '../components/Main/Main';
 import { Container } from '../components/Container/Container';
 import { SiteHeader } from '../components/SiteHeader/SiteHeader';
 import { Hero } from '../components/Hero/Hero';
+import { InfoBar } from '../components/InfoBar/InfoBar';
 import { CodeBlock } from '../components/CodeBlock/CodeBlock';
 import { CodeDataReact } from '../data/CodeData';
 
@@ -28,7 +29,8 @@ export const WorkLayout: Story = {
     },
     render: () => (
         <>
-            <SiteHeader siteTitle="troychaplin.work" siteTitleAccent="troychaplin" />
+            <SiteHeader siteTitle="troychaplin.work" siteTitleAccent="work" />
+            <InfoBar />
 
             <Main>
                 <Hero>

@@ -70,7 +70,6 @@ export const SiteHeader = ({
                 </nav>
                 <div>
                     <ButtonGroup>
-                        {/* <Button text="Primary" isOutline /> */}
                         <Button text="Primary" isSmall isOutline />
                     </ButtonGroup>
                 </div>

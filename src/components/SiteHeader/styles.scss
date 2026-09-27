@@ -6,33 +6,27 @@
 }
 
 .octave-site-header__branding p {
-    // font-family: var(--octave--font-family-inter-tight);
-    // font-size: var(--octave--font-size-medium);
+    font-family: var(--octave--font-family-source-serif-4);
+    font-size: var(--octave--font-size-large);
     padding: 0;
     margin: 0;
 
-    font-family: var(--octave--font-family-source-serif-4);
-    font-size: var(--octave--font-size-large);
-    font-style: italic;
+    span {
+        font-style: italic;
+        color: var(--octave--color-accent-secondary);
+    }
 
     a {
         font-weight: var(--octave--font-weight-normal);
-        color: var(--octave--color-accent-secondary);
+        color: var(--octave--color-neutral-900);
         text-decoration: none;
-
-        span.octave-site-header__title-accent {
-            font-family: var(--octave--font-family-inter-tight);
-            font-size: var(--octave--font-size-large);
-            font-style: normal;
-            color: var(--octave--color-neutral-900);
-        }
 
         &:hover,
         &:focus-visible {
             color: var(--octave--color-accent-secondary);
 
             span.octave-site-header__title-accent {
-                color: var(--octave--color-accent-secondary);
+                color: var(--octave--color-neutral-900);
             }
         }
     }
