@@ -1,6 +1,6 @@
 {
     "name": "@troychaplin/octave-design-system",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "Octave design system and React component library",
     "author": "Troy Chaplin",
     "license": "MIT",
