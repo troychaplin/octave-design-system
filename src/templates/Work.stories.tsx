@@ -31,7 +31,6 @@ export const WorkLayout: Story = {
         <>
             <SiteHeader siteTitle="troychaplin.work" siteTitleAccent="work" />
             <InfoBar />
-
             <Main>
                 <Hero>
                     <CodeBlock code={CodeDataReact} color="medium" borderRadius="sm" />

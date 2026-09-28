@@ -22,16 +22,16 @@ export const Hero = ({ className = '', children }: HeroProps) => {
         >
             <FlexGroup gap="normal" maxWidth="alignwide" justify="space-between" align="center">
                 <div className="octave-hero__content">
+                    <p className="octave-hero__prefix">Building for the open web.</p>
                     <h1>
-                        Things I build, <span>and things I</span>{' '}
-                        <span className="italic">help build.</span>
+                        Plugins, projects{' '}
+                        <span className="italic">& open source contributions</span>
                     </h1>
-                    {/* <p>
-                        This is an example page. It is different from a blog post because it will
-                        stay in one place and will show up in your site navigation (in most themes).
-                        Most people start with an About page that introduces them to potential site
-                        visitors. It might say something like this:
-                    </p> */}
+                    <ul className="octave-hero__stats">
+                        <li>7 released plugins</li>
+                        <li>5 experimental projects</li>
+                        <li>3 active contributions</li>
+                    </ul>
                 </div>
                 <div className="octave-hero__code">{children}</div>
             </FlexGroup>

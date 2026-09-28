@@ -1,5 +1,7 @@
+@use '../../styles/c2b/octave-variables' as *;
+
 .octave-hero {
-    padding-block: var(--octave--spacing-2-x-large);
+    padding-bottom: var(--octave--spacing-small);
 
     .octave-flex-group {
         gap: var(--octave--spacing-3-x-large);
@@ -11,8 +13,15 @@
 }
 
 .octave-hero__code {
-    flex: 0 0 40%;
     min-width: 0;
+
+    @include below-tablet {
+        display: none;
+    }
+
+    @include above-tablet {
+        flex: 0 0 40%;
+    }
 
     > * {
         margin-block: 0;
@@ -20,7 +29,7 @@
 }
 
 .octave-hero h1 {
-    font-size: var(--octave--font-size-5-x-large);
+    font-size: var(--octave--font-size-4-x-large);
     font-weight: var(--octave--font-weight-normal);
     color: var(--octave--color-neutral-900);
     line-height: 1.1;
@@ -36,4 +45,23 @@
             font-style: italic;
         }
     }
+}
+
+.octave-hero__prefix {
+    font-size: var(--octave--font-size-medium);
+    font-weight: var(--octave--font-weight-light);
+    font-style: italic;
+    padding-bottom: var(--octave--spacing-2-x-large);
+}
+
+.octave-hero ul.octave-hero__stats {
+    display: flex;
+    gap: var(--octave--spacing-2-x-large);
+    font-size: var(--octave--font-size-small);
+    font-weight: var(--octave--font-weight-light);
+    margin-top: var(--octave--spacing-medium);
+    padding-top: var(--octave--spacing-medium);
+    border-top: 1px solid var(--octave--color-neutral-300);
+    list-style: none;
+    padding-left: 0;
 }
