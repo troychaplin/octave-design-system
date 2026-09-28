@@ -1,9 +1,9 @@
 {
     "name": "@troychaplin/octave-design-system",
-    "version": "0.1.0",
+    "version": "0.0.1",
     "description": "Octave design system and React component library",
     "author": "Troy Chaplin",
-    "license": "SEE LICENSE IN LICENSE",
+    "license": "MIT",
     "keywords": [
         "react",
         "nextjs",
@@ -16,13 +16,13 @@
     "packageManager": "pnpm@12.6.0",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/@troychaplin/octave-design-system.git"
+        "url": "git+https://github.com/troychaplin/octave-design-system.git"
     },
     "type": "module",
     "private": false,
     "publishConfig": {
-        "registry": "https://npm.pkg.github.com",
-        "access": "restricted"
+        "registry": "https://registry.npmjs.org/",
+        "access": "public"
     },
     "sideEffects": [
         "**/*.css",

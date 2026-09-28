@@ -14,7 +14,7 @@ RDS components that render links (`Badge`, `SocialIcons.Item`, `CookieBanner`) n
 ## Import
 
 ```tsx
-import { LinkProvider } from '@cuweb/raven-design-system';
+import { LinkProvider } from '@cuweb/octave-design-system';
 ```
 
 ## Setup
@@ -26,7 +26,7 @@ Wrap your application root once. The `component` prop accepts any component that
 ```tsx
 // app/layout.tsx
 import Link from 'next/link';
-import { LinkProvider } from '@cuweb/raven-design-system';
+import { LinkProvider } from '@cuweb/octave-design-system';
 
 export default function RootLayout({ children }) {
     return (
@@ -43,7 +43,7 @@ export default function RootLayout({ children }) {
 
 ```tsx
 import { Link } from 'react-router-dom';
-import { LinkProvider } from '@cuweb/raven-design-system';
+import { LinkProvider } from '@cuweb/octave-design-system';
 
 <LinkProvider component={Link}>
     <App />
@@ -79,7 +79,7 @@ Any RDS component that renders a link reads from this context via `useLinkContex
 If you are building a component on top of RDS that also needs to render links, import the hook directly rather than hardcoding `<a>`:
 
 ```tsx
-import { useLinkContext } from '@cuweb/raven-design-system';
+import { useLinkContext } from '@cuweb/octave-design-system';
 
 export const MyCard = ({ href, children }) => {
     const LinkComponent = useLinkContext();

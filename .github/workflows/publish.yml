@@ -1,0 +1,58 @@
+name: Publish to npm
+
+on:
+    push:
+        tags:
+            - '[0-9]+.[0-9]+.[0-9]+*'
+
+permissions:
+    contents: read
+    id-token: write
+
+jobs:
+    publish:
+        name: Build, test & publish
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - uses: pnpm/action-setup@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+                  cache: pnpm
+
+            - name: Check the tag
+              run: |
+                  VERSION=$(node -p "require('./package.json').version")
+                  if [ "$GITHUB_REF_NAME" != "$VERSION" ]; then
+                      echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $VERSION."
+                      exit 1
+                  fi
+                  if ! git merge-base --is-ancestor HEAD origin/main; then
+                      echo "::error::Tag $GITHUB_REF_NAME is not on main. Push main first, then the tag."
+                      exit 1
+                  fi
+
+            - run: pnpm install --frozen-lockfile
+            - run: pnpm build
+            - run: pnpm exec playwright install chromium --with-deps
+            - run: pnpm test
+
+            # Trusted publishing: npm exchanges the job's OIDC token for a publish token and
+            # attaches provenance, so no NPM_TOKEN secret is needed. The version check makes the
+            # hand-published first release (and re-runs) skip instead of failing.
+            - name: Publish
+              run: |
+                  NAME=$(node -p "require('./package.json').name")
+                  if [ -n "$(npm view "$NAME@$GITHUB_REF_NAME" version 2>/dev/null)" ]; then
+                      echo "$NAME@$GITHUB_REF_NAME is already on npm, skipping."
+                      exit 0
+                  fi
+                  case "$GITHUB_REF_NAME" in
+                      *-*) npm publish --tag next ;;
+                      *) npm publish ;;
+                  esac
