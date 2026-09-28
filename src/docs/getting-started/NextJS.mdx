@@ -11,7 +11,7 @@ Using `@troychaplin/octave-design-system` in a Next.js app. Assumes you've compl
 In `app/layout.tsx` (App Router) or `pages/_app.tsx` (Pages Router):
 
 ```tsx
-import '@troychaplin/octave-design-system/styles';
+import '@troychaplin/octave-design-system/styles.css';
 ```
 
 This imports the bundled stylesheet (tokens + globals + all components).
@@ -24,7 +24,7 @@ Wrap your app in `<LinkProvider>` so Octave components that accept an `href` pro
 // app/layout.tsx
 import Link from 'next/link';
 import { LinkProvider } from '@troychaplin/octave-design-system';
-import '@troychaplin/octave-design-system/styles';
+import '@troychaplin/octave-design-system/styles.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
