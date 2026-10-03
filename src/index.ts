@@ -21,6 +21,8 @@ export { ButtonGroup } from './components/ButtonGroup/ButtonGroup';
 export { CodeBlock, type CodeBlockProps } from './components/CodeBlock/CodeBlock';
 export { Figure, type FigureProps } from './components/Figure/Figure';
 export { Hero, type HeroProps } from './components/Hero/Hero';
+export { HeroHeader, type HeroHeaderProps } from './components/HeroHeader/HeroHeader';
+export { SectionHeader, type SectionHeaderProps } from './components/SectionHeader/SectionHeader';
 
 // Utilities
 export { LinkProvider } from './components/LinkProvider/index';

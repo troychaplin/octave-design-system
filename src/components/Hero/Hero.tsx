@@ -15,25 +15,13 @@ export const Hero = ({ className = '', children }: HeroProps) => {
 
     return (
         <Container
-            as="header"
+            as="section"
             className={rootClasses}
             maxWidth="alignfull"
             contentWidth="alignwide"
         >
             <FlexGroup gap="normal" maxWidth="alignwide" justify="space-between" align="center">
-                <div className="octave-hero__content">
-                    <p className="octave-hero__prefix">Building for the open web.</p>
-                    <h1>
-                        Plugins, projects{' '}
-                        <span className="italic">& open source contributions</span>
-                    </h1>
-                    <ul className="octave-hero__stats">
-                        <li>7 released plugins</li>
-                        <li>5 experimental projects</li>
-                        <li>3 active contributions</li>
-                    </ul>
-                </div>
-                <div className="octave-hero__code">{children}</div>
+                {children}
             </FlexGroup>
         </Container>
     );

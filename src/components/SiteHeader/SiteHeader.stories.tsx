@@ -3,7 +3,7 @@ import { SiteHeader } from './SiteHeader';
 import { MultiParagraph } from '../../data/SampleContent';
 
 const meta: Meta<typeof SiteHeader> = {
-    title: 'Components/Template Parts/SiteHeader',
+    title: 'Components/Content/Site Header',
     component: SiteHeader,
     tags: ['!autodocs'],
     parameters: {

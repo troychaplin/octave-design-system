@@ -17,6 +17,18 @@ Prefix the change with one of these keywords:
 
 ## [Unreleased]
 
+_Added_ `HeroHeader` — the heading block for a `Hero`, with an optional `prefix`, a `title` with an
+optional italic `titleAccent`, a `level` prop (`<h1>` by default) and a `children` slot for stats,
+an intro or actions.
+
+_Added_ `SectionHeader` — a smaller heading block for page sections: an uppercase monospace
+`prefix` eyebrow, a `title`, a `level` prop (`<h2>` by default) and a divider rule beneath.
+
+_Breaking_ `Hero` no longer renders its own prefix, heading and stats — pass the hero's content
+as children, such as a `HeroHeader` and a `CodeBlock`. Wrap them in `octave-hero__content` and
+`octave-hero__code` divs to keep the two-column layout. `Hero` now renders a `<section>` rather
+than a `<header>`, so a `HeroHeader` can sit inside it.
+
 ## [0.1.1] - 2026-09-28
 
 _Fixed_ The Getting Started docs import the bundled stylesheet from

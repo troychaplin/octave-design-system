@@ -1,0 +1,30 @@
+.octave-section-header {
+    padding-bottom: var(--octave--spacing-large);
+    border-bottom: 1px solid currentColor;
+}
+
+.octave-section-header__prefix {
+    margin: 0 0 var(--octave--spacing-medium);
+    font-family: var(--octave--font-family-jetbrains-mono);
+    font-size: var(--octave--font-size-2-x-small);
+    font-weight: var(--octave--font-weight-normal);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--octave--color-neutral-600);
+}
+
+.octave-section-header__title {
+    margin: 0;
+    font-size: var(--octave--font-size-2-x-large);
+    font-weight: var(--octave--font-weight-normal);
+    line-height: 1.1;
+    letter-spacing: -1px;
+    color: var(--octave--color-neutral-950);
+}
+
+.octave-container--dark,
+.octave-container--medium {
+    .octave-section-header__prefix {
+        color: var(--octave--color-neutral-300);
+    }
+}

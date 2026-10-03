@@ -1,0 +1,41 @@
+.octave-hero-header__title {
+    font-size: var(--octave--font-size-4-x-large);
+    font-weight: var(--octave--font-weight-normal);
+    color: var(--octave--color-neutral-900);
+    line-height: 1.1;
+    letter-spacing: -2px;
+    margin-top: 0;
+}
+
+.octave-hero-header__title-accent {
+    display: block;
+    font-family: var(--octave--font-family-source-serif-4);
+    font-weight: var(--octave--font-weight-extra-light);
+    font-style: italic;
+}
+
+.octave-hero-header__prefix {
+    font-size: var(--octave--font-size-medium);
+    font-weight: var(--octave--font-weight-light);
+    font-style: italic;
+    padding-bottom: var(--octave--spacing-2-x-large);
+}
+
+.octave-hero-header ul.octave-hero-header__stats {
+    display: flex;
+    gap: var(--octave--spacing-2-x-large);
+    font-size: var(--octave--font-size-small);
+    font-weight: var(--octave--font-weight-light);
+    margin-top: var(--octave--spacing-x-large);
+    padding-top: var(--octave--spacing-medium);
+    border-top: 1px solid var(--octave--color-neutral-300);
+    list-style: none;
+    padding-left: 0;
+}
+
+.octave-container--dark,
+.octave-container--medium {
+    .octave-hero-header__title {
+        color: var(--octave--color-white);
+    }
+}
