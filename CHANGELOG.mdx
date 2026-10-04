@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Prefix the change with one of these keywords:
 
-- _Added_: for new features.`
+- _Added_: for new features.
 - _Breaking_: for higher visibility of breaking changes
 - _Changed_: for changes in existing functionality.
 - _Deprecated_: for soon-to-be removed features.
@@ -17,151 +17,30 @@ Prefix the change with one of these keywords:
 
 ## [Unreleased]
 
-## [0.1.2] - 2026-10-04
+## [0.0.1] - 2026-10-04
 
-_Added_ `HeroHeader` — the heading block for a `Hero`, with an optional `prefix`, a `title` with an
-optional italic `titleAccent`, a `level` prop (`<h1>` by default) and a `children` slot for stats,
-an intro or actions.
+The first release under the Parlour name. The project was formerly developed as "Octave Design
+System" and published as `@troychaplin/octave-design-system`. It now ships as
+`@troychaplin/parlour-ui`, and the version history starts again here. Code written against the old
+package needs the new package name in its imports, `--parlour--` in place of the `--octave--`
+custom properties, and `parlour-` in place of the `octave-` class names.
 
-_Added_ `SectionHeader` — a smaller heading block for page sections: an uppercase monospace
-`prefix` eyebrow, a `title`, a `level` prop (`<h2>` by default) and a divider rule beneath, with
-space below it before the section's content.
+_Added_ A token pipeline. Colors, three font families with bundled font files, 16 fluid type
+sizes, a 12-step spacing scale, shadows, radii and layout widths are defined once in
+`c2b.config.json`, and `@troychaplin/component2block` generates them as `--parlour--*` custom
+properties, SCSS variables and breakpoint mixins, base element styles, layout classes and the
+`parlourTokens` JavaScript export.
 
-_Added_ `GridGroup` layout component — a CSS grid that mirrors the grid half of the WordPress
-Group block. `columns` (1–3) sets the most columns it shows, at the viewport breakpoints: two
-columns above the 600px mobile breakpoint and three above the 768px tablet breakpoint, with one
-column below them. Also takes `gap`, `rowGap`, `align`, `as` and `maxWidth`.
+_Added_ WordPress outputs in `dist/wordpress/`: `theme-parlour.json` with the tokens as
+`theme.json` presets, `integrate.php` to load it as WordPress's default `theme.json` layer, and
+`block-theme.css` and `hybrid-theme.css` for block and hybrid themes. Each component's CSS is also
+published on its own, so a block can bundle only what it renders.
 
-_Added_ `Card` — a surface whose `backgroundColor` and `borderColor` take `white`, `light`,
-`medium` or `dark`, plus `border`, `borderRadius`, `padding` and `as`. The text colour follows the
-background, so a light card stays readable inside a dark `Container`.
+_Added_ Accessibility checks. Every Storybook story runs through axe at the `error` threshold, in
+CI and on pre-push, so a violation fails the build.
 
-_Breaking_ `Hero` no longer renders its own prefix, heading and stats — pass the hero's content
-as children, such as a `HeroHeader` and a `CodeBlock`. Wrap them in `octave-hero__content` and
-`octave-hero__code` divs to keep the two-column layout. `Hero` now renders a `<section>` rather
-than a `<header>`, so a `HeroHeader` can sit inside it.
-
-_Fixed_ The Storybook previews of `Article`, `Aside`, `InfoBar`, `Main` and `ButtonGroup` span the
-full width instead of shrinking to fit their content, so `ButtonGroup`'s `align` options are now
-visible. Stories default to Storybook's `padded` layout rather than `centered`.
-
-_Fixed_ `Aside` with `isSticky` now sticks on its own: Octave gives its `sticky` wrapper
-`position: sticky` instead of relying on a utility class from the consumer's CSS. The class names
-are unchanged. The Aside stories use a wide layout, show the right sidebar on the right, and give
-the sticky table of contents room to stick.
-
-_Changed_ Storybook lists `Hero`, `HeroHeader` and `SectionHeader` under Content and `SiteHeader`
-under Template Parts, matching the groups the package exports them under. Their docs URLs change
-with the move.
-
-_Fixed_ The `SiteHeader` docs page was empty. It now covers usage, layout, CSS classes, tokens and
-accessibility, and the stories show the title accent and the `children` slot instead of passing
-paragraphs into the header.
-
-_Fixed_ The `InfoBar` docs page was empty. It now covers usage, how the date is worked out, layout,
-CSS classes, tokens and accessibility, and a new story shows an extra item passed as `children`.
-
-_Fixed_ `Column` keeps its children in DOM order. A child that isn't a `Column.Content`, such as an
-`Aside`, no longer jumps to the front, and `isFirst` only reorders once the columns sit side by
-side, so stacked columns on small screens follow the DOM as the docs describe.
-
-_Fixed_ `Aside` now passes `aria-label`, `id` and other HTML attributes through to its `<aside>`,
-as its docs said it did, so it can be labelled when a page has more than one complementary
-landmark. A `className` you pass is appended after its own classes, and `AsideProps` is exported
-from `@troychaplin/octave-design-system/Aside`.
-
-_Fixed_ The `Main` docs page no longer describes an `as` prop, which `Main` doesn't accept.
-`Main` always renders a `<main>`.
-
-_Fixed_ The `Hero` docs page was empty. It now covers the content and code columns, the layout
-at each width, CSS classes, tokens and accessibility, and a new story shows a hero without a code
-sample.
-
-_Fixed_ The README explains how to install Octave in a React app, the Next.js App Router, a
-WordPress theme and a WordPress block, and lists every path the package publishes. Its notes on
-indentation, formatting and the size budget now match the project's tooling.
-
-_Fixed_ The Getting Started pages and the `LinkProvider` docs no longer use components that don't
-exist (`Badge`, `Icon`, `Section`) or the old `@cuweb` package name. The Next.js setup puts
-`LinkProvider` in a client file so it works with the App Router, React Router gets the wrapper that
-maps `href` to `to`, `useLinkContext` is imported from the entry point that exports it, and the
-WordPress page covers `integrate.php`, `theme-octave.json` and the fonts.
-
-_Fixed_ Octave's components can be imported into Next.js Server Components. Importing anything from
-the package there used to fail with `createContext is not a function`. `Button`, `SiteHeader` and
-`LinkProvider` are now marked `'use client'`, and the build keeps the directive on the files that
-contain them, so every other component renders on the server. The library's JavaScript is split
-into an entry file and two chunks in `dist/_shared/`.
-
-## [0.1.1] - 2026-09-28
-
-_Fixed_ The Getting Started docs import the bundled stylesheet from
-`@troychaplin/octave-design-system/styles.css`. The `/styles` path they showed doesn't resolve.
-
-## [0.1.0] - 2026-09-28
-
-_Changed_ Published to the public npm registry under the MIT license.
-
-_Added_ `FlexGroup` layout component — a flex container mirroring the flex half of the
-WordPress Group block, with `direction`, `wrap`, `justify`, `align`, `gap`, `padding`,
-`margin` and `maxWidth` props. Unlike the block it uses CSS axis semantics (`justify` is
-always `justify-content`) rather than swapping the axes in a vertical layout.
-
-_Added_ `spacingClasses`, `flexJustifyClasses` and `flexAlignClasses` to `propClasses`.
-
-_Changed_ `Section` is renamed `Container`.
-
-_Added_ `Container` spreads remaining props onto its root element, so `style`, `id`, `aria-*`,
-`data-*` and event handlers pass through.
-
-_Breaking_ `Button` `color` variants are renamed to semantic names that map onto the palette:
-`primary` (was `red`, still the default), `neutral` (was `grey`), `dark` (was `dark-grey`) and
-`light` (was `white`), plus a new `secondary`. `blue` and `black` are removed.
-
-_Breaking_ `Button`'s label prop is renamed from `title` to a required `text`, matching `Badge`.
-The native `title` attribute now passes through as a tooltip. `ariaLabel` and the
-`ButtonTitleProps` / `ButtonNoTitleProps` types are removed — pass `aria-label` instead.
-
-_Breaking_ `Button` `isDisabled` is replaced by the native `disabled` attribute.
-
-_Added_ `Button` renders a link through `LinkProvider` when `href` is provided. TypeScript rejects
-the button-only `type` and `disabled` props on a link.
-
-_Fixed_ `Button` appends a consumer's `className` instead of replacing its own classes.
-
-_Removed_ The unused `octave-button--center` class.
-
-_Breaking_ `Badge` `color` variants are renamed to semantic names: `neutral` (was `grey`, still the
-default), `light` (was `white`), `info`, `success`, `warning` and `error` (were `blue`, `green`,
-`yellow` and `red`), and `overlay-dark` / `overlay-light` (were `black80` / `white80`). `purple`
-and `teal` are removed.
-
-_Fixed_ `Button`, `Badge`, `Figure`, `Main` and the stylebook referenced color tokens that no
-longer exist, so backgrounds rendered transparent and text fell back to inherited colors. They now
-use the `accent-*` and `neutral-*` tokens, and `Main` link hover uses the base link hover color.
-
-_Fixed_ Links use `accent-primary` instead of `success` green, meeting the WCAG AA 4.5:1 contrast
-ratio on the page background.
-
-_Fixed_ The `BadgeGroup` and `Button` docs pages no longer crash on `<Canvas>` blocks that
-referenced stories that don't exist (`OnCard`, `WithIcon`, `IconOnly`), and the Button docs no
-longer describe an `icon` prop. Dead links in the `Badge`, `FlexGroup` and `LinkProvider` docs are
-fixed.
-
-_Fixed_ The Source Serif 4 font stack is now quoted, so body copy and serif text render in Source
-Serif 4 instead of falling back to system fonts. Browsers ignored the whole stack because a family
-name without quotes can't contain a word that starts with a digit.
-
-_Added_ `SiteHeader` `siteTitleAccent` prop wraps the matching part of `siteTitle` in
-`octave-site-header__title-accent`, so that part can be styled on its own.
-
-_Added_ `CodeBlock` component: renders a string of code in `<pre><code>` in JetBrains Mono, keeping
-its line breaks and indentation, and scrolls sideways when a line is too long to fit. A `color` prop
-takes the same `light`, `medium`, `dark` and `white` backgrounds as `Container`, with white text on
-`medium` and `dark`. `hasBorder` adds a 1px border: `neutral-300` on the default, `light` and `white`
-backgrounds, and the background's own color on `medium` and `dark`, so a bordered block stays the
-same size whatever its color. `borderRadius` rounds the corners with the `none`, `sm`, `md`, `lg`,
-`xl` and `full` radius tokens.
-
-_Fixed_ `Container` `borderRadius="xl"` now rounds the corners. The value was accepted but had no
-style rule, so the corners stayed square.
+_Added_ Components: Elements (`Button`, `ButtonGroup`), Content (`Card`, `CodeBlock`, `Figure`,
+`Hero`, `HeroHeader`, `SectionHeader`), Layout (`Column`, `Container`, `FlexGroup`, `GridGroup`),
+Template Parts (`Article`, `Aside`, `Body`, `InfoBar`, `Main`, `SiteHeader`) and Utilities
+(`LinkProvider`). They ship as ES modules and CommonJS with TypeScript types, and work in Next.js
+Server Components.

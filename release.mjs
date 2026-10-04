@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Release helper for @troychaplin/octave-design-system.
+/* Release helper for @troychaplin/parlour-ui.
  *
  * Usage:  pnpm run release <version>
  * Example: pnpm run release 0.5.1
