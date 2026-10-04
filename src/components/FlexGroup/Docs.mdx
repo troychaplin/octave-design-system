@@ -17,7 +17,7 @@ A general-purpose flex container that arranges its children in a row or a column
 ## Import
 
 ```tsx
-import { FlexGroup } from '@troychaplin/octave-design-system';
+import { FlexGroup } from '@troychaplin/parlour-ui';
 ```
 
 ## Basic usage
@@ -113,7 +113,7 @@ The same prop in a column distributes children **vertically**, because the main 
 
 ### The `as` prop
 
-`as` swaps the rendered element. Prefer Octave's dedicated `Main`, `Article`, `Aside` and `Section` components when one of them fits — reach for `as` only when you need a sectioning element that also happens to be a flex container.
+`as` swaps the rendered element. Prefer Parlour's dedicated `Main`, `Article`, `Aside` and `Section` components when one of them fits — reach for `as` only when you need a sectioning element that also happens to be a flex container.
 
 <Canvas of={FlexGroupStories.AsElement} />
 
@@ -150,35 +150,35 @@ Also not carried over: `row-reverse` and `column-reverse` (the block has no equi
 
 | Class                                                     | When applied                                 |
 | --------------------------------------------------------- | -------------------------------------------- |
-| `octave-layout`                                           | Always — shared marker on layout components  |
-| `octave-flex-group`                                       | Always — base class, carries `display: flex` |
-| `octave-flex-group--{row\|column}`                        | Always — reflects `direction`                |
-| `octave-flex-group--{wrap\|nowrap}`                       | Always — reflects `wrap`                     |
-| `octave-flex-group--justify-{value}`                      | When `justify` is set                        |
-| `octave-flex-group--align-{value}`                        | When `align` is set                          |
-| `octave-flex-group--gap-{step}`                           | When `gap` is set                            |
-| `octave-flex-group--padding-{step}`                       | When `padding` is set                        |
-| `octave-flex-group--margin-{step}`                        | When `margin` is set                         |
+| `parlour-layout`                                          | Always — shared marker on layout components  |
+| `parlour-flex-group`                                      | Always — base class, carries `display: flex` |
+| `parlour-flex-group--{row\|column}`                       | Always — reflects `direction`                |
+| `parlour-flex-group--{wrap\|nowrap}`                      | Always — reflects `wrap`                     |
+| `parlour-flex-group--justify-{value}`                     | When `justify` is set                        |
+| `parlour-flex-group--align-{value}`                       | When `align` is set                          |
+| `parlour-flex-group--gap-{step}`                          | When `gap` is set                            |
+| `parlour-flex-group--padding-{step}`                      | When `padding` is set                        |
+| `parlour-flex-group--margin-{step}`                       | When `margin` is set                         |
 | `aligncontent` / `alignwide` / `alignfull` / `alignsmall` | The `maxWidth` value, as a bare shared class |
 
 Two notes on the stylesheet behind these:
 
 - `direction` and `wrap` always emit a class rather than relying on a default declared on the base rule, so no modifier ever ties with the base at equal specificity.
-- The `margin` modifiers are written as a **doubled selector** (`.octave-flex-group.octave-flex-group--margin-large`) to reach specificity (0,2,0). `octave-typography.css` ships `.is-layout-constrained > :is(h1,h2,h3,h4,h5,h6) + *` at (0,1,1), which would otherwise beat a single-class modifier and silently reset the top margin of any `FlexGroup` placed after a heading inside `Main`.
+- The `margin` modifiers are written as a **doubled selector** (`.parlour-flex-group.parlour-flex-group--margin-large`) to reach specificity (0,2,0). `parlour-typography.css` ships `.is-layout-constrained > :is(h1,h2,h3,h4,h5,h6) + *` at (0,1,1), which would otherwise beat a single-class modifier and silently reset the top margin of any `FlexGroup` placed after a heading inside `Main`.
 
-The component applies no `is-layout-flex` class. Doing so would be inert inside Octave, and on a live WordPress front end it would pull in core's global styles — `align-items: center` and `flex-wrap: wrap` at the same specificity as this component's own modifiers, plus `.is-layout-flex > :is(*, div) { margin: 0 }`, which zeroes the margins of every direct child.
+The component applies no `is-layout-flex` class. Doing so would be inert inside Parlour, and on a live WordPress front end it would pull in core's global styles — `align-items: center` and `flex-wrap: wrap` at the same specificity as this component's own modifiers, plus `.is-layout-flex > :is(*, div) { margin: 0 }`, which zeroes the margins of every direct child.
 
 ## Design tokens
 
-| Token                           | Used for                                                       |
-| ------------------------------- | -------------------------------------------------------------- |
-| `--octave--spacing-*`           | Every `gap`, `padding` and `margin` step — all 12 scale values |
-| `--octave--layout-content-size` | `maxWidth="aligncontent"`                                      |
-| `--octave--layout-wide-size`    | `maxWidth="alignwide"`                                         |
-| `--octave--layout-full-size`    | `maxWidth="alignfull"`                                         |
-| `--octave--layout-small-size`   | `maxWidth="alignsmall"`                                        |
+| Token                            | Used for                                                       |
+| -------------------------------- | -------------------------------------------------------------- |
+| `--parlour--spacing-*`           | Every `gap`, `padding` and `margin` step — all 12 scale values |
+| `--parlour--layout-content-size` | `maxWidth="aligncontent"`                                      |
+| `--parlour--layout-wide-size`    | `maxWidth="alignwide"`                                         |
+| `--parlour--layout-full-size`    | `maxWidth="alignfull"`                                         |
+| `--parlour--layout-small-size`   | `maxWidth="alignsmall"`                                        |
 
-The spacing modifier classes are generated by reading `$octave-spacing-*` back out of `src/styles/c2b/_octave-variables.scss` with `meta.module-variables()`, so the scale is defined in exactly one place — `c2b.config.json` — and regenerating tokens updates the classes without an edit here. The four layout tokens come from the shared `.align*` classes in `src/styles/base/spacing.scss`; this component does not redeclare them.
+The spacing modifier classes are generated by reading `$parlour-spacing-*` back out of `src/styles/c2b/_parlour-variables.scss` with `meta.module-variables()`, so the scale is defined in exactly one place — `c2b.config.json` — and regenerating tokens updates the classes without an edit here. The four layout tokens come from the shared `.align*` classes in `src/styles/base/spacing.scss`; this component does not redeclare them.
 
 The one value not on the token scale is `flex-wrap`/`flex-direction`, which are keywords rather than measurements.
 

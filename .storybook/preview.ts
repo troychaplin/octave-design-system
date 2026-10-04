@@ -45,7 +45,7 @@ const preview: Preview = {
                 order: [
                     'Overview',
                     [
-                        'About Octave',
+                        'About Parlour',
                         'Changelog',
                         'Getting Started',
                         ['Overview', 'Installation', 'Next.js', 'WordPress', 'Accessibility'],

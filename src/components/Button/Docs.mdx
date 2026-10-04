@@ -17,7 +17,7 @@ An action trigger that renders a native `<button>`, or a link styled as a button
 ## Import
 
 ```tsx
-import { Button } from '@troychaplin/octave-design-system';
+import { Button } from '@troychaplin/parlour-ui';
 ```
 
 ## Basic usage
@@ -47,7 +47,7 @@ The default color is `primary`.
 
 ### Small
 
-`isSmall` reduces the horizontal padding and drops the font size to `--octave--font-size-x-small`.
+`isSmall` reduces the horizontal padding and drops the font size to `--parlour--font-size-x-small`.
 
 <Canvas of={ButtonStories.Small} />
 
@@ -59,45 +59,45 @@ The default color is `primary`.
 
 ## CSS classes
 
-| Class                      | When applied                                 |
-| -------------------------- | -------------------------------------------- |
-| `octave-button`            | Always — base class                          |
-| `octave-button--primary`   | `color="primary"` (default)                  |
-| `octave-button--secondary` | `color="secondary"`                          |
-| `octave-button--neutral`   | `color="neutral"`                            |
-| `octave-button--dark`      | `color="dark"`                               |
-| `octave-button--light`     | `color="light"`                              |
-| `octave-button--disabled`  | `disabled={true}` — replaces the color class |
-| `octave-button--outline`   | `isOutline={true}` (ignored when disabled)   |
-| `octave-button--small`     | `isSmall={true}`                             |
-| `octave-button--full`      | `isFull={true}`                              |
+| Class                       | When applied                                 |
+| --------------------------- | -------------------------------------------- |
+| `parlour-button`            | Always — base class                          |
+| `parlour-button--primary`   | `color="primary"` (default)                  |
+| `parlour-button--secondary` | `color="secondary"`                          |
+| `parlour-button--neutral`   | `color="neutral"`                            |
+| `parlour-button--dark`      | `color="dark"`                               |
+| `parlour-button--light`     | `color="light"`                              |
+| `parlour-button--disabled`  | `disabled={true}` — replaces the color class |
+| `parlour-button--outline`   | `isOutline={true}` (ignored when disabled)   |
+| `parlour-button--small`     | `isSmall={true}`                             |
+| `parlour-button--full`      | `isFull={true}`                              |
 
-A `className` you pass is appended after these classes rather than replacing them. When the button renders as a link, the `a.octave-button` selector applies the same base styles and keeps the underline off on hover.
+A `className` you pass is appended after these classes rather than replacing them. When the button renders as a link, the `a.parlour-button` selector applies the same base styles and keeps the underline off on hover.
 
 A top margin (`2rem` mobile, `2.5rem` desktop) is automatically applied when a `Button` or `ButtonGroup` directly follows a `Column` or `StackedList` element — no extra spacing class needed.
 
 ## Design tokens
 
-These `--octave--*` custom properties drive the Button's appearance. Overriding them at a higher scope will change every Button on the page.
+These `--parlour--*` custom properties drive the Button's appearance. Overriding them at a higher scope will change every Button on the page.
 
-| Token                               | Used for                                                                                       |
-| ----------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `--octave--spacing-x-small`         | Vertical padding                                                                               |
-| `--octave--spacing-medium`          | Horizontal padding                                                                             |
-| `--octave--spacing-small`           | Horizontal padding when `isSmall`                                                              |
-| `--octave--font-family-inter-tight` | Font family                                                                                    |
-| `--octave--font-size-small`         | Font size                                                                                      |
-| `--octave--font-size-x-small`       | Font size when `isSmall`                                                                       |
-| `--octave--font-weight-normal`      | Font weight                                                                                    |
-| `--octave--line-height-tight`       | Line height                                                                                    |
-| `--octave--radius-md`               | Border radius                                                                                  |
-| `--octave--color-accent-primary`    | `primary` background; hover background for `neutral`, `dark` and `light`                       |
-| `--octave--color-accent-secondary`  | `secondary` background                                                                         |
-| `--octave--color-neutral-800`       | `dark` background; `neutral` and disabled text; hover background for `primary` and `secondary` |
-| `--octave--color-neutral-100`       | `neutral` background                                                                           |
-| `--octave--color-neutral-300`       | Disabled background                                                                            |
-| `--octave--color-white`             | `light` background; text on filled variants; outline background                                |
-| `--octave--color-black`             | `light` text                                                                                   |
+| Token                                | Used for                                                                                       |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| `--parlour--spacing-x-small`         | Vertical padding                                                                               |
+| `--parlour--spacing-medium`          | Horizontal padding                                                                             |
+| `--parlour--spacing-small`           | Horizontal padding when `isSmall`                                                              |
+| `--parlour--font-family-inter-tight` | Font family                                                                                    |
+| `--parlour--font-size-small`         | Font size                                                                                      |
+| `--parlour--font-size-x-small`       | Font size when `isSmall`                                                                       |
+| `--parlour--font-weight-normal`      | Font weight                                                                                    |
+| `--parlour--line-height-tight`       | Line height                                                                                    |
+| `--parlour--radius-md`               | Border radius                                                                                  |
+| `--parlour--color-accent-primary`    | `primary` background; hover background for `neutral`, `dark` and `light`                       |
+| `--parlour--color-accent-secondary`  | `secondary` background                                                                         |
+| `--parlour--color-neutral-800`       | `dark` background; `neutral` and disabled text; hover background for `primary` and `secondary` |
+| `--parlour--color-neutral-100`       | `neutral` background                                                                           |
+| `--parlour--color-neutral-300`       | Disabled background                                                                            |
+| `--parlour--color-white`             | `light` background; text on filled variants; outline background                                |
+| `--parlour--color-black`             | `light` text                                                                                   |
 
 The `gap`, the `1px` border width and the top margin after a `Column` or `StackedList` use raw values rather than design tokens.
 

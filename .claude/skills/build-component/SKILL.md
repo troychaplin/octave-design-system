@@ -1,9 +1,9 @@
 ---
 name: build-component
-description: Build a component for the Octave design system — the TSX, SCSS, Storybook stories, and Docs.mdx, plus wiring it into the package exports. Use when adding a new component under src/components/, rebuilding an existing one, or editing any of a component's four parts.
+description: Build a component for Parlour — the TSX, SCSS, Storybook stories, and Docs.mdx, plus wiring it into the package exports. Use when adding a new component under src/components/, rebuilding an existing one, or editing any of a component's four parts.
 ---
 
-# Building an Octave component
+# Building a Parlour component
 
 Every component is four parts plus wiring. Build them in this order — each part depends on
 decisions made in the one before it.
@@ -79,9 +79,9 @@ These apply to every part; the references do not repeat them.
 
 ## Naming
 
-Octave uses the `octave-` prefix throughout: `octave-` BEM classes, `--octave--` CSS custom
-properties, `$octave-*` SCSS variables, and `octave-*` generated filenames. All of it derives from
-`"prefix": "octave"` in `c2b.config.json` — change that one field and `pnpm c2b` renames the
+Parlour uses the `parlour-` prefix throughout: `parlour-` BEM classes, `--parlour--` CSS custom
+properties, `$parlour-*` SCSS variables, and `parlour-*` generated filenames. All of it derives from
+`"prefix": "parlour"` in `c2b.config.json` — change that one field and `pnpm c2b` renames the
 generated token layer with it.
 
-The package is `@troychaplin/octave-design-system`.
+The package is `@troychaplin/parlour-ui`.

@@ -14,7 +14,7 @@ Use `Container` to group related content into a distinct visual band — a card 
 ## Import
 
 ```tsx
-import { Container } from '@troychaplin/octave-design-system';
+import { Container } from '@troychaplin/parlour-ui';
 ```
 
 ## Basic usage
@@ -71,7 +71,7 @@ import { Container } from '@troychaplin/octave-design-system';
 
 // Inline styles and other HTML attributes land on the root element
 <Main>
-  <Container id="highlights" style={{ backgroundColor: 'var(--octave--color-neutral-200)' }}>
+  <Container id="highlights" style={{ backgroundColor: 'var(--parlour--color-neutral-200)' }}>
     <Column cols="2">...</Column>
   </Container>
 </Main>
@@ -106,7 +106,7 @@ Content width (`aligncontent`), white background. Use the controls to explore `a
 
 ### Wide
 
-`maxWidth="alignwide"` expands the section to the wide layout width (`--octave--layout-wide-size`).
+`maxWidth="alignwide"` expands the section to the wide layout width (`--parlour--layout-wide-size`).
 
 <Canvas of={ContainerStories.Wide} />
 
@@ -142,11 +142,11 @@ The most common page pattern — alternating white and grey bands, ending with a
 
 ## Max-width presets
 
-| `maxWidth`       | Token                           | Description                                    |
-| ---------------- | ------------------------------- | ---------------------------------------------- |
-| `"aligncontent"` | `--octave--layout-content-size` | Default — standard readable content width      |
-| `"alignwide"`    | `--octave--layout-wide-size`    | Wider — for card grids and media-rich sections |
-| `"alignfull"`    | `--octave--layout-full-size`    | Full viewport width — hero and accent bands    |
+| `maxWidth`       | Token                            | Description                                    |
+| ---------------- | -------------------------------- | ---------------------------------------------- |
+| `"aligncontent"` | `--parlour--layout-content-size` | Default — standard readable content width      |
+| `"alignwide"`    | `--parlour--layout-wide-size`    | Wider — for card grids and media-rich sections |
+| `"alignfull"`    | `--parlour--layout-full-size`    | Full viewport width — hero and accent bands    |
 
 These names and tokens mirror the WordPress block editor's alignment system so that React templates and WordPress block themes share the same layout vocabulary.
 
@@ -156,7 +156,7 @@ By default `Container` renders a `<section>` element. Pass `as="div"` when a sec
 
 ## The `contentWidth` prop
 
-When set, `contentWidth` wraps all children in a `octave-section__content` div independently constrained within the outer layout:
+When set, `contentWidth` wraps all children in a `parlour-section__content` div independently constrained within the outer layout:
 
 | Value            | Inner content width                                   |
 | ---------------- | ----------------------------------------------------- |
@@ -179,30 +179,30 @@ Two layout rules use `!important`, so inline styles can't override them:
 
 ## CSS classes
 
-| Class                            | When applied                                          |
-| -------------------------------- | ----------------------------------------------------- |
-| `octave-section`                 | Always                                                |
-| `octave-section--grey`           | `bgType="grey"`                                       |
-| `octave-section--black`          | `bgType="black"`                                      |
-| `octave-section--light-gradient` | `bgType="light-gradient"`                             |
-| `aligncontent`                   | `maxWidth="aligncontent"` (default)                   |
-| `alignwide`                      | `maxWidth="alignwide"`                                |
-| `alignfull`                      | `maxWidth="alignfull"`                                |
-| `has-global-padding`             | When `bgType` is set — horizontal gutter              |
-| `is-layout-constrained`          | Always — constrains children to content / wide widths |
+| Class                             | When applied                                          |
+| --------------------------------- | ----------------------------------------------------- |
+| `parlour-section`                 | Always                                                |
+| `parlour-section--grey`           | `bgType="grey"`                                       |
+| `parlour-section--black`          | `bgType="black"`                                      |
+| `parlour-section--light-gradient` | `bgType="light-gradient"`                             |
+| `aligncontent`                    | `maxWidth="aligncontent"` (default)                   |
+| `alignwide`                       | `maxWidth="alignwide"`                                |
+| `alignfull`                       | `maxWidth="alignfull"`                                |
+| `has-global-padding`              | When `bgType` is set — horizontal gutter              |
+| `is-layout-constrained`           | Always — constrains children to content / wide widths |
 
 ## Design tokens
 
-| Token                                   | Used for                                        |
-| --------------------------------------- | ----------------------------------------------- |
-| `--octave--color-grey-pale`             | Grey section background                         |
-| `--octave--color-black`                 | Black section background                        |
-| `--octave--gradient-white-to-pale-grey` | Light gradient section background               |
-| `--octave--spacing-large`               | Internal padding on styled sections             |
-| `--octave--radius-md`                   | Border radius on non-full-width styled sections |
-| `--octave--layout-content-size`         | `aligncontent` max-width                        |
-| `--octave--layout-wide-size`            | `alignwide` max-width                           |
-| `--octave--layout-full-size`            | `alignfull` max-width (100%)                    |
+| Token                                    | Used for                                        |
+| ---------------------------------------- | ----------------------------------------------- |
+| `--parlour--color-grey-pale`             | Grey section background                         |
+| `--parlour--color-black`                 | Black section background                        |
+| `--parlour--gradient-white-to-pale-grey` | Light gradient section background               |
+| `--parlour--spacing-large`               | Internal padding on styled sections             |
+| `--parlour--radius-md`                   | Border radius on non-full-width styled sections |
+| `--parlour--layout-content-size`         | `aligncontent` max-width                        |
+| `--parlour--layout-wide-size`            | `alignwide` max-width                           |
+| `--parlour--layout-full-size`            | `alignfull` max-width (100%)                    |
 
 ## Accessibility
 

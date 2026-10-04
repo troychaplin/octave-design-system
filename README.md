@@ -1,19 +1,18 @@
-# Octave Design System
+# Parlour
 
-**One set of design tokens. A React library and a WordPress theme that never drift apart.**
+**A palette cleanser for React and WordPress.**
 
-Octave is a token-first component library for React and Next.js — and, from that same
-source of truth, a complete WordPress block theme, hybrid theme, and block-plugin
-styling layer. Define a color, a type step, or a spacing value once in
-`c2b.config.json`, and every surface picks it up.
+A token-first UI kit for React and WordPress. One set of tokens, every flavour.
 
-Browse the components and tokens in the [live Storybook](https://troychaplin.github.io/octave-design-system/).
+Formerly Octave Design System.
 
-## Why Octave
+Browse the components and tokens in the [live Storybook](https://troychaplin.github.io/parlour-ui/).
+
+## Why Parlour
 
 - **One source of truth, two ecosystems.**
   [`@troychaplin/component2block`](https://www.npmjs.com/package/@troychaplin/component2block)
-  compiles `c2b.config.json` into CSS custom properties (`--octave--*`), SCSS
+  compiles `c2b.config.json` into CSS custom properties (`--parlour--*`), SCSS
   variables, base element styles, and a WordPress `theme.json` with matching editor
   styles. A React app and the WordPress Site Editor render the same design language
   because they read the same tokens — no parallel stylesheet to keep in sync by hand.
@@ -30,7 +29,7 @@ Browse the components and tokens in the [live Storybook](https://troychaplin.git
 - **Deliberately small.** Budgeted at 25 kB for the JS bundle and 7 kB for the
   stylesheet, brotli-compressed. `pnpm size` checks both.
 
-> **Status:** Octave is early-stage and actively being rebuilt. The token pipeline,
+> **Status:** Parlour is early-stage and actively being rebuilt. The token pipeline,
 > build, and accessibility tooling are solid; the component catalogue is small and
 > growing. See the [changelog](CHANGELOG.mdx) for what has landed.
 
@@ -39,7 +38,7 @@ Built with React 18 & 19, TypeScript 6, Vite 8, Storybook 10, and SCSS.
 ## Installation
 
 ```bash
-npm install @troychaplin/octave-design-system
+npm install @troychaplin/parlour-ui
 ```
 
 React and React DOM 18 or 19 are peer dependencies.
@@ -49,19 +48,19 @@ React and React DOM 18 or 19 are peer dependencies.
 Import the stylesheet once, where your app starts:
 
 ```tsx
-import '@troychaplin/octave-design-system/styles.css';
+import '@troychaplin/parlour-ui/styles.css';
 ```
 
 Then use the components:
 
 ```tsx
-import { Button, Container, Main } from '@troychaplin/octave-design-system';
+import { Button, Container, Main } from '@troychaplin/parlour-ui';
 
 export function Page() {
     return (
         <Main>
             <Container>
-                <h1>Hello, Octave</h1>
+                <h1>Hello, Parlour</h1>
                 <Button text="Get started" href="/start" />
             </Container>
         </Main>
@@ -81,7 +80,7 @@ components don't import any CSS themselves, so this import is required.
 including `href`:
 
 ```tsx
-import { LinkProvider } from '@troychaplin/octave-design-system';
+import { LinkProvider } from '@troychaplin/parlour-ui';
 
 <LinkProvider component={Link}>
     <App />
@@ -93,7 +92,7 @@ instead: `({ href = '', ...props }) => <Link to={href} {...props} />`.
 
 #### Next.js App Router
 
-Octave's components work in Server Components. `Button`, `SiteHeader` and `LinkProvider` use
+Parlour's components work in Server Components. `Button`, `SiteHeader` and `LinkProvider` use
 React context, so they're marked `'use client'` and render as Client Components; every other
 component renders on the server. A Server Component can't pass a function such as Next.js's `Link`
 to a Client Component, so set up `LinkProvider` in a client providers file:
@@ -103,7 +102,7 @@ to a Client Component, so set up `LinkProvider` in a client providers file:
 'use client';
 
 import Link from 'next/link';
-import { LinkProvider } from '@troychaplin/octave-design-system';
+import { LinkProvider } from '@troychaplin/parlour-ui';
 
 export function Providers({ children }: { children: React.ReactNode }) {
     return <LinkProvider component={Link}>{children}</LinkProvider>;
@@ -112,7 +111,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
 ```tsx
 // app/layout.tsx
-import '@troychaplin/octave-design-system/styles.css';
+import '@troychaplin/parlour-ui/styles.css';
 import { Providers } from './providers';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -130,68 +129,68 @@ With the Pages Router, import the stylesheet and add `LinkProvider` in `pages/_a
 
 ### What the package ships
 
-Every path below starts with `@troychaplin/octave-design-system`.
+Every path below starts with `@troychaplin/parlour-ui`.
 
 | Path                                    | Contents                                                                                 |
 | --------------------------------------- | ---------------------------------------------------------------------------------------- |
 | _(package root)_                        | Every React component, as ES modules and CommonJS, with TypeScript types                 |
 | `/styles.css`                           | The full stylesheet: tokens, base styles, layout classes, every component, and the fonts |
-| `/tokens.css`                           | The design tokens as `--octave--*` custom properties                                     |
+| `/tokens.css`                           | The design tokens as `--parlour--*` custom properties                                    |
 | `/base-styles.css`                      | Element defaults for the body, headings, links and buttons                               |
 | `/layout.css`                           | Layout classes that match WordPress's, such as `is-layout-constrained`                   |
 | `/typography.css`                       | Spacing after headings                                                                   |
 | `/fonts.css`                            | `@font-face` rules for the bundled fonts                                                 |
-| `/tokens`                               | The token names as a JavaScript object, `octaveTokens`                                   |
+| `/tokens`                               | The token names as a JavaScript object, `parlourTokens`                                  |
 | `/<Component>`                          | One component's JavaScript, such as `/Button`                                            |
 | `/<Component>.css`                      | One component's CSS, such as `/Button.css`                                               |
 | `/block-theme.css`, `/hybrid-theme.css` | Stylesheets for WordPress themes                                                         |
 
-The WordPress theme files, `integrate.php` and `theme-octave.json`, are in `dist/wordpress/`, and
+The WordPress theme files, `integrate.php` and `theme-parlour.json`, are in `dist/wordpress/`, and
 the font files are in `dist/fonts/`. Copy those by path.
 
 ### WordPress themes
 
 `dist/wordpress/` has what a theme needs:
 
-- `theme-octave.json` — the tokens as `theme.json` presets: the color palette and gradient, 16
+- `theme-parlour.json` — the tokens as `theme.json` presets: the color palette and gradient, 16
   fluid font sizes, the three font families with their font files, the spacing scale, shadows,
   and the content and wide widths. It also sets default styles for text, headings, links, buttons
   and captions.
-- `integrate.php` — loads `theme-octave.json` as WordPress's default `theme.json` layer, so your
+- `integrate.php` — loads `theme-parlour.json` as WordPress's default `theme.json` layer, so your
   theme's own `theme.json` only needs to hold overrides.
 - `block-theme.css` — for block themes: the tokens, the `.sr-only` utility and heading spacing.
-- `hybrid-theme.css` — for hybrid themes with PHP templates: adds Octave's element defaults,
+- `hybrid-theme.css` — for hybrid themes with PHP templates: adds Parlour's element defaults,
   layout classes and global styles.
 
 To set up a theme:
 
-1. Copy `integrate.php`, `theme-octave.json` and the stylesheet you need into one folder in your
-   theme, such as `assets/octave/`. `integrate.php` looks for `theme-octave.json` next to itself.
-2. Copy `dist/fonts/` to `assets/fonts/` in your theme, the path `theme-octave.json` gives for the
+1. Copy `integrate.php`, `theme-parlour.json` and the stylesheet you need into one folder in your
+   theme, such as `assets/parlour/`. `integrate.php` looks for `theme-parlour.json` next to itself.
+2. Copy `dist/fonts/` to `assets/fonts/` in your theme, the path `theme-parlour.json` gives for the
    font files.
 3. Load everything from `functions.php`:
 
 ```php
-require_once get_theme_file_path( 'assets/octave/integrate.php' );
+require_once get_theme_file_path( 'assets/parlour/integrate.php' );
 
 add_action( 'wp_enqueue_scripts', function () {
-    wp_enqueue_style( 'octave', get_theme_file_uri( 'assets/octave/block-theme.css' ) );
+    wp_enqueue_style( 'parlour', get_theme_file_uri( 'assets/parlour/block-theme.css' ) );
 } );
 
 add_action( 'after_setup_theme', function () {
-    add_editor_style( 'assets/octave/block-theme.css' );
+    add_editor_style( 'assets/parlour/block-theme.css' );
 } );
 ```
 
 For a hybrid theme, use `hybrid-theme.css` in both places.
 
-Octave is built locked, so `integrate.php` also stops the theme from changing the layout widths
+Parlour is built locked, so `integrate.php` also stops the theme from changing the layout widths
 and breakpoints, and turns off custom colors, gradients and duotone in the Site Editor.
 
 ### WordPress blocks
 
 Each component's CSS is also published on its own, so a block can bundle just the styles for the
-markup it renders. Component CSS reads the `--octave--*` custom properties, so the page needs the
+markup it renders. Component CSS reads the `--parlour--*` custom properties, so the page needs the
 tokens too: a theme set up as above already loads them, and otherwise the block should bundle
 `tokens.css`.
 
@@ -200,13 +199,13 @@ editor and on the front end:
 
 ```scss
 // src/my-block/style.scss
-@import '@troychaplin/octave-design-system/tokens.css';
-@import '@troychaplin/octave-design-system/Button.css';
+@import '@troychaplin/parlour-ui/tokens.css';
+@import '@troychaplin/parlour-ui/Button.css';
 ```
 
 ## Design tokens
 
-Every CSS variable uses the `--octave--` prefix (double dash).
+Every CSS variable uses the `--parlour--` prefix (double dash).
 
 | Category       | What's in it                                                                                                                                                                                          |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -225,7 +224,7 @@ that fail accessibility checks will not pass CI.
 
 ## Documentation
 
-The [live Storybook](https://troychaplin.github.io/octave-design-system/) is the reference:
+The [live Storybook](https://troychaplin.github.io/parlour-ui/) is the reference:
 **Getting Started** covers installation and framework integration, **Stylebook** has live token
 demos, and every component ships its own docs page with props, CSS classes, tokens, and
 accessibility notes.
@@ -233,7 +232,7 @@ accessibility notes.
 Contributor conventions — how to build a component's TSX, styles, stories and docs — are in
 [`AGENTS.md`](AGENTS.md) and the [`build-component` skill](.claude/skills/build-component/SKILL.md).
 
-## Developing Octave
+## Developing Parlour
 
 ```bash
 # Requires Node 24+ (see .nvmrc)
@@ -302,7 +301,7 @@ c2b.config.json                # Design token definitions (source of truth)
 src/
   index.ts                     # Package entry — component exports + global stylesheet
   components/                  # React components (co-located SCSS, stories, docs, types)
-    tokens/                    # Runtime token export (octaveTokens)
+    tokens/                    # Runtime token export (parlourTokens)
   docs/                        # Storybook documentation pages
     getting-started/           # Install and framework integration guides
     stylebook/                 # Live token demos (colors, typography, spacing, effects)
@@ -310,20 +309,20 @@ src/
     main.scss                  # Consumer-facing stylesheet entry
     base/                      # Hand-authored globals (focus, selection, utilities)
     c2b/                       # Generated by c2b — never edit by hand
-      octave-tokens.css        # CSS custom properties
-      octave-base-styles.css   # Element defaults (body, h1–h6, links, buttons)
-      octave-layout.css        # Layout and flow-spacing utilities
-      octave-typography.css    # Heading flow spacing
-      _octave-variables.scss   # SCSS variables + breakpoint mixins
+      parlour-tokens.css       # CSS custom properties
+      parlour-base-styles.css  # Element defaults (body, h1–h6, links, buttons)
+      parlour-layout.css       # Layout and flow-spacing utilities
+      parlour-typography.css   # Heading flow spacing
+      _parlour-variables.scss  # SCSS variables + breakpoint mixins
     wordpress/                 # Block-theme and hybrid-theme SCSS entry points
 dist/
-  wordpress/                   # integrate.php, theme-octave.json, block- and hybrid-theme CSS
-  fonts/                       # Font files used by styles.css and theme-octave.json
+  wordpress/                   # integrate.php, theme-parlour.json, block- and hybrid-theme CSS
+  fonts/                       # Font files used by styles.css and theme-parlour.json
 ```
 
 ## Links
 
-- [Storybook](https://troychaplin.github.io/octave-design-system/)
-- [npm](https://www.npmjs.com/package/@troychaplin/octave-design-system)
-- [Source](https://github.com/troychaplin/octave-design-system)
+- [Storybook](https://troychaplin.github.io/parlour-ui/)
+- [npm](https://www.npmjs.com/package/@troychaplin/parlour-ui)
+- [Source](https://github.com/troychaplin/parlour-ui)
 - [Changelog](CHANGELOG.mdx)

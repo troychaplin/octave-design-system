@@ -16,7 +16,7 @@ A CSS grid container that lays its children out in equal-width columns and colla
 ## Import
 
 ```tsx
-import { GridGroup } from '@troychaplin/octave-design-system';
+import { GridGroup } from '@troychaplin/parlour-ui';
 ```
 
 ## Basic usage
@@ -62,27 +62,27 @@ Three cards in the wide width. On screens 768px wide and narrower they stack int
 
 ## CSS classes
 
-| Class                                                     | When applied                                                                                                                                                 |
-| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `octave-layout`                                           | Always — shared marker on layout components                                                                                                                  |
-| `octave-grid-group`                                       | Always — base class, carries the grid with one column                                                                                                        |
-| `octave-grid-group--columns-{n}`                          | Always — the `columns` value, e.g. `octave-grid-group--columns-3` (default). `--columns-2` shows two columns above 600px and `--columns-3` three above 768px |
-| `octave-grid-group--gap-{step}`                           | Always — the `gap` value, e.g. `octave-grid-group--gap-medium` (default)                                                                                     |
-| `octave-grid-group--row-gap-{step}`                       | `rowGap` is set                                                                                                                                              |
-| `octave-grid-group--align-{value}`                        | `align` is set — `start`, `center`, `end` or `stretch`                                                                                                       |
-| `aligncontent` / `alignwide` / `alignfull` / `alignsmall` | The `maxWidth` value, as a bare shared class                                                                                                                 |
+| Class                                                     | When applied                                                                                                                                                  |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `parlour-layout`                                          | Always — shared marker on layout components                                                                                                                   |
+| `parlour-grid-group`                                      | Always — base class, carries the grid with one column                                                                                                         |
+| `parlour-grid-group--columns-{n}`                         | Always — the `columns` value, e.g. `parlour-grid-group--columns-3` (default). `--columns-2` shows two columns above 600px and `--columns-3` three above 768px |
+| `parlour-grid-group--gap-{step}`                          | Always — the `gap` value, e.g. `parlour-grid-group--gap-medium` (default)                                                                                     |
+| `parlour-grid-group--row-gap-{step}`                      | `rowGap` is set                                                                                                                                               |
+| `parlour-grid-group--align-{value}`                       | `align` is set — `start`, `center`, `end` or `stretch`                                                                                                        |
+| `aligncontent` / `alignwide` / `alignfull` / `alignsmall` | The `maxWidth` value, as a bare shared class                                                                                                                  |
 
 The row-gap modifiers come after the gap modifiers in the stylesheet, so `rowGap` overrides the row half of `gap`. A `className` you pass is appended after these classes.
 
 ## Design tokens
 
-| Token                                                 | Used for                                                                                               |
-| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| `--octave--spacing-*`                                 | `gap` and `rowGap` — any step of the spacing scale, or `none`                                          |
-| `--octave--layout-*-size`                             | `maxWidth`, through the shared `align*` classes                                                        |
-| `$octave-viewport-mobile` / `$octave-viewport-tablet` | The 600px and 768px column breakpoints, through the generated `above-mobile` and `above-tablet` mixins |
+| Token                                                   | Used for                                                                                               |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `--parlour--spacing-*`                                  | `gap` and `rowGap` — any step of the spacing scale, or `none`                                          |
+| `--parlour--layout-*-size`                              | `maxWidth`, through the shared `align*` classes                                                        |
+| `$parlour-viewport-mobile` / `$parlour-viewport-tablet` | The 600px and 768px column breakpoints, through the generated `above-mobile` and `above-tablet` mixins |
 
-Media queries can't read CSS custom properties, so the breakpoints use the SCSS variables generated from the `viewport` tokens rather than `--octave--*` properties.
+Media queries can't read CSS custom properties, so the breakpoints use the SCSS variables generated from the `viewport` tokens rather than `--parlour--*` properties.
 
 ## Accessibility
 

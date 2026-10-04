@@ -42,17 +42,17 @@ export interface BadgeProps {
 
 ## Class names
 
-BEM with the `octave-` prefix:
+BEM with the `parlour-` prefix:
 
-- Block: `octave-component`
-- Modifier: `octave-component--modifier`
-- Element: `octave-component__element`
+- Block: `parlour-component`
+- Modifier: `parlour-component--modifier`
+- Element: `parlour-component__element`
 
 Build the string from the props, and use `undefined` rather than `''` for anything conditional so
 no empty `class=""` reaches the DOM:
 
 ```tsx
-const classes = `octave-badge octave-badge--${color} octave-badge--radius-${rounded}`;
+const classes = `parlour-badge parlour-badge--${color} parlour-badge--radius-${rounded}`;
 
 // conditional modifier
 className={reverse ? 'is-first' : undefined}
@@ -66,7 +66,7 @@ Import the component's SCSS directly in the TSX — the build picks it up from t
 import './styles.scss';
 ```
 
-All visual values come from `--octave--*` design tokens. See `references/styles.md`.
+All visual values come from `--parlour--*` design tokens. See `references/styles.md`.
 
 ## Client components
 

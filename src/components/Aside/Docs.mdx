@@ -14,7 +14,7 @@ Use `Aside` inside a `Column` layout alongside a main content area. The most com
 ## Import
 
 ```tsx
-import { Aside } from '@troychaplin/octave-design-system';
+import { Aside } from '@troychaplin/parlour-ui';
 ```
 
 ## Basic usage
@@ -62,20 +62,20 @@ import { Aside } from '@troychaplin/octave-design-system';
 
 ## Sticky positioning
 
-When `isSticky` is `true`, the component wraps children in `<div class="sticky" style={{ top: topSpace + 'px' }}>`, and Octave's styles give that wrapper `position: sticky`.
+When `isSticky` is `true`, the component wraps children in `<div class="sticky" style={{ top: topSpace + 'px' }}>`, and Parlour's styles give that wrapper `position: sticky`.
 
 The wrapper sticks within the `<aside>`, so it only moves when the aside is taller than its content. In a `Column`, the grid stretches the aside to the height of the row, so keep the sticky content shorter than the main column beside it — a table of contents or a short list of filters, not a second article. When the columns stack on small screens, the aside is only as tall as its content and scrolls with the page.
 
-> **Note:** Octave doesn't style the `octave-prose` and `relative` classes on the `<aside>`. Styling for them must come from the consumer project.
+> **Note:** Parlour doesn't style the `parlour-prose` and `relative` classes on the `<aside>`. Styling for them must come from the consumer project.
 
 ## CSS classes
 
-| Class          | Element       | Notes                                                     |
-| -------------- | ------------- | --------------------------------------------------------- |
-| `octave-aside` | `<aside>`     | Always — scopes the sticky rule; no styles of its own     |
-| `octave-prose` | `<aside>`     | Always — prose typography hook, not yet styled internally |
-| `relative`     | `<aside>`     | Always — expected to provide `position: relative`         |
-| `sticky`       | Inner `<div>` | Only when `isSticky` is true — gets `position: sticky`    |
+| Class           | Element       | Notes                                                     |
+| --------------- | ------------- | --------------------------------------------------------- |
+| `parlour-aside` | `<aside>`     | Always — scopes the sticky rule; no styles of its own     |
+| `parlour-prose` | `<aside>`     | Always — prose typography hook, not yet styled internally |
+| `relative`      | `<aside>`     | Always — expected to provide `position: relative`         |
+| `sticky`        | Inner `<div>` | Only when `isSticky` is true — gets `position: sticky`    |
 
 ## Design tokens
 

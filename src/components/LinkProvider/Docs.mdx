@@ -5,18 +5,18 @@ import * as LinkProviderStories from './LinkProvider.stories';
 
 # Link Provider
 
-Replaces the plain `<a>` that Octave's link-rendering components use with your router's link component, through React context. Renders no element of its own.
+Replaces the plain `<a>` that Parlour's link-rendering components use with your router's link component, through React context. Renders no element of its own.
 
 ## When to use
 
-- Wrap your app once, near the root, when it uses a router with its own link component — Next.js, React Router or similar — so Octave's links get client-side navigation and prefetching.
+- Wrap your app once, near the root, when it uses a router with its own link component — Next.js, React Router or similar — so Parlour's links get client-side navigation and prefetching.
 - Leave it out on sites without a client-side router. Without a provider, every link is a standard `<a>`.
-- It only changes the links Octave renders — `Button` with an `href`, and `SiteHeader` — plus your own components that read it with `useLinkContext`. Other links on the page are untouched.
+- It only changes the links Parlour renders — `Button` with an `href`, and `SiteHeader` — plus your own components that read it with `useLinkContext`. Other links on the page are untouched.
 
 ## Import
 
 ```tsx
-import { LinkProvider } from '@troychaplin/octave-design-system';
+import { LinkProvider } from '@troychaplin/parlour-ui';
 ```
 
 ## Basic usage
@@ -26,7 +26,7 @@ import { LinkProvider } from '@troychaplin/octave-design-system';
 ```tsx
 import type { ComponentPropsWithoutRef } from 'react';
 import { Link } from 'react-router-dom';
-import { LinkProvider } from '@troychaplin/octave-design-system';
+import { LinkProvider } from '@troychaplin/parlour-ui';
 
 // React Router's Link takes `to`, so map `href` onto it
 const RouterLink = ({ href = '', ...props }: ComponentPropsWithoutRef<'a'>) => (
@@ -49,7 +49,7 @@ Define the wrapper outside your components, as above. A component created inline
 'use client';
 
 import Link from 'next/link';
-import { LinkProvider } from '@troychaplin/octave-design-system';
+import { LinkProvider } from '@troychaplin/parlour-ui';
 
 export function Providers({ children }: { children: React.ReactNode }) {
     return <LinkProvider component={Link}>{children}</LinkProvider>;
@@ -60,12 +60,12 @@ Then wrap the root layout's children in `<Providers>`. The [Next.js guide](?path
 
 ### Your own components
 
-To give a component of your own the same behaviour, read the link component with `useLinkContext` instead of hardcoding `<a>`. It's exported from the `LinkProvider` entry point, not the package root. The hook reads React context, so in the Next.js App Router the file needs a `'use client'` directive, as Octave's own link components have:
+To give a component of your own the same behaviour, read the link component with `useLinkContext` instead of hardcoding `<a>`. It's exported from the `LinkProvider` entry point, not the package root. The hook reads React context, so in the Next.js App Router the file needs a `'use client'` directive, as Parlour's own link components have:
 
 ```tsx
 'use client';
 
-import { useLinkContext } from '@troychaplin/octave-design-system/LinkProvider';
+import { useLinkContext } from '@troychaplin/parlour-ui/LinkProvider';
 
 export const ProjectCard = ({ href, children }) => {
     const LinkComponent = useLinkContext();

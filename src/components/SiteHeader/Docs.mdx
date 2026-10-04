@@ -16,20 +16,20 @@ The header at the top of every page: the site title as a link home, the primary 
 ## Import
 
 ```tsx
-import { SiteHeader } from '@troychaplin/octave-design-system';
+import { SiteHeader } from '@troychaplin/parlour-ui';
 ```
 
 ## Basic usage
 
 ```tsx
-// Default title, "Octave Design System"
+// Default title, "Parlour"
 <SiteHeader />
 
 // Your own title, with part of it in italics
 <SiteHeader siteTitle="troychaplin.work" siteTitleAccent="troychaplin" />
 
 // One more item at the end of the row
-<SiteHeader siteTitleAccent="Octave">
+<SiteHeader siteTitleAccent="Parlour">
     <Button text="Search" href="/search" isSmall color="light" />
 </SiteHeader>
 ```
@@ -67,35 +67,35 @@ The accent can be any part of the title, several words included. Only its first 
 
 ## Layout
 
-The header spans the full width of the page, with the site's root padding either side. Inside it, a `FlexGroup` spreads the title, navigation, button and any children across the wide content width (`--octave--layout-wide-size`). On narrow screens the row wraps rather than collapsing into a menu: on a phone, the button drops to a second line below the title and links.
+The header spans the full width of the page, with the site's root padding either side. Inside it, a `FlexGroup` spreads the title, navigation, button and any children across the wide content width (`--parlour--layout-wide-size`). On narrow screens the row wraps rather than collapsing into a menu: on a phone, the button drops to a second line below the title and links.
 
 ## CSS classes
 
-| Class                              | When applied                                                        |
-| ---------------------------------- | ------------------------------------------------------------------- |
-| `octave-site-header`               | Always — base class, on the `<header>`                              |
-| `octave-site-header__branding`     | Always — on the `<div>` around the title                            |
-| `octave-site-header__title-accent` | `siteTitleAccent` is set and found in `siteTitle` — on the `<span>` |
-| `octave-site-header__nav`          | Always — on the `<nav>`                                             |
+| Class                               | When applied                                                        |
+| ----------------------------------- | ------------------------------------------------------------------- |
+| `parlour-site-header`               | Always — base class, on the `<header>`                              |
+| `parlour-site-header__branding`     | Always — on the `<div>` around the title                            |
+| `parlour-site-header__title-accent` | `siteTitleAccent` is set and found in `siteTitle` — on the `<span>` |
+| `parlour-site-header__nav`          | Always — on the `<nav>`                                             |
 
-A `className` you pass is appended after `octave-site-header`. The row is a `FlexGroup` and the button comes from `ButtonGroup` and `Button`, so their classes appear inside the header as well.
+A `className` you pass is appended after `parlour-site-header`. The row is a `FlexGroup` and the button comes from `ButtonGroup` and `Button`, so their classes appear inside the header as well.
 
 ## Design tokens
 
-| Token                                  | Used for                                                        |
-| -------------------------------------- | --------------------------------------------------------------- |
-| `--octave--spacing-medium`             | Padding above and below the header; gap between nav links       |
-| `--octave--root-padding-x`             | Padding either side of the header                               |
-| `--octave--color-white`                | Background                                                      |
-| `--octave--color-neutral-400`          | Bottom border color                                             |
-| `--octave--font-family-source-serif-4` | Title font family                                               |
-| `--octave--font-size-large`            | Title font size                                                 |
-| `--octave--font-weight-normal`         | Title and nav link font weight                                  |
-| `--octave--color-neutral-900`          | Title color; accent color while the title is hovered or focused |
-| `--octave--color-accent-secondary`     | Accent color; title color while it's hovered or focused         |
-| `--octave--font-family-inter-tight`    | Nav link font family                                            |
-| `--octave--font-size-small`            | Nav link font size                                              |
-| `--octave--color-neutral-950`          | Nav link color                                                  |
+| Token                                   | Used for                                                        |
+| --------------------------------------- | --------------------------------------------------------------- |
+| `--parlour--spacing-medium`             | Padding above and below the header; gap between nav links       |
+| `--parlour--root-padding-x`             | Padding either side of the header                               |
+| `--parlour--color-white`                | Background                                                      |
+| `--parlour--color-neutral-400`          | Bottom border color                                             |
+| `--parlour--font-family-source-serif-4` | Title font family                                               |
+| `--parlour--font-size-large`            | Title font size                                                 |
+| `--parlour--font-weight-normal`         | Title and nav link font weight                                  |
+| `--parlour--color-neutral-900`          | Title color; accent color while the title is hovered or focused |
+| `--parlour--color-accent-secondary`     | Accent color; title color while it's hovered or focused         |
+| `--parlour--font-family-inter-tight`    | Nav link font family                                            |
+| `--parlour--font-size-small`            | Nav link font size                                              |
+| `--parlour--color-neutral-950`          | Nav link color                                                  |
 
 The bottom border's `1px` width is a raw value rather than a design token.
 

@@ -1,1 +1,1 @@
-# Contributing to Octave Design System
+# Contributing to Parlour

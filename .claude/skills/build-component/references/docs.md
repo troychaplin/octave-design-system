@@ -34,7 +34,7 @@ _not_ for — so the reader can tell it apart from its neighbours.
 The package import, in a `tsx` block:
 
 ```tsx
-import { ComponentName } from '@troychaplin/octave-design-system';
+import { ComponentName } from '@troychaplin/parlour-ui';
 ```
 
 ### 4. `## Basic usage`
@@ -74,17 +74,17 @@ When `href` is provided the badge renders as a link using the `LinkProvider` con
 
 A table of every BEM class the component applies and the condition that triggers it. Cover the
 base class as "Always", and note any selector-level behaviour that isn't a class the component
-adds (e.g. what `a.octave-badge` does differently from `span.octave-badge`) in a sentence below the table.
+adds (e.g. what `a.parlour-badge` does differently from `span.parlour-badge`) in a sentence below the table.
 
-| Class                     | When applied                                                |
-| ------------------------- | ----------------------------------------------------------- |
-| `octave-badge`            | Always — base class                                         |
-| `octave-badge--{color}`   | The active `color` prop value, e.g. `octave-badge--success` |
-| `octave-badge--radius-md` | `rounded="md"` (default)                                    |
+| Class                      | When applied                                                 |
+| -------------------------- | ------------------------------------------------------------ |
+| `parlour-badge`            | Always — base class                                          |
+| `parlour-badge--{color}`   | The active `color` prop value, e.g. `parlour-badge--success` |
+| `parlour-badge--radius-md` | `rounded="md"` (default)                                     |
 
 ### 7. `## Design tokens`
 
-A table of every `--octave--*` token used in the component's `styles.scss`, and what each controls.
+A table of every `--parlour--*` token used in the component's `styles.scss`, and what each controls.
 Read the SCSS and enumerate — don't guess. If the component uses a raw value rather than a token
 anywhere, say so explicitly below the table; that is a known gap worth surfacing, not something
 to paper over.

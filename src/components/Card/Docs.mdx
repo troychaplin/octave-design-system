@@ -16,7 +16,7 @@ A surface for grouping related content: a `white`, `light`, `medium` or `dark` b
 ## Import
 
 ```tsx
-import { Card } from '@troychaplin/octave-design-system';
+import { Card } from '@troychaplin/parlour-ui';
 ```
 
 ## Basic usage
@@ -73,30 +73,30 @@ The card keeps its own text colour, so a light card inside a dark `Container` st
 
 ## CSS classes
 
-| Class                         | When applied                                                                                            |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `octave-card`                 | Always — base class                                                                                     |
-| `octave-card--bg-{name}`      | Always — the `backgroundColor` value, e.g. `octave-card--bg-light` (default); also sets the text colour |
-| `octave-card--border`         | `border` is true (default) — a 1px solid border                                                         |
-| `octave-card--border-{name}`  | `border` is true — the `borderColor` value, e.g. `octave-card--border-light` (default)                  |
-| `octave-card--radius-{size}`  | Always — the `borderRadius` value, e.g. `octave-card--radius-none` (default)                            |
-| `octave-card--padding-{step}` | Always — the `padding` value, e.g. `octave-card--padding-large` (default)                               |
+| Class                          | When applied                                                                                             |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| `parlour-card`                 | Always — base class                                                                                      |
+| `parlour-card--bg-{name}`      | Always — the `backgroundColor` value, e.g. `parlour-card--bg-light` (default); also sets the text colour |
+| `parlour-card--border`         | `border` is true (default) — a 1px solid border                                                          |
+| `parlour-card--border-{name}`  | `border` is true — the `borderColor` value, e.g. `parlour-card--border-light` (default)                  |
+| `parlour-card--radius-{size}`  | Always — the `borderRadius` value, e.g. `parlour-card--radius-none` (default)                            |
+| `parlour-card--padding-{step}` | Always — the `padding` value, e.g. `parlour-card--padding-large` (default)                               |
 
 The first child's top margin and the last child's bottom margin are removed, so the padding looks even. Headings inside the card inherit its text colour. A `className` you pass is appended after these classes.
 
 ## Design tokens
 
-| Token                         | Used for                                                              |
-| ----------------------------- | --------------------------------------------------------------------- |
-| `--octave--color-white`       | `white` background; text on `medium` and `dark` cards; `white` border |
-| `--octave--color-neutral-50`  | `light` background (default)                                          |
-| `--octave--color-neutral-900` | `medium` background; `dark` border                                    |
-| `--octave--color-neutral-950` | `dark` background                                                     |
-| `--octave--color-black`       | Text on `white` and `light` cards                                     |
-| `--octave--color-neutral-300` | `light` border (default)                                              |
-| `--octave--color-neutral-500` | `medium` border                                                       |
-| `--octave--spacing-*`         | `padding` — any step of the spacing scale, or `none`                  |
-| `--octave--radius-*`          | `borderRadius` — `sm`, `md`, `lg`, `xl` or `full`                     |
+| Token                          | Used for                                                              |
+| ------------------------------ | --------------------------------------------------------------------- |
+| `--parlour--color-white`       | `white` background; text on `medium` and `dark` cards; `white` border |
+| `--parlour--color-neutral-50`  | `light` background (default)                                          |
+| `--parlour--color-neutral-900` | `medium` background; `dark` border                                    |
+| `--parlour--color-neutral-950` | `dark` background                                                     |
+| `--parlour--color-black`       | Text on `white` and `light` cards                                     |
+| `--parlour--color-neutral-300` | `light` border (default)                                              |
+| `--parlour--color-neutral-500` | `medium` border                                                       |
+| `--parlour--spacing-*`         | `padding` — any step of the spacing scale, or `none`                  |
+| `--parlour--radius-*`          | `borderRadius` — `sm`, `md`, `lg`, `xl` or `full`                     |
 
 A `light` card (`neutral-50`) is a step lighter than a `light` [`Container`](?path=/docs/components-layout-container--docs) (`neutral-200`), so it stands out on a light section. The border's `1px` width is a raw value rather than a design token.
 

@@ -16,7 +16,7 @@ The heading for a section of a page: a small uppercase eyebrow, a title, and a d
 ## Import
 
 ```tsx
-import { SectionHeader } from '@troychaplin/octave-design-system';
+import { SectionHeader } from '@troychaplin/parlour-ui';
 ```
 
 ## Basic usage
@@ -49,13 +49,13 @@ Without `prefix`, the header renders just the title and the divider.
 
 ### In a light Container
 
-On a `Container` with `color="light"`, the header keeps its default colors against the `--octave--color-neutral-200` background — the section style it was designed for.
+On a `Container` with `color="light"`, the header keeps its default colors against the `--parlour--color-neutral-200` background — the section style it was designed for.
 
 <Canvas of={SectionHeaderStories.InLightContainer} />
 
 ### In a medium Container
 
-Inside a `Container` with `color="medium"`, the title turns white, the eyebrow lightens to `--octave--color-neutral-300`, and the divider follows the white text.
+Inside a `Container` with `color="medium"`, the title turns white, the eyebrow lightens to `--parlour--color-neutral-300`, and the divider follows the white text.
 
 <Canvas of={SectionHeaderStories.InMediumContainer} />
 
@@ -67,28 +67,28 @@ Inside a `Container` with `color="medium"`, the title turns white, the eyebrow l
 
 ## CSS classes
 
-| Class                           | When applied                                                |
-| ------------------------------- | ----------------------------------------------------------- |
-| `octave-section-header`         | Always — base class; draws the divider as its bottom border |
-| `octave-section-header__prefix` | `prefix` is set — on the `<p>` above the title              |
-| `octave-section-header__title`  | `title` is set — on the heading                             |
+| Class                            | When applied                                                |
+| -------------------------------- | ----------------------------------------------------------- |
+| `parlour-section-header`         | Always — base class; draws the divider as its bottom border |
+| `parlour-section-header__prefix` | `prefix` is set — on the `<p>` above the title              |
+| `parlour-section-header__title`  | `title` is set — on the heading                             |
 
-The header also leaves space below its divider, so whatever follows it — a grid of cards, a paragraph — starts the same distance down. Inside a `Container`, that space is removed when the header is the section's last child. A `className` you pass is appended after `octave-section-header`.
+The header also leaves space below its divider, so whatever follows it — a grid of cards, a paragraph — starts the same distance down. Inside a `Container`, that space is removed when the header is the section's last child. A `className` you pass is appended after `parlour-section-header`.
 
 ## Design tokens
 
-| Token                                  | Used for                                              |
-| -------------------------------------- | ----------------------------------------------------- |
-| `--octave--font-family-jetbrains-mono` | Eyebrow font family                                   |
-| `--octave--font-size-2-x-small`        | Eyebrow font size                                     |
-| `--octave--font-weight-normal`         | Eyebrow and title font weight                         |
-| `--octave--color-neutral-600`          | Eyebrow color                                         |
-| `--octave--color-neutral-300`          | Eyebrow color inside dark and medium Containers       |
-| `--octave--spacing-medium`             | Space between the eyebrow and the title               |
-| `--octave--font-size-2-x-large`        | Title font size                                       |
-| `--octave--color-neutral-950`          | Title color, outside dark and medium Containers       |
-| `--octave--spacing-large`              | Space between the title and the divider               |
-| `--octave--spacing-2-x-large`          | Space below the divider, before the section's content |
+| Token                                   | Used for                                              |
+| --------------------------------------- | ----------------------------------------------------- |
+| `--parlour--font-family-jetbrains-mono` | Eyebrow font family                                   |
+| `--parlour--font-size-2-x-small`        | Eyebrow font size                                     |
+| `--parlour--font-weight-normal`         | Eyebrow and title font weight                         |
+| `--parlour--color-neutral-600`          | Eyebrow color                                         |
+| `--parlour--color-neutral-300`          | Eyebrow color inside dark and medium Containers       |
+| `--parlour--spacing-medium`             | Space between the eyebrow and the title               |
+| `--parlour--font-size-2-x-large`        | Title font size                                       |
+| `--parlour--color-neutral-950`          | Title color, outside dark and medium Containers       |
+| `--parlour--spacing-large`              | Space between the title and the divider               |
+| `--parlour--spacing-2-x-large`          | Space below the divider, before the section's content |
 
 The eyebrow's `letter-spacing` (`0.1em`), the title's `letter-spacing` (`-1px`) and `line-height` (`1.1`), and the divider's `1px` width use raw values rather than design tokens. The divider has no color of its own: it uses `currentColor`, so it matches the surrounding text — near-black on light sections, white in dark ones.
 
@@ -99,4 +99,4 @@ The eyebrow's `letter-spacing` (`0.1em`), the title's `letter-spacing` (`-1px`) 
 - The eyebrow is a paragraph before the heading, not part of it, so screen reader users who jump between headings skip it. Its capitals come from CSS, so write it in normal case ("Releases · Open source") — text typed in capitals can be spelled out letter by letter.
 - Some screen readers read the `·` separator aloud, as "dot" or "middle dot".
 - The divider is a border rather than an element, so it isn't announced.
-- The eyebrow color, `--octave--color-neutral-600`, has a contrast of about 4.9:1 on the light `Container` background (`--octave--color-neutral-200`) and more on white, which passes WCAG AA for small text. In dark and medium Containers it switches to `--octave--color-neutral-300`.
+- The eyebrow color, `--parlour--color-neutral-600`, has a contrast of about 4.9:1 on the light `Container` background (`--parlour--color-neutral-200`) and more on white, which passes WCAG AA for small text. In dark and medium Containers it switches to `--parlour--color-neutral-300`.

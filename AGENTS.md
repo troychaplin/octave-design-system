@@ -1,4 +1,4 @@
-# AGENTS.md — Octave Design System AI Agent Guide
+# AGENTS.md — Parlour AI Agent Guide
 
 Detailed, per-part build conventions live in the **`build-component` skill** at
 [`.claude/skills/build-component/`](.claude/skills/build-component/). When this file and the skill
@@ -16,12 +16,12 @@ disagree, the skill wins.
 
 ## Project overview
 
-**@troychaplin/octave-design-system** — a token-driven React component library.
+**@troychaplin/parlour-ui** — a token-driven React component library.
 
 - **Build:** Vite library mode (ESM + CJS), TypeScript 6, pnpm
 - **Runtime:** React 18+, SCSS + CSS custom properties (no Tailwind)
 - **Testing:** Storybook 10 + Vitest + Playwright; axe a11y at `"error"` threshold
-- **Tokens:** `@troychaplin/component2block` generates `src/styles/c2b/octave-tokens.*` and `_octave-variables.scss` from `c2b.config.json` — **never edit these files by hand**
+- **Tokens:** `@troychaplin/component2block` generates `src/styles/c2b/parlour-tokens.*` and `_parlour-variables.scss` from `c2b.config.json` — **never edit these files by hand**
 
 ---
 
@@ -62,25 +62,25 @@ config update needed, but a missing barrel file silently drops the component fro
 - **`undefined` not `''`** for conditional `className` — prevents `class=""` in the DOM
 - **Early returns** over ternaries for branching render logic
 - **No dead code** — remove commented-out code; never leave `// TODO` stubs
-- **BEM class prefix:** `octave-` (e.g. `octave-badge`, `octave-badge--success`, `octave-badge__icon`)
-- **CSS tokens:** `var(--octave--*)` — never hardcode colors, sizes, or font stacks
+- **BEM class prefix:** `parlour-` (e.g. `parlour-badge`, `parlour-badge--success`, `parlour-badge__icon`)
+- **CSS tokens:** `var(--parlour--*)` — never hardcode colors, sizes, or font stacks
 - **`'use client'`** as the first line of any component that uses React context, state or effects, `useLinkContext()` included — otherwise importing it in a Next.js Server Component fails. `scripts/vite-use-client.ts` keeps the directive on every built file that contains such a module
 
 ---
 
 ## SCSS
 
-- All visual values from `--octave--*` tokens — see `src/styles/c2b/octave-tokens.css`
+- All visual values from `--parlour--*` tokens — see `src/styles/c2b/parlour-tokens.css`
 - Breakpoints via SCSS variables (CSS custom properties don't work in `@media`):
 
 ```scss
-@use '../../styles/c2b/octave-variables' as *;
+@use '../../styles/c2b/parlour-variables' as *;
 
-@media (min-width: $octave-media-query-md) { ... }
+@media (min-width: $parlour-media-query-md) { ... }
 ```
 
-Available: `$octave-media-query-sm` (600px), `$octave-media-query-md` (784px),
-`$octave-media-query-lg` (960px), `$octave-media-query-xl` (1280px).
+Available: `$parlour-media-query-sm` (600px), `$parlour-media-query-md` (784px),
+`$parlour-media-query-lg` (960px), `$parlour-media-query-xl` (1280px).
 
 Mobile-first: default styles target mobile; `min-width` queries enhance upward.
 
@@ -158,6 +158,6 @@ actually done.
 - **Node 24** (see `.nvmrc`) — `engineStrict: true` in `pnpm-workspace.yaml` fails the install on any Node a dependency's `engines` excludes (e.g. `lint-staged` needs ≥22.22.1)
 - **Stay on TypeScript 6** — TS 7.0 has no JS API, so typescript-eslint, Storybook docgen and the dts plugins in `pnpm build` break on it. Upgrade once TS 7.1 ships its API and those tools support it
 - **Storybook source transform** — expression-bodied render functions only; block bodies break the docs code panel
-- **CSS vars in media queries** — won't work; use SCSS variables from `_octave-variables.scss`
+- **CSS vars in media queries** — won't work; use SCSS variables from `_parlour-variables.scss`
 - **TS 6 side-effect imports** — `declare module '*.scss';` (no body) in `src/scss.d.ts`
 - **Never run `--no-verify`** — husky hooks exist because bypassing them masked real bugs in the past

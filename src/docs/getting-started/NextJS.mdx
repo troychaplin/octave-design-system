@@ -4,24 +4,24 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Next.js usage
 
-Using `@troychaplin/octave-design-system` in a Next.js app. Assumes you've completed [Installation](?path=/docs/overview-getting-started-installation--docs).
+Using `@troychaplin/parlour-ui` in a Next.js app. Assumes you've completed [Installation](?path=/docs/overview-getting-started-installation--docs).
 
 ## App Router
 
 ### Server and Client Components
 
-Octave's components work in Server Components. `Button`, `SiteHeader` and `LinkProvider` use React context, so they're marked `'use client'` and render as Client Components; every other component renders on the server.
+Parlour's components work in Server Components. `Button`, `SiteHeader` and `LinkProvider` use React context, so they're marked `'use client'` and render as Client Components; every other component renders on the server.
 
 ### Import styles and wire up Next.js Link
 
-[`LinkProvider`](?path=/docs/components-utilities-linkprovider--docs) makes Octave components that take an `href` route through Next.js's `Link`, with prefetching and client-side navigation. A Server Component can't pass a function such as `Link` to a Client Component, so put the provider in a client file:
+[`LinkProvider`](?path=/docs/components-utilities-linkprovider--docs) makes Parlour components that take an `href` route through Next.js's `Link`, with prefetching and client-side navigation. A Server Component can't pass a function such as `Link` to a Client Component, so put the provider in a client file:
 
 ```tsx
 // app/providers.tsx
 'use client';
 
 import Link from 'next/link';
-import { LinkProvider } from '@troychaplin/octave-design-system';
+import { LinkProvider } from '@troychaplin/parlour-ui';
 
 export function Providers({ children }: { children: React.ReactNode }) {
     return <LinkProvider component={Link}>{children}</LinkProvider>;
@@ -32,7 +32,7 @@ Then import the stylesheet and the providers in the root layout:
 
 ```tsx
 // app/layout.tsx
-import '@troychaplin/octave-design-system/styles.css';
+import '@troychaplin/parlour-ui/styles.css';
 import { Providers } from './providers';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -46,15 +46,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-Without `LinkProvider`, Octave's links fall back to a plain `<a>`. They still work, but you lose Next.js routing.
+Without `LinkProvider`, Parlour's links fall back to a plain `<a>`. They still work, but you lose Next.js routing.
 
 ### Compose components
 
-A page can stay a Server Component and still use any Octave component:
+A page can stay a Server Component and still use any Parlour component:
 
 ```tsx
 // app/page.tsx
-import { Button, Column, Container, Main } from '@troychaplin/octave-design-system';
+import { Button, Column, Container, Main } from '@troychaplin/parlour-ui';
 
 export default function Page() {
     return (
@@ -63,7 +63,7 @@ export default function Page() {
                 <Column cols="2/3">
                     <Column.Content>
                         <h1>Welcome</h1>
-                        <p>A page built from Octave components.</p>
+                        <p>A page built from Parlour components.</p>
                     </Column.Content>
                     <Column.Content>
                         <Button text="Get started" href="/start" />
@@ -83,8 +83,8 @@ The Pages Router has no Server Components, so set everything up in `pages/_app.t
 // pages/_app.tsx
 import type { AppProps } from 'next/app';
 import Link from 'next/link';
-import { LinkProvider } from '@troychaplin/octave-design-system';
-import '@troychaplin/octave-design-system/styles.css';
+import { LinkProvider } from '@troychaplin/parlour-ui';
+import '@troychaplin/parlour-ui/styles.css';
 
 export default function App({ Component, pageProps }: AppProps) {
     return (

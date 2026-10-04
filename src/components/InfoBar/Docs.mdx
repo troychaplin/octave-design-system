@@ -16,7 +16,7 @@ A thin strip of site-wide details across the top of the page: a fixed "Building 
 ## Import
 
 ```tsx
-import { InfoBar } from '@troychaplin/octave-design-system';
+import { InfoBar } from '@troychaplin/parlour-ui';
 ```
 
 ## Basic usage
@@ -67,25 +67,25 @@ Pass `date` to show a particular day. 26 September 2026 is day 269.
 
 ## Layout
 
-The bar spans the full width of its container, with the site's root padding either side, and a `FlexGroup` spreads its items across the wide content width (`--octave--layout-wide-size`). On narrow screens the row wraps: on a phone, the date drops to a second line below "Building since 2005".
+The bar spans the full width of its container, with the site's root padding either side, and a `FlexGroup` spreads its items across the wide content width (`--parlour--layout-wide-size`). On narrow screens the row wraps: on a phone, the date drops to a second line below "Building since 2005".
 
 ## CSS classes
 
-| Class            | When applied                        |
-| ---------------- | ----------------------------------- |
-| `octave-infobar` | Always — base class, on the `<div>` |
+| Class             | When applied                        |
+| ----------------- | ----------------------------------- |
+| `parlour-infobar` | Always — base class, on the `<div>` |
 
-A `className` you pass is appended after `octave-infobar`. The row inside is a `FlexGroup`, so its classes appear too. The monospace type applies to every `<p>` in the bar, including ones you pass as children.
+A `className` you pass is appended after `parlour-infobar`. The row inside is a `FlexGroup`, so its classes appear too. The monospace type applies to every `<p>` in the bar, including ones you pass as children.
 
 ## Design tokens
 
-| Token                                  | Used for                        |
-| -------------------------------------- | ------------------------------- |
-| `--octave--spacing-small`              | Padding above and below the bar |
-| `--octave--root-padding-x`             | Padding either side of the bar  |
-| `--octave--color-neutral-100`          | Background                      |
-| `--octave--font-family-jetbrains-mono` | Paragraph font family           |
-| `--octave--font-size-2-x-small`        | Paragraph font size             |
+| Token                                   | Used for                        |
+| --------------------------------------- | ------------------------------- |
+| `--parlour--spacing-small`              | Padding above and below the bar |
+| `--parlour--root-padding-x`             | Padding either side of the bar  |
+| `--parlour--color-neutral-100`          | Background                      |
+| `--parlour--font-family-jetbrains-mono` | Paragraph font family           |
+| `--parlour--font-size-2-x-small`        | Paragraph font size             |
 
 ## Accessibility
 

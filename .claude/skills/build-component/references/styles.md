@@ -5,15 +5,15 @@
 ## Design tokens
 
 Every visual value — colours, spacing, font sizes, weights, line heights, shadows, radii,
-gradients — comes from an `--octave--*` CSS custom property. Never hardcode a hex colour, a pixel
+gradients — comes from an `--parlour--*` CSS custom property. Never hardcode a hex colour, a pixel
 value, or a font stack.
 
 ```scss
 // Correct
-color: var(--octave--color-accent-primary);
-gap: var(--octave--spacing-large);
-font-size: var(--octave--font-size-large);
-border-radius: var(--octave--radius-md);
+color: var(--parlour--color-accent-primary);
+gap: var(--parlour--spacing-large);
+font-size: var(--parlour--font-size-large);
+border-radius: var(--parlour--radius-md);
 
 // Wrong
 color: #e91c24;
@@ -24,8 +24,8 @@ If a value you need has no token, add it to `c2b.config.json` and regenerate —
 
 ## Class naming
 
-- BEM with the `octave-` prefix: `.octave-component`, `.octave-component--modifier`, `.octave-component__element`
-- Utility classes use the `octave-utils--` prefix
+- BEM with the `parlour-` prefix: `.parlour-component`, `.parlour-component--modifier`, `.parlour-component__element`
+- Utility classes use the `parlour-utils--` prefix
 
 ## Responsive breakpoints
 
@@ -33,12 +33,12 @@ CSS custom properties **cannot** be used inside `@media` queries — that's a sp
 build one. Breakpoints come in as SCSS variables from the generated variables partial:
 
 ```scss
-@use '../../styles/c2b/octave-variables' as *;
+@use '../../styles/c2b/parlour-variables' as *;
 
-.octave-column--two {
+.parlour-column--two {
     grid-template-columns: 1fr;
 
-    @media (min-width: $octave-media-query-md) {
+    @media (min-width: $parlour-media-query-md) {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
@@ -46,16 +46,16 @@ build one. Breakpoints come in as SCSS variables from the generated variables pa
 
 Available breakpoints:
 
-| Variable                 | Value  |
-| ------------------------ | ------ |
-| `$octave-media-query-sm` | 600px  |
-| `$octave-media-query-md` | 784px  |
-| `$octave-media-query-lg` | 960px  |
-| `$octave-media-query-xl` | 1280px |
+| Variable                  | Value  |
+| ------------------------- | ------ |
+| `$parlour-media-query-sm` | 600px  |
+| `$parlour-media-query-md` | 784px  |
+| `$parlour-media-query-lg` | 960px  |
+| `$parlour-media-query-xl` | 1280px |
 
 **Mobile-first.** Default styles target mobile; `min-width` queries enhance upward. For the rare
 max-width query, subtract a hair to avoid an overlap at the boundary:
-`@media (max-width: $octave-media-query-md - 0.02px)`.
+`@media (max-width: $parlour-media-query-md - 0.02px)`.
 
 ## Generated files — never hand-edit
 

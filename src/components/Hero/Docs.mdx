@@ -16,7 +16,7 @@ The opening band of a page: a full-width section that lays out a content column 
 ## Import
 
 ```tsx
-import { Hero } from '@troychaplin/octave-design-system';
+import { Hero } from '@troychaplin/parlour-ui';
 ```
 
 ## Basic usage
@@ -24,23 +24,23 @@ import { Hero } from '@troychaplin/octave-design-system';
 ```tsx
 // Heading and code sample side by side
 <Hero>
-    <div className="octave-hero__content">
+    <div className="parlour-hero__content">
         <HeroHeader title="Plugins, projects" titleAccent="& open source contributions" />
     </div>
-    <div className="octave-hero__code">
+    <div className="parlour-hero__code">
         <CodeBlock code={code} />
     </div>
 </Hero>
 
 // Heading only
 <Hero>
-    <div className="octave-hero__content">
+    <div className="parlour-hero__content">
         <HeroHeader title="Plugins, projects" />
     </div>
 </Hero>
 ```
 
-`Hero` doesn't add the column classes itself. Wrap your content in `octave-hero__content` and the code in `octave-hero__code` to get the two-column layout.
+`Hero` doesn't add the column classes itself. Wrap your content in `parlour-hero__content` and the code in `parlour-hero__code` to get the two-column layout.
 
 ## Examples
 
@@ -59,28 +59,28 @@ Leave out the code column and the content stretches across the whole row. The de
 
 ## Layout
 
-The section is a full-width `Container`, so inside `Main` it runs edge to edge, with the same side padding as any full-width `Container`, and holds its row to the wide content width (`--octave--layout-wide-size`).
+The section is a full-width `Container`, so inside `Main` it runs edge to edge, with the same side padding as any full-width `Container`, and holds its row to the wide content width (`--parlour--layout-wide-size`).
 
 Above 768px, the code column is a fixed 40% of the row and the content column takes the rest. Long code lines scroll inside the `CodeBlock` rather than widening the column. At 768px and below, the code column is hidden with `display: none` and the content fills the row.
 
 ## CSS classes
 
-| Class                  | When applied                                                                 |
-| ---------------------- | ---------------------------------------------------------------------------- |
-| `octave-hero`          | Always — base class, on the `<section>`                                      |
-| `octave-hero__content` | Never added by the component — put it on the `<div>` around your content     |
-| `octave-hero__code`    | Never added by the component — put it on the `<div>` around your code sample |
+| Class                   | When applied                                                                 |
+| ----------------------- | ---------------------------------------------------------------------------- |
+| `parlour-hero`          | Always — base class, on the `<section>`                                      |
+| `parlour-hero__content` | Never added by the component — put it on the `<div>` around your content     |
+| `parlour-hero__code`    | Never added by the component — put it on the `<div>` around your code sample |
 
-A `className` you pass is appended after `octave-hero`. The `<section>` also carries `Container`'s classes, including `alignfull`, and the row inside is a `FlexGroup`. Anything directly inside `octave-hero__code` loses its top and bottom margins.
+A `className` you pass is appended after `parlour-hero`. The `<section>` also carries `Container`'s classes, including `alignfull`, and the row inside is a `FlexGroup`. Anything directly inside `parlour-hero__code` loses its top and bottom margins.
 
 ## Design tokens
 
-| Token                         | Used for                                 |
-| ----------------------------- | ---------------------------------------- |
-| `--octave--spacing-small`     | Padding below the hero                   |
-| `--octave--spacing-3-x-large` | Gap between the content and code columns |
+| Token                          | Used for                                 |
+| ------------------------------ | ---------------------------------------- |
+| `--parlour--spacing-small`     | Padding below the hero                   |
+| `--parlour--spacing-3-x-large` | Gap between the content and code columns |
 
-The side padding comes from `Container`'s full-width styles: `--octave--spacing-3-x-large`, rising to `--octave--spacing-4-x-large` above 768px. The code column's 40% width is a fixed proportion rather than a token.
+The side padding comes from `Container`'s full-width styles: `--parlour--spacing-3-x-large`, rising to `--parlour--spacing-4-x-large` above 768px. The code column's 40% width is a fixed proportion rather than a token.
 
 ## Accessibility
 

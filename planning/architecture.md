@@ -1,4 +1,4 @@
-# Octave layout architecture — SiteHeader, SiteFooter, and the landmark hierarchy
+# Parlour layout architecture — SiteHeader, SiteFooter, and the landmark hierarchy
 
 ## Context
 
@@ -8,7 +8,7 @@ left the tag open. `.storybook/preview.ts` was then pruned from nine Storybook c
 but `Navigation` was deliberately kept despite having zero components. Both are the same signal:
 the site chrome is the next thing to build.
 
-Octave today has the _inside_ of the page (`Body`, `Main`, `Section`, `Column`, `Article`, `Aside`)
+Parlour today has the _inside_ of the page (`Body`, `Main`, `Section`, `Column`, `Article`, `Aside`)
 and none of the chrome around it. This plan defines the component hierarchy for that chrome and
 the rules governing how every piece nests, so the pieces built next fit a deliberate structure
 rather than accreting one.
@@ -119,7 +119,7 @@ Mirror `Section`'s **two-layer width model exactly** (`src/components/Section/Se
 root takes the band width and the background, an always-rendered inner `<div>` takes
 `has-global-padding` + `contentWidth`. This is the established mechanism for a full-bleed band with
 constrained content, and reusing it means `SiteHeader` inherits the gutter and break-out behaviour
-in `src/styles/c2b/octave-layout.css` for free.
+in `src/styles/c2b/parlour-layout.css` for free.
 
 Sub-components: `.Brand`, `.Nav`, `.Actions` — three-zone flex, brand at start, actions at end.
 
@@ -272,16 +272,16 @@ export { SkipLink } from './components/SkipLink/SkipLink';
 
 ## Tokens to add
 
-- **`--octave--layout-header-height`** — needed by the sticky header, by `scroll-margin-top` on
+- **`--parlour--layout-header-height`** — needed by the sticky header, by `scroll-margin-top` on
   anchor targets, and by `Aside`'s sticky offset. `Aside.topSpace` is a raw `number` of pixels
   today (`src/components/Aside/Aside.tsx`), which cannot track a header whose height changes
   responsively. A token lets both read the same value.
 - **A z-index token for the sticky header.** `c2b.config.json` has generic `zIndex` values
   (`100`, `200`, `500`).
 
-Note: `c2b.config.scss` at the repo root drafts `--octave--z-header: 100` and a commented-out
+Note: `c2b.config.scss` at the repo root drafts `--parlour--z-header: 100` and a commented-out
 `--header-height: 4rem`, but it is **dead scratch** — referenced by nothing, and using an older
-`--octave--color--white` double-dash convention that does not match the generated tokens. Treat it
+`--parlour--color--white` double-dash convention that does not match the generated tokens. Treat it
 as intent, not as a source. All real tokens come from `c2b.config.json` via `npm run c2b`.
 
 ## Build order
@@ -310,7 +310,7 @@ pnpm run dev
   `landmark-complementary-is-top-level`.
 - **Sticky:** with `isSticky`, the header pins and a `Section` scrolling beneath it is not occluded
   at anchor targets.
-- **Responsive:** check at both real breakpoints — `src/styles/c2b/_octave-variables.scss` defines
+- **Responsive:** check at both real breakpoints — `src/styles/c2b/_parlour-variables.scss` defines
   only `600px` (mobile) and `768px` (tablet) as mixins. The `sm/md/lg/xl` scale in
   `Column/Docs.mdx` and `references/styles.md` is stale; do not follow it.
 
@@ -323,7 +323,7 @@ pnpm run typecheck && pnpm run lint && pnpm run test:storybook
 ## Two unrelated fixes worth folding in while here
 
 - **`Overview/Templates` is missing from `storySort`.** `.storybook/preview.ts` lists only
-  `About Octave`, `Changelog`, `Getting Started`, `Stylebook` under `Overview`, so `Templates`
+  `About Parlour`, `Changelog`, `Getting Started`, `Stylebook` under `Overview`, so `Templates`
   falls through to the `'*'` bucket and sorts unpredictably.
 - **`src/styles/wordpress/*.scss` has broken imports.** Both `block-theme.scss` and
   `hybrid-theme.scss` `@use '../c2b/base-*'` — five partials that exist only in `dist/styles/`, not
