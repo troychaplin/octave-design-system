@@ -9,7 +9,7 @@
         "themeable": false,
         "emitScssAlongside": true,
         "emitAggregate": false,
-        "scssVars": ["viewport", "spacing"]
+        "scssVars": ["viewport", "spacing", "radius"]
     },
 
     "tokens": {

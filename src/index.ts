@@ -11,6 +11,7 @@ export { InfoBar } from './components/InfoBar/InfoBar';
 // Layout
 export { Column } from './components/Column/Column';
 export { FlexGroup, type FlexGroupProps } from './components/FlexGroup/FlexGroup';
+export { GridGroup, type GridGroupProps } from './components/GridGroup/GridGroup';
 export { Container, type ContainerProps } from './components/Container/Container';
 
 // Elements
@@ -18,9 +19,12 @@ export { Button, type ButtonProps } from './components/Button/Button';
 export { ButtonGroup } from './components/ButtonGroup/ButtonGroup';
 
 // Content
+export { Card, type CardProps } from './components/Card/Card';
 export { CodeBlock, type CodeBlockProps } from './components/CodeBlock/CodeBlock';
 export { Figure, type FigureProps } from './components/Figure/Figure';
 export { Hero, type HeroProps } from './components/Hero/Hero';
+export { HeroHeader, type HeroHeaderProps } from './components/HeroHeader/HeroHeader';
+export { SectionHeader, type SectionHeaderProps } from './components/SectionHeader/SectionHeader';
 
 // Utilities
 export { LinkProvider } from './components/LinkProvider/index';

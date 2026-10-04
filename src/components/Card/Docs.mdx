@@ -1,0 +1,108 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as CardStories from './Card.stories';
+
+<Meta of={CardStories} />
+
+# Card
+
+A surface for grouping related content: a `white`, `light`, `medium` or `dark` background with a matching text colour, an optional border, square or rounded corners, and padding. Renders a `<div>` by default, or the element set by `as`.
+
+## When to use
+
+- Present one item of a collection — a project, an article, a feature — usually inside a [`GridGroup`](?path=/docs/components-layout-grid-group--docs).
+- Render it `as="article"` for content that stands on its own, or `as="li"` inside a `GridGroup` rendered `as="ul"`.
+- Don't use it for page sections with full-width backgrounds — that's [`Container`](?path=/docs/components-layout-container--docs).
+
+## Import
+
+```tsx
+import { Card } from '@troychaplin/octave-design-system';
+```
+
+## Basic usage
+
+```tsx
+// The defaults: a light background and border, square corners
+<Card>…</Card>
+
+// No border, rounded corners
+<Card border={false} borderRadius="lg">…</Card>
+
+// A dark card — the text turns white with it
+<Card backgroundColor="dark" borderColor="dark">…</Card>
+
+// Cards in a list
+<GridGroup as="ul">
+    <Card as="li">…</Card>
+    <Card as="li">…</Card>
+</GridGroup>
+```
+
+## Examples
+
+### Default
+
+The defaults match the project cards: a `light` background (`neutral-50`), a 1px `light` border (`neutral-300`), square corners and `large` padding.
+
+<Canvas of={CardStories.Default} />
+<Controls of={CardStories.Default} />
+
+### Without a border
+
+`border={false}` drops the border, leaving the background to separate the card from what's around it.
+
+<Canvas of={CardStories.WithoutBorder} />
+
+### Rounded
+
+`borderRadius` takes any radius token — `sm`, `md`, `lg`, `xl` or `full` — or `none`, the default.
+
+<Canvas of={CardStories.Rounded} />
+
+### Colours
+
+`backgroundColor` takes `white`, `light`, `medium` or `dark`, and the text colour follows it: black on `white` and `light`, white on `medium` and `dark`. `borderColor` takes the same four names.
+
+<Canvas of={CardStories.Colors} />
+
+### In a dark Container
+
+The card keeps its own text colour, so a light card inside a dark `Container` stays readable. Headings inside it follow the card's text colour rather than the container's white heading style.
+
+<Canvas of={CardStories.InDarkContainer} />
+
+## CSS classes
+
+| Class                         | When applied                                                                                            |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `octave-card`                 | Always — base class                                                                                     |
+| `octave-card--bg-{name}`      | Always — the `backgroundColor` value, e.g. `octave-card--bg-light` (default); also sets the text colour |
+| `octave-card--border`         | `border` is true (default) — a 1px solid border                                                         |
+| `octave-card--border-{name}`  | `border` is true — the `borderColor` value, e.g. `octave-card--border-light` (default)                  |
+| `octave-card--radius-{size}`  | Always — the `borderRadius` value, e.g. `octave-card--radius-none` (default)                            |
+| `octave-card--padding-{step}` | Always — the `padding` value, e.g. `octave-card--padding-large` (default)                               |
+
+The first child's top margin and the last child's bottom margin are removed, so the padding looks even. Headings inside the card inherit its text colour. A `className` you pass is appended after these classes.
+
+## Design tokens
+
+| Token                         | Used for                                                              |
+| ----------------------------- | --------------------------------------------------------------------- |
+| `--octave--color-white`       | `white` background; text on `medium` and `dark` cards; `white` border |
+| `--octave--color-neutral-50`  | `light` background (default)                                          |
+| `--octave--color-neutral-900` | `medium` background; `dark` border                                    |
+| `--octave--color-neutral-950` | `dark` background                                                     |
+| `--octave--color-black`       | Text on `white` and `light` cards                                     |
+| `--octave--color-neutral-300` | `light` border (default)                                              |
+| `--octave--color-neutral-500` | `medium` border                                                       |
+| `--octave--spacing-*`         | `padding` — any step of the spacing scale, or `none`                  |
+| `--octave--radius-*`          | `borderRadius` — `sm`, `md`, `lg`, `xl` or `full`                     |
+
+A `light` card (`neutral-50`) is a step lighter than a `light` [`Container`](?path=/docs/components-layout-container--docs) (`neutral-200`), so it stands out on a light section. The border's `1px` width is a raw value rather than a design token.
+
+## Accessibility
+
+- The default `<div>` adds no semantics. Use `as="article"` for a self-contained item, and `as="li"` when the card is one of a list.
+- The background sets the card's own text colour, so its text stays readable whichever section it sits in, and headings inside it follow that colour too.
+- Every background passes WCAG AA with its text colour: black on `white` is about 18:1 and on `light` about 16:1; white on `medium` is about 11:1 and on `dark` about 16:1.
+- The border is decorative — it isn't needed to understand the content — so it isn't held to a contrast ratio.

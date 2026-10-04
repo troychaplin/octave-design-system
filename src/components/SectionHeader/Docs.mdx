@@ -1,0 +1,102 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as SectionHeaderStories from './SectionHeader.stories';
+
+<Meta of={SectionHeaderStories} />
+
+# Section Header
+
+The heading for a section of a page: a small uppercase eyebrow, a title, and a divider rule beneath them. Renders a `<header>` containing an `<h2>`, or the heading level set by `level`.
+
+## When to use
+
+- Open a section further down the page, at the top of a [`Container`](?path=/docs/components-layout-container--docs).
+- Label the section with a short eyebrow — a category or two, such as "Releases · Open source" — above the title.
+- Don't use it for the page's main heading in the hero — that's [`HeroHeader`](?path=/docs/components-template-parts-hero-header--docs), which is larger and renders the `<h1>`.
+
+## Import
+
+```tsx
+import { SectionHeader } from '@troychaplin/octave-design-system';
+```
+
+## Basic usage
+
+```tsx
+// Title only — renders an <h2>
+<SectionHeader title="Things I ship." />
+
+// Eyebrow and title
+<SectionHeader prefix="Releases · Open source" title="Things I ship." />
+
+// A subsection
+<SectionHeader title="Plugins" level={3} />
+```
+
+## Examples
+
+### Default
+
+An eyebrow and a title on the page background. Use the `level` control to switch between `<h2>`, `<h3>` and `<h4>` — the title looks the same at every level.
+
+<Canvas of={SectionHeaderStories.Default} />
+<Controls of={SectionHeaderStories.Default} />
+
+### Title only
+
+Without `prefix`, the header renders just the title and the divider.
+
+<Canvas of={SectionHeaderStories.TitleOnly} />
+
+### In a light Container
+
+On a `Container` with `color="light"`, the header keeps its default colors against the `--octave--color-neutral-200` background — the section style it was designed for.
+
+<Canvas of={SectionHeaderStories.InLightContainer} />
+
+### In a medium Container
+
+Inside a `Container` with `color="medium"`, the title turns white, the eyebrow lightens to `--octave--color-neutral-300`, and the divider follows the white text.
+
+<Canvas of={SectionHeaderStories.InMediumContainer} />
+
+### In a dark Container
+
+`color="dark"` works the same way as `medium`, on the darkest background.
+
+<Canvas of={SectionHeaderStories.InDarkContainer} />
+
+## CSS classes
+
+| Class                           | When applied                                                |
+| ------------------------------- | ----------------------------------------------------------- |
+| `octave-section-header`         | Always — base class; draws the divider as its bottom border |
+| `octave-section-header__prefix` | `prefix` is set — on the `<p>` above the title              |
+| `octave-section-header__title`  | `title` is set — on the heading                             |
+
+The header also leaves space below its divider, so whatever follows it — a grid of cards, a paragraph — starts the same distance down. Inside a `Container`, that space is removed when the header is the section's last child. A `className` you pass is appended after `octave-section-header`.
+
+## Design tokens
+
+| Token                                  | Used for                                              |
+| -------------------------------------- | ----------------------------------------------------- |
+| `--octave--font-family-jetbrains-mono` | Eyebrow font family                                   |
+| `--octave--font-size-2-x-small`        | Eyebrow font size                                     |
+| `--octave--font-weight-normal`         | Eyebrow and title font weight                         |
+| `--octave--color-neutral-600`          | Eyebrow color                                         |
+| `--octave--color-neutral-300`          | Eyebrow color inside dark and medium Containers       |
+| `--octave--spacing-medium`             | Space between the eyebrow and the title               |
+| `--octave--font-size-2-x-large`        | Title font size                                       |
+| `--octave--color-neutral-950`          | Title color, outside dark and medium Containers       |
+| `--octave--spacing-large`              | Space between the title and the divider               |
+| `--octave--spacing-2-x-large`          | Space below the divider, before the section's content |
+
+The eyebrow's `letter-spacing` (`0.1em`), the title's `letter-spacing` (`-1px`) and `line-height` (`1.1`), and the divider's `1px` width use raw values rather than design tokens. The divider has no color of its own: it uses `currentColor`, so it matches the surrounding text — near-black on light sections, white in dark ones.
+
+## Accessibility
+
+- `SectionHeader` renders a `<header>`. Inside `<main>` or a sectioning element it's only a grouping element, but at the top level of a page it would become a second `banner` landmark next to the site header — keep it inside [`Main`](?path=/docs/components-template-parts-main--docs) or a `Container`.
+- The title is an `<h2>` by default; use `level={3}` or `level={4}` for subsections so heading levels stay in order. It can't be an `<h1>` — the page's main heading belongs to `HeroHeader`.
+- The eyebrow is a paragraph before the heading, not part of it, so screen reader users who jump between headings skip it. Its capitals come from CSS, so write it in normal case ("Releases · Open source") — text typed in capitals can be spelled out letter by letter.
+- Some screen readers read the `·` separator aloud, as "dot" or "middle dot".
+- The divider is a border rather than an element, so it isn't announced.
+- The eyebrow color, `--octave--color-neutral-600`, has a contrast of about 4.9:1 on the light `Container` background (`--octave--color-neutral-200`) and more on white, which passes WCAG AA for small text. In dark and medium Containers it switches to `--octave--color-neutral-300`.

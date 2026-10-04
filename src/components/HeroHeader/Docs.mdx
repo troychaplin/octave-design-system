@@ -1,0 +1,132 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as HeroHeaderStories from './HeroHeader.stories';
+
+<Meta of={HeroHeaderStories} />
+
+# Hero Header
+
+The heading block for a page's [`Hero`](?path=/docs/components-template-parts-hero--docs): an optional prefix line, a large title with an optional italic accent, and whatever you pass as children. Renders a `<header>` containing an `<h1>`, or the heading level set by `level`.
+
+## When to use
+
+- Lead the page from inside a `Hero`, in its `octave-hero__content` column next to the hero's media.
+- Add a stats row, an intro paragraph or actions below the title by passing them as children.
+- Don't use it for the sections further down the page — [`SectionHeader`](?path=/docs/components-template-parts-section-header--docs) is the smaller heading for those — or for the site-wide header, which is `SiteHeader`.
+
+## Import
+
+```tsx
+import { HeroHeader } from '@troychaplin/octave-design-system';
+```
+
+## Basic usage
+
+```tsx
+// Title only — renders an <h1>
+<HeroHeader title="Plugins, projects" />
+
+// Prefix and italic accent
+<HeroHeader
+    prefix="Building for the open web."
+    title="Plugins, projects"
+    titleAccent="& open source contributions"
+/>
+
+// Stats row passed as children
+<HeroHeader title="Plugins, projects">
+    <ul className="octave-hero-header__stats">
+        <li>7 released plugins</li>
+        <li>5 experimental projects</li>
+    </ul>
+</HeroHeader>
+
+// Inside a Hero, next to a code sample
+<Hero>
+    <div className="octave-hero__content">
+        <HeroHeader title="Plugins, projects" titleAccent="& open source contributions" />
+    </div>
+    <div className="octave-hero__code">
+        <CodeBlock code={code} />
+    </div>
+</Hero>
+```
+
+## Examples
+
+### Default
+
+A prefix, a title with an accent, and a stats list passed as children. Use the `level` control to switch the heading between `<h1>`, `<h2>` and `<h3>` — the title looks the same at every level.
+
+<Canvas of={HeroHeaderStories.Default} />
+<Controls of={HeroHeaderStories.Default} />
+
+### Title only
+
+Every part is optional. With only `title`, the component renders the heading and nothing else.
+
+<Canvas of={HeroHeaderStories.TitleOnly} />
+
+### With a paragraph
+
+Children can be any content. Here an intro paragraph sits below the title instead of a stats list.
+
+<Canvas of={HeroHeaderStories.WithParagraph} />
+
+### In a light Container
+
+On a `Container` with `color="light"`, the header keeps its default colors against the `--octave--color-neutral-200` background.
+
+<Canvas of={HeroHeaderStories.InLightContainer} />
+
+### In a medium Container
+
+Inside a `Container` with `color="medium"`, the title turns white at any heading level, and the prefix and stats inherit the container's white text.
+
+<Canvas of={HeroHeaderStories.InMediumContainer} />
+
+### In a dark Container
+
+`color="dark"` works the same way as `medium`, on the darkest background.
+
+<Canvas of={HeroHeaderStories.InDarkContainer} />
+
+## CSS classes
+
+| Class                              | When applied                                                           |
+| ---------------------------------- | ---------------------------------------------------------------------- |
+| `octave-hero-header`               | Always — base class                                                    |
+| `octave-hero-header__prefix`       | `prefix` is set — on the `<p>` above the title                         |
+| `octave-hero-header__title`        | `title` is set — on the heading                                        |
+| `octave-hero-header__title-accent` | `titleAccent` is set — on the `<span>` inside the heading              |
+| `octave-hero-header__stats`        | Never added by the component — put it on a `<ul>` you pass as children |
+
+A `className` you pass is appended after `octave-hero-header`. The stats row styles only apply to a `ul.octave-hero-header__stats` inside the header, so the class has no effect elsewhere.
+
+## Design tokens
+
+| Token                                  | Used for                                        |
+| -------------------------------------- | ----------------------------------------------- |
+| `--octave--font-size-4-x-large`        | Title font size                                 |
+| `--octave--font-weight-normal`         | Title font weight                               |
+| `--octave--color-neutral-900`          | Title color, outside dark and medium Containers |
+| `--octave--color-white`                | Title color inside dark and medium Containers   |
+| `--octave--font-family-source-serif-4` | Accent font family                              |
+| `--octave--font-weight-extra-light`    | Accent font weight                              |
+| `--octave--font-size-medium`           | Prefix font size                                |
+| `--octave--font-weight-light`          | Prefix and stats font weight                    |
+| `--octave--spacing-2-x-large`          | Space below the prefix; gap between stats       |
+| `--octave--font-size-small`            | Stats font size                                 |
+| `--octave--spacing-x-large`            | Space above the stats row                       |
+| `--octave--spacing-medium`             | Space between the stats divider and the items   |
+| `--octave--color-neutral-300`          | Stats divider color                             |
+
+The title's `line-height` (`1.1`) and `letter-spacing` (`-2px`), and the stats divider's `1px` width, use raw values rather than design tokens.
+
+## Accessibility
+
+- `HeroHeader` renders a `<header>`. `Hero` renders a `<section>`, so it's a grouping element there rather than a second `banner` landmark next to the site header. If you use it outside a `Hero`, keep it inside [`Main`](?path=/docs/components-template-parts-main--docs) for the same reason.
+- The title is the page's `<h1>` by default, so use one `HeroHeader` per page. Pass `level={2}` only when something else on the page is the main heading.
+- `titleAccent` is part of the heading. A space separates it from `title`, so screen readers announce the whole phrase as one heading; the italic styling is visual only.
+- The prefix is a paragraph before the heading, not part of it. Screen reader users who jump between headings skip it, so don't put information only there.
+- A stats list is announced as a list with its item count. Write each item as a complete phrase ("7 released plugins"), not a bare number.
+- The title is `--octave--color-neutral-900` on light backgrounds and turns white inside dark and medium `Container`s at every heading level, `<h1>` included. The prefix and stats inherit the surrounding text color, so they follow the container too.

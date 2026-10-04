@@ -1,0 +1,92 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as GridGroupStories from './GridGroup.stories';
+
+<Meta of={GridGroupStories} />
+
+# GridGroup
+
+A CSS grid container that lays its children out in equal-width columns and collapses to one column on smaller screens. Renders a `<div>` by default, or the element set by `as`. It mirrors the grid half of the WordPress Group block; [`FlexGroup`](?path=/docs/components-layout-flex-group--docs) covers the flex half.
+
+## When to use
+
+- Lay out a collection of equal items — cards, tiles, features — in rows of up to `columns` across.
+- Use it when the column count should follow the screen size: columns appear at the same viewport breakpoints [`Column`](?path=/docs/components-layout-column--docs) uses, and phones always get one column.
+- Use [`FlexGroup`](?path=/docs/components-layout-flex-group--docs) for content-sized items in a row, and [`Column`](?path=/docs/components-layout-column--docs) for fixed content splits such as two-thirds and one-third.
+
+## Import
+
+```tsx
+import { GridGroup } from '@troychaplin/octave-design-system';
+```
+
+## Basic usage
+
+```tsx
+// Up to three columns of cards — columns={3} and gap="medium" are the defaults
+<GridGroup maxWidth="alignwide">
+    <Card>…</Card>
+    <Card>…</Card>
+    <Card>…</Card>
+</GridGroup>
+
+// Two columns above 600px, one below
+<GridGroup columns={2}>…</GridGroup>
+
+// A list of cards
+<GridGroup as="ul">
+    <Card as="li">…</Card>
+    <Card as="li">…</Card>
+</GridGroup>
+```
+
+## Examples
+
+### Default
+
+Three cards in the wide width. On screens 768px wide and narrower they stack into one column.
+
+<Canvas of={GridGroupStories.Default} />
+<Controls of={GridGroupStories.Default} />
+
+### Column counts
+
+`columns` is the most columns the grid shows, and it takes effect at the viewport breakpoints: two columns above the 600px mobile breakpoint, three above the 768px tablet breakpoint. Below its breakpoint a grid is one column, so a three-column grid never shows two.
+
+<Canvas of={GridGroupStories.ColumnCounts} />
+
+### As a list
+
+`as="ul"` with each `Card` rendered `as="li"` gives screen readers a list and its item count. The bullets and indent are removed.
+
+<Canvas of={GridGroupStories.AsList} />
+
+## CSS classes
+
+| Class                                                     | When applied                                                                                                                                                 |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `octave-layout`                                           | Always — shared marker on layout components                                                                                                                  |
+| `octave-grid-group`                                       | Always — base class, carries the grid with one column                                                                                                        |
+| `octave-grid-group--columns-{n}`                          | Always — the `columns` value, e.g. `octave-grid-group--columns-3` (default). `--columns-2` shows two columns above 600px and `--columns-3` three above 768px |
+| `octave-grid-group--gap-{step}`                           | Always — the `gap` value, e.g. `octave-grid-group--gap-medium` (default)                                                                                     |
+| `octave-grid-group--row-gap-{step}`                       | `rowGap` is set                                                                                                                                              |
+| `octave-grid-group--align-{value}`                        | `align` is set — `start`, `center`, `end` or `stretch`                                                                                                       |
+| `aligncontent` / `alignwide` / `alignfull` / `alignsmall` | The `maxWidth` value, as a bare shared class                                                                                                                 |
+
+The row-gap modifiers come after the gap modifiers in the stylesheet, so `rowGap` overrides the row half of `gap`. A `className` you pass is appended after these classes.
+
+## Design tokens
+
+| Token                                                 | Used for                                                                                               |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `--octave--spacing-*`                                 | `gap` and `rowGap` — any step of the spacing scale, or `none`                                          |
+| `--octave--layout-*-size`                             | `maxWidth`, through the shared `align*` classes                                                        |
+| `$octave-viewport-mobile` / `$octave-viewport-tablet` | The 600px and 768px column breakpoints, through the generated `above-mobile` and `above-tablet` mixins |
+
+Media queries can't read CSS custom properties, so the breakpoints use the SCSS variables generated from the `viewport` tokens rather than `--octave--*` properties.
+
+## Accessibility
+
+- `GridGroup` only arranges its children and adds no semantics of its own; the default `<div>` isn't announced.
+- The grid never reorders items, so keyboard and reading order match what's on screen.
+- For a collection, render `as="ul"` (or `ol`) with each child as an `li` — `Card as="li"` — so screen readers announce a list and its item count.
+- A grid rendered as `ul` or `ol` gets `role="list"`. Removing the bullets with `list-style: none` otherwise makes Safari and VoiceOver stop announcing it as a list. Pass your own `role` to override it.

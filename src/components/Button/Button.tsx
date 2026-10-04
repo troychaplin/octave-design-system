@@ -30,14 +30,14 @@ type ButtonLinkProps = ButtonBaseProps &
 export type ButtonProps = ButtonElementProps | ButtonLinkProps;
 
 export const Button = ({
-    text,
+    text = 'Button',
     color = 'medium',
     rounded = 'sm',
     type = 'button',
-    isSmall,
-    isFull,
-    isOutline,
-    disabled,
+    isSmall = false,
+    isFull = false,
+    isOutline = false,
+    disabled = false,
     className,
     ...rest
 }: ButtonProps) => {

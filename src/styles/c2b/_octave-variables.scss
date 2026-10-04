@@ -29,6 +29,21 @@ $octave-spacing: (
   '5-x-large': $octave-spacing-5-x-large,
 );
 
+// Border Radius
+$octave-radius-sm: 2px;
+$octave-radius-md: 4px;
+$octave-radius-lg: 8px;
+$octave-radius-xl: 12px;
+$octave-radius-full: 9999px;
+
+$octave-radius: (
+  'sm': $octave-radius-sm,
+  'md': $octave-radius-md,
+  'lg': $octave-radius-lg,
+  'xl': $octave-radius-xl,
+  'full': $octave-radius-full,
+);
+
 // Viewport
 $octave-viewport-mobile: 600px;
 $octave-viewport-tablet: 768px;

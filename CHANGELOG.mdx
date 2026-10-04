@@ -17,6 +17,28 @@ Prefix the change with one of these keywords:
 
 ## [Unreleased]
 
+_Added_ `HeroHeader` — the heading block for a `Hero`, with an optional `prefix`, a `title` with an
+optional italic `titleAccent`, a `level` prop (`<h1>` by default) and a `children` slot for stats,
+an intro or actions.
+
+_Added_ `SectionHeader` — a smaller heading block for page sections: an uppercase monospace
+`prefix` eyebrow, a `title`, a `level` prop (`<h2>` by default) and a divider rule beneath, with
+space below it before the section's content.
+
+_Added_ `GridGroup` layout component — a CSS grid that mirrors the grid half of the WordPress
+Group block. `columns` (1–3) sets the most columns it shows, at the viewport breakpoints: two
+columns above the 600px mobile breakpoint and three above the 768px tablet breakpoint, with one
+column below them. Also takes `gap`, `rowGap`, `align`, `as` and `maxWidth`.
+
+_Added_ `Card` — a surface whose `backgroundColor` and `borderColor` take `white`, `light`,
+`medium` or `dark`, plus `border`, `borderRadius`, `padding` and `as`. The text colour follows the
+background, so a light card stays readable inside a dark `Container`.
+
+_Breaking_ `Hero` no longer renders its own prefix, heading and stats — pass the hero's content
+as children, such as a `HeroHeader` and a `CodeBlock`. Wrap them in `octave-hero__content` and
+`octave-hero__code` divs to keep the two-column layout. `Hero` now renders a `<section>` rather
+than a `<header>`, so a `HeroHeader` can sit inside it.
+
 ## [0.1.1] - 2026-09-28
 
 _Fixed_ The Getting Started docs import the bundled stylesheet from

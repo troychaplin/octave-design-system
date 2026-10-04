@@ -5,12 +5,12 @@ import * as FlexGroupStories from './FlexGroup.stories';
 
 # FlexGroup
 
-A general-purpose flex container that arranges its children in a row or a column with a chosen gap and alignment. Renders a `<div>` by default, or any of the sectioning elements the WordPress Group block offers. It mirrors the flex half of that block; a sibling `GridGroup` will cover the grid half.
+A general-purpose flex container that arranges its children in a row or a column with a chosen gap and alignment. Renders a `<div>` by default, or any of the sectioning elements the WordPress Group block offers. It mirrors the flex half of that block; [`GridGroup`](?path=/docs/components-layout-grid-group--docs) covers the grid half.
 
 ## When to use
 
 - Reach for `FlexGroup` whenever you need arbitrary children laid out in a row or stack — a toolbar, a card footer, a media object, a label-and-value pair.
-- Use it for content-sized items that sit next to each other. Use [`Column`](?path=/docs/components-layout-column--docs) instead when you want equal-width tracks that collapse responsively, since that is a grid and this is not.
+- Use it for content-sized items that sit next to each other. Use [`GridGroup`](?path=/docs/components-layout-grid-group--docs) instead when you want equal-width columns that drop as space runs out, or [`Column`](?path=/docs/components-layout-column--docs) for fixed content splits — both are grids, and this is not.
 - Use it inside a [`Container`](?path=/docs/components-layout-container--docs), not instead of one. `Container` owns page-level width and padding; `FlexGroup` owns the arrangement of the children within it.
 - It is **not** a styling wrapper. It has no background, border, shadow or typography props by design — those belong to the consumer's own CSS.
 
