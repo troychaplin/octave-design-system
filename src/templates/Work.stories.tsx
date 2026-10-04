@@ -6,8 +6,11 @@ import { SiteHeader } from '../components/SiteHeader/SiteHeader';
 import { Hero } from '../components/Hero/Hero';
 import { HeroHeader } from '../components/HeroHeader/HeroHeader';
 import { SectionHeader } from '../components/SectionHeader/SectionHeader';
+import { GridGroup } from '../components/GridGroup/GridGroup';
+import { Card } from '../components/Card/Card';
 import { CodeBlock } from '../components/CodeBlock/CodeBlock';
 import { CodeDataReact } from '../data/CodeData';
+import { SingleParagraph } from '../data/SampleContent';
 
 const meta: Meta = {
     title: 'Overview/Templates',
@@ -54,12 +57,17 @@ export const WorkLayout: Story = {
 
                 <Container color="light" maxWidth="alignfull" contentWidth="alignwide">
                     <SectionHeader prefix="Releases · Open source" title="Things I ship." />
-                    <p>
-                        This is an example page. It is different from a blog post because it will
-                        stay in one place and will show up in your site navigation (in most themes).
-                        Most people start with an About page that introduces them to potential site
-                        visitors. It might say something like this:
-                    </p>
+                    <GridGroup>
+                        <Card>
+                            <SingleParagraph index={0} />
+                        </Card>
+                        <Card>
+                            <SingleParagraph index={1} />
+                        </Card>
+                        <Card>
+                            <SingleParagraph index={2} />
+                        </Card>
+                    </GridGroup>
                 </Container>
 
                 <Container color="dark" maxWidth="alignfull" contentWidth="alignwide">

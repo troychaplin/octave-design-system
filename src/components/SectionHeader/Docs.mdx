@@ -73,21 +73,22 @@ Inside a `Container` with `color="medium"`, the title turns white, the eyebrow l
 | `octave-section-header__prefix` | `prefix` is set — on the `<p>` above the title              |
 | `octave-section-header__title`  | `title` is set — on the heading                             |
 
-A `className` you pass is appended after `octave-section-header`.
+The header also leaves space below its divider, so whatever follows it — a grid of cards, a paragraph — starts the same distance down. Inside a `Container`, that space is removed when the header is the section's last child. A `className` you pass is appended after `octave-section-header`.
 
 ## Design tokens
 
-| Token                                  | Used for                                        |
-| -------------------------------------- | ----------------------------------------------- |
-| `--octave--font-family-jetbrains-mono` | Eyebrow font family                             |
-| `--octave--font-size-2-x-small`        | Eyebrow font size                               |
-| `--octave--font-weight-normal`         | Eyebrow and title font weight                   |
-| `--octave--color-neutral-600`          | Eyebrow color                                   |
-| `--octave--color-neutral-300`          | Eyebrow color inside dark and medium Containers |
-| `--octave--spacing-medium`             | Space between the eyebrow and the title         |
-| `--octave--font-size-2-x-large`        | Title font size                                 |
-| `--octave--color-neutral-950`          | Title color, outside dark and medium Containers |
-| `--octave--spacing-large`              | Space between the title and the divider         |
+| Token                                  | Used for                                              |
+| -------------------------------------- | ----------------------------------------------------- |
+| `--octave--font-family-jetbrains-mono` | Eyebrow font family                                   |
+| `--octave--font-size-2-x-small`        | Eyebrow font size                                     |
+| `--octave--font-weight-normal`         | Eyebrow and title font weight                         |
+| `--octave--color-neutral-600`          | Eyebrow color                                         |
+| `--octave--color-neutral-300`          | Eyebrow color inside dark and medium Containers       |
+| `--octave--spacing-medium`             | Space between the eyebrow and the title               |
+| `--octave--font-size-2-x-large`        | Title font size                                       |
+| `--octave--color-neutral-950`          | Title color, outside dark and medium Containers       |
+| `--octave--spacing-large`              | Space between the title and the divider               |
+| `--octave--spacing-2-x-large`          | Space below the divider, before the section's content |
 
 The eyebrow's `letter-spacing` (`0.1em`), the title's `letter-spacing` (`-1px`) and `line-height` (`1.1`), and the divider's `1px` width use raw values rather than design tokens. The divider has no color of its own: it uses `currentColor`, so it matches the surrounding text — near-black on light sections, white in dark ones.
 

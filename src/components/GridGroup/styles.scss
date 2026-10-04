@@ -1,0 +1,60 @@
+@use 'sass:map';
+@use '../../styles/c2b/octave-variables' as vars;
+
+// One column on small screens. `columns` takes effect at the viewport breakpoints the rest of
+// the system uses: two columns above the mobile breakpoint (600px) and three above the tablet
+// breakpoint (768px), so a three-column grid goes straight from one column to three.
+.octave-grid-group {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul.octave-grid-group,
+ol.octave-grid-group {
+    list-style: none;
+    padding-left: 0;
+}
+
+.octave-grid-group--columns-2 {
+    @include vars.above-mobile {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.octave-grid-group--columns-3 {
+    @include vars.above-tablet {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@each $value in start, center, end, stretch {
+    .octave-grid-group--align-#{$value} {
+        align-items: $value;
+    }
+}
+
+// Spacing modifiers are generated from the scale, so a change to c2b.config.json propagates
+// here with no edit.
+$steps: (
+    none: 0,
+);
+
+@each $name in map.keys(vars.$octave-spacing) {
+    $steps: map.set($steps, $name, var(--octave--spacing-#{$name}));
+}
+
+@each $key, $value in $steps {
+    .octave-grid-group--gap-#{$key} {
+        gap: $value;
+    }
+}
+
+// The row-gap modifiers come after every gap modifier, so `rowGap` overrides the row half of
+// the `gap` shorthand whichever steps are combined.
+@each $key, $value in $steps {
+    .octave-grid-group--row-gap-#{$key} {
+        row-gap: $value;
+    }
+}
