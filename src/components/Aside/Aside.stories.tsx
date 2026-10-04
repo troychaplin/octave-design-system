@@ -40,7 +40,7 @@ export const RightSidebar: Story = {
     render: () => (
         <Main>
             <Column cols="2/3" maxWidth="alignwide">
-                <Column.Content isFirst>
+                <Column.Content>
                     <MultiParagraph count={4} />
                 </Column.Content>
                 <Aside>

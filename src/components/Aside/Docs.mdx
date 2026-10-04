@@ -20,9 +20,9 @@ import { Aside } from '@troychaplin/octave-design-system';
 ## Basic usage
 
 ```tsx
-// Right sidebar — isFirst keeps the main content on the left
+// Right sidebar
 <Column cols="2/3">
-  <Column.Content isFirst>
+  <Column.Content>
     <p>Main content...</p>
   </Column.Content>
   <Aside>
@@ -50,7 +50,7 @@ import { Aside } from '@troychaplin/octave-design-system';
 
 ### Right sidebar
 
-`Aside` beside the main content in a wide two-thirds / one-third split. `Column` places any child that isn't a `Column.Content` first, so the main content needs `isFirst` to stay on the left.
+`Aside` beside the main content in a wide two-thirds / one-third split. `Column` keeps its children in DOM order, so the aside comes second and sits on the right.
 
 <Canvas of={AsideStories.RightSidebar} />
 
