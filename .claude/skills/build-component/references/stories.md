@@ -33,18 +33,22 @@ suppresses Storybook's auto-generated docs page so the authored one is the only 
 
 ## Title taxonomy
 
-| Prefix                        | Usage                                                         |
-| ----------------------------- | ------------------------------------------------------------- |
-| `Components/Elements/*`       | Atomic UI (Badge, Button, BadgeGroup, ButtonGroup)            |
-| `Components/Content/*`        | Content display (Card, Quote, Table, Figure)                  |
-| `Components/Media/*`          | Image/video-heavy (FullBanner, ImageGrid)                     |
-| `Components/Navigation/*`     | Wayfinding (Nav, PageHeader, Footer)                          |
-| `Components/Forms/*`          | Data entry (Input, Select)                                    |
-| `Components/Feedback/*`       | Overlays, loading, errors (Alert, Modal, Toast)               |
-| `Components/Layout/*`         | Structural wrappers (Section, Column)                         |
-| `Components/Template Parts/*` | WordPress template part wrappers (Article, Aside, Body, Main) |
-| `Components/Utilities/*`      | Behavioural / non-visual (LinkProvider)                       |
-| `Overview/Templates/*`        | Full-page compositions                                        |
+| Prefix                        | Usage                                                        |
+| ----------------------------- | ------------------------------------------------------------ |
+| `Components/Elements/*`       | Atomic UI (Badge, Button, BadgeGroup, ButtonGroup)           |
+| `Components/Content/*`        | Content display (Card, Figure, Hero, SectionHeader)          |
+| `Components/Media/*`          | Image/video-heavy (FullBanner, ImageGrid)                    |
+| `Components/Navigation/*`     | Wayfinding (Nav, PageHeader, Footer)                         |
+| `Components/Forms/*`          | Data entry (Input, Select)                                   |
+| `Components/Feedback/*`       | Overlays, loading, errors (Alert, Modal, Toast)              |
+| `Components/Layout/*`         | Structural wrappers (Section, Column)                        |
+| `Components/Template Parts/*` | Page frame (Body, Main, Article, Aside, SiteHeader, InfoBar) |
+| `Components/Utilities/*`      | Behavioural / non-visual (LinkProvider)                      |
+| `Overview/Templates/*`        | Full-page compositions                                       |
+
+A component that sits inside `Main` and changes from page to page is Content; one that frames
+every page, like `Main` itself or a site header, is a Template Part. The title's category must
+match the comment the component is exported under in `src/index.ts`.
 
 Multi-word component names are spaced in the title: `Components/Elements/Badge Group`.
 
@@ -93,6 +97,17 @@ argTypes: {
 
 When a story maps over the same option set, hoist it to a `const ... as const` above `meta` and
 use it for both the `argTypes` options and the map — one source of truth.
+
+## Layout
+
+`.storybook/preview.ts` sets `layout: 'padded'` globally: the story fills the canvas width inside
+a 1rem gutter. Override it in the meta `parameters` only when the component needs something else:
+
+- **`fullscreen`** — the story wraps its content in `Main` or renders a full-bleed section. See
+  [Decorators](#decorators).
+- **`centered`** — the component is small and inline, like `Button`. Never use it for a block-level
+  component: it shrinks the story to the width of its content, which hides the component's real
+  width and makes alignment props look broken.
 
 ## Render functions — expression body only
 

@@ -23,7 +23,7 @@ const unwrapRender = (code: string): string => {
 const preview: Preview = {
     tags: ['autodocs'],
     parameters: {
-        layout: 'centered',
+        layout: 'padded',
         controls: {
             expanded: true,
             sort: 'requiredFirst',

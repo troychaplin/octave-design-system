@@ -4,7 +4,7 @@ import { Main } from '../Main/Main';
 import { Container } from '../Container/Container';
 
 const meta: Meta<typeof SectionHeader> = {
-    title: 'Components/Template Parts/Section Header',
+    title: 'Components/Content/Section Header',
     component: SectionHeader,
     tags: ['!autodocs'],
     decorators: [

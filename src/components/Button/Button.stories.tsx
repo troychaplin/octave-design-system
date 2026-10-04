@@ -27,6 +27,7 @@ const meta: Meta<typeof Button> = {
         onClick: { action: 'clicked' },
     },
     parameters: {
+        layout: 'centered',
         controls: {
             sort: 'requiredFirst',
         },

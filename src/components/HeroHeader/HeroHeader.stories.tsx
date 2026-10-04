@@ -13,7 +13,7 @@ const stats = (
 );
 
 const meta: Meta<typeof HeroHeader> = {
-    title: 'Components/Template Parts/Hero Header',
+    title: 'Components/Content/Hero Header',
     component: HeroHeader,
     tags: ['!autodocs'],
     decorators: [

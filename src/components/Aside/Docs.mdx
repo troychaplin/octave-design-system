@@ -20,7 +20,7 @@ import { Aside } from '@troychaplin/octave-design-system';
 ## Basic usage
 
 ```tsx
-// Standard sidebar
+// Right sidebar
 <Column cols="2/3">
   <Column.Content>
     <p>Main content...</p>
@@ -50,30 +50,36 @@ import { Aside } from '@troychaplin/octave-design-system';
 
 ### Right sidebar
 
-`Aside` placed as the second child in a two-thirds / one-third column split.
+`Aside` beside the main content in a wide two-thirds / one-third split. `Column` keeps its children in DOM order, so the aside comes second and sits on the right.
 
 <Canvas of={AsideStories.RightSidebar} />
 
 ### Left sidebar — sticky
 
-`isSticky` wraps the children in a sticky-positioned container. `topSpace` sets the `top` offset in pixels to account for a fixed header.
+`isSticky` wraps the children in a sticky-positioned container. `topSpace` sets the `top` offset in pixels to account for a fixed header. Scroll inside the example: the table of contents stays 16px from the top while the article moves past it.
 
 <Canvas of={AsideStories.LeftSidebarSticky} />
 
 ## Sticky positioning
 
-When `isSticky` is `true`, the component wraps children in `<div class="sticky" style={{ top: topSpace + 'px' }}>`. The `sticky` class is expected to provide `position: sticky` — either via a utility CSS framework in the consumer's project or a future base style addition to Octave.
+When `isSticky` is `true`, the component wraps children in `<div class="sticky" style={{ top: topSpace + 'px' }}>`, and Octave's styles give that wrapper `position: sticky`.
 
-> **Note:** The `octave-aside` and `octave-prose` classes applied to the `<aside>` element, along with `relative` and `sticky` on the inner wrapper, are not currently defined in the Octave stylesheet. Styling from these class names must come from the consumer project.
+The wrapper sticks within the `<aside>`, so it only moves when the aside is taller than its content. In a `Column`, the grid stretches the aside to the height of the row, so keep the sticky content shorter than the main column beside it — a table of contents or a short list of filters, not a second article. When the columns stack on small screens, the aside is only as tall as its content and scrolls with the page.
+
+> **Note:** Octave doesn't style the `octave-prose` and `relative` classes on the `<aside>`. Styling for them must come from the consumer project.
 
 ## CSS classes
 
-| Class          | Element       | Notes                                                                 |
-| -------------- | ------------- | --------------------------------------------------------------------- |
-| `octave-aside` | `<aside>`     | Always — Octave hook, not yet styled internally                       |
-| `octave-prose` | `<aside>`     | Always — prose typography hook, not yet styled internally             |
-| `relative`     | `<aside>`     | Always — expected to provide `position: relative`                     |
-| `sticky`       | Inner `<div>` | Only when `isSticky` is true — expected to provide `position: sticky` |
+| Class          | Element       | Notes                                                     |
+| -------------- | ------------- | --------------------------------------------------------- |
+| `octave-aside` | `<aside>`     | Always — scopes the sticky rule; no styles of its own     |
+| `octave-prose` | `<aside>`     | Always — prose typography hook, not yet styled internally |
+| `relative`     | `<aside>`     | Always — expected to provide `position: relative`         |
+| `sticky`       | Inner `<div>` | Only when `isSticky` is true — gets `position: sticky`    |
+
+## Design tokens
+
+None. The stylesheet's one rule sets `position: sticky`, and the `top` offset is a raw pixel value from the `topSpace` prop rather than a spacing token.
 
 ## Accessibility
 

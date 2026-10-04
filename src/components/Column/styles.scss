@@ -59,11 +59,18 @@
     margin-bottom: 0;
 }
 
-/* Ordering */
-.octave-column > .octave-column__content {
-    order: 1;
+/* Ordering — isFirst only applies once the columns sit side by side, so stacked columns keep DOM order */
+.octave-column--two > .is-first,
+.octave-column--four > .is-first {
+    @include above-mobile {
+        order: -1;
+    }
 }
 
-.octave-column > div.is-first {
-    order: 0;
+.octave-column--three > .is-first,
+.octave-column--one-third > .is-first,
+.octave-column--two-thirds > .is-first {
+    @include above-tablet {
+        order: -1;
+    }
 }

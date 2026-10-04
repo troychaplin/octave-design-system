@@ -2,3 +2,90 @@ import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
 import * as HeroStories from './Hero.stories';
 
 <Meta of={HeroStories} />
+
+# Hero
+
+The opening band of a page: a full-width section that lays out a content column and an optional code sample side by side at the wide content width. Renders a `<section>` holding a row of whatever you pass as children.
+
+## When to use
+
+- Open a page with it, as the first thing inside [`Main`](?path=/docs/components-template-parts-main--docs). The [Work template](?path=/story/overview-templates--work-layout) shows it in place.
+- Put the page's main heading in the content column, usually as a [`HeroHeader`](?path=/docs/components-content-hero-header--docs), with a [`CodeBlock`](?path=/docs/components-content-code-block--docs) beside it or no code at all.
+- Don't use it for sections further down the page. Use a [`Container`](?path=/docs/components-layout-container--docs) opened by a [`SectionHeader`](?path=/docs/components-content-section-header--docs) for those.
+
+## Import
+
+```tsx
+import { Hero } from '@troychaplin/octave-design-system';
+```
+
+## Basic usage
+
+```tsx
+// Heading and code sample side by side
+<Hero>
+    <div className="octave-hero__content">
+        <HeroHeader title="Plugins, projects" titleAccent="& open source contributions" />
+    </div>
+    <div className="octave-hero__code">
+        <CodeBlock code={code} />
+    </div>
+</Hero>
+
+// Heading only
+<Hero>
+    <div className="octave-hero__content">
+        <HeroHeader title="Plugins, projects" />
+    </div>
+</Hero>
+```
+
+`Hero` doesn't add the column classes itself. Wrap your content in `octave-hero__content` and the code in `octave-hero__code` to get the two-column layout.
+
+## Examples
+
+### Default
+
+A `HeroHeader` with a stats list in the content column, and a `CodeBlock` in the code column. The code column takes 40% of the row and sits vertically centered beside the content.
+
+<Canvas of={HeroStories.Default} />
+<Controls of={HeroStories.Default} />
+
+### Without code
+
+Leave out the code column and the content stretches across the whole row. The default example looks like this at 768px and below, where the code column is hidden.
+
+<Canvas of={HeroStories.WithoutCode} />
+
+## Layout
+
+The section is a full-width `Container`, so inside `Main` it runs edge to edge, with the same side padding as any full-width `Container`, and holds its row to the wide content width (`--octave--layout-wide-size`).
+
+Above 768px, the code column is a fixed 40% of the row and the content column takes the rest. Long code lines scroll inside the `CodeBlock` rather than widening the column. At 768px and below, the code column is hidden with `display: none` and the content fills the row.
+
+## CSS classes
+
+| Class                  | When applied                                                                 |
+| ---------------------- | ---------------------------------------------------------------------------- |
+| `octave-hero`          | Always — base class, on the `<section>`                                      |
+| `octave-hero__content` | Never added by the component — put it on the `<div>` around your content     |
+| `octave-hero__code`    | Never added by the component — put it on the `<div>` around your code sample |
+
+A `className` you pass is appended after `octave-hero`. The `<section>` also carries `Container`'s classes, including `alignfull`, and the row inside is a `FlexGroup`. Anything directly inside `octave-hero__code` loses its top and bottom margins.
+
+## Design tokens
+
+| Token                         | Used for                                 |
+| ----------------------------- | ---------------------------------------- |
+| `--octave--spacing-small`     | Padding below the hero                   |
+| `--octave--spacing-3-x-large` | Gap between the content and code columns |
+
+The side padding comes from `Container`'s full-width styles: `--octave--spacing-3-x-large`, rising to `--octave--spacing-4-x-large` above 768px. The code column's 40% width is a fixed proportion rather than a token.
+
+## Accessibility
+
+- `Hero` renders a `<section>` without an accessible name, so it isn't exposed as a landmark. That's also why a `HeroHeader` inside it isn't announced as a second `banner` next to the site header.
+- The page's `<h1>` normally comes from the `HeroHeader` in the content column, so use one hero per page.
+- The row follows DOM order. Put the content before the code so the reading order matches the layout.
+- At 768px and below, `display: none` hides the code column from screen readers too. Don't put anything people need only in the code sample.
+- A `CodeBlock` is a tab stop, so on wider screens keyboard users reach the code sample after the content.

@@ -39,6 +39,42 @@ as children, such as a `HeroHeader` and a `CodeBlock`. Wrap them in `octave-hero
 `octave-hero__code` divs to keep the two-column layout. `Hero` now renders a `<section>` rather
 than a `<header>`, so a `HeroHeader` can sit inside it.
 
+_Fixed_ The Storybook previews of `Article`, `Aside`, `InfoBar`, `Main` and `ButtonGroup` span the
+full width instead of shrinking to fit their content, so `ButtonGroup`'s `align` options are now
+visible. Stories default to Storybook's `padded` layout rather than `centered`.
+
+_Fixed_ `Aside` with `isSticky` now sticks on its own: Octave gives its `sticky` wrapper
+`position: sticky` instead of relying on a utility class from the consumer's CSS. The class names
+are unchanged. The Aside stories use a wide layout, show the right sidebar on the right, and give
+the sticky table of contents room to stick.
+
+_Changed_ Storybook lists `Hero`, `HeroHeader` and `SectionHeader` under Content and `SiteHeader`
+under Template Parts, matching the groups the package exports them under. Their docs URLs change
+with the move.
+
+_Fixed_ The `SiteHeader` docs page was empty. It now covers usage, layout, CSS classes, tokens and
+accessibility, and the stories show the title accent and the `children` slot instead of passing
+paragraphs into the header.
+
+_Fixed_ The `InfoBar` docs page was empty. It now covers usage, how the date is worked out, layout,
+CSS classes, tokens and accessibility, and a new story shows an extra item passed as `children`.
+
+_Fixed_ `Column` keeps its children in DOM order. A child that isn't a `Column.Content`, such as an
+`Aside`, no longer jumps to the front, and `isFirst` only reorders once the columns sit side by
+side, so stacked columns on small screens follow the DOM as the docs describe.
+
+_Fixed_ `Aside` now passes `aria-label`, `id` and other HTML attributes through to its `<aside>`,
+as its docs said it did, so it can be labelled when a page has more than one complementary
+landmark. A `className` you pass is appended after its own classes, and `AsideProps` is exported
+from `@troychaplin/octave-design-system/Aside`.
+
+_Fixed_ The `Main` docs page no longer describes an `as` prop, which `Main` doesn't accept.
+`Main` always renders a `<main>`.
+
+_Fixed_ The `Hero` docs page was empty. It now covers the content and code columns, the layout
+at each width, CSS classes, tokens and accessibility, and a new story shows a hero without a code
+sample.
+
 ## [0.1.1] - 2026-09-28
 
 _Fixed_ The Getting Started docs import the bundled stylesheet from

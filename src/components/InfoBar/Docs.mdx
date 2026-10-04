@@ -2,3 +2,95 @@ import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
 import * as InfoBarStories from './InfoBar.stories';
 
 <Meta of={InfoBarStories} />
+
+# InfoBar
+
+A thin strip of site-wide details across the top of the page: a fixed "Building since 2005" line, and today's day of the year with the full date. Renders a `<div>` holding a row of paragraphs, with the date in a `<time>` element.
+
+## When to use
+
+- Run it across the very top of every page, above the [`SiteHeader`](?path=/docs/components-template-parts-site-header--docs).
+- Pass `children` to add one more item to the row, such as a link to a feed.
+- Don't use it for announcements or alerts that need attention. It's small print, outside the page's landmarks, with no live region.
+
+## Import
+
+```tsx
+import { InfoBar } from '@troychaplin/octave-design-system';
+```
+
+## Basic usage
+
+```tsx
+// Today's date
+<InfoBar />
+
+// A set date
+<InfoBar date={new Date(2026, 8, 26)} />
+
+// One more item at the end of the row
+<InfoBar>
+    <p>
+        <a href="/feed.xml">RSS feed</a>
+    </p>
+</InfoBar>
+```
+
+Only the date and the `children` item can change. The "Building since 2005" line is fixed in the component for now.
+
+## Examples
+
+### Default
+
+With no `date`, the bar shows today: the day of the year, counting 1 January as day 1, then the full date. `date` has no control, because Storybook's date control passes a timestamp rather than a `Date`.
+
+<Canvas of={InfoBarStories.Default} />
+<Controls of={InfoBarStories.Default} />
+
+### Fixed date
+
+Pass `date` to show a particular day. 26 September 2026 is day 269.
+
+<Canvas of={InfoBarStories.FixedDate} />
+
+### With an extra item
+
+`children` render as the last item in the row. The row spreads its items evenly, so the date moves to the middle. Wrap text in a `<p>` so it picks up the bar's monospace type.
+
+<Canvas of={InfoBarStories.WithExtraItem} />
+
+## Dates
+
+- The day count works from calendar dates, so a daylight saving change can't knock it off by one.
+- The date is always written in US English ("September 26, 2026"), whatever the visitor's language, and in the time zone of whatever renders it — the browser, or your server.
+- Without `date`, the bar reads the clock when it renders. A statically built page shows the day it was built, and a server-rendered page shows the server's date, which can differ from the visitor's. Pass `date` to control which day appears.
+
+## Layout
+
+The bar spans the full width of its container, with the site's root padding either side, and a `FlexGroup` spreads its items across the wide content width (`--octave--layout-wide-size`). On narrow screens the row wraps: on a phone, the date drops to a second line below "Building since 2005".
+
+## CSS classes
+
+| Class            | When applied                        |
+| ---------------- | ----------------------------------- |
+| `octave-infobar` | Always — base class, on the `<div>` |
+
+A `className` you pass is appended after `octave-infobar`. The row inside is a `FlexGroup`, so its classes appear too. The monospace type applies to every `<p>` in the bar, including ones you pass as children.
+
+## Design tokens
+
+| Token                                  | Used for                        |
+| -------------------------------------- | ------------------------------- |
+| `--octave--spacing-small`              | Padding above and below the bar |
+| `--octave--root-padding-x`             | Padding either side of the bar  |
+| `--octave--color-neutral-100`          | Background                      |
+| `--octave--font-family-jetbrains-mono` | Paragraph font family           |
+| `--octave--font-size-2-x-small`        | Paragraph font size             |
+
+## Accessibility
+
+- The bar is a plain `<div>`, not a landmark. Above the header it sits outside every landmark, so screen reader users moving by landmark skip it, and a full-page axe audit flags it under the `region` rule. Storybook switches that rule off in its component tests, so they don't catch it. Keep anything people need out of the bar.
+- The date is in a `<time>` element whose `dateTime` holds the ISO date, such as `2026-09-26`, so software can read it however it's written.
+- The bullet between the day count and the date is hidden from screen readers, which read "Day 269 September 26, 2026".
+- The text is set at the smallest size in the type scale, 11–12px, which suits small print but not anything people need to read closely.
+- The date is static text with no live region. It doesn't update or announce itself while the page is open.
