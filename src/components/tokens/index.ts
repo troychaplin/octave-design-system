@@ -1,1 +1,1 @@
-export { octaveTokens } from '../../styles/c2b/octave-tokens';
+export { parlourTokens } from '../../styles/c2b/parlour-tokens';

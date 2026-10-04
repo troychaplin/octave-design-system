@@ -25,6 +25,6 @@ export const isClientModule = (id: string): boolean => {
 // of every file that uses React context, or importing it from a Server Component fails. Put the
 // directive back on each output chunk that contains a client module.
 export const useClientDirective = (): Plugin => ({
-    name: 'octave:use-client',
+    name: 'parlour:use-client',
     banner: (chunk) => (chunk.moduleIds.some(isClientModule) ? "'use client';" : ''),
 });

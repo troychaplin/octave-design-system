@@ -1,4 +1,4 @@
-import { octaveTokenKeys } from '../styles/c2b/octave-tokens';
+import { parlourTokenKeys } from '../styles/c2b/parlour-tokens';
 
 export const maxWidthClasses = {
     alignsmall: 'alignsmall',
@@ -30,17 +30,17 @@ export const gridColumnClasses = {
 };
 
 export const colorClasses = {
-    ...octaveTokenKeys.color,
+    ...parlourTokenKeys.color,
 };
 
 export const spacingClasses = {
     none: 'none',
-    ...octaveTokenKeys.spacing,
+    ...parlourTokenKeys.spacing,
 };
 
 export const borderRadiusClasses = {
     none: 'none',
-    ...octaveTokenKeys.radius,
+    ...parlourTokenKeys.radius,
 };
 
 export const justifyClasses = {

@@ -1,7 +1,7 @@
 {
-    "name": "@troychaplin/octave-design-system",
+    "name": "@troychaplin/parlour-ui",
     "version": "0.1.2",
-    "description": "Octave design system and React component library",
+    "description": "A token-first UI kit for React and WordPress. One set of tokens, every flavour.",
     "author": "Troy Chaplin",
     "license": "MIT",
     "keywords": [
@@ -9,14 +9,21 @@
         "nextjs",
         "component-library",
         "design-system",
-        "octave",
+        "design-tokens",
+        "parlour",
         "wordpress",
+        "theme-json",
+        "block-theme",
         "storybook"
     ],
     "packageManager": "pnpm@12.6.0",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/troychaplin/octave-design-system.git"
+        "url": "git+https://github.com/troychaplin/parlour-ui.git"
+    },
+    "homepage": "https://troychaplin.github.io/parlour-ui/",
+    "bugs": {
+        "url": "https://github.com/troychaplin/parlour-ui/issues"
     },
     "type": "module",
     "private": false,
@@ -37,10 +44,10 @@
         "./styles.css": "./dist/style.css",
         "./hybrid-theme.css": "./dist/wordpress/hybrid-theme.css",
         "./block-theme.css": "./dist/wordpress/block-theme.css",
-        "./tokens.css": "./dist/styles/octave-tokens.css",
-        "./base-styles.css": "./dist/styles/octave-base-styles.css",
-        "./layout.css": "./dist/styles/octave-layout.css",
-        "./typography.css": "./dist/styles/octave-typography.css",
+        "./tokens.css": "./dist/styles/parlour-tokens.css",
+        "./base-styles.css": "./dist/styles/parlour-base-styles.css",
+        "./layout.css": "./dist/styles/parlour-layout.css",
+        "./typography.css": "./dist/styles/parlour-typography.css",
         "./fonts.css": "./dist/fonts.css",
         "./*": {
             "types": "./dist/components/*/index.d.ts",

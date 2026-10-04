@@ -1,5 +1,5 @@
 {
-    "prefix": "octave",
+    "prefix": "parlour",
 
     "output": {
         "srcDir": "src/styles/c2b",

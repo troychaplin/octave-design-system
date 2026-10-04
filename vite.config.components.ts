@@ -40,10 +40,10 @@ const assetFileNames = (assetInfo: { names?: string[] }) => {
 // Vite extracts CSS through a separate pipeline that doesn't show up in the
 // Rollup bundle, so we delete the file from disk in `closeBundle` instead.
 const dropRootCss = {
-  name: 'octave:drop-root-css',
+  name: 'parlour:drop-root-css',
   closeBundle: async () => {
     try {
-      await unlink(join(__dirname, 'dist/components/octave-design-system.css'));
+      await unlink(join(__dirname, 'dist/components/parlour-ui.css'));
     } catch (err: unknown) {
       if ((err as NodeJS.ErrnoException).code !== 'ENOENT') throw err;
     }
