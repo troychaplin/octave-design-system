@@ -2,3 +2,109 @@ import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
 import * as SiteHeaderStories from './SiteHeader.stories';
 
 <Meta of={SiteHeaderStories} />
+
+# Site Header
+
+The header at the top of every page: the site title as a link home, the primary navigation and a button, in one row at the wide content width. Renders a `<header>` containing a `<nav>` labelled "Primary".
+
+## When to use
+
+- Open every page with it, above [`Main`](?path=/docs/components-template-parts-main--docs) rather than inside it. The [Work template](?path=/story/overview-templates--work-layout) shows it in place.
+- Pass `children` to add one more item to the end of the row, such as a search link.
+- Don't use it for the page's own heading — that's [`HeroHeader`](?path=/docs/components-content-hero-header--docs) — or for the headings of sections further down, which is [`SectionHeader`](?path=/docs/components-content-section-header--docs).
+
+## Import
+
+```tsx
+import { SiteHeader } from '@troychaplin/octave-design-system';
+```
+
+## Basic usage
+
+```tsx
+// Default title, "Octave Design System"
+<SiteHeader />
+
+// Your own title, with part of it in italics
+<SiteHeader siteTitle="troychaplin.work" siteTitleAccent="troychaplin" />
+
+// One more item at the end of the row
+<SiteHeader siteTitleAccent="Octave">
+    <Button text="Search" href="/search" isSmall color="light" />
+</SiteHeader>
+```
+
+Only the title and the `children` item can change. The navigation links and the button are fixed in the component for now.
+
+The title and navigation links render through [`LinkProvider`](?path=/docs/components-utilities-linkprovider--docs), so a provider higher in the tree swaps in your router's `Link`.
+
+## Examples
+
+### Default
+
+`siteTitleAccent` picks out part of `siteTitle` and sets it in italics, in the accent color. Try your own values in the controls.
+
+<Canvas of={SiteHeaderStories.Default} />
+<Controls of={SiteHeaderStories.Default} />
+
+### Without an accent
+
+Leave out `siteTitleAccent` and the whole title renders in one style. The same happens when the accent doesn't appear in the title.
+
+<Canvas of={SiteHeaderStories.WithoutAccent} />
+
+### Accent at the end
+
+The accent can be any part of the title, several words included. Only its first match is styled, and the text either side stays plain.
+
+<Canvas of={SiteHeaderStories.AccentAtTheEnd} />
+
+### With an extra item
+
+`children` render as the last item in the row, after the button. The row spreads its items evenly across the width, so the button moves in from the edge to make room.
+
+<Canvas of={SiteHeaderStories.WithExtraItem} />
+
+## Layout
+
+The header spans the full width of the page, with the site's root padding either side. Inside it, a `FlexGroup` spreads the title, navigation, button and any children across the wide content width (`--octave--layout-wide-size`). On narrow screens the row wraps rather than collapsing into a menu: on a phone, the button drops to a second line below the title and links.
+
+## CSS classes
+
+| Class                              | When applied                                                        |
+| ---------------------------------- | ------------------------------------------------------------------- |
+| `octave-site-header`               | Always — base class, on the `<header>`                              |
+| `octave-site-header__branding`     | Always — on the `<div>` around the title                            |
+| `octave-site-header__title-accent` | `siteTitleAccent` is set and found in `siteTitle` — on the `<span>` |
+| `octave-site-header__nav`          | Always — on the `<nav>`                                             |
+
+A `className` you pass is appended after `octave-site-header`. The row is a `FlexGroup` and the button comes from `ButtonGroup` and `Button`, so their classes appear inside the header as well.
+
+## Design tokens
+
+| Token                                  | Used for                                                        |
+| -------------------------------------- | --------------------------------------------------------------- |
+| `--octave--spacing-medium`             | Padding above and below the header; gap between nav links       |
+| `--octave--root-padding-x`             | Padding either side of the header                               |
+| `--octave--color-white`                | Background                                                      |
+| `--octave--color-neutral-400`          | Bottom border color                                             |
+| `--octave--font-family-source-serif-4` | Title font family                                               |
+| `--octave--font-size-large`            | Title font size                                                 |
+| `--octave--font-weight-normal`         | Title and nav link font weight                                  |
+| `--octave--color-neutral-900`          | Title color; accent color while the title is hovered or focused |
+| `--octave--color-accent-secondary`     | Accent color; title color while it's hovered or focused         |
+| `--octave--font-family-inter-tight`    | Nav link font family                                            |
+| `--octave--font-size-small`            | Nav link font size                                              |
+| `--octave--color-neutral-950`          | Nav link color                                                  |
+
+The bottom border's `1px` width is a raw value rather than a design token.
+
+## Accessibility
+
+- A `<header>` is exposed as the page's `banner` landmark only when it isn't inside `<main>`, `<article>`, `<aside>`, `<nav>` or `<section>` — another reason to place it above `Main`. Use one per page.
+- The title is a paragraph holding a link home (`rel="home"`), not a heading, so the page's main heading — usually a `HeroHeader` — stays its only `<h1>`.
+- `siteTitleAccent` wraps part of the link text in a `<span>` without changing the text, so screen readers announce the title as written.
+- The navigation is a `<nav aria-label="Primary">`, announced as the "Primary" navigation landmark. Give any other `<nav>` on the page, such as a footer menu, a different label.
+- The links don't mark the current page with `aria-current`, because the component doesn't know which page is showing.
+- Hovering or focusing the title swaps its two colors. Keyboard focus also gets the global `:focus-visible` outline, so focus doesn't rely on color alone.
+- The button renders as a `<button>` with no action attached, and because it's fixed in the component, it can't be given one yet.

@@ -105,11 +105,11 @@ The `isFirst` prop on `Column.Content` controls visual order independently of DO
 
 `Column.Content` is a lightweight wrapper `<div>` that participates in the grid's ordering system.
 
-| Prop      | Default | Description                                                                     |
-| --------- | ------- | ------------------------------------------------------------------------------- |
-| `isFirst` | `false` | Sets `order: 0` so this child appears first visually regardless of DOM position |
+| Prop      | Default | Description                                                     |
+| --------- | ------- | --------------------------------------------------------------- |
+| `isFirst` | `false` | Moves this child to the front once the columns sit side by side |
 
-All direct `<div>` children of `.octave-column` have `order: 1` by default, so adding `isFirst` to any child moves it to the front without affecting others.
+Every other child keeps its DOM order, whether it's a `Column.Content` or another element such as an [`Aside`](?path=/docs/components-template-parts-aside--docs). `isFirst` only takes effect at the widths where the columns sit side by side — above 600px for `cols="2"` and `"4"`, above 768px for `"3"`, `"1/3"` and `"2/3"`, and never for `"1"` — so stacked columns on small screens always follow the DOM.
 
 ## CSS classes
 

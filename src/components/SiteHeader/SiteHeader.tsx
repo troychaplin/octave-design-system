@@ -17,7 +17,7 @@ export interface SiteHeaderProps {
 const navItems = [
     { href: '/about', label: 'About' },
     { href: '/blog', label: 'Blog' },
-    { href: '/contact', label: 'Contact' },
+    { href: '/resume', label: 'Resume' },
 ];
 
 // Splits the title around the first match of `accent`. With no match, the whole title comes back
@@ -70,7 +70,7 @@ export const SiteHeader = ({
                 </nav>
                 <div>
                     <ButtonGroup>
-                        <Button text="Primary" isSmall isOutline />
+                        <Button text="Hire Me" isSmall isOutline />
                     </ButtonGroup>
                 </div>
                 {children}
