@@ -86,7 +86,10 @@
     },
     "size-limit": [
         {
-            "path": "dist/index.mjs",
+            "path": [
+                "dist/index.mjs",
+                "dist/_shared/*.mjs"
+            ],
             "limit": "25 kB"
         },
         {

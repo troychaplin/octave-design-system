@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, ComponentType, ComponentProps } from 'react';
 
 export type LinkComponent = ComponentType<ComponentProps<'a'>>;

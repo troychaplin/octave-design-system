@@ -68,6 +68,19 @@ import './styles.scss';
 
 All visual values come from `--octave--*` design tokens. See `references/styles.md`.
 
+## Client components
+
+Start the file with `'use client'` when the component uses React context, state or effects,
+`useLinkContext()` included. Without it, importing the component in a Next.js Server Component
+fails. The build reads the directive from the source and keeps it on every output file that holds
+the component (`scripts/vite-use-client.ts`); components without it render on the server.
+
+```tsx
+'use client';
+
+import { useLinkContext } from '../LinkProvider/useLinkContext';
+```
+
 ## Subcomponents
 
 Attach with `Object.assign` and set an explicit `displayName` on the wrapper:
@@ -93,9 +106,12 @@ Components that can render a link use `useLinkContext()` so the consumer's route
 comment is part of the pattern: `react-hooks/static-components` treats any value returned from a
 call during render as a newly created component, so it can't see that the component from context
 is stable. The rule reports at the JSX tag, so the comment goes on the line above
-`<LinkComponent>`, not above the hook call (a comment there is flagged as an unused directive):
+`<LinkComponent>`, not above the hook call (a comment there is flagged as an unused directive).
+The hook reads React context, so the file is a client component:
 
 ```tsx
+'use client';
+
 import { useLinkContext } from '../LinkProvider/useLinkContext';
 
 export const MyComponent = ({ href, ...rest }: MyComponentProps) => {

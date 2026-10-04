@@ -64,6 +64,7 @@ config update needed, but a missing barrel file silently drops the component fro
 - **No dead code** — remove commented-out code; never leave `// TODO` stubs
 - **BEM class prefix:** `octave-` (e.g. `octave-badge`, `octave-badge--success`, `octave-badge__icon`)
 - **CSS tokens:** `var(--octave--*)` — never hardcode colors, sizes, or font stacks
+- **`'use client'`** as the first line of any component that uses React context, state or effects, `useLinkContext()` included — otherwise importing it in a Next.js Server Component fails. `scripts/vite-use-client.ts` keeps the directive on every built file that contains such a module
 
 ---
 
@@ -101,10 +102,13 @@ Full conventions in `references/stories.md`. The rules that break things when ig
 
 Components that render links should use `useLinkContext()` so consumers can swap in Next.js `Link`,
 React Router `Link`, or a plain `<a>`. `react-hooks/static-components` can't tell the component from
-context is stable, so disable it on the line above the JSX tag (not the hook call). See
-`references/tsx.md` for the nested-JSX comment form:
+context is stable, so disable it on the line above the JSX tag (not the hook call). The hook reads
+React context, so the file starts with `'use client'`. See `references/tsx.md` for the nested-JSX
+comment form:
 
 ```tsx
+'use client';
+
 import { useLinkContext } from '../LinkProvider/useLinkContext';
 
 const LinkComponent = useLinkContext();

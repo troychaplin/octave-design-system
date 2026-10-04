@@ -6,55 +6,91 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 Using `@troychaplin/octave-design-system` in a Next.js app. Assumes you've completed [Installation](?path=/docs/overview-getting-started-installation--docs).
 
-## Import styles once
+## App Router
 
-In `app/layout.tsx` (App Router) or `pages/_app.tsx` (Pages Router):
+### Server and Client Components
+
+Octave's components work in Server Components. `Button`, `SiteHeader` and `LinkProvider` use React context, so they're marked `'use client'` and render as Client Components; every other component renders on the server.
+
+### Import styles and wire up Next.js Link
+
+[`LinkProvider`](?path=/docs/components-utilities-linkprovider--docs) makes Octave components that take an `href` route through Next.js's `Link`, with prefetching and client-side navigation. A Server Component can't pass a function such as `Link` to a Client Component, so put the provider in a client file:
 
 ```tsx
-import '@troychaplin/octave-design-system/styles.css';
+// app/providers.tsx
+'use client';
+
+import Link from 'next/link';
+import { LinkProvider } from '@troychaplin/octave-design-system';
+
+export function Providers({ children }: { children: React.ReactNode }) {
+    return <LinkProvider component={Link}>{children}</LinkProvider>;
+}
 ```
 
-This imports the bundled stylesheet (tokens + globals + all components).
-
-## Wire up Next.js Link
-
-Wrap your app in `<LinkProvider>` so Octave components that accept an `href` prop route through Next.js's `Link` instead of a plain `<a>` — enabling prefetching and client-side navigation.
+Then import the stylesheet and the providers in the root layout:
 
 ```tsx
 // app/layout.tsx
-import Link from 'next/link';
-import { LinkProvider } from '@troychaplin/octave-design-system';
 import '@troychaplin/octave-design-system/styles.css';
+import { Providers } from './providers';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
             <body>
-                <LinkProvider component={Link}>{children}</LinkProvider>
+                <Providers>{children}</Providers>
             </body>
         </html>
     );
 }
 ```
 
-Without `LinkProvider`, Octave link-aware components fall back to a plain anchor tag — they still work, but you lose Next.js routing benefits.
+Without `LinkProvider`, Octave's links fall back to a plain `<a>`. They still work, but you lose Next.js routing.
 
-## Compose components
+### Compose components
+
+A page can stay a Server Component and still use any Octave component:
 
 ```tsx
-import { Badge, Button, Column, Icon, Main, Section } from '@troychaplin/octave-design-system';
+// app/page.tsx
+import { Button, Column, Container, Main } from '@troychaplin/octave-design-system';
 
 export default function Page() {
     return (
         <Main>
-            <Section>
-                <Column cols="2">
-                    <Badge text="New" color="success" />
-                    <Button text="Get started" />
-                    <Icon name="calendar-clock" size={24} />
+            <Container>
+                <Column cols="2/3">
+                    <Column.Content>
+                        <h1>Welcome</h1>
+                        <p>A page built from Octave components.</p>
+                    </Column.Content>
+                    <Column.Content>
+                        <Button text="Get started" href="/start" />
+                    </Column.Content>
                 </Column>
-            </Section>
+            </Container>
         </Main>
+    );
+}
+```
+
+## Pages Router
+
+The Pages Router has no Server Components, so set everything up in `pages/_app.tsx`:
+
+```tsx
+// pages/_app.tsx
+import type { AppProps } from 'next/app';
+import Link from 'next/link';
+import { LinkProvider } from '@troychaplin/octave-design-system';
+import '@troychaplin/octave-design-system/styles.css';
+
+export default function App({ Component, pageProps }: AppProps) {
+    return (
+        <LinkProvider component={Link}>
+            <Component {...pageProps} />
+        </LinkProvider>
     );
 }
 ```

@@ -1,3 +1,5 @@
+'use client';
+
 import type { ComponentPropsWithoutRef } from 'react';
 import { useLinkContext } from '../LinkProvider/useLinkContext';
 import { borderRadiusClasses } from '../../utils/propClasses';

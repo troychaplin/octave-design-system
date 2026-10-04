@@ -81,6 +81,18 @@ _Fixed_ The README explains how to install Octave in a React app, the Next.js Ap
 WordPress theme and a WordPress block, and lists every path the package publishes. Its notes on
 indentation, formatting and the size budget now match the project's tooling.
 
+_Fixed_ The Getting Started pages and the `LinkProvider` docs no longer use components that don't
+exist (`Badge`, `Icon`, `Section`) or the old `@cuweb` package name. The Next.js setup puts
+`LinkProvider` in a client file so it works with the App Router, React Router gets the wrapper that
+maps `href` to `to`, `useLinkContext` is imported from the entry point that exports it, and the
+WordPress page covers `integrate.php`, `theme-octave.json` and the fonts.
+
+_Fixed_ Octave's components can be imported into Next.js Server Components. Importing anything from
+the package there used to fail with `createContext is not a function`. `Button`, `SiteHeader` and
+`LinkProvider` are now marked `'use client'`, and the build keeps the directive on the files that
+contain them, so every other component renders on the server. The library's JavaScript is split
+into an entry file and two chunks in `dist/_shared/`.
+
 ## [0.1.1] - 2026-09-28
 
 _Fixed_ The Getting Started docs import the bundled stylesheet from

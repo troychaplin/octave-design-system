@@ -5,83 +5,69 @@ import * as LinkProviderStories from './LinkProvider.stories';
 
 # Link Provider
 
-A React context provider that injects a framework-specific link component into the RDS component tree. Wraps your application once at the root and automatically propagates to every RDS component that renders a link — no per-component configuration required.
+Replaces the plain `<a>` that Octave's link-rendering components use with your router's link component, through React context. Renders no element of its own.
 
-## Why it exists
+## When to use
 
-RDS components that render links (`Badge`, `SocialIcons.Item`, `CookieBanner`) need to work with whatever routing library the consuming application uses. Without `LinkProvider` they fall back to a plain `<a>` element. Wrapping the tree with `LinkProvider` swaps that default for your framework's `<Link>` — enabling client-side navigation, prefetching, and any other router-specific behaviour.
+- Wrap your app once, near the root, when it uses a router with its own link component — Next.js, React Router or similar — so Octave's links get client-side navigation and prefetching.
+- Leave it out on sites without a client-side router. Without a provider, every link is a standard `<a>`.
+- It only changes the links Octave renders — `Button` with an `href`, and `SiteHeader` — plus your own components that read it with `useLinkContext`. Other links on the page are untouched.
 
 ## Import
 
 ```tsx
-import { LinkProvider } from '@cuweb/octave-design-system';
+import { LinkProvider } from '@troychaplin/octave-design-system';
 ```
 
-## Setup
+## Basic usage
 
-Wrap your application root once. The `component` prop accepts any component that is compatible with standard anchor props (`href`, `className`, `children`, etc.).
-
-### Next.js
+`component` takes any component that accepts the props of an `<a>`, `href` included.
 
 ```tsx
-// app/layout.tsx
-import Link from 'next/link';
-import { LinkProvider } from '@cuweb/octave-design-system';
-
-export default function RootLayout({ children }) {
-    return (
-        <html>
-            <body>
-                <LinkProvider component={Link}>{children}</LinkProvider>
-            </body>
-        </html>
-    );
-}
-```
-
-### React Router
-
-```tsx
+import type { ComponentPropsWithoutRef } from 'react';
 import { Link } from 'react-router-dom';
-import { LinkProvider } from '@cuweb/octave-design-system';
+import { LinkProvider } from '@troychaplin/octave-design-system';
 
-<LinkProvider component={Link}>
+// React Router's Link takes `to`, so map `href` onto it
+const RouterLink = ({ href = '', ...props }: ComponentPropsWithoutRef<'a'>) => (
+    <Link to={href} {...props} />
+);
+
+<LinkProvider component={RouterLink}>
     <App />
 </LinkProvider>;
 ```
 
-### Plain anchor (default — no setup required)
+Define the wrapper outside your components, as above. A component created inline on every render would remount every link each time.
 
-Without a `LinkProvider` in the tree, all RDS link-rendering components fall back to a standard `<a>` element. No configuration is needed for this behaviour.
+### Next.js App Router
 
-## Examples
-
-### Default — plain anchor
-
-Without a provider, `Badge` and other link components render a native `<a>`.
-
-<Canvas of={LinkProviderStories.DefaultFallback} />
-
-### With custom link component
-
-The `MockRouterLink` in this story adds a `data-mock-router` attribute — inspect the rendered HTML to confirm the injected component is being used instead of a plain anchor.
-
-<Canvas of={LinkProviderStories.WithCustomComponent} />
-
-## Components that use LinkProvider
-
-Any RDS component that renders a link reads from this context via `useLinkContext`:
-
-- [`Badge`](?path=/docs/components-elements-badge--docs) — when `href` is provided
-
-## Using `useLinkContext` in custom components
-
-If you are building a component on top of RDS that also needs to render links, import the hook directly rather than hardcoding `<a>`:
+`LinkProvider` is a Client Component, and a Server Component can't pass a function such as Next.js's `Link` to one. Put the provider in a client file of its own:
 
 ```tsx
-import { useLinkContext } from '@cuweb/octave-design-system';
+// app/providers.tsx
+'use client';
 
-export const MyCard = ({ href, children }) => {
+import Link from 'next/link';
+import { LinkProvider } from '@troychaplin/octave-design-system';
+
+export function Providers({ children }: { children: React.ReactNode }) {
+    return <LinkProvider component={Link}>{children}</LinkProvider>;
+}
+```
+
+Then wrap the root layout's children in `<Providers>`. The [Next.js guide](?path=/docs/overview-getting-started-next-js--docs) has the full setup, including the Pages Router.
+
+### Your own components
+
+To give a component of your own the same behaviour, read the link component with `useLinkContext` instead of hardcoding `<a>`. It's exported from the `LinkProvider` entry point, not the package root. The hook reads React context, so in the Next.js App Router the file needs a `'use client'` directive, as Octave's own link components have:
+
+```tsx
+'use client';
+
+import { useLinkContext } from '@troychaplin/octave-design-system/LinkProvider';
+
+export const ProjectCard = ({ href, children }) => {
     const LinkComponent = useLinkContext();
 
     return (
@@ -92,22 +78,40 @@ export const MyCard = ({ href, children }) => {
 };
 ```
 
-The component will automatically use whatever link component is provided by the nearest `LinkProvider`, or fall back to `<a>` if none is present.
+Without a provider above it, `useLinkContext` returns a component that renders a plain `<a>`.
 
-## Type reference
+## Examples
 
-```ts
-// The shape any injected link component must satisfy
-type LinkComponent = ComponentType<ComponentProps<'a'>>;
+### Default — plain anchor
 
-// Provider props
-interface LinkProviderProps {
-    component: LinkComponent;
-    children: ReactNode;
-}
-```
+Without a provider, a `Button` with an `href` renders a native `<a>`.
+
+<Canvas of={LinkProviderStories.DefaultFallback} />
+
+### With a custom link component
+
+The `MockRouterLink` in this story adds a `data-mock-router` attribute. Inspect the rendered HTML to see it in place of a plain anchor.
+
+<Canvas of={LinkProviderStories.WithCustomComponent} />
+
+## Props
+
+| Prop        | Type            | Description                                         |
+| ----------- | --------------- | --------------------------------------------------- |
+| `component` | `LinkComponent` | Required — the component to render instead of `<a>` |
+| `children`  | `ReactNode`     | Required — the part of the tree that uses it        |
+
+`LinkComponent` is `ComponentType<ComponentProps<'a'>>`: any component that takes the props of an `<a>`.
+
+## CSS classes
+
+None. `LinkProvider` renders no element.
+
+## Design tokens
+
+None.
 
 ## Accessibility
 
-- `LinkProvider` renders no DOM element of its own — it is a pure context boundary with no visual or semantic output.
-- The injected `LinkComponent` is responsible for its own accessible behaviour. Ensure it forwards standard anchor attributes (`href`, `aria-label`, etc.) to the underlying element so consumers like `SocialIcons.Item` can pass their `aria-label` through correctly.
+- `LinkProvider` renders nothing itself, so it doesn't change the page's structure or the accessibility tree.
+- The component you pass is responsible for the link's accessibility. It should render a real `<a>` and pass on every prop it receives: `Button` passes its classes and any `aria-*` attributes this way, and `SiteHeader` passes `rel="home"` on its title link.

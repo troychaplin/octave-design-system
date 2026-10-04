@@ -89,13 +89,14 @@ import { LinkProvider } from '@troychaplin/octave-design-system';
 ```
 
 Next.js's `Link` takes `href` as it is. React Router's `Link` expects `to`, so pass a wrapper
-instead: `({ href, ...props }) => <Link to={href} {...props} />`.
+instead: `({ href = '', ...props }) => <Link to={href} {...props} />`.
 
 #### Next.js App Router
 
-Octave's modules don't have a `'use client'` directive yet, and the main entry creates a React
-context when it loads, which Server Components can't do. Until that changes, use Octave
-components in Client Components, and set up `LinkProvider` in a client providers file:
+Octave's components work in Server Components. `Button`, `SiteHeader` and `LinkProvider` use
+React context, so they're marked `'use client'` and render as Client Components; every other
+component renders on the server. A Server Component can't pass a function such as Next.js's `Link`
+to a Client Component, so set up `LinkProvider` in a client providers file:
 
 ```tsx
 // app/providers.tsx

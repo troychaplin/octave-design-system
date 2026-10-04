@@ -4,12 +4,12 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # WordPress integration
 
-Octave ships WordPress-ready CSS bundles and a `theme.json` alongside the React build, so the
-Site Editor, the block editor, and the frontend all read from the same design tokens.
+Octave ships WordPress-ready stylesheets and a `theme.json` alongside the React build, so the
+Site Editor, the block editor and the front end all read from the same design tokens.
 
 ## Prerequisites
 
-Follow the base [Installation](?path=/docs/overview-getting-started-installation--docs) flow:
+Install the package wherever you build your theme's or block's assets:
 
 ```sh
 pnpm add @troychaplin/octave-design-system
@@ -17,34 +17,58 @@ pnpm add @troychaplin/octave-design-system
 
 ## What ships for WordPress
 
-The build produces two stylesheet entry points, compiled from `src/styles/wordpress/`:
+`dist/wordpress/` has what a theme needs:
 
-| Export                                               | Use for                                                    |
-| ---------------------------------------------------- | ---------------------------------------------------------- |
-| `@troychaplin/octave-design-system/block-theme.css`  | Full block themes — `theme.json` plus block templates only |
-| `@troychaplin/octave-design-system/hybrid-theme.css` | Hybrid themes — classic PHP templates alongside blocks     |
+- `theme-octave.json` — the tokens as `theme.json` presets: the color palette and gradient, 16
+  fluid font sizes, the three font families with their font files, the spacing scale, shadows,
+  and the content and wide widths. It also sets default styles for text, headings, links, buttons
+  and captions.
+- `integrate.php` — loads `theme-octave.json` as WordPress's default `theme.json` layer.
+- `block-theme.css` — for block themes: the tokens, the `.sr-only` utility and heading spacing.
+- `hybrid-theme.css` — for hybrid themes with PHP templates: adds Octave's element defaults,
+  layout classes and global styles.
 
-Each entry is a plain SCSS file you can read and adjust: add or remove `@use` lines to control
-exactly which layers ship. Both start from the generated token layer and pull in the
-hand-written global styles as needed.
+The font files are in `dist/fonts/`. For blocks, each component's CSS is published on its own as
+`@troychaplin/octave-design-system/<Component>.css`, alongside `tokens.css`.
 
-`@troychaplin/component2block` also emits a `theme.json` from the same `c2b.config.json` token
-definitions, so the Site Editor's palette, gradients, fluid typography, spacing scale, and shadow
-presets stay in sync with the React components without being maintained twice.
+## Themes
 
-## Enqueuing
+1. Copy `integrate.php`, `theme-octave.json` and the stylesheet you need into one folder in your
+   theme, such as `assets/octave/`. `integrate.php` looks for `theme-octave.json` next to itself.
+2. Copy `dist/fonts/` to `assets/fonts/` in your theme, the path `theme-octave.json` gives for the
+   font files.
+3. Load everything from `functions.php`:
 
 ```php
-wp_enqueue_style(
-    'octave',
-    get_theme_file_uri( 'node_modules/@troychaplin/octave-design-system/dist/wordpress/block-theme.css' ),
-    [],
-    null
-);
+require_once get_theme_file_path( 'assets/octave/integrate.php' );
+
+add_action( 'wp_enqueue_scripts', function () {
+    wp_enqueue_style( 'octave', get_theme_file_uri( 'assets/octave/block-theme.css' ) );
+} );
+
+add_action( 'after_setup_theme', function () {
+    add_editor_style( 'assets/octave/block-theme.css' );
+} );
 ```
 
-## Per-block CSS
+For a hybrid theme, use `hybrid-theme.css` in both places.
 
-Blocks that use only a component or two can enqueue that component's stylesheet instead of the
-full bundle — see the per-component imports in
-[Installation](?path=/docs/overview-getting-started-installation--docs).
+Your theme's own `theme.json` still applies on top of Octave's defaults, so it only needs to hold
+what you want to change. Octave is built locked, though: `integrate.php` stops the theme from
+changing the layout widths and breakpoints, and turns off custom colors, gradients and duotone in
+the Site Editor.
+
+## Blocks
+
+A block can bundle just the CSS for the components whose markup it renders. Component CSS reads
+the `--octave--*` custom properties, so the page needs the tokens too: a theme set up as above
+already loads them, and otherwise the block should bundle `tokens.css`.
+
+With `@wordpress/scripts`, import them at the top of the block's `style.scss`, which loads in the
+editor and on the front end:
+
+```scss
+// src/my-block/style.scss
+@import '@troychaplin/octave-design-system/tokens.css';
+@import '@troychaplin/octave-design-system/Button.css';
+```

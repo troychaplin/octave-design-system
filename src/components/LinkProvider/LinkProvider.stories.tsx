@@ -32,7 +32,7 @@ const MockRouterLink = ({ children, ...rest }: ComponentProps<'a'>) => (
 
 export const DefaultFallback: Story = {
     name: 'Default (plain anchor)',
-    render: () => <Button text="Default anchor" href="https://carleton.ca" />,
+    render: () => <Button text="Default anchor" href="https://example.com" />,
 };
 
 export const WithCustomComponent: Story = {

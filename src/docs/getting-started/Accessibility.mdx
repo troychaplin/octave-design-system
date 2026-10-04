@@ -25,15 +25,13 @@ Run locally with:
 pnpm test:storybook
 ```
 
-This walks every story, mounts it in headless Playwright, and runs axe. Slow (~30s+ across the catalogue) but comprehensive.
+This walks every story, mounts it in headless Chromium through Playwright, and runs axe. It needs Node 24 and the Playwright browser (`pnpm exec playwright install chromium`).
 
 ## What the components handle for you
 
-- **Decorative icons** — `<Icon>` defaults to `aria-hidden="true"` + `focusable="false"`, so screen readers don't announce them.
-- **Meaningful icons** — pass a `title` prop; `<Icon>` switches to `role="img"` + a `<title>` element so the icon announces itself.
 - **Focus styles** — global focus outline applied via `:focus-visible` (2px primary outline, 2px offset). Don't override this without a strong reason.
-- **Color contrast** — semantic and badge color combinations are picked to meet WCAG AA. The Badge component uses black text for yellow/info backgrounds and white text for others.
-- **Landmarks** — layout components (`<Main>`, `<Aside>`, `<Section>`) emit the correct semantic elements.
+- **Color contrast** — components with a background, such as `Card`, `CodeBlock` and the colored `Container` variants, set a text color that meets WCAG AA against it, and axe checks contrast in every story.
+- **Landmarks** — `Main`, `Aside` and `SiteHeader` render the `<main>`, `<aside>` and `<header>` landmarks, and `Article` renders an `<article>`.
 - **`...rest` passthrough** — interactive components extend their underlying element's HTMLAttributes, so any ARIA attribute you pass reaches the DOM.
 
 ## What you still have to do
@@ -68,7 +66,7 @@ If `pnpm test:storybook` fails with an axe error, the fix is almost always one o
 
 - WCAG 2.1 Level AA, with AAA where it doesn't compromise the design (e.g., enhanced contrast in body text)
 - Keyboard navigability for all interactive elements
-- No color-only signaling (status badges pair color with text)
+- No color-only signaling — color always comes with text that carries the same meaning
 - Respect for `prefers-reduced-motion` in components with motion (planned — flag any new motion-using component)
 
 ## Reporting an issue

@@ -4,7 +4,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Installation
 
-How to install `@troychaplin/octave-design-system` in any consumer project.
+How to install `@troychaplin/octave-design-system` in a React project.
 
 ## 1. Install
 
@@ -22,35 +22,38 @@ Once, near the top of your application:
 import '@troychaplin/octave-design-system/styles.css';
 ```
 
-This imports the bundled stylesheet — design tokens, base element styles, and every component's CSS.
+This is the bundled stylesheet: the design tokens, base element styles, layout classes, every component's CSS, and the `@font-face` rules for Inter Tight, Source Serif 4 and JetBrains Mono. The font files ship with the package, and your bundler picks them up from the stylesheet. The components don't import any CSS themselves, so this import is required.
 
 ## 3. Use components
 
 ```tsx
-import { Badge, Button } from '@troychaplin/octave-design-system';
+import { Button, Container, Main } from '@troychaplin/octave-design-system';
 
-<Badge text="New" color="success" />
-<Button text="Get started" />
+export function Page() {
+    return (
+        <Main>
+            <Container>
+                <h1>Hello, Octave</h1>
+                <Button text="Get started" href="/start" />
+            </Container>
+        </Main>
+    );
+}
 ```
 
-For framework-specific setup, see [Next.js](?path=/docs/overview-getting-started-next-js--docs) or [WordPress](?path=/docs/overview-getting-started-wordpress--docs).
+If your app uses a client-side router, wrap it in [`LinkProvider`](?path=/docs/components-utilities-linkprovider--docs) so Octave's links use your router's link component. For framework-specific setup, see [Next.js](?path=/docs/overview-getting-started-next-js--docs) or [WordPress](?path=/docs/overview-getting-started-wordpress--docs).
 
 ## Individual stylesheets (optional)
 
-If you don't want the full bundled stylesheet, import only what you need. Per-component CSS:
-
-```tsx
-import { Button } from '@troychaplin/octave-design-system';
-import '@troychaplin/octave-design-system/Button.css';
-```
-
-The token, base-style, layout, and typography layers are also published separately:
+Each layer of the stylesheet, and each component's CSS, is also published on its own:
 
 ```tsx
 import '@troychaplin/octave-design-system/tokens.css';
 import '@troychaplin/octave-design-system/base-styles.css';
 import '@troychaplin/octave-design-system/layout.css';
 import '@troychaplin/octave-design-system/typography.css';
+import '@troychaplin/octave-design-system/fonts.css';
+import '@troychaplin/octave-design-system/Button.css';
 ```
 
-This is most useful inside WordPress block bundles, where you want only the CSS a given block uses.
+These files leave out Octave's global styles, such as the focus outline, the text selection color and the alignment widths, which only ship in `styles.css` and `hybrid-theme.css`. Use them where something else already provides that base, such as a WordPress block on a site whose theme loads Octave. Component CSS reads the `--octave--*` custom properties, so load `tokens.css` wherever you load a component's CSS.

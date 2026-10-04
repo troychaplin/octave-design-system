@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import { readdirSync, existsSync } from 'node:fs';
 import { unlink } from 'node:fs/promises';
 import react from '@vitejs/plugin-react';
+import { useClientDirective } from './scripts/vite-use-client';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -52,7 +53,7 @@ const dropRootCss = {
 export default defineConfig({
   // Don't copy public/ assets into dist/components — they already live in dist/.
   publicDir: false,
-  plugins: [react(), dropRootCss],
+  plugins: [react(), useClientDirective(), dropRootCss],
   build: {
     emptyOutDir: false,
     outDir: 'dist/components',
