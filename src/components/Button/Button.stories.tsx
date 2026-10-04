@@ -10,7 +10,7 @@ const meta: Meta<typeof Button> = {
             control: 'select',
         },
         rounded: {
-            control: 'inline-radio',
+            control: 'select',
         },
         type: {
             control: 'inline-radio',
@@ -40,6 +40,7 @@ export const Default: Story = {
     args: {
         text: 'Dark Button',
         color: 'dark',
+        rounded: 'sm',
     },
 };
 
