@@ -1,6 +1,6 @@
 {
     "name": "@troychaplin/parlour-ui",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "description": "A token-first UI kit for React and WordPress. One set of tokens, every flavour.",
     "author": "Troy Chaplin",
     "license": "MIT",
