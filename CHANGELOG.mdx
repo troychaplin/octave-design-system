@@ -39,6 +39,26 @@ as children, such as a `HeroHeader` and a `CodeBlock`. Wrap them in `octave-hero
 `octave-hero__code` divs to keep the two-column layout. `Hero` now renders a `<section>` rather
 than a `<header>`, so a `HeroHeader` can sit inside it.
 
+_Fixed_ The Storybook previews of `Article`, `Aside`, `InfoBar`, `Main` and `ButtonGroup` span the
+full width instead of shrinking to fit their content, so `ButtonGroup`'s `align` options are now
+visible. Stories default to Storybook's `padded` layout rather than `centered`.
+
+_Fixed_ `Aside` with `isSticky` now sticks on its own: Octave gives its `sticky` wrapper
+`position: sticky` instead of relying on a utility class from the consumer's CSS. The class names
+are unchanged. The Aside stories use a wide layout, show the right sidebar on the right, and give
+the sticky table of contents room to stick.
+
+_Changed_ Storybook lists `Hero`, `HeroHeader` and `SectionHeader` under Content and `SiteHeader`
+under Template Parts, matching the groups the package exports them under. Their docs URLs change
+with the move.
+
+_Fixed_ The `SiteHeader` docs page was empty. It now covers usage, layout, CSS classes, tokens and
+accessibility, and the stories show the title accent and the `children` slot instead of passing
+paragraphs into the header.
+
+_Fixed_ The `InfoBar` docs page was empty. It now covers usage, how the date is worked out, layout,
+CSS classes, tokens and accessibility, and a new story shows an extra item passed as `children`.
+
 ## [0.1.1] - 2026-09-28
 
 _Fixed_ The Getting Started docs import the bundled stylesheet from

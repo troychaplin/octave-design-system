@@ -5,7 +5,7 @@ import { CodeBlock } from '../CodeBlock/CodeBlock';
 import { CodeDataPhp } from '../../data/CodeData';
 
 const meta: Meta<typeof Hero> = {
-    title: 'Components/Template Parts/Hero',
+    title: 'Components/Content/Hero',
     component: Hero,
     tags: ['!autodocs'],
     argTypes: {
