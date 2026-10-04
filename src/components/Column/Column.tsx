@@ -13,7 +13,7 @@ export interface ColumnProps {
 
 export const ColumnWrapper = ({ children, cols = '2', maxWidth = 'aligncontent' }: ColumnProps) => {
     const rootClasses = [
-        `octave-layout octave-column octave-column--${gridColumnClasses[cols]}`,
+        `parlour-layout parlour-column parlour-column--${gridColumnClasses[cols]}`,
         maxWidth,
     ]
         .filter(Boolean)

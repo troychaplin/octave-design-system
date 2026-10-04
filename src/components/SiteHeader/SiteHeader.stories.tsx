@@ -25,7 +25,7 @@ type Story = StoryObj<typeof SiteHeader>;
 
 export const Default: Story = {
     args: {
-        siteTitleAccent: 'Octave',
+        siteTitleAccent: 'Parlour',
     },
 };
 
@@ -33,13 +33,14 @@ export const WithoutAccent: Story = {};
 
 export const AccentAtTheEnd: Story = {
     args: {
-        siteTitleAccent: 'Design System',
+        siteTitle: 'A palette cleanser for React and WordPress',
+        siteTitleAccent: 'React and WordPress',
     },
 };
 
 export const WithExtraItem: Story = {
     args: {
-        siteTitleAccent: 'Octave',
+        siteTitleAccent: 'Parlour',
         children: <Button text="Search" href="/search" isSmall color="light" />,
     },
 };

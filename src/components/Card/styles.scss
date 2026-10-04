@@ -1,7 +1,7 @@
 @use 'sass:map';
-@use '../../styles/c2b/octave-variables' as vars;
+@use '../../styles/c2b/parlour-variables' as vars;
 
-.octave-card {
+.parlour-card {
     min-width: 0;
 
     > :first-child {
@@ -13,81 +13,81 @@
     }
 
     // Doubled class = (0,2,1) deliberately. Container's dark and medium variants colour
-    // headings with `.octave-container--dark h2` at (0,1,1), which would turn the headings
+    // headings with `.parlour-container--dark h2` at (0,1,1), which would turn the headings
     // on a light card white. Headings follow the card's own text colour instead.
-    &.octave-card :is(h1, h2, h3, h4, h5, h6) {
+    &.parlour-card :is(h1, h2, h3, h4, h5, h6) {
         color: inherit;
     }
 }
 
-li.octave-card {
+li.parlour-card {
     list-style: none;
 }
 
 // Each background sets the text colour that goes with it, so the card reads correctly in any
 // section: a light card inside a dark Container keeps dark text. `light` is the card surface
 // from the design, a step lighter than a light Container.
-.octave-card--bg-white {
-    background-color: var(--octave--color-white);
-    color: var(--octave--color-black);
+.parlour-card--bg-white {
+    background-color: var(--parlour--color-white);
+    color: var(--parlour--color-black);
 }
 
-.octave-card--bg-light {
-    background-color: var(--octave--color-neutral-50);
-    color: var(--octave--color-black);
+.parlour-card--bg-light {
+    background-color: var(--parlour--color-neutral-50);
+    color: var(--parlour--color-black);
 }
 
-.octave-card--bg-medium {
-    background-color: var(--octave--color-neutral-900);
-    color: var(--octave--color-white);
+.parlour-card--bg-medium {
+    background-color: var(--parlour--color-neutral-900);
+    color: var(--parlour--color-white);
 }
 
-.octave-card--bg-dark {
-    background-color: var(--octave--color-neutral-950);
-    color: var(--octave--color-white);
+.parlour-card--bg-dark {
+    background-color: var(--parlour--color-neutral-950);
+    color: var(--parlour--color-white);
 }
 
 // The width and style live on --border, with no colour, so the --border-{name} modifier
 // never depends on source order.
-.octave-card--border {
+.parlour-card--border {
     border-width: 1px;
     border-style: solid;
 }
 
-.octave-card--border-white {
-    border-color: var(--octave--color-white);
+.parlour-card--border-white {
+    border-color: var(--parlour--color-white);
 }
 
-.octave-card--border-light {
-    border-color: var(--octave--color-neutral-300);
+.parlour-card--border-light {
+    border-color: var(--parlour--color-neutral-300);
 }
 
-.octave-card--border-medium {
-    border-color: var(--octave--color-neutral-500);
+.parlour-card--border-medium {
+    border-color: var(--parlour--color-neutral-500);
 }
 
-.octave-card--border-dark {
-    border-color: var(--octave--color-neutral-900);
+.parlour-card--border-dark {
+    border-color: var(--parlour--color-neutral-900);
 }
 
 // Radius and spacing modifiers are generated from the token maps, so a change to
 // c2b.config.json propagates here with no edit.
-.octave-card--radius-none {
+.parlour-card--radius-none {
     border-radius: 0;
 }
 
-@each $name in map.keys(vars.$octave-radius) {
-    .octave-card--radius-#{$name} {
-        border-radius: var(--octave--radius-#{$name});
+@each $name in map.keys(vars.$parlour-radius) {
+    .parlour-card--radius-#{$name} {
+        border-radius: var(--parlour--radius-#{$name});
     }
 }
 
-.octave-card--padding-none {
+.parlour-card--padding-none {
     padding: 0;
 }
 
-@each $name in map.keys(vars.$octave-spacing) {
-    .octave-card--padding-#{$name} {
-        padding: var(--octave--spacing-#{$name});
+@each $name in map.keys(vars.$parlour-spacing) {
+    .parlour-card--padding-#{$name} {
+        padding: var(--parlour--spacing-#{$name});
     }
 }

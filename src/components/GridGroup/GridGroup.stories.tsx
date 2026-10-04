@@ -18,7 +18,7 @@ const cards = (count: number, as?: 'li') =>
     ));
 
 const Label = ({ children }: { children: React.ReactNode }) => (
-    <p className="alignwide" style={{ marginBottom: 'var(--octave--spacing-x-small)' }}>
+    <p className="alignwide" style={{ marginBottom: 'var(--parlour--spacing-x-small)' }}>
         <code>{children}</code>
     </p>
 );

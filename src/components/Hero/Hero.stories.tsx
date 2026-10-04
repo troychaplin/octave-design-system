@@ -28,20 +28,20 @@ export const Default: Story = {
     args: {
         children: (
             <>
-                <div className="octave-hero__content">
+                <div className="parlour-hero__content">
                     <HeroHeader
                         prefix="Building for the open web."
                         title="Plugins, projects"
                         titleAccent="& open source contributions"
                     >
-                        <ul className="octave-hero-header__stats">
+                        <ul className="parlour-hero-header__stats">
                             <li>7 released plugins</li>
                             <li>5 experimental projects</li>
                             <li>3 active contributions</li>
                         </ul>
                     </HeroHeader>
                 </div>
-                <div className="octave-hero__code">
+                <div className="parlour-hero__code">
                     <CodeBlock code={CodeDataPhp} />
                 </div>
             </>
@@ -52,13 +52,13 @@ export const Default: Story = {
 export const WithoutCode: Story = {
     args: {
         children: (
-            <div className="octave-hero__content">
+            <div className="parlour-hero__content">
                 <HeroHeader
                     prefix="Building for the open web."
                     title="Plugins, projects"
                     titleAccent="& open source contributions"
                 >
-                    <ul className="octave-hero-header__stats">
+                    <ul className="parlour-hero-header__stats">
                         <li>7 released plugins</li>
                         <li>5 experimental projects</li>
                         <li>3 active contributions</li>

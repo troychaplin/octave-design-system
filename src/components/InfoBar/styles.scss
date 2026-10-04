@@ -1,12 +1,12 @@
-.octave-infobar {
+.parlour-infobar {
     width: 100%;
-    padding-block: var(--octave--spacing-small);
-    padding-inline: var(--octave--root-padding-x);
-    background-color: var(--octave--color-neutral-100);
+    padding-block: var(--parlour--spacing-small);
+    padding-inline: var(--parlour--root-padding-x);
+    background-color: var(--parlour--color-neutral-100);
 
     p {
-        font-family: var(--octave--font-family-jetbrains-mono);
-        font-size: var(--octave--font-size-2-x-small);
+        font-family: var(--parlour--font-family-jetbrains-mono);
+        font-size: var(--parlour--font-size-2-x-small);
         margin: 0;
     }
 }

@@ -45,12 +45,12 @@ export const Button = ({
 }: ButtonProps) => {
     const LinkComponent = useLinkContext();
     const classes = [
-        'octave-button',
-        disabled ? 'octave-button--disabled' : `octave-button--${color}`,
-        rounded && `octave-button--radius-${rounded}`,
-        isOutline && !disabled && 'octave-button--outline',
-        isSmall && 'octave-button--small',
-        isFull && 'octave-button--full',
+        'parlour-button',
+        disabled ? 'parlour-button--disabled' : `parlour-button--${color}`,
+        rounded && `parlour-button--radius-${rounded}`,
+        isOutline && !disabled && 'parlour-button--outline',
+        isSmall && 'parlour-button--small',
+        isFull && 'parlour-button--full',
         className,
     ]
         .filter(Boolean)

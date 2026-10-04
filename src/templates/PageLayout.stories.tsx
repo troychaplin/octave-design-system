@@ -45,8 +45,8 @@ export const PageLayout: Story = {
 
                 <Container
                     style={{
-                        backgroundColor: 'var(--octave--color-neutral-200)',
-                        paddingBlock: 'var(--octave--spacing-x-large)',
+                        backgroundColor: 'var(--parlour--color-neutral-200)',
+                        paddingBlock: 'var(--parlour--spacing-x-large)',
                     }}
                 >
                     <p>
@@ -62,8 +62,8 @@ export const PageLayout: Story = {
                     maxWidth="alignwide"
 
                     style={{
-                        backgroundColor: 'var(--octave--color-white)',
-                        paddingBlock: 'var(--octave--spacing-x-large)',
+                        backgroundColor: 'var(--parlour--color-white)',
+                        paddingBlock: 'var(--parlour--spacing-x-large)',
                     }}
                 >
                     <p>
@@ -78,8 +78,8 @@ export const PageLayout: Story = {
                     contentWidth="alignfull"
                     maxWidth="alignfull"
                     style={{
-                        backgroundColor: 'var(--octave--color-neutral-200)',
-                        paddingBlock: 'var(--octave--spacing-x-large)',
+                        backgroundColor: 'var(--parlour--color-neutral-200)',
+                        paddingBlock: 'var(--parlour--spacing-x-large)',
                     }}
                 >
                     <p>

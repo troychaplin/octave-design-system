@@ -43,15 +43,15 @@ export const FlexGroup = ({
     const FlexGroupWrapper = as;
 
     const rootClasses = [
-        'octave-layout octave-flex-group',
-        `octave-flex-group--${direction}`,
-        `octave-flex-group--${wrap}`,
+        'parlour-layout parlour-flex-group',
+        `parlour-flex-group--${direction}`,
+        `parlour-flex-group--${wrap}`,
         maxWidth && maxWidthClasses[maxWidth],
-        justify && `octave-flex-group--justify-${flexJustifyClasses[justify]}`,
-        align && `octave-flex-group--align-${flexAlignClasses[align]}`,
-        gap && `octave-flex-group--gap-${spacingClasses[gap]}`,
-        padding && `octave-flex-group--padding-${spacingClasses[padding]}`,
-        margin && `octave-flex-group--margin-${spacingClasses[margin]}`,
+        justify && `parlour-flex-group--justify-${flexJustifyClasses[justify]}`,
+        align && `parlour-flex-group--align-${flexAlignClasses[align]}`,
+        gap && `parlour-flex-group--gap-${spacingClasses[gap]}`,
+        padding && `parlour-flex-group--padding-${spacingClasses[padding]}`,
+        margin && `parlour-flex-group--margin-${spacingClasses[margin]}`,
         className,
     ]
         .filter(Boolean)

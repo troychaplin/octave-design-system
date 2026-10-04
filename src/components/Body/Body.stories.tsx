@@ -21,6 +21,6 @@ type Story = StoryObj<typeof Body>;
 export const Default: Story = {
     args: {
         children: 'Body component',
-        className: 'octave-utils--alignfull',
+        className: 'parlour-utils--alignfull',
     },
 };

@@ -33,12 +33,12 @@ export const Card = ({
     const CardWrapper = as;
 
     const rootClasses = [
-        'octave-card',
-        `octave-card--bg-${backgroundColorClasses[backgroundColor]}`,
-        border && 'octave-card--border',
-        border && `octave-card--border-${backgroundColorClasses[borderColor]}`,
-        `octave-card--radius-${borderRadiusClasses[borderRadius]}`,
-        `octave-card--padding-${spacingClasses[padding]}`,
+        'parlour-card',
+        `parlour-card--bg-${backgroundColorClasses[backgroundColor]}`,
+        border && 'parlour-card--border',
+        border && `parlour-card--border-${backgroundColorClasses[borderColor]}`,
+        `parlour-card--radius-${borderRadiusClasses[borderRadius]}`,
+        `parlour-card--padding-${spacingClasses[padding]}`,
         className,
     ]
         .filter(Boolean)

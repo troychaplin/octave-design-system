@@ -33,11 +33,11 @@ export const Container = ({
     const ContainerWrapper = as;
 
     const rootClasses = [
-        'octave-layout octave-container',
+        'parlour-layout parlour-container',
         'is-layout-constrained',
         maxWidth,
-        color && `octave-container--no-gap octave-container--${color}`,
-        borderRadius && `octave-container--radius-${borderRadius}`,
+        color && `parlour-container--no-gap parlour-container--${color}`,
+        borderRadius && `parlour-container--radius-${borderRadius}`,
         className,
     ]
         .filter(Boolean)

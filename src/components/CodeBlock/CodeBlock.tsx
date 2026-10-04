@@ -20,10 +20,10 @@ export const CodeBlock = ({
     ...rest
 }: CodeBlockProps) => {
     const rootClasses = [
-        'octave-code-block',
-        color && `octave-code-block--${backgroundColorClasses[color]}`,
-        hasBorder && 'octave-code-block--has-border',
-        borderRadius && `octave-code-block--radius-${borderRadiusClasses[borderRadius]}`,
+        'parlour-code-block',
+        color && `parlour-code-block--${backgroundColorClasses[color]}`,
+        hasBorder && 'parlour-code-block--has-border',
+        borderRadius && `parlour-code-block--radius-${borderRadiusClasses[borderRadius]}`,
         className,
     ]
         .filter(Boolean)

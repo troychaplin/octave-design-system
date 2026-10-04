@@ -139,8 +139,8 @@ export const WithInlineStyles: Story = {
         <Main>
             <Container
                 style={{
-                    backgroundColor: 'var(--octave--color-neutral-200)',
-                    paddingBlock: 'var(--octave--spacing-large)',
+                    backgroundColor: 'var(--parlour--color-neutral-200)',
+                    paddingBlock: 'var(--parlour--spacing-large)',
                 }}
             >
                 <MultiParagraph count={2} />

@@ -23,17 +23,17 @@ export const HeroHeader = ({
     children,
     ...rest
 }: HeroHeaderProps) => {
-    const rootClasses = ['octave-hero-header', className].filter(Boolean).join(' ');
+    const rootClasses = ['parlour-hero-header', className].filter(Boolean).join(' ');
     const Heading = `h${level}` as const;
 
     return (
         <header className={rootClasses} {...rest}>
-            {prefix && <p className="octave-hero-header__prefix">{prefix}</p>}
+            {prefix && <p className="parlour-hero-header__prefix">{prefix}</p>}
             {title && (
-                <Heading className="octave-hero-header__title">
+                <Heading className="parlour-hero-header__title">
                     {title}{' '}
                     {titleAccent && (
-                        <span className="octave-hero-header__title-accent">{titleAccent}</span>
+                        <span className="parlour-hero-header__title-accent">{titleAccent}</span>
                     )}
                 </Heading>
             )}

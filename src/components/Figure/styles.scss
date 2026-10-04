@@ -1,6 +1,6 @@
-@use '../../styles/c2b/octave-variables' as *;
+@use '../../styles/c2b/parlour-variables' as *;
 
-.octave-figure {
+.parlour-figure {
     max-width: 100%; // safety net — never overflow container
     margin: 0;
 
@@ -11,72 +11,72 @@
     }
 }
 
-// Explicit width so octave-figure__inner (and the caption inside it) is always
+// Explicit width so parlour-figure__inner (and the caption inside it) is always
 // bounded to the same width as the image. max-width: 100% on the root
 // handles the case where the viewport is narrower than the declared size.
-.octave-figure--xs {
+.parlour-figure--xs {
     width: 320px;
 }
-.octave-figure--sm {
+.parlour-figure--sm {
     width: 440px;
 }
-.octave-figure--md {
+.parlour-figure--md {
     width: 512px;
 }
-.octave-figure--lg {
+.parlour-figure--lg {
     width: 48rem;
 }
-.octave-figure--full {
+.parlour-figure--full {
     width: 100%;
 }
 
 // Below the float breakpoint, collapse all sized variants to full width
 // so they stack naturally without overflowing narrow viewports.
 @include below-tablet {
-    .octave-figure--xs,
-    .octave-figure--sm,
-    .octave-figure--md,
-    .octave-figure--lg {
+    .parlour-figure--xs,
+    .parlour-figure--sm,
+    .parlour-figure--md,
+    .parlour-figure--lg {
         width: 100%;
     }
 }
 
 // Float alignment — activates at md+
-.octave-figure--left {
-    margin: var(--octave--spacing-medium) 0;
+.parlour-figure--left {
+    margin: var(--parlour--spacing-medium) 0;
 
     @include above-tablet {
         float: left;
         clear: left;
         margin-top: 0;
-        margin-right: var(--octave--spacing-large);
+        margin-right: var(--parlour--spacing-large);
     }
 }
 
-.octave-figure--right {
-    margin: var(--octave--spacing-medium) 0;
+.parlour-figure--right {
+    margin: var(--parlour--spacing-medium) 0;
 
     @include above-tablet {
         float: right;
         clear: right;
         margin-top: 0;
-        margin-left: var(--octave--spacing-large);
+        margin-left: var(--parlour--spacing-large);
     }
 }
 
-.octave-figure--center {
-    margin: var(--octave--spacing-medium) 0;
+.parlour-figure--center {
+    margin: var(--parlour--spacing-medium) 0;
 }
 
-.octave-figure__inner {
+.parlour-figure__inner {
     overflow: hidden;
-    border-radius: var(--octave--radius-md);
+    border-radius: var(--parlour--radius-md);
 }
 
-.octave-figure__caption {
-    background-color: var(--octave--color-neutral-100);
-    padding: var(--octave--spacing-small) var(--octave--spacing-medium);
-    font-size: var(--octave--font-size-medium);
+.parlour-figure__caption {
+    background-color: var(--parlour--color-neutral-100);
+    padding: var(--parlour--spacing-small) var(--parlour--spacing-medium);
+    font-size: var(--parlour--font-size-medium);
     font-style: italic;
-    color: var(--octave--color-neutral-800);
+    color: var(--parlour--color-neutral-800);
 }

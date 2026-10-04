@@ -1,8 +1,8 @@
-@use '../../styles/c2b/octave-variables' as *;
+@use '../../styles/c2b/parlour-variables' as *;
 
-.octave-column {
+.parlour-column {
     display: grid;
-    gap: var(--octave--spacing-large);
+    gap: var(--parlour--spacing-large);
     margin-left: auto;
     margin-right: auto;
 
@@ -51,25 +51,25 @@
     }
 }
 
-.octave-column > .octave-column__content *:first-child {
+.parlour-column > .parlour-column__content *:first-child {
     margin-top: 0;
 }
 
-.octave-column > .octave-column__content *:last-child {
+.parlour-column > .parlour-column__content *:last-child {
     margin-bottom: 0;
 }
 
 /* Ordering — isFirst only applies once the columns sit side by side, so stacked columns keep DOM order */
-.octave-column--two > .is-first,
-.octave-column--four > .is-first {
+.parlour-column--two > .is-first,
+.parlour-column--four > .is-first {
     @include above-mobile {
         order: -1;
     }
 }
 
-.octave-column--three > .is-first,
-.octave-column--one-third > .is-first,
-.octave-column--two-thirds > .is-first {
+.parlour-column--three > .is-first,
+.parlour-column--one-third > .is-first,
+.parlour-column--two-thirds > .is-first {
     @include above-tablet {
         order: -1;
     }

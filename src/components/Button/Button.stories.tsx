@@ -57,7 +57,7 @@ export const WithLink: Story = {
     args: {
         color: 'light',
         text: 'View on GitHub',
-        href: 'https://github.com/troychaplin/octave-design-system',
+        href: 'https://github.com/troychaplin/parlour-ui',
     },
 };
 

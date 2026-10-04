@@ -9,7 +9,7 @@ export interface AsideProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 export const Aside = ({ children, isSticky, topSpace = 0, className, ...rest }: AsideProps) => {
-    const rootClasses = ['relative', 'octave-aside', 'octave-prose', className]
+    const rootClasses = ['relative', 'parlour-aside', 'parlour-prose', className]
         .filter(Boolean)
         .join(' ');
 

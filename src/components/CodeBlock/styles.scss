@@ -1,13 +1,13 @@
-.octave-code-block {
-    padding-inline: var(--octave--spacing-x-large);
-    padding-block: var(--octave--spacing-x-large);
+.parlour-code-block {
+    padding-inline: var(--parlour--spacing-x-large);
+    padding-block: var(--parlour--spacing-x-large);
     overflow-x: auto;
-    font-family: var(--octave--font-family-jetbrains-mono);
-    font-size: var(--octave--font-size-small);
-    line-height: var(--octave--line-height-normal);
-    color: var(--octave--color-neutral-950);
-    background-color: var(--octave--color-neutral-200);
-    border-color: var(--octave--color-neutral-300);
+    font-family: var(--parlour--font-family-jetbrains-mono);
+    font-size: var(--parlour--font-size-small);
+    line-height: var(--parlour--line-height-normal);
+    color: var(--parlour--color-neutral-950);
+    background-color: var(--parlour--color-neutral-200);
+    border-color: var(--parlour--color-neutral-300);
 
     // modern-normalize gives code its own monospace stack
     code {
@@ -18,23 +18,23 @@
     // Background colours match Container's color variants. Each one also sets the colour
     // a border would be; medium and dark match their background.
     &--light {
-        background-color: var(--octave--color-neutral-200);
+        background-color: var(--parlour--color-neutral-200);
     }
 
     &--medium {
-        color: var(--octave--color-white);
-        background-color: var(--octave--color-neutral-900);
-        border-color: var(--octave--color-neutral-900);
+        color: var(--parlour--color-white);
+        background-color: var(--parlour--color-neutral-900);
+        border-color: var(--parlour--color-neutral-900);
     }
 
     &--dark {
-        color: var(--octave--color-white);
-        background-color: var(--octave--color-neutral-950);
-        border-color: var(--octave--color-neutral-950);
+        color: var(--parlour--color-white);
+        background-color: var(--parlour--color-neutral-950);
+        border-color: var(--parlour--color-neutral-950);
     }
 
     &--white {
-        background-color: var(--octave--color-white);
+        background-color: var(--parlour--color-white);
     }
 
     // Longhands, not the border shorthand, which would reset border-color
@@ -44,23 +44,23 @@
     }
 
     &--radius-sm {
-        border-radius: var(--octave--radius-sm);
+        border-radius: var(--parlour--radius-sm);
     }
 
     &--radius-md {
-        border-radius: var(--octave--radius-md);
+        border-radius: var(--parlour--radius-md);
     }
 
     &--radius-lg {
-        border-radius: var(--octave--radius-lg);
+        border-radius: var(--parlour--radius-lg);
     }
 
     &--radius-xl {
-        border-radius: var(--octave--radius-xl);
+        border-radius: var(--parlour--radius-xl);
     }
 
     &--radius-full {
-        border-radius: var(--octave--radius-full);
+        border-radius: var(--parlour--radius-full);
     }
 
     &--radius-none {

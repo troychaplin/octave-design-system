@@ -19,13 +19,13 @@ export const SectionHeader = ({
     level = 2,
     ...rest
 }: SectionHeaderProps) => {
-    const rootClasses = ['octave-section-header', className].filter(Boolean).join(' ');
+    const rootClasses = ['parlour-section-header', className].filter(Boolean).join(' ');
     const Heading = `h${level}` as const;
 
     return (
         <header className={rootClasses} {...rest}>
-            {prefix && <p className="octave-section-header__prefix">{prefix}</p>}
-            {title && <Heading className="octave-section-header__title">{title}</Heading>}
+            {prefix && <p className="parlour-section-header__prefix">{prefix}</p>}
+            {title && <Heading className="parlour-section-header__title">{title}</Heading>}
         </header>
     );
 };

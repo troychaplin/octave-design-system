@@ -22,7 +22,7 @@ const toIsoDate = (date: Date) =>
         .join('-');
 
 export const InfoBar = ({ className = '', children, date = new Date() }: InfoBarProps) => {
-    const rootClasses = ['octave-infobar', className].filter(Boolean).join(' ');
+    const rootClasses = ['parlour-infobar', className].filter(Boolean).join(' ');
     const formattedDate = date.toLocaleDateString('en-US', {
         month: 'long',
         day: 'numeric',

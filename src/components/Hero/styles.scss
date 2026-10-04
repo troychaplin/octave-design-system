@@ -1,18 +1,18 @@
-@use '../../styles/c2b/octave-variables' as *;
+@use '../../styles/c2b/parlour-variables' as *;
 
-.octave-hero {
-    padding-bottom: var(--octave--spacing-small);
+.parlour-hero {
+    padding-bottom: var(--parlour--spacing-small);
 
-    .octave-flex-group {
-        gap: var(--octave--spacing-3-x-large);
+    .parlour-flex-group {
+        gap: var(--parlour--spacing-3-x-large);
     }
 }
 
-.octave-hero__content {
+.parlour-hero__content {
     flex: 1;
 }
 
-.octave-hero__code {
+.parlour-hero__code {
     min-width: 0;
 
     @include below-tablet {

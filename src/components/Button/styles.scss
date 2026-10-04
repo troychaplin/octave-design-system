@@ -1,137 +1,137 @@
-@use '../../styles/c2b/octave-variables' as *;
+@use '../../styles/c2b/parlour-variables' as *;
 
-.octave-button,
-a.octave-button {
+.parlour-button,
+a.parlour-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: var(--octave--spacing-small) var(--octave--spacing-medium);
-    font-family: var(--octave--font-family-inter-tight);
-    font-size: var(--octave--font-size-medium);
-    font-weight: var(--octave--font-weight-light);
-    line-height: var(--octave--line-height-tight);
+    padding: var(--parlour--spacing-small) var(--parlour--spacing-medium);
+    font-family: var(--parlour--font-family-inter-tight);
+    font-size: var(--parlour--font-size-medium);
+    font-weight: var(--parlour--font-weight-light);
+    line-height: var(--parlour--line-height-tight);
     text-decoration: none;
     border: 1px solid transparent;
-    border-radius: var(--octave--radius-sm);
+    border-radius: var(--parlour--radius-sm);
     white-space: nowrap;
     cursor: pointer;
 
     &:hover,
-    &.octave-button--outline:hover {
+    &.parlour-button--outline:hover {
         text-decoration: none;
-        color: var(--octave--color-white);
-        background-color: var(--octave--color-accent-secondary);
-        border-color: var(--octave--color-accent-secondary);
+        color: var(--parlour--color-white);
+        background-color: var(--parlour--color-accent-secondary);
+        border-color: var(--parlour--color-accent-secondary);
     }
 }
 
-.octave-button--light {
-    color: var(--octave--color-neutral-900);
-    background-color: var(--octave--color-neutral-100);
-    border-color: var(--octave--color-neutral-100);
+.parlour-button--light {
+    color: var(--parlour--color-neutral-900);
+    background-color: var(--parlour--color-neutral-100);
+    border-color: var(--parlour--color-neutral-100);
 
-    &.octave-button--outline {
-        color: var(--octave--color-neutral-900);
-        background-color: var(--octave--color-neutral-100);
+    &.parlour-button--outline {
+        color: var(--parlour--color-neutral-900);
+        background-color: var(--parlour--color-neutral-100);
     }
 }
 
-.octave-button--link {
-    color: var(--octave--color-white);
-    background-color: var(--octave--color-accent-secondary);
-    border-color: var(--octave--color-accent-secondary);
+.parlour-button--link {
+    color: var(--parlour--color-white);
+    background-color: var(--parlour--color-accent-secondary);
+    border-color: var(--parlour--color-accent-secondary);
 
     &:hover {
-        background-color: var(--octave--color-neutral-800);
-        border-color: var(--octave--color-neutral-800);
+        background-color: var(--parlour--color-neutral-800);
+        border-color: var(--parlour--color-neutral-800);
     }
 
-    &.octave-button--outline {
-        color: var(--octave--color-accent-secondary);
-        background-color: var(--octave--color-white);
+    &.parlour-button--outline {
+        color: var(--parlour--color-accent-secondary);
+        background-color: var(--parlour--color-white);
 
         &:hover {
-            background-color: var(--octave--color-neutral-800);
-            border-color: var(--octave--color-neutral-800);
+            background-color: var(--parlour--color-neutral-800);
+            border-color: var(--parlour--color-neutral-800);
         }
     }
 }
 
-.octave-button--medium {
-    color: var(--octave--color-white);
-    background-color: var(--octave--color-neutral-800);
-    border-color: var(--octave--color-neutral-800);
+.parlour-button--medium {
+    color: var(--parlour--color-white);
+    background-color: var(--parlour--color-neutral-800);
+    border-color: var(--parlour--color-neutral-800);
 
-    &.octave-button--outline {
-        color: var(--octave--color-neutral-800);
-        background-color: var(--octave--color-white);
+    &.parlour-button--outline {
+        color: var(--parlour--color-neutral-800);
+        background-color: var(--parlour--color-white);
     }
 }
 
-.octave-button--dark {
-    color: var(--octave--color-white);
-    background-color: var(--octave--color-neutral-900);
-    border-color: var(--octave--color-neutral-900);
+.parlour-button--dark {
+    color: var(--parlour--color-white);
+    background-color: var(--parlour--color-neutral-900);
+    border-color: var(--parlour--color-neutral-900);
 
-    &.octave-button--outline {
-        color: var(--octave--color-neutral-900);
-        background-color: var(--octave--color-white);
+    &.parlour-button--outline {
+        color: var(--parlour--color-neutral-900);
+        background-color: var(--parlour--color-white);
     }
 }
 
-.octave-button--white {
-    color: var(--octave--color-neutral-800);
-    background-color: var(--octave--color-white);
-    border-color: var(--octave--color-white);
+.parlour-button--white {
+    color: var(--parlour--color-neutral-800);
+    background-color: var(--parlour--color-white);
+    border-color: var(--parlour--color-white);
 
-    &.octave-button--outline {
-        color: var(--octave--color-white);
-        background-color: var(--octave--color-neutral-800);
+    &.parlour-button--outline {
+        color: var(--parlour--color-white);
+        background-color: var(--parlour--color-neutral-800);
     }
 }
 
-.octave-button--disabled {
-    color: var(--octave--color-neutral-800);
-    background-color: var(--octave--color-neutral-300);
-    border-color: var(--octave--color-neutral-300);
+.parlour-button--disabled {
+    color: var(--parlour--color-neutral-800);
+    background-color: var(--parlour--color-neutral-300);
+    border-color: var(--parlour--color-neutral-300);
     cursor: default;
 }
 
-.octave-button--small,
-a.octave-button--small {
-    padding: var(--octave--spacing-x-small) var(--octave--spacing-small);
-    font-size: var(--octave--font-size-small);
+.parlour-button--small,
+a.parlour-button--small {
+    padding: var(--parlour--spacing-x-small) var(--parlour--spacing-small);
+    font-size: var(--parlour--font-size-small);
 }
 
-.octave-button--full {
+.parlour-button--full {
     width: 100%;
 }
 
-.octave-button--radius-sm {
-    border-radius: var(--octave--radius-sm);
+.parlour-button--radius-sm {
+    border-radius: var(--parlour--radius-sm);
 }
 
-.octave-button--radius-md {
-    border-radius: var(--octave--radius-md);
+.parlour-button--radius-md {
+    border-radius: var(--parlour--radius-md);
 }
 
-.octave-button--radius-lg {
-    border-radius: var(--octave--radius-lg);
+.parlour-button--radius-lg {
+    border-radius: var(--parlour--radius-lg);
 }
 
-.octave-button--radius-full {
-    border-radius: var(--octave--radius-full);
+.parlour-button--radius-full {
+    border-radius: var(--parlour--radius-full);
 }
 
-.octave-button--radius-none {
+.parlour-button--radius-none {
     border-radius: 0;
 }
 
-// .octave-column + .octave-button,
-// .octave-column + .octave-buttongroup,
-// .octave-stackedlist + .octave-button,
-// .octave-stackedlist + .octave-buttongroup {
+// .parlour-column + .parlour-button,
+// .parlour-column + .parlour-buttongroup,
+// .parlour-stackedlist + .parlour-button,
+// .parlour-stackedlist + .parlour-buttongroup {
 //     margin-top: 2rem;
 
 //     @include above-tablet {

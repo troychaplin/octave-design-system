@@ -1,48 +1,48 @@
-@use '../c2b/octave-variables' as *;
+@use '../c2b/parlour-variables' as *;
 
 // Global width classes for Gutenberg alignments, to be used in Section component
 .alignsmall {
-    max-width: var(--octave--layout-small-size) !important;
+    max-width: var(--parlour--layout-small-size) !important;
 }
 
 .aligncontent {
-    max-width: var(--octave--layout-content-size);
+    max-width: var(--parlour--layout-content-size);
 }
 
 .alignwide {
-    max-width: var(--octave--layout-wide-size);
+    max-width: var(--parlour--layout-wide-size);
 }
 
 .alignfull {
-    max-width: var(--octave--layout-full-size);
+    max-width: var(--parlour--layout-full-size);
 }
 
-// Spacing between octave layout sections
-.octave-main > div > .octave-layout + .octave-layout,
-.octave-main > div > .octave-layout + :not(.octave-layout),
-.octave-main > div > :not(.octave-layout) + .octave-layout {
-    margin-top: var(--octave--spacing-4-x-large);
+// Spacing between parlour layout sections
+.parlour-main > div > .parlour-layout + .parlour-layout,
+.parlour-main > div > .parlour-layout + :not(.parlour-layout),
+.parlour-main > div > :not(.parlour-layout) + .parlour-layout {
+    margin-top: var(--parlour--spacing-4-x-large);
 }
 
-// .octave-main > * > .octave-layout.alignfull + .octave-layout.alignfull {
+// .parlour-main > * > .parlour-layout.alignfull + .parlour-layout.alignfull {
 //     margin-top: 0;
 // }
 
-// .octave-layout > .has-global-padding {
+// .parlour-layout > .has-global-padding {
 //     > * + * {
-//         margin-block-start: var(--octave--spacing-medium);
+//         margin-block-start: var(--parlour--spacing-medium);
 //     }
 
-//     > .octave-layout + *,
-//     > * + .octave-layout {
-//         margin-block-start: var(--octave--spacing-medium);
+//     > .parlour-layout + *,
+//     > * + .parlour-layout {
+//         margin-block-start: var(--parlour--spacing-medium);
 
 //         @include above-tablet {
-//             margin-block-start: var(--octave--spacing-large);
+//             margin-block-start: var(--parlour--spacing-large);
 //         }
 //     }
 // }
 
-// .octave-main--padding .octave-layout.alignfull:first-child {
-//     margin-top: calc(-1 * var(--octave--spacing-large));
+// .parlour-main--padding .parlour-layout.alignfull:first-child {
+//     margin-top: calc(-1 * var(--parlour--spacing-large));
 // }

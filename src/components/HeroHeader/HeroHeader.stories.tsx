@@ -5,7 +5,7 @@ import { Container } from '../Container/Container';
 import { SingleParagraph } from '../../data/SampleContent';
 
 const stats = (
-    <ul className="octave-hero-header__stats">
+    <ul className="parlour-hero-header__stats">
         <li>7 released plugins</li>
         <li>5 experimental projects</li>
         <li>3 active contributions</li>

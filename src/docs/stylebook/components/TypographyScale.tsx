@@ -88,7 +88,7 @@ type TokenCategory = 'fontFamily' | 'fontWeight' | 'lineHeight' | 'color';
 const HEADING_ELEMENTS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 
 // A baseStyles value is either a token name or a literal CSS value — c2b emits
-// `font-weight: var(--octave--font-weight-light)` for "light" but a bare
+// `font-weight: var(--parlour--font-weight-light)` for "light" but a bare
 // `font-weight: 600` for "600". Mirror that by checking the token map first.
 function resolveValue(category: TokenCategory, value: string): string {
     const tokens = config.tokens[category] as Record<string, unknown>;

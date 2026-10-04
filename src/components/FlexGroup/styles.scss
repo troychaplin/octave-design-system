@@ -1,9 +1,9 @@
 @use 'sass:map';
 @use 'sass:meta';
 @use 'sass:string';
-@use '../../styles/c2b/octave-variables' as vars;
+@use '../../styles/c2b/parlour-variables' as vars;
 
-.octave-flex-group {
+.parlour-flex-group {
     display: flex;
     margin-left: auto;
     margin-right: auto;
@@ -63,32 +63,32 @@
 
 // Spacing modifiers are generated from the scale rather than hand-listed, so a
 // change to c2b.config.json propagates here with no edit. The prefix filter
-// matters: the variables module also contains $octave-viewport-*.
+// matters: the variables module also contains $parlour-viewport-*.
 $steps: (
     none: 0,
 );
 
 @each $name in map.keys(meta.module-variables(vars)) {
-    @if string.index($name, 'octave-spacing-') == 1 {
+    @if string.index($name, 'parlour-spacing-') == 1 {
         $step: string.slice($name, 16);
-        $steps: map.set($steps, $step, var(--octave--spacing-#{$step}));
+        $steps: map.set($steps, $step, var(--parlour--spacing-#{$step}));
     }
 }
 
 @each $key, $value in $steps {
-    .octave-flex-group--gap-#{$key} {
+    .parlour-flex-group--gap-#{$key} {
         gap: $value;
     }
 
-    .octave-flex-group--padding-#{$key} {
+    .parlour-flex-group--padding-#{$key} {
         padding: $value;
     }
 
-    // Doubled class = (0,2,0) deliberately. octave-typography.scss ships
+    // Doubled class = (0,2,0) deliberately. parlour-typography.scss ships
     // `.is-layout-constrained > :is(h1,h2,h3,h4,h5,h6) + *` at (0,1,1), which
     // beats a single-class modifier and would silently reset margin-block-start
     // on any FlexGroup that follows a heading inside Main.
-    .octave-flex-group.octave-flex-group--margin-#{$key} {
+    .parlour-flex-group.parlour-flex-group--margin-#{$key} {
         margin-block: $value;
     }
 }

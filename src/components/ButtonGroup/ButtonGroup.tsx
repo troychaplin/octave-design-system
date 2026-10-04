@@ -10,5 +10,5 @@ export interface ButtonGroupProps {
 }
 
 export const ButtonGroup = ({ children, align = 'start' }: ButtonGroupProps) => (
-    <div className={`octave-buttongroup octave-buttongroup--justify-${align}`}>{children}</div>
+    <div className={`parlour-buttongroup parlour-buttongroup--justify-${align}`}>{children}</div>
 );

@@ -1,53 +1,53 @@
-.octave-site-header {
-    padding-block: var(--octave--spacing-medium);
-    padding-inline: var(--octave--root-padding-x);
-    background-color: var(--octave--color-white);
-    border-bottom: 1px solid var(--octave--color-neutral-400);
+.parlour-site-header {
+    padding-block: var(--parlour--spacing-medium);
+    padding-inline: var(--parlour--root-padding-x);
+    background-color: var(--parlour--color-white);
+    border-bottom: 1px solid var(--parlour--color-neutral-400);
 }
 
-.octave-site-header__branding p {
-    font-family: var(--octave--font-family-source-serif-4);
-    font-size: var(--octave--font-size-large);
+.parlour-site-header__branding p {
+    font-family: var(--parlour--font-family-source-serif-4);
+    font-size: var(--parlour--font-size-large);
     padding: 0;
     margin: 0;
 
     span {
         font-style: italic;
-        color: var(--octave--color-accent-secondary);
+        color: var(--parlour--color-accent-secondary);
     }
 
     a {
-        font-weight: var(--octave--font-weight-normal);
-        color: var(--octave--color-neutral-900);
+        font-weight: var(--parlour--font-weight-normal);
+        color: var(--parlour--color-neutral-900);
         text-decoration: none;
 
         &:hover,
         &:focus-visible {
-            color: var(--octave--color-accent-secondary);
+            color: var(--parlour--color-accent-secondary);
 
-            span.octave-site-header__title-accent {
-                color: var(--octave--color-neutral-900);
+            span.parlour-site-header__title-accent {
+                color: var(--parlour--color-neutral-900);
             }
         }
     }
 }
 
-.octave-site-header__nav ul {
+.parlour-site-header__nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    gap: var(--octave--spacing-medium);
+    gap: var(--parlour--spacing-medium);
 
     li {
-        font-family: var(--octave--font-family-inter-tight);
-        font-size: var(--octave--font-size-small);
+        font-family: var(--parlour--font-family-inter-tight);
+        font-size: var(--parlour--font-size-small);
         padding: 0;
         margin: 0;
 
         a {
-            font-weight: var(--octave--font-weight-normal);
-            color: var(--octave--color-neutral-950);
+            font-weight: var(--parlour--font-weight-normal);
+            color: var(--parlour--color-neutral-950);
             text-decoration: none;
         }
     }

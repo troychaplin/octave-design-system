@@ -18,9 +18,9 @@ export const Figure = ({ children, caption, size = 'full', align = 'none' }: Fig
     const layoutAlignClass = align === 'left' ? 'alignleft' : align === 'right' ? 'alignright' : '';
 
     const rootClasses = [
-        'octave-figure',
-        `octave-figure--${size}`,
-        align !== 'none' ? `octave-figure--${align}` : '',
+        'parlour-figure',
+        `parlour-figure--${size}`,
+        align !== 'none' ? `parlour-figure--${align}` : '',
         layoutAlignClass,
     ]
         .filter(Boolean)
@@ -28,9 +28,9 @@ export const Figure = ({ children, caption, size = 'full', align = 'none' }: Fig
 
     return (
         <figure className={rootClasses}>
-            <div className="octave-figure__inner">
+            <div className="parlour-figure__inner">
                 {children}
-                {caption && <figcaption className="octave-figure__caption">{caption}</figcaption>}
+                {caption && <figcaption className="parlour-figure__caption">{caption}</figcaption>}
             </div>
         </figure>
     );

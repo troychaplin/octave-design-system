@@ -37,23 +37,23 @@ const splitTitle = (title: string, accent?: string): [string, string?, string?] 
 export const SiteHeader = ({
     className = '',
     children,
-    siteTitle = 'Octave Design System',
+    siteTitle = 'Parlour',
     siteTitleAccent,
 }: SiteHeaderProps) => {
-    const rootClasses = ['octave-site-header', className].filter(Boolean).join(' ');
+    const rootClasses = ['parlour-site-header', className].filter(Boolean).join(' ');
     const LinkComponent = useLinkContext();
     const [titleStart, titleAccent, titleEnd] = splitTitle(siteTitle, siteTitleAccent);
 
     return (
         <header className={rootClasses}>
             <FlexGroup gap="normal" maxWidth="alignwide" justify="space-between" align="center">
-                <div className="octave-site-header__branding">
+                <div className="parlour-site-header__branding">
                     <p>
                         {/* eslint-disable-next-line react-hooks/static-components -- LinkComponent is injected via context, stable across renders */}
                         <LinkComponent href="/" rel="home">
                             {titleStart}
                             {titleAccent && (
-                                <span className="octave-site-header__title-accent">
+                                <span className="parlour-site-header__title-accent">
                                     {titleAccent}
                                 </span>
                             )}
@@ -61,7 +61,7 @@ export const SiteHeader = ({
                         </LinkComponent>
                     </p>
                 </div>
-                <nav className="octave-site-header__nav" aria-label="Primary">
+                <nav className="parlour-site-header__nav" aria-label="Primary">
                     <ul>
                         {navItems.map(({ href, label }) => (
                             <li key={href}>

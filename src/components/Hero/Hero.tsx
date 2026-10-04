@@ -11,7 +11,7 @@ export interface HeroProps {
 }
 
 export const Hero = ({ className = '', children }: HeroProps) => {
-    const rootClasses = ['octave-hero', className].filter(Boolean).join(' ');
+    const rootClasses = ['parlour-hero', className].filter(Boolean).join(' ');
 
     return (
         <Container

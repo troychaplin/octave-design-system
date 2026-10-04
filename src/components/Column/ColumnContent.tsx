@@ -6,7 +6,7 @@ export interface ColumnContentProps {
 }
 
 export const ColumnContent = ({ children, isFirst = false }: ColumnContentProps) => {
-    return <div className={`octave-column__content ${isFirst ? 'is-first' : ''}`}>{children}</div>;
+    return <div className={`parlour-column__content ${isFirst ? 'is-first' : ''}`}>{children}</div>;
 };
 
 ColumnContent.displayName = 'Column.Content';

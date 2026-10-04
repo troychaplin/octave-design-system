@@ -8,7 +8,7 @@ export const CodeDataPhp = `private function init_allowed_blocks(): void {
 }`;
 
 export const CodeDataReact = `export const Main = ({ children, hasPadding = true, className, ...rest }: MainProps) => {
-    const rootClasses = ['octave-main', hasPadding && 'octave-main--padding', className]
+    const rootClasses = ['parlour-main', hasPadding && 'parlour-main--padding', className]
         .filter(Boolean)
         .join(' ');
 

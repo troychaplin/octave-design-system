@@ -29,11 +29,11 @@ export const GridGroup = ({
     const GridGroupWrapper = as;
 
     const rootClasses = [
-        'octave-layout octave-grid-group',
-        `octave-grid-group--columns-${columns}`,
-        `octave-grid-group--gap-${spacingClasses[gap]}`,
-        rowGap && `octave-grid-group--row-gap-${spacingClasses[rowGap]}`,
-        align && `octave-grid-group--align-${flexAlignClasses[align]}`,
+        'parlour-layout parlour-grid-group',
+        `parlour-grid-group--columns-${columns}`,
+        `parlour-grid-group--gap-${spacingClasses[gap]}`,
+        rowGap && `parlour-grid-group--row-gap-${spacingClasses[rowGap]}`,
+        align && `parlour-grid-group--align-${flexAlignClasses[align]}`,
         maxWidth && maxWidthClasses[maxWidth],
         className,
     ]

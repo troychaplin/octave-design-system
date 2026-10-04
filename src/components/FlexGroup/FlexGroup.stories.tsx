@@ -24,11 +24,11 @@ const spacingOptions = [
 const Item = ({ children }: { children: React.ReactNode }) => (
     <div
         style={{
-            fontSize: 'var(--octave--font-size-small)',
-            backgroundColor: 'var(--octave--color-neutral-100)',
-            color: 'var(--octave--color-neutral-950)',
-            padding: 'var(--octave--spacing-x-small) var(--octave--spacing-normal)',
-            borderRadius: 'var(--octave--radius-sm)',
+            fontSize: 'var(--parlour--font-size-small)',
+            backgroundColor: 'var(--parlour--color-neutral-100)',
+            color: 'var(--parlour--color-neutral-950)',
+            padding: 'var(--parlour--spacing-x-small) var(--parlour--spacing-normal)',
+            borderRadius: 'var(--parlour--radius-sm)',
         }}
     >
         {children}
@@ -239,14 +239,14 @@ export const PaddingAndMargin: Story = {
                 gap="normal"
                 padding="large"
                 margin="x-large"
-                style={{ backgroundColor: 'var(--octave--color-neutral-50)' }}
+                style={{ backgroundColor: 'var(--parlour--color-neutral-50)' }}
             >
                 <Item>First</Item>
                 <Item>Second</Item>
                 <Item>Third</Item>
             </FlexGroup>
             <Label>no padding or margin</Label>
-            <FlexGroup gap="normal" style={{ backgroundColor: 'var(--octave--color-neutral-50)' }}>
+            <FlexGroup gap="normal" style={{ backgroundColor: 'var(--parlour--color-neutral-50)' }}>
                 <Item>First</Item>
                 <Item>Second</Item>
                 <Item>Third</Item>

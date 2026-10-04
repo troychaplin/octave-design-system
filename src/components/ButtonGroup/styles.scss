@@ -1,23 +1,23 @@
-@use '../../styles/c2b/octave-variables' as *;
+@use '../../styles/c2b/parlour-variables' as *;
 
-.octave-buttongroup {
+.parlour-buttongroup {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--octave--spacing-2-x-small);
+    gap: var(--parlour--spacing-2-x-small);
 
     @include above-tablet {
         flex: 1 1 0%;
     }
 }
 
-.octave-buttongroup--justify-start {
+.parlour-buttongroup--justify-start {
     justify-content: flex-start;
 }
 
-.octave-buttongroup--justify-center {
+.parlour-buttongroup--justify-center {
     justify-content: center;
 }
 
-.octave-buttongroup--justify-end {
+.parlour-buttongroup--justify-end {
     justify-content: flex-end;
 }

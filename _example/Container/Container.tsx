@@ -22,7 +22,7 @@ export const Container = ({
     const ContainerWrapper = as;
 
     const rootClasses = [
-        'octave-layout octave-container',
+        'parlour-layout parlour-container',
         'is-layout-constrained',
         maxWidth,
         className,
