@@ -1,10 +1,10 @@
 # Parlour
 
-**A palette cleanser for React and WordPress.**
+**Scoop. Serve. Repeat.**
 
-A token-first UI kit for React and WordPress. One set of tokens, every flavour.
+Parlour is a palette cleanser of sorts for React and WordPress. It is a token-first UI kit for React and WordPress.
 
-Formerly Octave Design System.
+One set of tokens, every flavour.
 
 Browse the components and tokens in the [live Storybook](https://troychaplin.github.io/parlour-ui/).
 

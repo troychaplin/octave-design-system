@@ -42,7 +42,7 @@ import { Card } from '@troychaplin/parlour-ui';
 
 ### Default
 
-The defaults match the project cards: a `light` background (`neutral-50`), a 1px `light` border (`neutral-300`), square corners and `large` padding.
+The defaults match the project cards: a `light` background (`neutral-50`), a 1px `light` border (`neutral-300`), square corners and `large` padding on every side.
 
 <Canvas of={CardStories.Default} />
 <Controls of={CardStories.Default} />
@@ -52,6 +52,12 @@ The defaults match the project cards: a `light` background (`neutral-50`), a 1px
 `border={false}` drops the border, leaving the background to separate the card from what's around it.
 
 <Canvas of={CardStories.WithoutBorder} />
+
+### Padding
+
+`paddingInline` sets the left and right padding and `paddingBlock` the top and bottom. Each takes any step of the spacing scale, or `none`, and both default to `large`.
+
+<Canvas of={CardStories.Padding} />
 
 ### Rounded
 
@@ -73,30 +79,31 @@ The card keeps its own text colour, so a light card inside a dark `Container` st
 
 ## CSS classes
 
-| Class                          | When applied                                                                                             |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------- |
-| `parlour-card`                 | Always — base class                                                                                      |
-| `parlour-card--bg-{name}`      | Always — the `backgroundColor` value, e.g. `parlour-card--bg-light` (default); also sets the text colour |
-| `parlour-card--border`         | `border` is true (default) — a 1px solid border                                                          |
-| `parlour-card--border-{name}`  | `border` is true — the `borderColor` value, e.g. `parlour-card--border-light` (default)                  |
-| `parlour-card--radius-{size}`  | Always — the `borderRadius` value, e.g. `parlour-card--radius-none` (default)                            |
-| `parlour-card--padding-{step}` | Always — the `padding` value, e.g. `parlour-card--padding-large` (default)                               |
+| Class                                 | When applied                                                                                             |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `parlour-card`                        | Always — base class                                                                                      |
+| `parlour-card--bg-{name}`             | Always — the `backgroundColor` value, e.g. `parlour-card--bg-light` (default); also sets the text colour |
+| `parlour-card--border`                | `border` is true (default) — a 1px solid border                                                          |
+| `parlour-card--border-{name}`         | `border` is true — the `borderColor` value, e.g. `parlour-card--border-light` (default)                  |
+| `parlour-card--radius-{size}`         | Always — the `borderRadius` value, e.g. `parlour-card--radius-none` (default)                            |
+| `parlour-card--padding-inline-{step}` | Always — the `paddingInline` value, e.g. `parlour-card--padding-inline-large` (default)                  |
+| `parlour-card--padding-block-{step}`  | Always — the `paddingBlock` value, e.g. `parlour-card--padding-block-large` (default)                    |
 
 The first child's top margin and the last child's bottom margin are removed, so the padding looks even. Headings inside the card inherit its text colour. A `className` you pass is appended after these classes.
 
 ## Design tokens
 
-| Token                          | Used for                                                              |
-| ------------------------------ | --------------------------------------------------------------------- |
-| `--parlour--color-white`       | `white` background; text on `medium` and `dark` cards; `white` border |
-| `--parlour--color-neutral-50`  | `light` background (default)                                          |
-| `--parlour--color-neutral-900` | `medium` background; `dark` border                                    |
-| `--parlour--color-neutral-950` | `dark` background                                                     |
-| `--parlour--color-black`       | Text on `white` and `light` cards                                     |
-| `--parlour--color-neutral-300` | `light` border (default)                                              |
-| `--parlour--color-neutral-500` | `medium` border                                                       |
-| `--parlour--spacing-*`         | `padding` — any step of the spacing scale, or `none`                  |
-| `--parlour--radius-*`          | `borderRadius` — `sm`, `md`, `lg`, `xl` or `full`                     |
+| Token                          | Used for                                                                      |
+| ------------------------------ | ----------------------------------------------------------------------------- |
+| `--parlour--color-white`       | `white` background; text on `medium` and `dark` cards; `white` border         |
+| `--parlour--color-neutral-50`  | `light` background (default)                                                  |
+| `--parlour--color-neutral-900` | `medium` background; `dark` border                                            |
+| `--parlour--color-neutral-950` | `dark` background                                                             |
+| `--parlour--color-black`       | Text on `white` and `light` cards                                             |
+| `--parlour--color-neutral-300` | `light` border (default)                                                      |
+| `--parlour--color-neutral-500` | `medium` border                                                               |
+| `--parlour--spacing-*`         | `paddingInline` and `paddingBlock` — any step of the spacing scale, or `none` |
+| `--parlour--radius-*`          | `borderRadius` — `sm`, `md`, `lg`, `xl` or `full`                             |
 
 A `light` card (`neutral-50`) is a step lighter than a `light` [`Container`](?path=/docs/components-layout-container--docs) (`neutral-200`), so it stands out on a light section. The border's `1px` width is a raw value rather than a design token.
 

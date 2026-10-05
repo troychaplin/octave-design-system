@@ -16,7 +16,8 @@ export interface CardProps extends React.HTMLAttributes<HTMLElement> {
     border?: boolean;
     borderColor?: surfaceKeys;
     borderRadius?: borderRadiusKeys;
-    padding?: spacingKeys;
+    paddingInline?: spacingKeys;
+    paddingBlock?: spacingKeys;
 }
 
 export const Card = ({
@@ -26,7 +27,8 @@ export const Card = ({
     border = true,
     borderColor = 'light',
     borderRadius = 'none',
-    padding = 'large',
+    paddingInline = 'x-large',
+    paddingBlock = 'large',
     className,
     ...rest
 }: CardProps) => {
@@ -38,7 +40,8 @@ export const Card = ({
         border && 'parlour-card--border',
         border && `parlour-card--border-${backgroundColorClasses[borderColor]}`,
         `parlour-card--radius-${borderRadiusClasses[borderRadius]}`,
-        `parlour-card--padding-${spacingClasses[padding]}`,
+        `parlour-card--padding-inline-${spacingClasses[paddingInline]}`,
+        `parlour-card--padding-block-${spacingClasses[paddingBlock]}`,
         className,
     ]
         .filter(Boolean)

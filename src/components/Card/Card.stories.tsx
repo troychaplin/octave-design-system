@@ -42,7 +42,11 @@ const meta: Meta<typeof Card> = {
             control: 'select',
             options: radiusOptions,
         },
-        padding: {
+        paddingInline: {
+            control: 'select',
+            options: spacingOptions,
+        },
+        paddingBlock: {
             control: 'select',
             options: spacingOptions,
         },
@@ -67,6 +71,14 @@ export const Default: Story = {
 export const WithoutBorder: Story = {
     args: {
         border: false,
+        children: <SingleParagraph />,
+    },
+};
+
+export const Padding: Story = {
+    args: {
+        paddingInline: 'x-large',
+        paddingBlock: 'small',
         children: <SingleParagraph />,
     },
 };

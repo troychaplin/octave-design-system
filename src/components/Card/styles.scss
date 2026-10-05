@@ -82,12 +82,20 @@ li.parlour-card {
     }
 }
 
-.parlour-card--padding-none {
-    padding: 0;
+.parlour-card--padding-inline-none {
+    padding-inline: 0;
+}
+
+.parlour-card--padding-block-none {
+    padding-block: 0;
 }
 
 @each $name in map.keys(vars.$parlour-spacing) {
-    .parlour-card--padding-#{$name} {
-        padding: var(--parlour--spacing-#{$name});
+    .parlour-card--padding-inline-#{$name} {
+        padding-inline: var(--parlour--spacing-#{$name});
+    }
+
+    .parlour-card--padding-block-#{$name} {
+        padding-block: var(--parlour--spacing-#{$name});
     }
 }
