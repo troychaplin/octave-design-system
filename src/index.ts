@@ -16,11 +16,16 @@ export { GridGroup, type GridGroupProps } from './components/GridGroup/GridGroup
 export { Container, type ContainerProps } from './components/Container/Container';
 
 // Elements
+export { BrandIcon, type BrandIconProps } from './components/BrandIcon/BrandIcon';
+export { brandIcons, type BrandIconName } from './components/BrandIcon/brandIcons';
 export { Button, type ButtonProps } from './components/Button/Button';
 export { ButtonGroup } from './components/ButtonGroup/ButtonGroup';
 
-// Content
+// Cards
 export { Card, type CardProps } from './components/Card/Card';
+export { ProjectCard, type ProjectCardProps } from './components/ProjectCard/ProjectCard';
+
+// Content
 export { CodeBlock, type CodeBlockProps } from './components/CodeBlock/CodeBlock';
 export { Figure, type FigureProps } from './components/Figure/Figure';
 export { Hero, type HeroProps } from './components/Hero/Hero';

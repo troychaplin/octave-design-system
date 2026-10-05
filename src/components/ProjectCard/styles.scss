@@ -1,0 +1,125 @@
+// A column flex box, so the footer sits at the bottom and footers
+// line up across a grid row.
+.parlour-project-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: border-color var(--parlour--transition-fast);
+
+    > * {
+        margin-block: 0;
+    }
+
+    &:has(.parlour-project-card__link:hover) {
+        border-color: var(--parlour--color-neutral-500);
+    }
+
+    &:has(.parlour-project-card__link:focus-visible) {
+        outline: 2px solid var(--parlour--color-accent-primary);
+        outline-offset: var(--parlour--spacing-2-x-small);
+    }
+}
+
+a.parlour-project-card__link {
+    font-weight: var(--parlour--font-weight-medium);
+    color: inherit;
+    text-decoration: none;
+
+    &:focus-visible {
+        outline: none;
+    }
+
+    &:hover {
+        color: var(--parlour--color-accent-primary);
+        text-decoration: none;
+    }
+
+    // Stretches the link over the                                                                   whole card
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+    }
+}
+
+// Content
+
+.parlour-project-card__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--parlour--spacing-small);
+    margin-block-end: var(--parlour--spacing-x-large);
+}
+
+// The icon sits at the end of the row even when there's no type
+.parlour-project-card__icon {
+    margin-inline-start: auto;
+    font-size: var(--parlour--font-size-medium);
+    color: var(--parlour--color-neutral-500);
+}
+
+.parlour-project-card__type {
+    margin: 0;
+    font-family: var(--parlour--font-family-jetbrains-mono);
+    font-size: var(--parlour--font-size-2-x-small);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--parlour--color-accent-primary);
+}
+
+// Doubled class beats Card's `:is(h1…h6) { color: inherit }` rule.
+.parlour-project-card .parlour-project-card__title {
+    font-family: var(--parlour--font-family-inter-tight);
+    font-size: var(--parlour--font-size-large);
+    font-weight: var(--parlour--font-weight-medium);
+    line-height: var(--parlour--line-height-tight);
+    letter-spacing: -1px;
+    color: var(--parlour--color-neutral-950);
+}
+
+.parlour-project-card__version {
+    font-family: var(--parlour--font-family-jetbrains-mono);
+    font-size: var(--parlour--font-size-2-x-small);
+    color: var(--parlour--color-neutral-600);
+    margin-block-start: var(--parlour--spacing-x-small);
+}
+
+.parlour-project-card__description {
+    margin-block-start: var(--parlour--spacing-large);
+    font-family: var(--parlour--font-family-inter-tight);
+    font-size: var(--parlour--font-size-medium);
+    line-height: var(--parlour--line-height-normal);
+    color: var(--parlour--color-neutral-800);
+}
+
+.parlour-project-card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--parlour--spacing-small);
+    margin-block-start: auto;
+    padding-block-start: var(--parlour--spacing-medium);
+    border-top: 1px solid var(--parlour--color-neutral-300);
+    font-family: var(--parlour--font-family-jetbrains-mono);
+    font-size: var(--parlour--font-size-x-small);
+    color: var(--parlour--color-neutral-900);
+}
+
+// The footer's auto margin takes any free space, so the gap above it comes from whatever
+// precedes it. Flex margins don't collapse, so the two add up.
+.parlour-project-card > :has(+ .parlour-project-card__footer) {
+    margin-block-end: var(--parlour--spacing-x-large);
+}
+
+.parlour-project-card__arrow {
+    transition: transform var(--parlour--transition-fast);
+
+    .parlour-project-card:has(.parlour-project-card__link:hover) & {
+        transform: translateX(var(--parlour--spacing-2-x-small));
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}

@@ -1,0 +1,29 @@
+[
+    {
+        "title": "Glyph Blocks",
+        "href": "#",
+        "type": "WP Plugin",
+        "icon": "wordpress",
+        "version": "v2.4.0",
+        "description": "A small library of typographic Gutenberg blocks: pull-quotes, drop-caps, asides, marginalia.",
+        "footer": "npm i · composer require"
+    },
+    {
+        "title": "Octave",
+        "href": "#",
+        "type": "Block Theme",
+        "icon": "wordpress",
+        "version": "v1.0.0",
+        "description": "An editorial block theme for writers. Quiet, restrained, theme.json all the way down.",
+        "footer": "npm i · composer require"
+    },
+    {
+        "title": "wp-bundle",
+        "href": "#",
+        "type": "Build Tool",
+        "icon": "npm",
+        "version": "v0.9.2",
+        "description": "A zero-config bundler for WordPress plugin and theme assets, built on esbuild.",
+        "footer": "npm i · composer require"
+    }
+]

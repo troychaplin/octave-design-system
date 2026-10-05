@@ -9,10 +9,10 @@ import { Hero } from '../components/Hero/Hero';
 import { HeroHeader } from '../components/HeroHeader/HeroHeader';
 import { SectionHeader } from '../components/SectionHeader/SectionHeader';
 import { GridGroup } from '../components/GridGroup/GridGroup';
-import { Card } from '../components/Card/Card';
+import { ProjectCard } from '../components/ProjectCard/ProjectCard';
 import { CodeBlock } from '../components/CodeBlock/CodeBlock';
 import { CodeDataReact } from '../data/CodeData';
-import { SingleParagraph } from '../data/SampleContent';
+import { ProjectData } from '../data/ProjectData';
 
 const meta: Meta = {
     title: 'Overview/Templates',
@@ -62,15 +62,9 @@ export const WorkLayout: Story = {
                 <Container color="light" maxWidth="alignfull" contentWidth="alignwide">
                     <SectionHeader prefix="Releases · Open source" title="Things I ship." />
                     <GridGroup>
-                        <Card>
-                            <SingleParagraph index={0} />
-                        </Card>
-                        <Card>
-                            <SingleParagraph index={1} />
-                        </Card>
-                        <Card>
-                            <SingleParagraph index={2} />
-                        </Card>
+                        {ProjectData.map((project) => (
+                            <ProjectCard key={project.title} {...project} />
+                        ))}
                     </GridGroup>
                 </Container>
 

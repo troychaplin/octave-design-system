@@ -1,0 +1,76 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as BrandIconStories from './BrandIcon.stories';
+
+<Meta of={BrandIconStories} />
+
+# Brand Icon
+
+A single-colour logo for a technology or service — React, WordPress, Next.js, npm and others. Renders an inline `<svg>` that takes the size and colour of the text around it.
+
+## When to use
+
+- Show what a project is built with or where it's published, as in [`ProjectCard`](?path=/docs/components-cards-project-card--docs).
+- Pair it with a visible name, or give it a `label`, when the logo alone carries meaning.
+- It isn't a general icon set: there are no interface icons such as arrows, menus or close buttons.
+
+## Import
+
+```tsx
+import { BrandIcon, type BrandIconName } from '@troychaplin/parlour-ui';
+```
+
+## Basic usage
+
+```tsx
+// Decorative — hidden from screen readers, next to visible text
+<BrandIcon name="wordpress" /> WordPress
+
+// Standalone — announced as an image named "React"
+<BrandIcon name="react" label="React" />
+
+// Larger: the icon is 1em square, so set the font size
+<BrandIcon name="npm" style={{ fontSize: '2rem' }} />
+```
+
+## Examples
+
+### Default
+
+<Canvas of={BrandIconStories.Default} />
+<Controls of={BrandIconStories.Default} />
+
+### All icons
+
+Every `name` the set includes. Each brand's display name is available as `brandIcons[name].title`.
+
+<Canvas of={BrandIconStories.AllIcons} />
+
+### Inherits colour
+
+The icon fills with `currentColor`, so it takes the colour of its text.
+
+<Canvas of={BrandIconStories.InheritsColor} />
+
+## Adding an icon
+
+The paths in `src/components/BrandIcon/brandIcons.ts` come from [Simple Icons](https://simpleicons.org) (CC0), all on a 24×24 viewBox. To add a brand, copy its title and the path's `d` attribute from `simple-icons/icons/<slug>.svg` into the map under a short key. The key becomes a valid `name` straight away. Check each brand's own guidelines before using its logo.
+
+## CSS classes
+
+| Class                        | When applied                                            |
+| ---------------------------- | ------------------------------------------------------- |
+| `parlour-brand-icon`         | Always — base class                                     |
+| `parlour-brand-icon--{name}` | The active `name`, e.g. `parlour-brand-icon--wordpress` |
+
+The component has no stylesheet. Its size comes from `width` and `height` of `1em`, and its colour from `fill="currentColor"`.
+
+## Design tokens
+
+None. The icon's colour and size come from the surrounding text, so set them with tokens on the parent.
+
+## Accessibility
+
+- Without `label`, the `<svg>` gets `aria-hidden="true"`, so screen readers skip it. Use this when visible text already names the brand.
+- With `label`, it gets `role="img"` and `aria-label`, so screen readers announce the name.
+- `focusable="false"` keeps older browsers from putting the SVG in the tab order.
+- The colour comes from the surrounding text, so it has the same contrast as that text.

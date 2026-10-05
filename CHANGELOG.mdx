@@ -23,6 +23,14 @@ header to the page's main content. It targets `#main` by default.
 _Changed_ `Main` renders with `id="main"` and `tabIndex={-1}` by default, so a skip link can move
 focus into it. Pass `id` or `tabIndex` to override either.
 
+_Added_ `BrandIcon`, single-colour logos for React, WordPress, Next.js, Storybook, npm and other
+tools, from Simple Icons. Each takes the size and colour of the text around it.
+
+_Added_ `ProjectCard`, a card for a software project built on `Card`: a type eyebrow and brand icon, a title, a version, a description and a footer line, with the whole card linking to
+`href`. Sample projects for stories live in `src/data/ProjectData.json`.
+
+_Changed_ `Card` moves to a new Cards section in Storybook, alongside the design cards built on it.
+
 _Breaking_ `Card` replaces its `padding` prop with `paddingInline` and `paddingBlock`, so the sides
 and the top and bottom can be set separately. Both default to `large`, which matches the old
 default. The `parlour-card--padding-{step}` classes are now `parlour-card--padding-inline-{step}`

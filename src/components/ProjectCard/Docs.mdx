@@ -1,0 +1,123 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as ProjectCardStories from './ProjectCard.stories';
+
+<Meta of={ProjectCardStories} />
+
+# Project Card
+
+A card for a software project: a type eyebrow and a brand icon, a title, a version, a description and a footer line. Renders a [`Card`](?path=/docs/components-cards-card--docs) with a heading inside; when `href` is set, the whole card links to it.
+
+## When to use
+
+- List plugins, themes, packages or tools, usually three to a row in a [`GridGroup`](?path=/docs/components-layout-grid-group--docs).
+- Use it on light sections: the eyebrow and the version text are designed for `light` and `white` cards.
+- Don't use it for articles or other content with an image or a date — build that as its own design card, or use `Card` directly.
+
+## Import
+
+```tsx
+import { ProjectCard } from '@troychaplin/parlour-ui';
+```
+
+## Basic usage
+
+```tsx
+// Every part
+<ProjectCard
+    title="Glyph Blocks"
+    href="/projects/glyph-blocks"
+    type="WP Plugin"
+    icon="wordpress"
+    version="v2.4.0"
+    description="A small library of typographic Gutenberg blocks."
+    footer="npm i · composer require"
+/>
+
+// Only a title and a description — no link, no eyebrow or icon, no footer
+<ProjectCard title="wp-bundle" description="A zero-config bundler…" />
+
+// Card props pass through
+<ProjectCard title="Octave" backgroundColor="white" borderRadius="md" as="li" />
+```
+
+## Examples
+
+### Default
+
+Every prop but `title` is optional, and each part renders only when its prop is set. `icon` takes any [`BrandIcon`](?path=/docs/components-elements-brand-icon--docs) name — `react`, `wordpress`, `nextjs`, `storybook`, `npm` and more — and sits at the end of the eyebrow row. `headingLevel` sets the title's element — `h3` by default. All of `Card`'s props pass through, so the surface, border, radius, padding and `as` work the same way.
+
+<Canvas of={ProjectCardStories.Default} />
+<Controls of={ProjectCardStories.Default} />
+
+### Grid
+
+The stories read their projects from `src/data/ProjectData.json`, which uses the same fields as the props. `src/data/ProjectData.ts` types the JSON against `ProjectCardProps`, so stories import `ProjectData` from there. In a grid, the footers line up across the row whatever the description length.
+
+<Canvas of={ProjectCardStories.Grid} />
+
+### Without a link
+
+Without `href`, the title is plain text and the arrow is left out.
+
+<Canvas of={ProjectCardStories.WithoutLink} />
+
+### Minimal
+
+With only `title` and `description`, the eyebrow row and the footer are left out too.
+
+<Canvas of={ProjectCardStories.Minimal} />
+
+## CSS classes
+
+These are added alongside `Card`'s own classes, such as `parlour-card--bg-light`.
+
+| Class                               | When applied                                                         |
+| ----------------------------------- | -------------------------------------------------------------------- |
+| `parlour-project-card`              | Always — a column flex box, so the footer sits at the bottom         |
+| `parlour-project-card__meta`        | `type` or `icon` is set — the row holding both                       |
+| `parlour-project-card__type`        | `type` is set                                                        |
+| `parlour-project-card__icon`        | `icon` is set — on the `BrandIcon`'s `<svg>`                         |
+| `parlour-project-card__title`       | Always — the heading                                                 |
+| `parlour-project-card__link`        | `href` is set — the title link, stretched over the card by `::after` |
+| `parlour-project-card__version`     | `version` is set                                                     |
+| `parlour-project-card__description` | `description` is set                                                 |
+| `parlour-project-card__footer`      | `footer` or `href` is set                                            |
+| `parlour-project-card__arrow`       | `href` is set — nudges right while the card is hovered               |
+
+## Design tokens
+
+The surface, border and padding come from `Card`; see its [design tokens](?path=/docs/components-cards-card--docs). `ProjectCard` adds:
+
+| Token                                   | Used for                                           |
+| --------------------------------------- | -------------------------------------------------- |
+| `--parlour--color-accent-primary`       | Type eyebrow; focus outline                        |
+| `--parlour--color-neutral-600`          | Version                                            |
+| `--parlour--color-neutral-950`          | Title                                              |
+| `--parlour--color-neutral-800`          | Description                                        |
+| `--parlour--color-neutral-900`          | Icon and footer text                               |
+| `--parlour--color-neutral-300`          | Footer divider                                     |
+| `--parlour--color-neutral-500`          | Card border while hovered                          |
+| `--parlour--font-family-jetbrains-mono` | Eyebrow, version and footer                        |
+| `--parlour--font-family-inter-tight`    | Title and description                              |
+| `--parlour--font-size-2-x-small`        | Eyebrow                                            |
+| `--parlour--font-size-x-small`          | Version and footer                                 |
+| `--parlour--font-size-x-large`          | Title                                              |
+| `--parlour--font-size-medium`           | Description and icon size                          |
+| `--parlour--font-weight-normal`         | Title                                              |
+| `--parlour--line-height-tight`          | Title                                              |
+| `--parlour--line-height-normal`         | Description                                        |
+| `--parlour--spacing-*`                  | Gaps between the parts: `2-x-small` to `2-x-large` |
+| `--parlour--transition-fast`            | Border colour and arrow nudge                      |
+
+The eyebrow's `letter-spacing` (`0.1em`), the title's `letter-spacing` (`-1px`), the footer divider's `1px` width and the focus outline's `2px` width are raw values rather than design tokens.
+
+## Accessibility
+
+- The card has one link: the title. It's stretched over the card with a `::after` overlay, so the whole card is clickable while screen readers announce a single link named after the project. Don't put other links or buttons inside — the overlay sits on top of them.
+- The link goes through [`LinkProvider`](?path=/docs/components-utilities-linkprovider--docs), so it uses your router's link component.
+- The focus outline is drawn on the whole card when its link has keyboard focus.
+- The arrow is decorative and hidden from screen readers.
+- The icon is announced by its brand name, such as "WordPress", since it says what the project is built on. It isn't part of the link, so the link is still named by the title alone.
+- The type eyebrow is a paragraph before the heading, so screen reader users jumping between headings skip it — the same as `SectionHeader`'s eyebrow.
+- Set `headingLevel` to fit the page outline: `h3` suits cards under a section's `h2`.
+- The eyebrow (`accent-primary`) and the version (`neutral-600`) pass WCAG AA on `light` and `white` cards, but not on `medium` and `dark` ones.

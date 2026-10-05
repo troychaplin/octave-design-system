@@ -11,7 +11,7 @@ const radiusOptions = Object.keys(borderRadiusClasses);
 const spacingOptions = Object.keys(spacingClasses);
 
 const meta: Meta<typeof Card> = {
-    title: 'Components/Content/Card',
+    title: 'Components/Cards/Card',
     component: Card,
     tags: ['!autodocs'],
     decorators: [
