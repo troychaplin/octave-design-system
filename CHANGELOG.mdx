@@ -17,6 +17,12 @@ Prefix the change with one of these keywords:
 
 ## [Unreleased]
 
+_Added_ `SkipLink`, a link that stays hidden until it gets keyboard focus and then jumps past the
+header to the page's main content. It targets `#main` by default.
+
+_Changed_ `Main` renders with `id="main"` and `tabIndex={-1}` by default, so a skip link can move
+focus into it. Pass `id` or `tabIndex` to override either.
+
 ## [0.1.0] - 2026-10-04
 
 The first release under the Parlour name. The project was formerly developed as "Octave Design

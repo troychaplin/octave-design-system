@@ -7,6 +7,7 @@ export { Body } from './components/Body/Body';
 export { Main } from './components/Main/Main';
 export { SiteHeader } from './components/SiteHeader/SiteHeader';
 export { InfoBar } from './components/InfoBar/InfoBar';
+export { SkipLink, type SkipLinkProps } from './components/SkipLink/SkipLink';
 
 // Layout
 export { Column } from './components/Column/Column';

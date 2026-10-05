@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Main } from '../components/Main/Main';
 import { Container } from '../components/Container/Container';
 import { SiteHeader } from '../components/SiteHeader';
+import { SkipLink } from '../components/SkipLink';
 
 const meta: Meta = {
     title: 'Overview/Templates',
@@ -25,6 +26,7 @@ export const PageLayout: Story = {
     },
     render: () => (
         <>
+            <SkipLink />
             <SiteHeader siteTitle="parlour.ui" siteTitleAccent="parlour" />
 
             <Main>

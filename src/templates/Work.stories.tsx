@@ -2,7 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Main } from '../components/Main/Main';
 import { Container } from '../components/Container/Container';
+import { SkipLink } from '../components/SkipLink';
 import { SiteHeader } from '../components/SiteHeader/SiteHeader';
+import { InfoBar } from '../components/InfoBar/InfoBar';
 import { Hero } from '../components/Hero/Hero';
 import { HeroHeader } from '../components/HeroHeader/HeroHeader';
 import { SectionHeader } from '../components/SectionHeader/SectionHeader';
@@ -33,7 +35,9 @@ export const WorkLayout: Story = {
     },
     render: () => (
         <>
+            <SkipLink />
             <SiteHeader siteTitle="troychaplin.work" siteTitleAccent="troychaplin" />
+            <InfoBar />
 
             <Main>
                 <Hero>

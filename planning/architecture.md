@@ -59,7 +59,7 @@ Body                                    <body>
 │   ├── SiteHeader.Nav                  <div> layout zone
 │   │   └── Nav                         <nav aria-label="Main"> + <ul>
 │   └── SiteHeader.Actions              <div>
-│       └── Button / ButtonGroup / search / theme toggle
+│       └── Button / ButtonGroup / search
 │
 ├── Main  id="main"                     <main>   role=main            ← exactly one
 │   ├── PageHeader                      <header> generic — NOT banner ← optional

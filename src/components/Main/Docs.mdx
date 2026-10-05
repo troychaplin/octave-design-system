@@ -89,4 +89,5 @@ These classes are defined in the auto-generated `layout.css` and `typography.css
 ## Accessibility
 
 - `<main>` is a landmark element. There should be exactly one `<main>` per page — screen readers use it as a skip-navigation target.
+- `<main>` gets `id="main"` and `tabIndex={-1}` by default, so a [`SkipLink`](?path=/docs/components-template-parts-skip-link--docs) can move keyboard focus into it. Pass `id` to change the target. `tabIndex={-1}` keeps `<main>` out of the tab order; it only lets the link focus it. Its focus outline is removed because `<main>` isn't interactive.
 - The inner layout div is presentational and carries no ARIA role.
