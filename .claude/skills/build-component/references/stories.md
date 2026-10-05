@@ -58,7 +58,7 @@ Multi-word component names are spaced in the title: `Components/Elements/Badge G
 each design out of every `Card` import, and keeps `'use client'` off `Card` when a design links
 through `LinkProvider`. Give a design's props `Omit<CardProps, 'children'>` so the surface props
 pass through. When a second design needs a part the first already has, such as an eyebrow or the
-stretched link, extract it then: an SCSS mixin for visual parts, or a small component for parts
+full-card link, extract it then: an SCSS mixin for visual parts, or a small component for parts
 with behaviour.
 
 ## Args

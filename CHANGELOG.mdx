@@ -29,6 +29,13 @@ tools, from Simple Icons. Each takes the size and colour of the text around it.
 _Added_ `ProjectCard`, a card for a software project built on `Card`: a type eyebrow and brand icon, a title, a version, a description and a footer line, with the whole card linking to
 `href`. Sample projects for stories live in `src/data/ProjectData.json`.
 
+_Added_ `href` and `linkProps` on `Card`. With `href`, the card wraps its children in a link from
+`LinkProvider` that fills the card and takes over its padding, so the whole card is clickable and
+`paddingInline` and `paddingBlock` still set the spacing. `linkProps` passes attributes such as
+`aria-labelledby` to the link.
+
+_Changed_ `Card` is now a client component (`'use client'`), since it reads `LinkProvider`.
+
 _Changed_ `Card` moves to a new Cards section in Storybook, alongside the design cards built on it.
 
 _Breaking_ `Card` replaces its `padding` prop with `paddingInline` and `paddingBlock`, so the sides

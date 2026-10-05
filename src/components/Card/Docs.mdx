@@ -37,6 +37,12 @@ import { Card } from '@troychaplin/parlour-ui';
     <Card as="li">…</Card>
     <Card as="li">…</Card>
 </GridGroup>
+
+// The whole card as one link, named by its heading
+<Card href="/work" linkProps={{ 'aria-labelledby': 'work-title' }}>
+    <h3 id="work-title">Work</h3>
+    <p>…</p>
+</Card>
 ```
 
 ## Examples
@@ -78,6 +84,12 @@ The card keeps its own text colour, so a light card inside a dark `Container` st
 
 <Canvas of={CardStories.InDarkContainer} />
 
+### With a link
+
+Set `href` and the card wraps its children in a link that fills the card, so a click anywhere on it follows the link. The link comes from [`LinkProvider`](?path=/docs/components-utilities-linkprovider--docs), so it's your router's link component. The card hands its padding to the link, so `paddingInline` and `paddingBlock` still set the spacing. `linkProps` passes attributes to the link — `aria-labelledby`, `target`, `rel` — while the rest of the props stay on the card element. [`ProjectCard`](?path=/docs/components-cards-project-card--docs) uses this for its `href`.
+
+<Canvas of={CardStories.WithLink} />
+
 ## CSS classes
 
 | Class                                 | When applied                                                                                             |
@@ -89,28 +101,37 @@ The card keeps its own text colour, so a light card inside a dark `Container` st
 | `parlour-card--radius-{size}`         | Always — the `borderRadius` value, e.g. `parlour-card--radius-none` (default)                            |
 | `parlour-card--padding-inline-{step}` | Always — the `paddingInline` value, e.g. `parlour-card--padding-inline-large` (default)                  |
 | `parlour-card--padding-block-{step}`  | Always — the `paddingBlock` value, e.g. `parlour-card--padding-block-large` (default)                    |
+| `parlour-card--linked`                | `href` is set — padding moves to the link, and the border darkens on hover                               |
+| `parlour-card__link`                  | `href` is set — on the link wrapping the children; fills the card and takes its padding                  |
 
-The first child's top margin and the last child's bottom margin are removed, so the padding looks even. Headings inside the card inherit its text colour. A `className` you pass is appended after these classes.
+The padding modifiers set `--parlour-card-padding-inline` and `--parlour-card-padding-block`, which the card uses for its padding. On a `parlour-card--linked` card, the card's padding drops to `0` and the link uses those properties instead.
+
+The first child's top margin and the last child's bottom margin are removed, so the padding looks even — inside a `parlour-card__link` too. Headings inside the card inherit its text colour. A `className` you pass is appended after these classes.
 
 ## Design tokens
 
-| Token                          | Used for                                                                      |
-| ------------------------------ | ----------------------------------------------------------------------------- |
-| `--parlour--color-white`       | `white` background; text on `medium` and `dark` cards; `white` border         |
-| `--parlour--color-neutral-50`  | `light` background (default)                                                  |
-| `--parlour--color-neutral-900` | `medium` background; `dark` border                                            |
-| `--parlour--color-neutral-950` | `dark` background                                                             |
-| `--parlour--color-black`       | Text on `white` and `light` cards                                             |
-| `--parlour--color-neutral-300` | `light` border (default)                                                      |
-| `--parlour--color-neutral-500` | `medium` border                                                               |
-| `--parlour--spacing-*`         | `paddingInline` and `paddingBlock` — any step of the spacing scale, or `none` |
-| `--parlour--radius-*`          | `borderRadius` — `sm`, `md`, `lg`, `xl` or `full`                             |
+| Token                             | Used for                                                                      |
+| --------------------------------- | ----------------------------------------------------------------------------- |
+| `--parlour--color-white`          | `white` background; text on `medium` and `dark` cards; `white` border         |
+| `--parlour--color-neutral-50`     | `light` background (default)                                                  |
+| `--parlour--color-neutral-900`    | `medium` background; `dark` border                                            |
+| `--parlour--color-neutral-950`    | `dark` background                                                             |
+| `--parlour--color-black`          | Text on `white` and `light` cards                                             |
+| `--parlour--color-neutral-300`    | `light` border (default)                                                      |
+| `--parlour--color-neutral-500`    | `medium` border; border of a linked card while hovered                        |
+| `--parlour--spacing-*`            | `paddingInline` and `paddingBlock` — any step of the spacing scale, or `none` |
+| `--parlour--radius-*`             | `borderRadius` — `sm`, `md`, `lg`, `xl` or `full`                             |
+| `--parlour--color-accent-primary` | Focus outline on the link                                                     |
+| `--parlour--transition-fast`      | Border colour change on a linked card                                         |
 
-A `light` card (`neutral-50`) is a step lighter than a `light` [`Container`](?path=/docs/components-layout-container--docs) (`neutral-200`), so it stands out on a light section. The border's `1px` width is a raw value rather than a design token.
+A `light` card (`neutral-50`) is a step lighter than a `light` [`Container`](?path=/docs/components-layout-container--docs) (`neutral-200`), so it stands out on a light section. The border's `1px` width and the link's `2px` focus outline are raw values rather than design tokens.
 
 ## Accessibility
 
 - The default `<div>` adds no semantics. Use `as="article"` for a self-contained item, and `as="li"` when the card is one of a list.
 - The background sets the card's own text colour, so its text stays readable whichever section it sits in, and headings inside it follow that colour too.
 - Every background passes WCAG AA with its text colour: black on `white` is about 18:1 and on `light` about 16:1; white on `medium` is about 11:1 and on `dark` about 16:1.
+- A full-card link is announced with all of its text unless you name it. Pass `linkProps={{ 'aria-labelledby': … }}` pointing at the card's heading so screen readers announce just the title, and keep other links and buttons out of the card — interactive elements can't be nested inside a link.
+- `Card` is a client component (`'use client'`) because it reads `LinkProvider`. Server components can still render it and pass it server-rendered children.
+- The link resets Main's bold, underlined link style so the card's text looks the same linked or not. Its focus outline is drawn around the whole card.
 - The border is decorative — it isn't needed to understand the content — so it isn't held to a contrast ratio.

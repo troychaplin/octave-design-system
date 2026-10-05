@@ -117,3 +117,21 @@ export const InDarkContainer: Story = {
         </Container>
     ),
 };
+
+export const WithLink: Story = {
+    args: {
+        href: '/work',
+        linkProps: { 'aria-labelledby': 'card-with-link-title' },
+        children: (
+            <>
+                <h3 id="card-with-link-title">Card title</h3>
+                <SingleParagraph />
+            </>
+        ),
+    },
+    render: (args) => (
+        <GridGroup columns={2} maxWidth="alignwide">
+            <Card {...args} />
+        </GridGroup>
+    ),
+};

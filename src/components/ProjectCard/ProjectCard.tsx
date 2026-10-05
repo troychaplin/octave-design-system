@@ -1,12 +1,11 @@
-'use client';
+import { useId } from 'react';
 
 import { Card, type CardProps } from '../Card/Card';
 import { BrandIcon } from '../BrandIcon/BrandIcon';
 import { brandIcons, type BrandIconName } from '../BrandIcon/brandIcons';
-import { useLinkContext } from '../LinkProvider/useLinkContext';
 import './styles.scss';
 
-export interface ProjectCardProps extends Omit<CardProps, 'children' | 'title'> {
+export interface ProjectCardProps extends Omit<CardProps, 'children' | 'title' | 'linkProps'> {
     title: string;
     href?: string;
     type?: string;
@@ -29,13 +28,13 @@ export const ProjectCard = ({
     className,
     ...rest
 }: ProjectCardProps) => {
-    const LinkComponent = useLinkContext();
     const Heading = headingLevel;
+    const titleId = useId();
 
     const rootClasses = ['parlour-project-card', className].filter(Boolean).join(' ');
 
-    return (
-        <Card className={rootClasses} borderRadius="sm" {...rest}>
+    const content = (
+        <>
             {(type || icon) && (
                 <div className="parlour-project-card__meta">
                     {type && <p className="parlour-project-card__type">{type}</p>}
@@ -49,15 +48,8 @@ export const ProjectCard = ({
                 </div>
             )}
 
-            <Heading className="parlour-project-card__title">
-                {href ? (
-                    // eslint-disable-next-line react-hooks/static-components -- injected via context, stable across renders
-                    <LinkComponent className="parlour-project-card__link" href={href}>
-                        {title}
-                    </LinkComponent>
-                ) : (
-                    title
-                )}
+            <Heading className="parlour-project-card__title" id={titleId}>
+                {title}
             </Heading>
 
             {version && <p className="parlour-project-card__version">{version}</p>}
@@ -74,6 +66,18 @@ export const ProjectCard = ({
                     )}
                 </div>
             )}
+        </>
+    );
+
+    return (
+        <Card
+            className={rootClasses}
+            borderRadius="sm"
+            href={href}
+            linkProps={{ 'aria-labelledby': titleId }}
+            {...rest}
+        >
+            {content}
         </Card>
     );
 };

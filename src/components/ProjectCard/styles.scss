@@ -1,44 +1,14 @@
-// A column flex box, so the footer sits at the bottom and footers
-// line up across a grid row.
-.parlour-project-card {
-    position: relative;
+// The content sits in the card, or in Card's link when there's an href. Whichever holds it is a
+// column flex box with the footer at the bottom, so footers line up across a grid row.
+// `:where()` keeps the link selector at one class, so the margin reset stays below the margins the
+// parts below set for themselves.
+.parlour-project-card,
+:where(.parlour-project-card) .parlour-card__link {
     display: flex;
     flex-direction: column;
-    transition: border-color var(--parlour--transition-fast);
 
     > * {
         margin-block: 0;
-    }
-
-    &:has(.parlour-project-card__link:hover) {
-        border-color: var(--parlour--color-neutral-500);
-    }
-
-    &:has(.parlour-project-card__link:focus-visible) {
-        outline: 2px solid var(--parlour--color-accent-primary);
-        outline-offset: var(--parlour--spacing-2-x-small);
-    }
-}
-
-a.parlour-project-card__link {
-    font-weight: var(--parlour--font-weight-medium);
-    color: inherit;
-    text-decoration: none;
-
-    &:focus-visible {
-        outline: none;
-    }
-
-    &:hover {
-        color: var(--parlour--color-accent-primary);
-        text-decoration: none;
-    }
-
-    // Stretches the link over the                                                                   whole card
-    &::after {
-        content: '';
-        position: absolute;
-        inset: 0;
     }
 }
 
@@ -76,6 +46,11 @@ a.parlour-project-card__link {
     line-height: var(--parlour--line-height-tight);
     letter-spacing: -1px;
     color: var(--parlour--color-neutral-950);
+    transition: color var(--parlour--transition-fast);
+}
+
+.parlour-project-card .parlour-card__link:hover .parlour-project-card__title {
+    color: var(--parlour--color-accent-primary);
 }
 
 .parlour-project-card__version {
@@ -108,14 +83,15 @@ a.parlour-project-card__link {
 
 // The footer's auto margin takes any free space, so the gap above it comes from whatever
 // precedes it. Flex margins don't collapse, so the two add up.
-.parlour-project-card > :has(+ .parlour-project-card__footer) {
+.parlour-project-card > :has(+ .parlour-project-card__footer),
+.parlour-project-card .parlour-card__link > :has(+ .parlour-project-card__footer) {
     margin-block-end: var(--parlour--spacing-x-large);
 }
 
 .parlour-project-card__arrow {
     transition: transform var(--parlour--transition-fast);
 
-    .parlour-project-card:has(.parlour-project-card__link:hover) & {
+    .parlour-card__link:hover & {
         transform: translateX(var(--parlour--spacing-2-x-small));
     }
 

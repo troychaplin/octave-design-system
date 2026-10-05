@@ -71,53 +71,54 @@ With only `title` and `description`, the eyebrow row and the footer are left out
 
 These are added alongside `Card`'s own classes, such as `parlour-card--bg-light`.
 
-| Class                               | When applied                                                         |
-| ----------------------------------- | -------------------------------------------------------------------- |
-| `parlour-project-card`              | Always — a column flex box, so the footer sits at the bottom         |
-| `parlour-project-card__meta`        | `type` or `icon` is set — the row holding both                       |
-| `parlour-project-card__type`        | `type` is set                                                        |
-| `parlour-project-card__icon`        | `icon` is set — on the `BrandIcon`'s `<svg>`                         |
-| `parlour-project-card__title`       | Always — the heading                                                 |
-| `parlour-project-card__link`        | `href` is set — the title link, stretched over the card by `::after` |
-| `parlour-project-card__version`     | `version` is set                                                     |
-| `parlour-project-card__description` | `description` is set                                                 |
-| `parlour-project-card__footer`      | `footer` or `href` is set                                            |
-| `parlour-project-card__arrow`       | `href` is set — nudges right while the card is hovered               |
+| Class                               | When applied                                                                |
+| ----------------------------------- | --------------------------------------------------------------------------- |
+| `parlour-project-card`              | Always — on the `Card`; a column flex box, so the footer sits at the bottom |
+| `parlour-project-card__meta`        | `type` or `icon` is set — the row holding both                              |
+| `parlour-project-card__type`        | `type` is set                                                               |
+| `parlour-project-card__icon`        | `icon` is set — on the `BrandIcon`'s `<svg>`                                |
+| `parlour-project-card__title`       | Always — the heading; turns `accent-primary` while the link is hovered      |
+| `parlour-project-card__version`     | `version` is set                                                            |
+| `parlour-project-card__description` | `description` is set                                                        |
+| `parlour-project-card__footer`      | `footer` or `href` is set                                                   |
+| `parlour-project-card__arrow`       | `href` is set — nudges right while the link is hovered                      |
+
+Padding comes from `Card`'s `paddingInline` and `paddingBlock` props, which `ProjectCard` passes through unchanged. With `href`, `ProjectCard` passes it to `Card`, which wraps the content in a [full-card link](?path=/docs/components-cards-card--docs) that takes over the padding, so the whole card is clickable. `ProjectCard` points the link's `aria-labelledby` at the title.
 
 ## Design tokens
 
 The surface, border and padding come from `Card`; see its [design tokens](?path=/docs/components-cards-card--docs). `ProjectCard` adds:
 
-| Token                                   | Used for                                           |
-| --------------------------------------- | -------------------------------------------------- |
-| `--parlour--color-accent-primary`       | Type eyebrow; focus outline                        |
-| `--parlour--color-neutral-600`          | Version                                            |
-| `--parlour--color-neutral-950`          | Title                                              |
-| `--parlour--color-neutral-800`          | Description                                        |
-| `--parlour--color-neutral-900`          | Icon and footer text                               |
-| `--parlour--color-neutral-300`          | Footer divider                                     |
-| `--parlour--color-neutral-500`          | Card border while hovered                          |
-| `--parlour--font-family-jetbrains-mono` | Eyebrow, version and footer                        |
-| `--parlour--font-family-inter-tight`    | Title and description                              |
-| `--parlour--font-size-2-x-small`        | Eyebrow                                            |
-| `--parlour--font-size-x-small`          | Version and footer                                 |
-| `--parlour--font-size-x-large`          | Title                                              |
-| `--parlour--font-size-medium`           | Description and icon size                          |
-| `--parlour--font-weight-normal`         | Title                                              |
-| `--parlour--line-height-tight`          | Title                                              |
-| `--parlour--line-height-normal`         | Description                                        |
-| `--parlour--spacing-*`                  | Gaps between the parts: `2-x-small` to `2-x-large` |
-| `--parlour--transition-fast`            | Border colour and arrow nudge                      |
+| Token                                   | Used for                                         |
+| --------------------------------------- | ------------------------------------------------ |
+| `--parlour--color-accent-primary`       | Type eyebrow; title while hovered                |
+| `--parlour--color-neutral-950`          | Title                                            |
+| `--parlour--color-neutral-800`          | Description                                      |
+| `--parlour--color-neutral-900`          | Footer text                                      |
+| `--parlour--color-neutral-600`          | Version                                          |
+| `--parlour--color-neutral-500`          | Icon                                             |
+| `--parlour--color-neutral-300`          | Footer divider                                   |
+| `--parlour--font-family-jetbrains-mono` | Eyebrow, version and footer                      |
+| `--parlour--font-family-inter-tight`    | Title and description                            |
+| `--parlour--font-size-2-x-small`        | Eyebrow and version                              |
+| `--parlour--font-size-x-small`          | Footer                                           |
+| `--parlour--font-size-medium`           | Description and icon size                        |
+| `--parlour--font-size-large`            | Title                                            |
+| `--parlour--font-weight-medium`         | Title                                            |
+| `--parlour--line-height-tight`          | Title                                            |
+| `--parlour--line-height-normal`         | Description                                      |
+| `--parlour--spacing-*`                  | Gaps between the parts: `2-x-small` to `x-large` |
+| `--parlour--transition-fast`            | Title colour and arrow nudge                     |
 
-The eyebrow's `letter-spacing` (`0.1em`), the title's `letter-spacing` (`-1px`), the footer divider's `1px` width and the focus outline's `2px` width are raw values rather than design tokens.
+The eyebrow's `letter-spacing` (`0.1em`), the title's `letter-spacing` (`-1px`) and the footer divider's `1px` width are raw values rather than design tokens.
 
 ## Accessibility
 
-- The card has one link: the title. It's stretched over the card with a `::after` overlay, so the whole card is clickable while screen readers announce a single link named after the project. Don't put other links or buttons inside — the overlay sits on top of them.
+- With `href`, the link wraps everything inside the card, so the whole card is clickable. A link that wraps a whole card would normally be announced with all of its text, so `aria-labelledby` points it at the title: screen readers announce a single link named after the project, such as "Glyph Blocks". Don't put other links or buttons inside — interactive elements can't be nested in a link.
 - The link goes through [`LinkProvider`](?path=/docs/components-utilities-linkprovider--docs), so it uses your router's link component.
-- The focus outline is drawn on the whole card when its link has keyboard focus.
+- The link comes from `Card` and fills it, so its focus outline is drawn around the whole card.
 - The arrow is decorative and hidden from screen readers.
-- The icon is announced by its brand name, such as "WordPress", since it says what the project is built on. It isn't part of the link, so the link is still named by the title alone.
+- The icon is announced by its brand name, such as "WordPress", when screen reader users read through the card. It sits inside the link but doesn't change the link's name, which comes from the title alone.
 - The type eyebrow is a paragraph before the heading, so screen reader users jumping between headings skip it — the same as `SectionHeader`'s eyebrow.
 - Set `headingLevel` to fit the page outline: `h3` suits cards under a section's `h2`.
 - The eyebrow (`accent-primary`) and the version (`neutral-600`) pass WCAG AA on `light` and `white` cards, but not on `medium` and `dark` ones.
