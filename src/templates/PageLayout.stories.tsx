@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Main } from '../components/Main/Main';
 import { Container } from '../components/Container/Container';
-import { FlexGroup } from '../components/FlexGroup/FlexGroup';
 import { SiteHeader } from '../components/SiteHeader';
 
 const meta: Meta = {
@@ -26,13 +25,7 @@ export const PageLayout: Story = {
     },
     render: () => (
         <>
-            <SiteHeader>
-                <FlexGroup gap="normal" maxWidth="alignfull" justify="space-between">
-                    <div>Bleh</div>
-                    <div>Meh</div>
-                    <div>Pfft</div>
-                </FlexGroup>
-            </SiteHeader>
+            <SiteHeader siteTitle="parlour.ui" siteTitleAccent="parlour" />
 
             <Main>
                 <h2>Heading Two</h2>
