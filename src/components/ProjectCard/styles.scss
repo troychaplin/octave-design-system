@@ -12,14 +12,21 @@
     }
 }
 
-// Content
-
 .parlour-project-card__meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: var(--parlour--spacing-small);
     margin-block-end: var(--parlour--spacing-x-large);
+}
+
+.parlour-project-card__type {
+    font-family: var(--parlour--font-family-jetbrains-mono);
+    font-size: var(--parlour--font-size-2-x-small);
+    color: var(--parlour--color-accent-primary);
+    text-transform: uppercase;
+    // letter-spacing: 0.1em;
+    margin: 0;
 }
 
 // The icon sits at the end of the row even when there's no type
@@ -29,22 +36,13 @@
     color: var(--parlour--color-neutral-500);
 }
 
-.parlour-project-card__type {
-    margin: 0;
-    font-family: var(--parlour--font-family-jetbrains-mono);
-    font-size: var(--parlour--font-size-2-x-small);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--parlour--color-accent-primary);
-}
-
 // Doubled class beats Card's `:is(h1…h6) { color: inherit }` rule.
 .parlour-project-card .parlour-project-card__title {
     font-family: var(--parlour--font-family-inter-tight);
     font-size: var(--parlour--font-size-large);
     font-weight: var(--parlour--font-weight-medium);
     line-height: var(--parlour--line-height-tight);
-    letter-spacing: -1px;
+    letter-spacing: -0.5px;
     color: var(--parlour--color-neutral-950);
     transition: color var(--parlour--transition-fast);
 }
@@ -63,7 +61,7 @@
 .parlour-project-card__description {
     margin-block-start: var(--parlour--spacing-large);
     font-family: var(--parlour--font-family-inter-tight);
-    font-size: var(--parlour--font-size-medium);
+    font-size: var(--parlour--font-size-small);
     line-height: var(--parlour--line-height-normal);
     color: var(--parlour--color-neutral-800);
 }
@@ -73,12 +71,12 @@
     justify-content: space-between;
     align-items: baseline;
     gap: var(--parlour--spacing-small);
+    font-family: var(--parlour--font-family-jetbrains-mono);
+    font-size: var(--parlour--font-size-2-x-small);
+    color: var(--parlour--color-neutral-900);
+    border-top: 1px solid var(--parlour--color-neutral-300);
     margin-block-start: auto;
     padding-block-start: var(--parlour--spacing-medium);
-    border-top: 1px solid var(--parlour--color-neutral-300);
-    font-family: var(--parlour--font-family-jetbrains-mono);
-    font-size: var(--parlour--font-size-x-small);
-    color: var(--parlour--color-neutral-900);
 }
 
 // The footer's auto margin takes any free space, so the gap above it comes from whatever
