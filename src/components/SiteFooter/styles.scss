@@ -1,36 +1,27 @@
 @use '../../styles/c2b/parlour-variables' as *;
 
 .parlour-site-footer {
-    padding-block: var(--parlour--spacing-x-large);
-    padding-inline: var(--parlour--root-padding-x);
-    font-family: var(--parlour--font-family-inter-tight);
-    font-size: var(--parlour--font-size-small);
+    font-family: var(--parlour--font-family-jetbrains-mono);
+    font-size: var(--parlour--font-size-x-small);
     color: var(--parlour--color-neutral-800);
-    background-color: var(--parlour--color-neutral-100);
-    border-top: 1px solid var(--parlour--color-neutral-400);
+    letter-spacing: -1px;
+    padding-block: var(--parlour--spacing-large);
+    padding-inline: var(--parlour--root-padding-x);
+    background-color: var(--parlour--color-white);
 
     p {
         margin: 0;
     }
 
     a {
+        font-weight: var(--parlour--font-weight-medium);
         color: var(--parlour--color-accent-primary);
         text-decoration: none;
 
         &:hover {
+            color: var(--parlour--color-accent-secondary);
             text-decoration: underline;
         }
-    }
-}
-
-// Links inside the text sit in a sentence, so they need more than colour to stand out
-.parlour-site-footer__text a {
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: var(--parlour--spacing-3-x-small);
-
-    &:hover {
-        text-decoration-thickness: 2px;
     }
 }
 
@@ -72,7 +63,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: var(--parlour--spacing-small);
+    gap: var(--parlour--spacing-medium);
     margin: 0;
     padding: 0;
     list-style: none;
@@ -81,19 +72,20 @@
 // Doubled class beats the footer's own `a` colour and hover rules
 .parlour-site-footer .parlour-site-footer__social-link {
     display: inline-flex;
-    padding: var(--parlour--spacing-x-small);
-    font-size: var(--parlour--font-size-large);
-    color: var(--parlour--color-white);
-    background-color: var(--parlour-site-footer-social-color);
-    border-radius: var(--parlour--radius-full);
-    transition: transform var(--parlour--transition-fast);
+    font-size: var(--parlour--font-size-medium);
+    color: var(--parlour--color-neutral-500);
+    transition:
+        transform var(--parlour--transition-fast),
+        color var(--parlour--transition-fast);
 
     &:hover {
         text-decoration: none;
+        color: var(--parlour--color-accent-secondary);
         transform: translateY(calc(var(--parlour--spacing-2-x-small) * -1));
     }
 
     &:focus-visible {
+        color: var(--parlour--color-accent-secondary);
         outline: 2px solid var(--parlour--color-accent-primary);
         outline-offset: var(--parlour--spacing-2-x-small);
     }
@@ -104,11 +96,5 @@
         &:hover {
             transform: none;
         }
-    }
-}
-
-@each $token in github, twitter, bluesky, linkedin, facebook, instagram, youtube, tiktok {
-    .parlour-site-footer__social-link--#{$token} {
-        --parlour-site-footer-social-color: var(--parlour--color-#{$token});
     }
 }

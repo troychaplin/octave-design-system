@@ -52,7 +52,7 @@ The layout from the site design: the copyright on the left, the text centred, an
 
 ### All networks
 
-Each network has its own prop, which takes the profile URL. A link renders only when its prop is set, always in this order: `github`, `x`, `bluesky`, `linkedin`, `facebook`, `instagram`, `youtube`, `tiktok`. Each circle uses the network's brand colour.
+Each network has its own prop, which takes the profile URL. A link renders only when its prop is set, always in this order: `github`, `x`, `bluesky`, `linkedin`, `facebook`, `instagram`, `youtube`, `tiktok`. Each icon is `neutral-500` and turns `accent-secondary` on hover and keyboard focus.
 
 <Canvas of={SiteFooterStories.AllNetworks} />
 
@@ -74,50 +74,44 @@ With no `text` and no social props, only the copyright line renders. Without `na
 
 ## CSS classes
 
-| Class                                       | When applied                                                                |
-| ------------------------------------------- | --------------------------------------------------------------------------- |
-| `parlour-site-footer`                       | Always — the `<footer>`                                                     |
-| `parlour-site-footer__inner`                | Always — the grid holding the three parts, capped at the wide layout width  |
-| `parlour-site-footer__copyright`            | Always                                                                      |
-| `parlour-site-footer__text`                 | `text` is set                                                               |
-| `parlour-site-footer__social`               | At least one social prop is set — the `<ul>` of links                       |
-| `parlour-site-footer__social-link`          | On each social link                                                         |
-| `parlour-site-footer__social-link--{token}` | The network's colour token, e.g. `parlour-site-footer__social-link--github` |
-
-Each `--{token}` modifier sets `--parlour-site-footer-social-color`, which the link uses for its background. X uses the `twitter` token.
+| Class                              | When applied                                                               |
+| ---------------------------------- | -------------------------------------------------------------------------- |
+| `parlour-site-footer`              | Always — the `<footer>`                                                    |
+| `parlour-site-footer__inner`       | Always — the grid holding the three parts, capped at the wide layout width |
+| `parlour-site-footer__copyright`   | Always                                                                     |
+| `parlour-site-footer__text`        | `text` is set                                                              |
+| `parlour-site-footer__social`      | At least one social prop is set — the `<ul>` of links                      |
+| `parlour-site-footer__social-link` | On each social link                                                        |
 
 ## Design tokens
 
-| Token                                | Used for                                                                                                                |
-| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
-| `--parlour--color-neutral-100`       | Background                                                                                                              |
-| `--parlour--color-neutral-400`       | Top border                                                                                                              |
-| `--parlour--color-neutral-800`       | Text                                                                                                                    |
-| `--parlour--color-accent-primary`    | Links in the copyright and text; social link focus outline                                                              |
-| `--parlour--color-white`             | Social icons                                                                                                            |
-| `--parlour--color-{network}`         | Social circle backgrounds: `github`, `twitter` (X), `bluesky`, `linkedin`, `facebook`, `instagram`, `youtube`, `tiktok` |
-| `--parlour--font-family-inter-tight` | Footer text                                                                                                             |
-| `--parlour--font-size-small`         | Footer text                                                                                                             |
-| `--parlour--font-size-large`         | Social icon size                                                                                                        |
-| `--parlour--spacing-x-large`         | Top and bottom padding                                                                                                  |
-| `--parlour--root-padding-x`          | Side padding                                                                                                            |
-| `--parlour--spacing-medium`          | Gap between the three parts                                                                                             |
-| `--parlour--spacing-small`           | Gap between social links                                                                                                |
-| `--parlour--spacing-x-small`         | Padding around each social icon                                                                                         |
-| `--parlour--spacing-2-x-small`       | Social link hover lift; focus outline offset                                                                            |
-| `--parlour--spacing-3-x-small`       | Underline offset on links in the text                                                                                   |
-| `--parlour--radius-full`             | Round social links                                                                                                      |
-| `--parlour--layout-wide-size`        | Maximum width of the content                                                                                            |
-| `--parlour--transition-fast`         | Social link hover lift                                                                                                  |
+| Token                                   | Used for                                                         |
+| --------------------------------------- | ---------------------------------------------------------------- |
+| `--parlour--color-white`                | Background                                                       |
+| `--parlour--color-neutral-800`          | Text                                                             |
+| `--parlour--color-accent-secondary`     | Links in the copyright and text; social icons on hover and focus |
+| `--parlour--color-neutral-500`          | Social icons                                                     |
+| `--parlour--color-accent-primary`       | Social link focus outline                                        |
+| `--parlour--font-family-jetbrains-mono` | Footer text                                                      |
+| `--parlour--font-size-x-small`          | Footer text                                                      |
+| `--parlour--font-size-small`            | Social icon size                                                 |
+| `--parlour--font-weight-medium`         | Links                                                            |
+| `--parlour--spacing-large`              | Top and bottom padding                                           |
+| `--parlour--root-padding-x`             | Side padding                                                     |
+| `--parlour--spacing-medium`             | Gap between the three parts                                      |
+| `--parlour--spacing-small`              | Gap between social links                                         |
+| `--parlour--spacing-2-x-small`          | Social link hover lift; focus outline offset                     |
+| `--parlour--layout-wide-size`           | Maximum width of the content                                     |
+| `--parlour--transition-fast`            | Social link hover lift and colour change                         |
 
-The top border's `1px`, the text link underline's `1px` and `2px` and the focus outline's `2px` are raw values rather than design tokens.
+The text's `letter-spacing` (`-1px`) and the focus outline's `2px` are raw values rather than design tokens.
 
 ## Accessibility
 
 - `<footer>` at the top level of the page is the `contentinfo` landmark, so screen reader users can jump to it. Keep it outside `Main` and `Article`, where it would lose that role.
-- Links inside `text` are underlined, because they sit within a sentence and colour alone wouldn't set them apart. The name link stands on its own, so it relies on colour, with an underline on hover.
+- Links are `accent-secondary` and medium weight, and underline on hover.
 - Each social link is named by its network — "GitHub", "LinkedIn" — and its icon is hidden from screen readers. The links are a list, so screen readers announce how many there are.
 - Social links carry `rel="me"`, which tells services such as Mastodon and Bluesky that the profile belongs to the site's owner.
-- Each circle is about 32px across on small screens and 40px on large ones, above the 24px minimum target size.
-- White icons on each brand colour meet the 3:1 contrast for graphics. The text and links meet AA on the `neutral-100` background.
+- Each icon is about 16px with no padding, smaller than the 24px minimum target size. It passes WCAG 2.5.8 through the spacing exception: with the gap between links, a 24px circle centred on each icon doesn't overlap its neighbour's. Keep that gap if you shrink the spacing.
+- The `neutral-500` icons are 4.29:1 on the white background and `accent-secondary` is 5.56:1, both above the 3:1 needed for graphics.
 - The icons come from [`BrandIcon`](?path=/docs/components-elements-brand-icon--docs). LinkedIn's comes from an older Simple Icons release, since LinkedIn asked to be removed from the current one; check LinkedIn's brand guidelines if you need their official logo.

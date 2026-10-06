@@ -7,20 +7,19 @@ import { brandIcons } from '../BrandIcon/brandIcons';
 import { useLinkContext } from '../LinkProvider/useLinkContext';
 import './styles.scss';
 
-// Rendered in this order. Each network's colour comes from its --parlour--color-{token}; X uses the
-// twitter token.
+// Rendered in this order
 const socialNetworks = [
-    { prop: 'github', token: 'github' },
-    { prop: 'x', token: 'twitter' },
-    { prop: 'bluesky', token: 'bluesky' },
-    { prop: 'linkedin', token: 'linkedin' },
-    { prop: 'facebook', token: 'facebook' },
-    { prop: 'instagram', token: 'instagram' },
-    { prop: 'youtube', token: 'youtube' },
-    { prop: 'tiktok', token: 'tiktok' },
+    'github',
+    'x',
+    'bluesky',
+    'linkedin',
+    'facebook',
+    'instagram',
+    'youtube',
+    'tiktok',
 ] as const;
 
-type SocialNetwork = (typeof socialNetworks)[number]['prop'];
+type SocialNetwork = (typeof socialNetworks)[number];
 
 export interface SiteFooterProps
     extends React.HTMLAttributes<HTMLElement>, Partial<Record<SocialNetwork, string>> {
@@ -60,7 +59,7 @@ export const SiteFooter = ({
         youtube,
         tiktok,
     };
-    const socials = socialNetworks.filter(({ prop }) => urls[prop]);
+    const socials = socialNetworks.filter((network) => urls[network]);
 
     return (
         <footer className={rootClasses} {...rest}>
@@ -79,15 +78,15 @@ export const SiteFooter = ({
 
                 {socials.length > 0 && (
                     <ul className="parlour-site-footer__social">
-                        {socials.map(({ prop, token }) => (
-                            <li key={prop}>
+                        {socials.map((network) => (
+                            <li key={network}>
                                 <LinkComponent
-                                    className={`parlour-site-footer__social-link parlour-site-footer__social-link--${token}`}
-                                    href={urls[prop]}
+                                    className="parlour-site-footer__social-link"
+                                    href={urls[network]}
                                     rel="me"
-                                    aria-label={brandIcons[prop].title}
+                                    aria-label={brandIcons[network].title}
                                 >
-                                    <BrandIcon name={prop} />
+                                    <BrandIcon name={network} />
                                 </LinkComponent>
                             </li>
                         ))}

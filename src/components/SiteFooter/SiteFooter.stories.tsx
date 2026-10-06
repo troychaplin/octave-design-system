@@ -28,7 +28,8 @@ export const Default: Story = {
         nameHref: '/',
         text: (
             <>
-                Powered by <a href="/projects/octave">Octave Beta</a>, a WordPress block theme
+                Powered by <a href="https://troychaplin.github.io/parlour-ui/">Parlour UI</a>, a
+                React and WordPress cleanser
             </>
         ),
         github: 'https://github.com',
