@@ -32,6 +32,7 @@ import { SiteFooter } from '@troychaplin/parlour-ui';
         </>
     }
     github="https://github.com/your-handle"
+    wordpress="https://profiles.wordpress.org/your-handle"
     x="https://x.com/your-handle"
     bluesky="https://bsky.app/profile/your-handle"
     linkedin="https://www.linkedin.com/in/your-handle"
@@ -52,7 +53,7 @@ The layout from the site design: the copyright on the left, the text centred, an
 
 ### All networks
 
-Each network has its own prop, which takes the profile URL. A link renders only when its prop is set, always in this order: `github`, `x`, `bluesky`, `linkedin`, `facebook`, `instagram`, `youtube`, `tiktok`. Each icon is `neutral-500` and turns `accent-secondary` on hover and keyboard focus.
+Each network has its own prop, which takes the profile URL. A link renders only when its prop is set, always in this order: `github`, `wordpress`, `x`, `bluesky`, `linkedin`, `facebook`, `instagram`, `youtube`, `tiktok`. Each icon is `neutral-500` and turns `accent-secondary` on hover and keyboard focus.
 
 <Canvas of={SiteFooterStories.AllNetworks} />
 
@@ -64,13 +65,13 @@ With no `text` and no social props, only the copyright line renders. Without `na
 
 ## Props
 
-| Prop                                    | Type        | Notes                                                                        |
-| --------------------------------------- | ----------- | ---------------------------------------------------------------------------- |
-| `name`                                  | `string`    | Required. Shown after the copyright symbol and year                          |
-| `nameHref`                              | `string`    | Makes the name a link, through `LinkProvider`                                |
-| `year`                                  | `number`    | Defaults to the current year                                                 |
-| `text`                                  | `ReactNode` | The middle line. Can hold links                                              |
-| `github`, `x`, `bluesky`, `linkedin`, … | `string`    | One per network: the profile URL. The link and its icon render only when set |
+| Prop                                     | Type        | Notes                                                                        |
+| ---------------------------------------- | ----------- | ---------------------------------------------------------------------------- |
+| `name`                                   | `string`    | Required. Shown after the copyright symbol and year                          |
+| `nameHref`                               | `string`    | Makes the name a link, through `LinkProvider`                                |
+| `year`                                   | `number`    | Defaults to the current year                                                 |
+| `text`                                   | `ReactNode` | The middle line. Can hold links                                              |
+| `github`, `wordpress`, `x`, `bluesky`, … | `string`    | One per network: the profile URL. The link and its icon render only when set |
 
 ## CSS classes
 

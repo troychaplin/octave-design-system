@@ -93,6 +93,7 @@ export const WorkLayout: Story = {
                     </>
                 }
                 github="https://github.com"
+                wordpress="https://profiles.wordpress.org/areziaal"
                 x="https://x.com"
                 bluesky="https://bsky.app"
                 linkedin="https://www.linkedin.com"

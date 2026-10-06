@@ -10,6 +10,7 @@ import './styles.scss';
 // Rendered in this order
 const socialNetworks = [
     'github',
+    'wordpress',
     'x',
     'bluesky',
     'linkedin',
@@ -37,6 +38,7 @@ export const SiteFooter = ({
     text,
     className,
     github,
+    wordpress,
     x,
     bluesky,
     linkedin,
@@ -51,6 +53,7 @@ export const SiteFooter = ({
 
     const urls: Record<SocialNetwork, string | undefined> = {
         github,
+        wordpress,
         x,
         bluesky,
         linkedin,

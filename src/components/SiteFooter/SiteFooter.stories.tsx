@@ -33,6 +33,7 @@ export const Default: Story = {
             </>
         ),
         github: 'https://github.com',
+        wordpress: 'https://profiles.wordpress.org',
         x: 'https://x.com',
         bluesky: 'https://bsky.app',
         linkedin: 'https://www.linkedin.com',
@@ -44,6 +45,7 @@ export const AllNetworks: Story = {
         name: 'Troy Chaplin',
         nameHref: '/',
         github: 'https://github.com',
+        wordpress: 'https://profiles.wordpress.org',
         x: 'https://x.com',
         bluesky: 'https://bsky.app',
         linkedin: 'https://www.linkedin.com',
