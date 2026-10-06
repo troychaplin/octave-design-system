@@ -91,12 +91,11 @@ The surface, border and padding come from `Card`; see its [design tokens](?path=
 
 | Token                                   | Used for                                         |
 | --------------------------------------- | ------------------------------------------------ |
-| `--parlour--color-accent-primary`       | Type eyebrow; title while hovered                |
+| `--parlour--color-accent-primary`       | Title while hovered                              |
 | `--parlour--color-neutral-950`          | Title                                            |
 | `--parlour--color-neutral-800`          | Description                                      |
 | `--parlour--color-neutral-900`          | Footer text                                      |
-| `--parlour--color-neutral-600`          | Version                                          |
-| `--parlour--color-neutral-500`          | Icon                                             |
+| `--parlour--color-neutral-600`          | Type eyebrow, icon and version                   |
 | `--parlour--color-neutral-300`          | Footer divider                                   |
 | `--parlour--font-family-jetbrains-mono` | Eyebrow, version and footer                      |
 | `--parlour--font-family-inter-tight`    | Title and description                            |
@@ -110,7 +109,7 @@ The surface, border and padding come from `Card`; see its [design tokens](?path=
 | `--parlour--spacing-*`                  | Gaps between the parts: `2-x-small` to `x-large` |
 | `--parlour--transition-fast`            | Title colour and arrow nudge                     |
 
-The eyebrow's `letter-spacing` (`0.1em`), the title's `letter-spacing` (`-1px`) and the footer divider's `1px` width are raw values rather than design tokens.
+The title's `letter-spacing` (`-0.5px`) and the footer divider's `1px` width are raw values rather than design tokens.
 
 ## Accessibility
 
@@ -121,4 +120,4 @@ The eyebrow's `letter-spacing` (`0.1em`), the title's `letter-spacing` (`-1px`) 
 - The icon is announced by its brand name, such as "WordPress", when screen reader users read through the card. It sits inside the link but doesn't change the link's name, which comes from the title alone.
 - The type eyebrow is a paragraph before the heading, so screen reader users jumping between headings skip it — the same as `SectionHeader`'s eyebrow.
 - Set `headingLevel` to fit the page outline: `h3` suits cards under a section's `h2`.
-- The eyebrow (`accent-primary`) and the version (`neutral-600`) pass WCAG AA on `light` and `white` cards, but not on `medium` and `dark` ones.
+- The eyebrow and the version (`neutral-600`) pass WCAG AA on `light` (5.5:1) and `white` (5.9:1) cards, but not on `medium` and `dark` ones.
