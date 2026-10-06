@@ -41,7 +41,7 @@ export const WorkLayout: Story = {
             <InfoBar />
 
             <Main hasPadding={false}>
-                <Container color="white" maxWidth="alignfull" contentWidth="alignwide">
+                <Container color="pale" maxWidth="alignfull" contentWidth="alignwide">
                     <Hero>
                         <div className="parlour-hero__content">
                             <HeroHeader
