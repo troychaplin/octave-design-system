@@ -1,0 +1,29 @@
+[
+    {
+        "title": "Block Accessibility Checks",
+        "href": "https://wordpress.org/plugins/block-accessibility-checks/",
+        "type": "WordPress Plugin",
+        "icon": "wordpress",
+        "version": "version 4.2.2",
+        "description": "A WordPress plugin that checks the accessibility of blocks.",
+        "footer": "download it here"
+    },
+    {
+        "title": "component2block",
+        "href": "https://github.com/troychaplin/component2block",
+        "type": "Storybook.js Addon",
+        "icon": "storybook",
+        "version": "version 0.8.0",
+        "description": "An editorial block theme for writers. Quiet, restrained, theme.json all the way down.",
+        "footer": "install via npm"
+    },
+    {
+        "title": "Parlour UI",
+        "href": "https://troychaplin.github.io/parlour-ui/",
+        "type": "Component Library",
+        "icon": "typescript",
+        "version": "beta 0.1.0",
+        "description": "A zero-config bundler for WordPress plugin and theme assets, built on esbuild.",
+        "footer": "browse the library"
+    }
+]

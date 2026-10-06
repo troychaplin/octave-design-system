@@ -82,12 +82,77 @@ li.parlour-card {
     }
 }
 
-.parlour-card--padding-none {
-    padding: 0;
+.parlour-card--padding-inline-none {
+    --parlour-card-padding-inline: 0;
 }
 
+.parlour-card--padding-block-none {
+    --parlour-card-padding-block: 0;
+}
+
+// The padding modifiers set custom properties rather than padding, so a full-card link can take
+// the padding over from the card.
 @each $name in map.keys(vars.$parlour-spacing) {
-    .parlour-card--padding-#{$name} {
-        padding: var(--parlour--spacing-#{$name});
+    .parlour-card--padding-inline-#{$name} {
+        --parlour-card-padding-inline: var(--parlour--spacing-#{$name});
+    }
+
+    .parlour-card--padding-block-#{$name} {
+        --parlour-card-padding-block: var(--parlour--spacing-#{$name});
+    }
+}
+
+.parlour-card {
+    padding-inline: var(--parlour-card-padding-inline, 0);
+    padding-block: var(--parlour-card-padding-block, 0);
+}
+
+// Full-card link, rendered by Card when `href` is set. The card hands its padding to the link and
+// stretches the link to fill it, so a click anywhere on the card follows the link.
+.parlour-card--linked {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    transition: border-color var(--parlour--transition-fast);
+
+    &:hover {
+        border-color: var(--parlour--color-neutral-500);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}
+
+.parlour-card__link {
+    flex: 1;
+    padding-inline: var(--parlour-card-padding-inline, 0);
+    padding-block: var(--parlour-card-padding-block, 0);
+
+    // The same even padding the card gives its own children
+    > :first-child {
+        margin-top: 0;
+    }
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+// Scoped to the card so it outranks Main's `.parlour-main a` and `a:hover` rules whatever order
+// the stylesheets load in. They would otherwise make every line of the card bold and underline it
+// on hover.
+.parlour-card .parlour-card__link {
+    font-weight: inherit;
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--parlour--color-accent-primary);
+        outline-offset: var(--parlour--spacing-2-x-small);
     }
 }

@@ -11,7 +11,7 @@ const radiusOptions = Object.keys(borderRadiusClasses);
 const spacingOptions = Object.keys(spacingClasses);
 
 const meta: Meta<typeof Card> = {
-    title: 'Components/Content/Card',
+    title: 'Components/Cards/Card',
     component: Card,
     tags: ['!autodocs'],
     decorators: [
@@ -42,7 +42,11 @@ const meta: Meta<typeof Card> = {
             control: 'select',
             options: radiusOptions,
         },
-        padding: {
+        paddingInline: {
+            control: 'select',
+            options: spacingOptions,
+        },
+        paddingBlock: {
             control: 'select',
             options: spacingOptions,
         },
@@ -67,6 +71,14 @@ export const Default: Story = {
 export const WithoutBorder: Story = {
     args: {
         border: false,
+        children: <SingleParagraph />,
+    },
+};
+
+export const Padding: Story = {
+    args: {
+        paddingInline: 'x-large',
+        paddingBlock: 'small',
         children: <SingleParagraph />,
     },
 };
@@ -103,5 +115,23 @@ export const InDarkContainer: Story = {
         <Container color="dark" maxWidth="alignfull" contentWidth="alignwide">
             <Card {...args} />
         </Container>
+    ),
+};
+
+export const WithLink: Story = {
+    args: {
+        href: '/work',
+        linkProps: { 'aria-labelledby': 'card-with-link-title' },
+        children: (
+            <>
+                <h3 id="card-with-link-title">Card title</h3>
+                <SingleParagraph />
+            </>
+        ),
+    },
+    render: (args) => (
+        <GridGroup columns={2} maxWidth="alignwide">
+            <Card {...args} />
+        </GridGroup>
     ),
 };

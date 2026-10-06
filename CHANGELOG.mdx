@@ -17,6 +17,39 @@ Prefix the change with one of these keywords:
 
 ## [Unreleased]
 
+_Added_ `SiteFooter`, the page footer: a copyright line with a name, an optional line of text in
+the middle, and round social links for GitHub, X, Bluesky, LinkedIn, Facebook, Instagram,
+YouTube and TikTok, each shown only when its profile URL is set.
+
+_Added_ `BrandIcon` icons for X, Bluesky, LinkedIn, Facebook, Instagram, YouTube and TikTok, and a
+`--parlour--color-github` token.
+
+_Added_ `SkipLink`, a link that stays hidden until it gets keyboard focus and then jumps past the
+header to the page's main content. It targets `#main` by default.
+
+_Changed_ `Main` renders with `id="main"` and `tabIndex={-1}` by default, so a skip link can move
+focus into it. Pass `id` or `tabIndex` to override either.
+
+_Added_ `BrandIcon`, single-colour logos for React, WordPress, Next.js, Storybook, npm and other
+tools, from Simple Icons. Each takes the size and colour of the text around it.
+
+_Added_ `ProjectCard`, a card for a software project built on `Card`: a type eyebrow and brand icon, a title, a version, a description and a footer line, with the whole card linking to
+`href`. Sample projects for stories live in `src/data/ProjectData.json`.
+
+_Added_ `href` and `linkProps` on `Card`. With `href`, the card wraps its children in a link from
+`LinkProvider` that fills the card and takes over its padding, so the whole card is clickable and
+`paddingInline` and `paddingBlock` still set the spacing. `linkProps` passes attributes such as
+`aria-labelledby` to the link.
+
+_Changed_ `Card` is now a client component (`'use client'`), since it reads `LinkProvider`.
+
+_Changed_ `Card` moves to a new Cards section in Storybook, alongside the design cards built on it.
+
+_Breaking_ `Card` replaces its `padding` prop with `paddingInline` and `paddingBlock`, so the sides
+and the top and bottom can be set separately. Both default to `large`, which matches the old
+default. The `parlour-card--padding-{step}` classes are now `parlour-card--padding-inline-{step}`
+and `parlour-card--padding-block-{step}`.
+
 ## [0.1.0] - 2026-10-04
 
 The first release under the Parlour name. The project was formerly developed as "Octave Design

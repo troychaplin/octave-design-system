@@ -1,0 +1,100 @@
+@use '../../styles/c2b/parlour-variables' as *;
+
+.parlour-site-footer {
+    font-family: var(--parlour--font-family-jetbrains-mono);
+    font-size: var(--parlour--font-size-x-small);
+    color: var(--parlour--color-neutral-800);
+    letter-spacing: -1px;
+    padding-block: var(--parlour--spacing-large);
+    padding-inline: var(--parlour--root-padding-x);
+    background-color: var(--parlour--color-white);
+
+    p {
+        margin: 0;
+    }
+
+    a {
+        font-weight: var(--parlour--font-weight-medium);
+        color: var(--parlour--color-accent-primary);
+        text-decoration: none;
+
+        &:hover {
+            color: var(--parlour--color-accent-secondary);
+            text-decoration: underline;
+        }
+    }
+}
+
+// Stacked and centred up to tablet width. Wider than that, three columns: the outer two share the
+// leftover space equally, so the text stays centred whatever the name's length.
+.parlour-site-footer__inner {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    gap: var(--parlour--spacing-medium);
+    max-width: var(--parlour--layout-wide-size);
+    margin-inline: auto;
+    text-align: center;
+
+    @include above-tablet {
+        grid-template-columns: 1fr auto 1fr;
+        justify-items: start;
+        text-align: start;
+    }
+}
+
+@include above-tablet {
+    .parlour-site-footer__copyright {
+        grid-column: 1;
+    }
+
+    .parlour-site-footer__text {
+        grid-column: 2;
+        text-align: center;
+    }
+
+    .parlour-site-footer__social {
+        grid-column: 3;
+        justify-self: end;
+    }
+}
+
+.parlour-site-footer__social {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--parlour--spacing-medium);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+// Doubled class beats the footer's own `a` colour and hover rules
+.parlour-site-footer .parlour-site-footer__social-link {
+    display: inline-flex;
+    font-size: var(--parlour--font-size-medium);
+    color: var(--parlour--color-neutral-500);
+    transition:
+        transform var(--parlour--transition-fast),
+        color var(--parlour--transition-fast);
+
+    &:hover {
+        text-decoration: none;
+        color: var(--parlour--color-accent-secondary);
+        transform: translateY(calc(var(--parlour--spacing-2-x-small) * -1));
+    }
+
+    &:focus-visible {
+        color: var(--parlour--color-accent-secondary);
+        outline: 2px solid var(--parlour--color-accent-primary);
+        outline-offset: var(--parlour--spacing-2-x-small);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+
+        &:hover {
+            transform: none;
+        }
+    }
+}

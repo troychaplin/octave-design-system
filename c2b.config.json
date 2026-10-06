@@ -45,6 +45,7 @@
             "success": { "value": "#16a34a", "cssOnly": true },
             "warning": { "value": "#fff154", "cssOnly": true },
             "error": { "value": "#dc2626", "cssOnly": true },
+            "github": { "value": "#181717", "cssOnly": true },
             "linkedin": { "value": "#0A66C2", "cssOnly": true },
             "facebook": { "value": "#1877F2", "cssOnly": true },
             "bluesky": { "value": "#1185FE", "cssOnly": true },

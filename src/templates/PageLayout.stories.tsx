@@ -3,6 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Main } from '../components/Main/Main';
 import { Container } from '../components/Container/Container';
 import { SiteHeader } from '../components/SiteHeader';
+import { SiteFooter } from '../components/SiteFooter';
+import { SkipLink } from '../components/SkipLink';
 
 const meta: Meta = {
     title: 'Overview/Templates',
@@ -25,6 +27,7 @@ export const PageLayout: Story = {
     },
     render: () => (
         <>
+            <SkipLink />
             <SiteHeader siteTitle="parlour.ui" siteTitleAccent="parlour" />
 
             <Main>
@@ -90,6 +93,21 @@ export const PageLayout: Story = {
                     It might say something like this:
                 </p>
             </Main>
+
+            <SiteFooter
+                name="Troy Chaplin"
+                nameHref="/"
+                text={
+                    <>
+                        Powered by <a href="/projects/octave">Octave Beta</a>, a WordPress block
+                        theme
+                    </>
+                }
+                github="https://github.com"
+                x="https://x.com"
+                bluesky="https://bsky.app"
+                linkedin="https://www.linkedin.com"
+            />
         </>
     ),
 };

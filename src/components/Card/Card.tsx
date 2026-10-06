@@ -1,3 +1,6 @@
+'use client';
+
+import { useLinkContext } from '../LinkProvider/useLinkContext';
 import {
     backgroundColorClasses,
     borderRadiusClasses,
@@ -16,7 +19,10 @@ export interface CardProps extends React.HTMLAttributes<HTMLElement> {
     border?: boolean;
     borderColor?: surfaceKeys;
     borderRadius?: borderRadiusKeys;
-    padding?: spacingKeys;
+    paddingInline?: spacingKeys;
+    paddingBlock?: spacingKeys;
+    href?: string;
+    linkProps?: Omit<React.ComponentPropsWithoutRef<'a'>, 'href' | 'className' | 'children'>;
 }
 
 export const Card = ({
@@ -26,11 +32,15 @@ export const Card = ({
     border = true,
     borderColor = 'light',
     borderRadius = 'none',
-    padding = 'large',
+    paddingInline = 'x-large',
+    paddingBlock = 'large',
+    href,
+    linkProps,
     className,
     ...rest
 }: CardProps) => {
     const CardWrapper = as;
+    const LinkComponent = useLinkContext();
 
     const rootClasses = [
         'parlour-card',
@@ -38,11 +48,24 @@ export const Card = ({
         border && 'parlour-card--border',
         border && `parlour-card--border-${backgroundColorClasses[borderColor]}`,
         `parlour-card--radius-${borderRadiusClasses[borderRadius]}`,
-        `parlour-card--padding-${spacingClasses[padding]}`,
+        `parlour-card--padding-inline-${spacingClasses[paddingInline]}`,
+        `parlour-card--padding-block-${spacingClasses[paddingBlock]}`,
+        href && 'parlour-card--linked',
         className,
     ]
         .filter(Boolean)
         .join(' ');
+
+    if (href) {
+        return (
+            <CardWrapper className={rootClasses} {...rest}>
+                {/* eslint-disable-next-line react-hooks/static-components -- injected via context, stable across renders */}
+                <LinkComponent className="parlour-card__link" href={href} {...linkProps}>
+                    {children}
+                </LinkComponent>
+            </CardWrapper>
+        );
+    }
 
     return (
         <CardWrapper className={rootClasses} {...rest}>

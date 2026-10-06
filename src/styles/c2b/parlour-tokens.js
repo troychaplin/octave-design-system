@@ -21,6 +21,7 @@ export const parlourTokens = {
         success: '#16a34a',
         warning: '#fff154',
         error: '#dc2626',
+        github: '#181717',
         linkedin: '#0A66C2',
         facebook: '#1877F2',
         bluesky: '#1185FE',
@@ -130,7 +131,7 @@ export const parlourTokens = {
 };
 
 export const parlourTokenKeys = {
-    color: { black: 'black', white: 'white', 'accent-primary': 'accent-primary', 'accent-secondary': 'accent-secondary', 'neutral-50': 'neutral-50', 'neutral-100': 'neutral-100', 'neutral-200': 'neutral-200', 'neutral-300': 'neutral-300', 'neutral-400': 'neutral-400', 'neutral-500': 'neutral-500', 'neutral-600': 'neutral-600', 'neutral-700': 'neutral-700', 'neutral-800': 'neutral-800', 'neutral-900': 'neutral-900', 'neutral-950': 'neutral-950', info: 'info', success: 'success', warning: 'warning', error: 'error', linkedin: 'linkedin', facebook: 'facebook', bluesky: 'bluesky', twitter: 'twitter', instagram: 'instagram', youtube: 'youtube', tiktok: 'tiktok' },
+    color: { black: 'black', white: 'white', 'accent-primary': 'accent-primary', 'accent-secondary': 'accent-secondary', 'neutral-50': 'neutral-50', 'neutral-100': 'neutral-100', 'neutral-200': 'neutral-200', 'neutral-300': 'neutral-300', 'neutral-400': 'neutral-400', 'neutral-500': 'neutral-500', 'neutral-600': 'neutral-600', 'neutral-700': 'neutral-700', 'neutral-800': 'neutral-800', 'neutral-900': 'neutral-900', 'neutral-950': 'neutral-950', info: 'info', success: 'success', warning: 'warning', error: 'error', github: 'github', linkedin: 'linkedin', facebook: 'facebook', bluesky: 'bluesky', twitter: 'twitter', instagram: 'instagram', youtube: 'youtube', tiktok: 'tiktok' },
     gradient: { 'white-to-neutral-50': 'white-to-neutral-50' },
     spacing: { '3-x-small': '3-x-small', '2-x-small': '2-x-small', 'x-small': 'x-small', small: 'small', normal: 'normal', medium: 'medium', large: 'large', 'x-large': 'x-large', '2-x-large': '2-x-large', '3-x-large': '3-x-large', '4-x-large': '4-x-large', '5-x-large': '5-x-large' },
     fontFamily: { 'inter-tight': 'inter-tight', 'source-serif-4': 'source-serif-4', 'jetbrains-mono': 'jetbrains-mono' },

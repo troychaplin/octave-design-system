@@ -47,11 +47,17 @@
     margin-top: 0;
 }
 
+.parlour-container--pale,
 .parlour-container--light,
 .parlour-container--medium,
 .parlour-container--dark,
 .parlour-container--white {
     padding-block: var(--parlour--spacing-5-x-large);
+}
+
+.parlour-container--pale {
+    background-color: var(--parlour--color-neutral-50);
+    border: 1px solid var(--parlour--color-neutral-50);
 }
 
 .parlour-container--light {

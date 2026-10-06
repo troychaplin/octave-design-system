@@ -36,7 +36,8 @@ suppresses Storybook's auto-generated docs page so the authored one is the only 
 | Prefix                        | Usage                                                        |
 | ----------------------------- | ------------------------------------------------------------ |
 | `Components/Elements/*`       | Atomic UI (Badge, Button, BadgeGroup, ButtonGroup)           |
-| `Components/Content/*`        | Content display (Card, Figure, Hero, SectionHeader)          |
+| `Components/Content/*`        | Content display (Figure, Hero, SectionHeader)                |
+| `Components/Cards/*`          | `Card` and the design cards built on it (ProjectCard)        |
 | `Components/Media/*`          | Image/video-heavy (FullBanner, ImageGrid)                    |
 | `Components/Navigation/*`     | Wayfinding (Nav, PageHeader, Footer)                         |
 | `Components/Forms/*`          | Data entry (Input, Select)                                   |
@@ -51,6 +52,14 @@ every page, like `Main` itself or a site header, is a Template Part. The title's
 match the comment the component is exported under in `src/index.ts`.
 
 Multi-word component names are spaced in the title: `Components/Elements/Badge Group`.
+
+**Design cards** are separate components, each in its own folder (`ProjectCard/`, not
+`Card.Project`), that render `<Card>` for the surface and add their own inner layout. That keeps
+each design out of every `Card` import, and keeps `'use client'` off `Card` when a design links
+through `LinkProvider`. Give a design's props `Omit<CardProps, 'children'>` so the surface props
+pass through. When a second design needs a part the first already has, such as an eyebrow or the
+full-card link, extract it then: an SCSS mixin for visual parts, or a small component for parts
+with behaviour.
 
 ## Args
 

@@ -19,6 +19,10 @@ const config: StorybookConfig = {
     reactDocgen: 'react-docgen-typescript',
   },
   viteFinal: async (config) => {
+    // staticDirs already copies public/ into the build. Vite's own publicDir copy writes the same
+    // files to the same place at the same time, and the race fails the build with EEXIST.
+    config.publicDir = false;
+
     if (process.env.STORYBOOK_BASE_PATH) {
       config.base = process.env.STORYBOOK_BASE_PATH;
     }

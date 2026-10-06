@@ -30,32 +30,36 @@ If a value you need has no token, add it to `c2b.config.json` and regenerate —
 ## Responsive breakpoints
 
 CSS custom properties **cannot** be used inside `@media` queries — that's a spec limitation, not a
-build one. Breakpoints come in as SCSS variables from the generated variables partial:
+build one. Breakpoints come in as mixins from the generated variables partial:
 
 ```scss
 @use '../../styles/c2b/parlour-variables' as *;
 
-.parlour-column--two {
+.parlour-column--three {
     grid-template-columns: 1fr;
 
-    @media (min-width: $parlour-media-query-md) {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    @include above-tablet {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 ```
 
-Available breakpoints:
+Available mixins:
 
-| Variable                  | Value  |
-| ------------------------- | ------ |
-| `$parlour-media-query-sm` | 600px  |
-| `$parlour-media-query-md` | 784px  |
-| `$parlour-media-query-lg` | 960px  |
-| `$parlour-media-query-xl` | 1280px |
+| Mixin          | Matches          |
+| -------------- | ---------------- |
+| `below-mobile` | `width <= 600px` |
+| `above-mobile` | `width > 600px`  |
+| `below-tablet` | `width <= 768px` |
+| `above-tablet` | `width > 768px`  |
 
-**Mobile-first.** Default styles target mobile; `min-width` queries enhance upward. For the rare
-max-width query, subtract a hair to avoid an overlap at the boundary:
-`@media (max-width: $parlour-media-query-md - 0.02px)`.
+The values come from `$parlour-viewport-mobile` and `$parlour-viewport-tablet`, the WordPress
+viewport breakpoints in the `viewport` section of `c2b.config.json`. Each `below-` / `above-` pair
+is an exact complement, so no width matches both and there's no boundary overlap to work around.
+Use the variables directly only when a mixin doesn't fit, such as inside `calc()`.
+
+**Mobile-first.** Default styles target mobile; `above-*` mixins enhance upward. Reach for
+`below-*` only for the rare style that applies to small screens alone.
 
 ## Generated files — never hand-edit
 
@@ -63,7 +67,8 @@ max-width query, subtract a hair to avoid an overlap at the boundary:
 Run `pnpm c2b` to regenerate; edits made by hand are overwritten.
 
 The `scssVars` list in `c2b.config.json` controls which token categories are also emitted as SCSS
-variables — currently `mediaQuery` and `spacing`. Add a category there when you need it as a SCSS
+variables — currently `viewport`, `spacing` and `radius`. The `viewport` category also emits the
+breakpoint mixins above. Add a category there when you need it as a SCSS
 variable rather than a CSS custom property: inside a `@media` query, inside a `calc()` that can't
 resolve CSS vars, or for conditional SCSS logic.
 

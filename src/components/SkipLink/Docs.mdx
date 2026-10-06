@@ -1,0 +1,99 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as SkipLinkStories from './SkipLink.stories';
+
+<Meta of={SkipLinkStories} />
+
+# Skip Link
+
+A link that lets keyboard users jump past the site header and navigation straight to the page's
+main content. Renders a plain `<a>` that stays off-screen until it receives focus, then slides into
+the top corner of the viewport.
+
+## When to use
+
+- Once per page, as the very first element inside `<body>`, before `InfoBar` and `SiteHeader`.
+- On any layout where repeated content (header, navigation, an info bar) comes before `Main`.
+- It is not a general in-page anchor. For links between sections of an article, use a regular link
+  inside the content.
+
+## Import
+
+```tsx
+import { SkipLink } from '@troychaplin/parlour-ui';
+```
+
+## Basic usage
+
+```tsx
+// Default — targets Main, which has id="main" by default
+<SkipLink />
+<SiteHeader />
+<Main>...</Main>
+
+// Custom target and label
+<SkipLink href="#content">Skip to main content</SkipLink>
+<Main id="content">...</Main>
+```
+
+## Examples
+
+### Default
+
+Click inside the canvas and press <kbd>Tab</kbd> to reveal the link, then <kbd>Enter</kbd> to move
+focus into `Main`.
+
+<Canvas of={SkipLinkStories.Default} />
+<Controls of={SkipLinkStories.Default} />
+
+### Custom target
+
+`href` can point at any element on the page. Give the target a matching `id`; `Main` passes the
+`id` prop through to its `<main>` element.
+
+<Canvas of={SkipLinkStories.CustomTarget} />
+
+## CSS classes
+
+| Class               | When applied        |
+| ------------------- | ------------------- |
+| `parlour-skip-link` | Always — base class |
+
+The link is hidden by translating it above the viewport rather than with `display: none`, so it
+stays in the tab order and the accessibility tree. `:focus` translates it back into view. The
+transition is turned off under `prefers-reduced-motion: reduce`.
+
+## Design tokens
+
+| Token                                | Used for                                         |
+| ------------------------------------ | ------------------------------------------------ |
+| `--parlour--spacing-x-small`         | Inline offset, block padding, and focused offset |
+| `--parlour--spacing-normal`          | Inline padding                                   |
+| `--parlour--spacing-2-x-small`       | Focus outline offset                             |
+| `--parlour--z-500`                   | Stacking above headers and other fixed elements  |
+| `--parlour--font-family-inter-tight` | Font family                                      |
+| `--parlour--font-size-small`         | Font size                                        |
+| `--parlour--font-weight-semibold`    | Font weight                                      |
+| `--parlour--line-height-tight`       | Line height                                      |
+| `--parlour--color-white`             | Text colour                                      |
+| `--parlour--color-neutral-950`       | Background colour                                |
+| `--parlour--radius-md`               | Corner radius                                    |
+| `--parlour--transition-fast`         | Slide-in transition                              |
+
+The hidden position uses a raw `translateY(-100%)` — a relative offset of the link's own height,
+not a design value.
+
+## Accessibility
+
+- A native `<a>` with an in-page `href`, so it works with no JavaScript and is announced as a link.
+  It doesn't use `LinkProvider`: router links are for navigating between pages, not to a fragment
+  on the current one.
+- It must be the first focusable element on the page, so the first <kbd>Tab</kbd> lands on it.
+- `Main` sets `tabIndex={-1}` by default so following the link moves keyboard focus into the
+  content, not only the scroll position. Without it, some browser and screen reader combinations
+  leave focus on the link and the next <kbd>Tab</kbd> goes back into the header. If you point the
+  link at another element, give that element `tabIndex={-1}` too.
+- The link stays in the accessibility tree while hidden, so screen reader users find it when they
+  list the page's links.
+- It sits outside every landmark, which a full-page axe audit flags under the `region` rule. Skip
+  links are the accepted exception to that rule.
+- White on `--parlour--color-neutral-950` passes WCAG AAA contrast.

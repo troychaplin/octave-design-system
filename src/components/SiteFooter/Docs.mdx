@@ -1,0 +1,117 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as SiteFooterStories from './SiteFooter.stories';
+
+<Meta of={SiteFooterStories} />
+
+# Site Footer
+
+The page footer: a copyright line with your name, an optional line of text in the middle, and round links to your social profiles. Renders a `<footer>` landmark.
+
+## When to use
+
+- Once per page, after `Main`, as the last part of the page frame — the counterpart to [`SiteHeader`](?path=/docs/components-template-parts-site-header--docs).
+- Use the middle `text` for a short credit or note, such as the theme or tools the site is built with.
+- It isn't for a large footer with columns of links; that would be a separate component.
+
+## Import
+
+```tsx
+import { SiteFooter } from '@troychaplin/parlour-ui';
+```
+
+## Basic usage
+
+```tsx
+// Name, credit and social links
+<SiteFooter
+    name="Troy Chaplin"
+    nameHref="/"
+    text={
+        <>
+            Powered by <a href="/projects/octave">Octave Beta</a>, a WordPress block theme
+        </>
+    }
+    github="https://github.com/your-handle"
+    x="https://x.com/your-handle"
+    bluesky="https://bsky.app/profile/your-handle"
+    linkedin="https://www.linkedin.com/in/your-handle"
+/>
+
+// Only the copyright line
+<SiteFooter name="Troy Chaplin" />
+```
+
+## Examples
+
+### Default
+
+The layout from the site design: the copyright on the left, the text centred, and the social links on the right. At tablet width (768px) and below, the three stack and centre.
+
+<Canvas of={SiteFooterStories.Default} />
+<Controls of={SiteFooterStories.Default} />
+
+### All networks
+
+Each network has its own prop, which takes the profile URL. A link renders only when its prop is set, always in this order: `github`, `x`, `bluesky`, `linkedin`, `facebook`, `instagram`, `youtube`, `tiktok`. Each icon is `neutral-500` and turns `accent-secondary` on hover and keyboard focus.
+
+<Canvas of={SiteFooterStories.AllNetworks} />
+
+### Name only
+
+With no `text` and no social props, only the copyright line renders. Without `nameHref`, the name is plain text.
+
+<Canvas of={SiteFooterStories.NameOnly} />
+
+## Props
+
+| Prop                                    | Type        | Notes                                                                        |
+| --------------------------------------- | ----------- | ---------------------------------------------------------------------------- |
+| `name`                                  | `string`    | Required. Shown after the copyright symbol and year                          |
+| `nameHref`                              | `string`    | Makes the name a link, through `LinkProvider`                                |
+| `year`                                  | `number`    | Defaults to the current year                                                 |
+| `text`                                  | `ReactNode` | The middle line. Can hold links                                              |
+| `github`, `x`, `bluesky`, `linkedin`, … | `string`    | One per network: the profile URL. The link and its icon render only when set |
+
+## CSS classes
+
+| Class                              | When applied                                                               |
+| ---------------------------------- | -------------------------------------------------------------------------- |
+| `parlour-site-footer`              | Always — the `<footer>`                                                    |
+| `parlour-site-footer__inner`       | Always — the grid holding the three parts, capped at the wide layout width |
+| `parlour-site-footer__copyright`   | Always                                                                     |
+| `parlour-site-footer__text`        | `text` is set                                                              |
+| `parlour-site-footer__social`      | At least one social prop is set — the `<ul>` of links                      |
+| `parlour-site-footer__social-link` | On each social link                                                        |
+
+## Design tokens
+
+| Token                                   | Used for                                                         |
+| --------------------------------------- | ---------------------------------------------------------------- |
+| `--parlour--color-white`                | Background                                                       |
+| `--parlour--color-neutral-800`          | Text                                                             |
+| `--parlour--color-accent-secondary`     | Links in the copyright and text; social icons on hover and focus |
+| `--parlour--color-neutral-500`          | Social icons                                                     |
+| `--parlour--color-accent-primary`       | Social link focus outline                                        |
+| `--parlour--font-family-jetbrains-mono` | Footer text                                                      |
+| `--parlour--font-size-x-small`          | Footer text                                                      |
+| `--parlour--font-size-small`            | Social icon size                                                 |
+| `--parlour--font-weight-medium`         | Links                                                            |
+| `--parlour--spacing-large`              | Top and bottom padding                                           |
+| `--parlour--root-padding-x`             | Side padding                                                     |
+| `--parlour--spacing-medium`             | Gap between the three parts                                      |
+| `--parlour--spacing-small`              | Gap between social links                                         |
+| `--parlour--spacing-2-x-small`          | Social link hover lift; focus outline offset                     |
+| `--parlour--layout-wide-size`           | Maximum width of the content                                     |
+| `--parlour--transition-fast`            | Social link hover lift and colour change                         |
+
+The text's `letter-spacing` (`-1px`) and the focus outline's `2px` are raw values rather than design tokens.
+
+## Accessibility
+
+- `<footer>` at the top level of the page is the `contentinfo` landmark, so screen reader users can jump to it. Keep it outside `Main` and `Article`, where it would lose that role.
+- Links are `accent-secondary` and medium weight, and underline on hover.
+- Each social link is named by its network — "GitHub", "LinkedIn" — and its icon is hidden from screen readers. The links are a list, so screen readers announce how many there are.
+- Social links carry `rel="me"`, which tells services such as Mastodon and Bluesky that the profile belongs to the site's owner.
+- Each icon is about 16px with no padding, smaller than the 24px minimum target size. It passes WCAG 2.5.8 through the spacing exception: with the gap between links, a 24px circle centred on each icon doesn't overlap its neighbour's. Keep that gap if you shrink the spacing.
+- The `neutral-500` icons are 4.29:1 on the white background and `accent-secondary` is 5.56:1, both above the 3:1 needed for graphics.
+- The icons come from [`BrandIcon`](?path=/docs/components-elements-brand-icon--docs). LinkedIn's comes from an older Simple Icons release, since LinkedIn asked to be removed from the current one; check LinkedIn's brand guidelines if you need their official logo.
