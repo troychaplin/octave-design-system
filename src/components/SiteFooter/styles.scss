@@ -1,0 +1,114 @@
+@use '../../styles/c2b/parlour-variables' as *;
+
+.parlour-site-footer {
+    padding-block: var(--parlour--spacing-x-large);
+    padding-inline: var(--parlour--root-padding-x);
+    font-family: var(--parlour--font-family-inter-tight);
+    font-size: var(--parlour--font-size-small);
+    color: var(--parlour--color-neutral-800);
+    background-color: var(--parlour--color-neutral-100);
+    border-top: 1px solid var(--parlour--color-neutral-400);
+
+    p {
+        margin: 0;
+    }
+
+    a {
+        color: var(--parlour--color-accent-primary);
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+// Links inside the text sit in a sentence, so they need more than colour to stand out
+.parlour-site-footer__text a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: var(--parlour--spacing-3-x-small);
+
+    &:hover {
+        text-decoration-thickness: 2px;
+    }
+}
+
+// Stacked and centred up to tablet width. Wider than that, three columns: the outer two share the
+// leftover space equally, so the text stays centred whatever the name's length.
+.parlour-site-footer__inner {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    gap: var(--parlour--spacing-medium);
+    max-width: var(--parlour--layout-wide-size);
+    margin-inline: auto;
+    text-align: center;
+
+    @include above-tablet {
+        grid-template-columns: 1fr auto 1fr;
+        justify-items: start;
+        text-align: start;
+    }
+}
+
+@include above-tablet {
+    .parlour-site-footer__copyright {
+        grid-column: 1;
+    }
+
+    .parlour-site-footer__text {
+        grid-column: 2;
+        text-align: center;
+    }
+
+    .parlour-site-footer__social {
+        grid-column: 3;
+        justify-self: end;
+    }
+}
+
+.parlour-site-footer__social {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--parlour--spacing-small);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+// Doubled class beats the footer's own `a` colour and hover rules
+.parlour-site-footer .parlour-site-footer__social-link {
+    display: inline-flex;
+    padding: var(--parlour--spacing-x-small);
+    font-size: var(--parlour--font-size-large);
+    color: var(--parlour--color-white);
+    background-color: var(--parlour-site-footer-social-color);
+    border-radius: var(--parlour--radius-full);
+    transition: transform var(--parlour--transition-fast);
+
+    &:hover {
+        text-decoration: none;
+        transform: translateY(calc(var(--parlour--spacing-2-x-small) * -1));
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--parlour--color-accent-primary);
+        outline-offset: var(--parlour--spacing-2-x-small);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+
+        &:hover {
+            transform: none;
+        }
+    }
+}
+
+@each $token in github, twitter, bluesky, linkedin, facebook, instagram, youtube, tiktok {
+    .parlour-site-footer__social-link--#{$token} {
+        --parlour-site-footer-social-color: var(--parlour--color-#{$token});
+    }
+}

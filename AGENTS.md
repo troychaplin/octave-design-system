@@ -71,18 +71,19 @@ config update needed, but a missing barrel file silently drops the component fro
 ## SCSS
 
 - All visual values from `--parlour--*` tokens — see `src/styles/c2b/parlour-tokens.css`
-- Breakpoints via SCSS variables (CSS custom properties don't work in `@media`):
+- Breakpoints via the generated SCSS mixins (CSS custom properties don't work in `@media`):
 
 ```scss
 @use '../../styles/c2b/parlour-variables' as *;
 
-@media (min-width: $parlour-media-query-md) { ... }
+@include above-tablet { ... }
 ```
 
-Available: `$parlour-media-query-sm` (600px), `$parlour-media-query-md` (784px),
-`$parlour-media-query-lg` (960px), `$parlour-media-query-xl` (1280px).
+Available: `above-mobile` / `below-mobile` (600px) and `above-tablet` / `below-tablet` (768px).
+`below-*` includes the breakpoint and `above-*` starts just past it, so a pair never overlaps.
+The raw values are `$parlour-viewport-mobile` and `$parlour-viewport-tablet`.
 
-Mobile-first: default styles target mobile; `min-width` queries enhance upward.
+Mobile-first: default styles target mobile; `above-*` mixins enhance upward.
 
 ---
 
@@ -158,6 +159,6 @@ actually done.
 - **Node 24** (see `.nvmrc`) — `engineStrict: true` in `pnpm-workspace.yaml` fails the install on any Node a dependency's `engines` excludes (e.g. `lint-staged` needs ≥22.22.1)
 - **Stay on TypeScript 6** — TS 7.0 has no JS API, so typescript-eslint, Storybook docgen and the dts plugins in `pnpm build` break on it. Upgrade once TS 7.1 ships its API and those tools support it
 - **Storybook source transform** — expression-bodied render functions only; block bodies break the docs code panel
-- **CSS vars in media queries** — won't work; use SCSS variables from `_parlour-variables.scss`
+- **CSS vars in media queries** — won't work; use the breakpoint mixins from `_parlour-variables.scss`
 - **TS 6 side-effect imports** — `declare module '*.scss';` (no body) in `src/scss.d.ts`
 - **Never run `--no-verify`** — husky hooks exist because bypassing them masked real bugs in the past

@@ -4,6 +4,7 @@ import { Main } from '../components/Main/Main';
 import { Container } from '../components/Container/Container';
 import { SkipLink } from '../components/SkipLink';
 import { SiteHeader } from '../components/SiteHeader/SiteHeader';
+import { SiteFooter } from '../components/SiteFooter/SiteFooter';
 import { InfoBar } from '../components/InfoBar/InfoBar';
 import { Hero } from '../components/Hero/Hero';
 import { HeroHeader } from '../components/HeroHeader/HeroHeader';
@@ -39,25 +40,27 @@ export const WorkLayout: Story = {
             <SiteHeader siteTitle="troychaplin.work" siteTitleAccent="troychaplin" />
             <InfoBar />
 
-            <Main>
-                <Hero>
-                    <div className="parlour-hero__content">
-                        <HeroHeader
-                            prefix="Building for the open web."
-                            title="Plugins, projects"
-                            titleAccent="& open source contributions"
-                        >
-                            <ul className="parlour-hero-header__stats">
-                                <li>7 released plugins</li>
-                                <li>5 experimental projects</li>
-                                <li>3 active contributions</li>
-                            </ul>
-                        </HeroHeader>
-                    </div>
-                    <div className="parlour-hero__code">
-                        <CodeBlock code={CodeDataReact} color="medium" borderRadius="sm" />
-                    </div>
-                </Hero>
+            <Main hasPadding={false}>
+                <Container color="white" maxWidth="alignfull" contentWidth="alignwide">
+                    <Hero>
+                        <div className="parlour-hero__content">
+                            <HeroHeader
+                                prefix="Building for the open web."
+                                title="Plugins, projects"
+                                titleAccent="& open source contributions"
+                            >
+                                <ul className="parlour-hero-header__stats">
+                                    <li>7 released plugins</li>
+                                    <li>5 experimental projects</li>
+                                    <li>3 active contributions</li>
+                                </ul>
+                            </HeroHeader>
+                        </div>
+                        <div className="parlour-hero__code">
+                            <CodeBlock code={CodeDataReact} color="medium" borderRadius="sm" />
+                        </div>
+                    </Hero>
+                </Container>
 
                 <Container color="light" maxWidth="alignfull" contentWidth="alignwide">
                     <SectionHeader prefix="Releases · Open source" title="Things I ship." />
@@ -78,6 +81,21 @@ export const WorkLayout: Story = {
                     </p>
                 </Container>
             </Main>
+
+            <SiteFooter
+                name="Troy Chaplin"
+                nameHref="/"
+                text={
+                    <>
+                        Powered by <a href="/projects/octave">Octave Beta</a>, a WordPress block
+                        theme
+                    </>
+                }
+                github="https://github.com"
+                x="https://x.com"
+                bluesky="https://bsky.app"
+                linkedin="https://www.linkedin.com"
+            />
         </>
     ),
 };
