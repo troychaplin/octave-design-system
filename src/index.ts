@@ -5,7 +5,11 @@ export { Article } from './components/Article/Article';
 export { Aside } from './components/Aside/Aside';
 export { Body } from './components/Body/Body';
 export { Main } from './components/Main/Main';
-export { SiteHeader } from './components/SiteHeader/SiteHeader';
+export {
+    SiteHeader,
+    type SiteHeaderProps,
+    type SiteHeaderNavItem,
+} from './components/SiteHeader/SiteHeader';
 export { SiteFooter, type SiteFooterProps } from './components/SiteFooter/SiteFooter';
 export { InfoBar } from './components/InfoBar/InfoBar';
 export { SkipLink, type SkipLinkProps } from './components/SkipLink/SkipLink';

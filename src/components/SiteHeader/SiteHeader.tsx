@@ -3,24 +3,22 @@
 import React from 'react';
 
 import { FlexGroup } from '../FlexGroup/FlexGroup';
-import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
-import { Button } from '../Button/Button';
 import { useLinkContext } from '../LinkProvider';
 
 import './styles.scss';
+
+export interface SiteHeaderNavItem {
+    href: string;
+    label: string;
+}
 
 export interface SiteHeaderProps {
     children?: React.ReactNode;
     siteTitle?: string;
     siteTitleAccent?: string;
+    navItems?: SiteHeaderNavItem[];
     className?: string;
 }
-
-const navItems = [
-    { href: '/about', label: 'About' },
-    { href: '/blog', label: 'Blog' },
-    { href: '/resume', label: 'Resume' },
-];
 
 // Splits the title around the first match of `accent`. With no match, the whole title comes back
 // as the only part.
@@ -39,6 +37,7 @@ export const SiteHeader = ({
     children,
     siteTitle = 'Parlour',
     siteTitleAccent,
+    navItems,
 }: SiteHeaderProps) => {
     const rootClasses = ['parlour-site-header', className].filter(Boolean).join(' ');
     const LinkComponent = useLinkContext();
@@ -61,21 +60,18 @@ export const SiteHeader = ({
                         </LinkComponent>
                     </p>
                 </div>
-                <nav className="parlour-site-header__nav" aria-label="Primary">
-                    <ul>
-                        {navItems.map(({ href, label }) => (
-                            <li key={href}>
-                                <LinkComponent href={href}>{label}</LinkComponent>
-                            </li>
-                        ))}
-                    </ul>
-                </nav>
-                <div>
-                    <ButtonGroup>
-                        <Button text="Hire Me" isSmall isOutline />
-                    </ButtonGroup>
-                </div>
-                {children}
+                {navItems && navItems.length > 0 && (
+                    <nav className="parlour-site-header__nav" aria-label="Primary">
+                        <ul>
+                            {navItems.map(({ href, label }) => (
+                                <li key={href}>
+                                    <LinkComponent href={href}>{label}</LinkComponent>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+                )}
+                {children && <div className="parlour-site-header__actions">{children}</div>}
             </FlexGroup>
         </header>
     );

@@ -4,6 +4,8 @@ import { Main } from '../components/Main/Main';
 import { Container } from '../components/Container/Container';
 import { SkipLink } from '../components/SkipLink';
 import { SiteHeader } from '../components/SiteHeader/SiteHeader';
+import { Button } from '../components/Button/Button';
+import { ButtonGroup } from '../components/ButtonGroup/ButtonGroup';
 import { SiteFooter } from '../components/SiteFooter/SiteFooter';
 import { InfoBar } from '../components/InfoBar/InfoBar';
 import { Hero } from '../components/Hero/Hero';
@@ -37,7 +39,19 @@ export const WorkLayout: Story = {
     render: () => (
         <>
             <SkipLink />
-            <SiteHeader siteTitle="troychaplin.work" siteTitleAccent="troychaplin" />
+            <SiteHeader
+                siteTitle="troychaplin.work"
+                siteTitleAccent="troychaplin"
+                navItems={[
+                    { href: '/about', label: 'About' },
+                    { href: '/blog', label: 'Blog' },
+                    { href: '/resume', label: 'Resume' },
+                ]}
+            >
+                <ButtonGroup>
+                    <Button text="Sponsor Me" href="/sponsor" isSmall isOutline />
+                </ButtonGroup>
+            </SiteHeader>
             <InfoBar />
 
             <Main hasPadding={false}>

@@ -3,6 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Main } from '../components/Main/Main';
 import { Container } from '../components/Container/Container';
 import { SiteHeader } from '../components/SiteHeader';
+import { Button } from '../components/Button/Button';
+import { ButtonGroup } from '../components/ButtonGroup/ButtonGroup';
 import { SiteFooter } from '../components/SiteFooter';
 import { SkipLink } from '../components/SkipLink';
 
@@ -28,7 +30,19 @@ export const PageLayout: Story = {
     render: () => (
         <>
             <SkipLink />
-            <SiteHeader siteTitle="parlour.ui" siteTitleAccent="parlour" />
+            <SiteHeader
+                siteTitle="parlour.ui"
+                siteTitleAccent="parlour"
+                navItems={[
+                    { href: '/about', label: 'About' },
+                    { href: '/blog', label: 'Blog' },
+                    { href: '/resume', label: 'Resume' },
+                ]}
+            >
+                <ButtonGroup>
+                    <Button text="Sponsor Me" href="/sponsor" isSmall isOutline />
+                </ButtonGroup>
+            </SiteHeader>
 
             <Main>
                 <h2>Heading Two</h2>

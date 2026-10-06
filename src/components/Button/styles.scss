@@ -12,7 +12,8 @@ a.parlour-button {
     font-weight: var(--parlour--font-weight-light);
     line-height: var(--parlour--line-height-tight);
     text-decoration: none;
-    border: 1px solid transparent;
+    border-width: 1px;
+    border-style: solid;
     border-radius: var(--parlour--radius-sm);
     white-space: nowrap;
     cursor: pointer;
@@ -24,6 +25,12 @@ a.parlour-button {
         background-color: var(--parlour--color-accent-secondary);
         border-color: var(--parlour--color-accent-secondary);
     }
+}
+
+// Kept off `a.parlour-button` above: at that specificity it outranked the colour modifiers below,
+// so a Button with an href lost its border colour.
+.parlour-button {
+    border-color: transparent;
 }
 
 .parlour-button--light {

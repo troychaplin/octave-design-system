@@ -5,36 +5,60 @@ import * as SiteHeaderStories from './SiteHeader.stories';
 
 # Site Header
 
-The header at the top of every page: the site title as a link home, the primary navigation and a button, in one row at the wide content width. Renders a `<header>` containing a `<nav>` labelled "Primary".
+The header at the top of every page: the site title as a link home, and optionally the primary navigation and your buttons, in one row at the wide content width. Renders a `<header>`, with a `<nav>` labelled "Primary" when you pass navigation links.
 
 ## When to use
 
 - Open every page with it, above [`Main`](?path=/docs/components-template-parts-main--docs) rather than inside it. The [Work template](?path=/story/overview-templates--work-layout) shows it in place.
-- Pass `children` to add one more item to the end of the row, such as a search link.
+- Pass your buttons as `children`: they fill the right-hand end of the row, usually in a `ButtonGroup`.
 - Don't use it for the page's own heading — that's [`HeroHeader`](?path=/docs/components-content-hero-header--docs) — or for the headings of sections further down, which is [`SectionHeader`](?path=/docs/components-content-section-header--docs).
 
 ## Import
 
 ```tsx
-import { SiteHeader } from '@troychaplin/parlour-ui';
+import { Button, ButtonGroup, SiteHeader, type SiteHeaderNavItem } from '@troychaplin/parlour-ui';
 ```
 
 ## Basic usage
 
 ```tsx
-// Default title, "Parlour"
+// Title, navigation and a button
+<SiteHeader
+    siteTitle="troychaplin.work"
+    siteTitleAccent="troychaplin"
+    navItems={[
+        { href: '/about', label: 'About' },
+        { href: '/blog', label: 'Blog' },
+    ]}
+>
+    <ButtonGroup>
+        <Button text="Sponsor Me" href="/sponsor" isSmall isOutline />
+    </ButtonGroup>
+</SiteHeader>
+
+// Only the default title, "Parlour"
 <SiteHeader />
 
 // Your own title, with part of it in italics
 <SiteHeader siteTitle="troychaplin.work" siteTitleAccent="troychaplin" />
 
-// One more item at the end of the row
+// Two buttons
 <SiteHeader siteTitleAccent="Parlour">
-    <Button text="Search" href="/search" isSmall color="light" />
+    <ButtonGroup>
+        <Button text="Search" href="/search" isSmall color="light" />
+        <Button text="Sponsor Me" href="/sponsor" isSmall isOutline />
+    </ButtonGroup>
 </SiteHeader>
 ```
 
-Only the title and the `children` item can change. The navigation links and the button are fixed in the component for now.
+## Props
+
+| Prop              | Type                  | Notes                                                                                  |
+| ----------------- | --------------------- | -------------------------------------------------------------------------------------- |
+| `siteTitle`       | `string`              | The title, linked home. Defaults to `Parlour`                                          |
+| `siteTitleAccent` | `string`              | Part of `siteTitle` to set in italics, in the accent colour                            |
+| `navItems`        | `SiteHeaderNavItem[]` | `{ href, label }` for each link, in order. The `<nav>` renders only when there are any |
+| `children`        | `ReactNode`           | The actions at the end of the row, usually a `ButtonGroup` of one or more buttons      |
 
 The title and navigation links render through [`LinkProvider`](?path=/docs/components-utilities-linkprovider--docs), so a provider higher in the tree swaps in your router's `Link`.
 
@@ -59,15 +83,21 @@ The accent can be any part of the title, several words included. Only its first 
 
 <Canvas of={SiteHeaderStories.AccentAtTheEnd} />
 
-### With an extra item
+### Title only
 
-`children` render as the last item in the row, after the button. The row spreads its items evenly across the width, so the button moves in from the edge to make room.
+With no `navItems` and no `children`, the header holds just the title.
 
-<Canvas of={SiteHeaderStories.WithExtraItem} />
+<Canvas of={SiteHeaderStories.TitleOnly} />
+
+### Two buttons
+
+`children` fill the actions area at the end of the row, so any number of buttons fit. Wrap them in a `ButtonGroup` to space them evenly.
+
+<Canvas of={SiteHeaderStories.TwoButtons} />
 
 ## Layout
 
-The header spans the full width of the page, with the site's root padding either side. Inside it, a `FlexGroup` spreads the title, navigation, button and any children across the wide content width (`--parlour--layout-wide-size`). On narrow screens the row wraps rather than collapsing into a menu: on a phone, the button drops to a second line below the title and links.
+The header spans the full width of the page, with the site's root padding either side. Inside it, a `FlexGroup` spreads the title and whichever of the navigation and actions you pass across the wide content width (`--parlour--layout-wide-size`). On narrow screens the row wraps rather than collapsing into a menu: on a phone, the actions drop to a second line below the title and links.
 
 ## CSS classes
 
@@ -76,9 +106,10 @@ The header spans the full width of the page, with the site's root padding either
 | `parlour-site-header`               | Always — base class, on the `<header>`                              |
 | `parlour-site-header__branding`     | Always — on the `<div>` around the title                            |
 | `parlour-site-header__title-accent` | `siteTitleAccent` is set and found in `siteTitle` — on the `<span>` |
-| `parlour-site-header__nav`          | Always — on the `<nav>`                                             |
+| `parlour-site-header__nav`          | `navItems` has at least one link — on the `<nav>`                   |
+| `parlour-site-header__actions`      | `children` are passed — on the `<div>` holding them                 |
 
-A `className` you pass is appended after `parlour-site-header`. The row is a `FlexGroup` and the button comes from `ButtonGroup` and `Button`, so their classes appear inside the header as well.
+A `className` you pass is appended after `parlour-site-header`. The row is a `FlexGroup`, so its classes appear inside the header as well, along with those of whatever you pass as `children`.
 
 ## Design tokens
 
@@ -104,7 +135,7 @@ The bottom border's `1px` width is a raw value rather than a design token.
 - A `<header>` is exposed as the page's `banner` landmark only when it isn't inside `<main>`, `<article>`, `<aside>`, `<nav>` or `<section>` — another reason to place it above `Main`. Use one per page.
 - The title is a paragraph holding a link home (`rel="home"`), not a heading, so the page's main heading — usually a `HeroHeader` — stays its only `<h1>`.
 - `siteTitleAccent` wraps part of the link text in a `<span>` without changing the text, so screen readers announce the title as written.
-- The navigation is a `<nav aria-label="Primary">`, announced as the "Primary" navigation landmark. Give any other `<nav>` on the page, such as a footer menu, a different label.
+- With `navItems`, the navigation is a `<nav aria-label="Primary">`, announced as the "Primary" navigation landmark. Give any other `<nav>` on the page, such as a footer menu, a different label.
 - The links don't mark the current page with `aria-current`, because the component doesn't know which page is showing.
 - Hovering or focusing the title swaps its two colors. Keyboard focus also gets the global `:focus-visible` outline, so focus doesn't rely on color alone.
-- The button renders as a `<button>` with no action attached, and because it's fixed in the component, it can't be given one yet.
+- Use a `Button` with `href` for anything that goes to another page, so screen readers announce it as a link, and give it text that says where it goes.
