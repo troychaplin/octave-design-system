@@ -23,7 +23,7 @@
 .parlour-project-card__type {
     font-family: var(--parlour--font-family-jetbrains-mono);
     font-size: var(--parlour--font-size-2-x-small);
-    color: var(--parlour--color-accent-primary);
+    color: var(--parlour--color-neutral-500);
     text-transform: uppercase;
     // letter-spacing: 0.1em;
     margin: 0;
@@ -47,15 +47,11 @@
     transition: color var(--parlour--transition-fast);
 }
 
-.parlour-project-card .parlour-card__link:hover .parlour-project-card__title {
-    color: var(--parlour--color-accent-primary);
-}
-
 .parlour-project-card__version {
     font-family: var(--parlour--font-family-jetbrains-mono);
     font-size: var(--parlour--font-size-2-x-small);
     color: var(--parlour--color-neutral-600);
-    margin-block-start: var(--parlour--spacing-x-small);
+    margin-block-start: var(--parlour--spacing-2-x-small);
 }
 
 .parlour-project-card__description {
@@ -77,6 +73,20 @@
     border-top: 1px solid var(--parlour--color-neutral-300);
     margin-block-start: auto;
     padding-block-start: var(--parlour--spacing-medium);
+}
+
+// Hover state for the project card link
+// Handles hover for the title, version, footer, type, and icon within the project card
+.parlour-project-card .parlour-card__link:hover {
+    .parlour-project-card__title,
+    .parlour-project-card__footer {
+        color: var(--parlour--color-accent-secondary);
+    }
+
+    .parlour-project-card__icon,
+    .parlour-project-card__version {
+        color: var(--parlour--color-accent-primary);
+    }
 }
 
 // The footer's auto margin takes any free space, so the gap above it comes from whatever
