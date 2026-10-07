@@ -79,8 +79,8 @@ export const WorkLayout: Story = {
                 <Container color="light" maxWidth="alignfull" contentWidth="alignwide">
                     <SectionHeader prefix="Releases · Open source" title="Things I ship." />
                     <GridGroup>
-                        {ProjectData.map((project) => (
-                            <ProjectCard key={project.title} {...project} />
+                        {ProjectData.map(({ id, ...project }) => (
+                            <ProjectCard key={id} {...project} />
                         ))}
                     </GridGroup>
                 </Container>

@@ -41,6 +41,7 @@ type Story = StoryObj<typeof ProjectCard>;
 export const Default: Story = {
     args: {
         ...ProjectData[0],
+        id: undefined,
     },
 };
 
@@ -48,8 +49,8 @@ export const Grid: Story = {
     render: () => (
         <Container color="light" maxWidth="alignfull" contentWidth="alignwide">
             <GridGroup>
-                {ProjectData.map((project) => (
-                    <ProjectCard key={project.title} {...project} />
+                {ProjectData.map(({ id, ...project }) => (
+                    <ProjectCard key={id} {...project} />
                 ))}
             </GridGroup>
         </Container>
@@ -59,6 +60,7 @@ export const Grid: Story = {
 export const WithoutLink: Story = {
     args: {
         ...ProjectData[1],
+        id: undefined,
         href: undefined,
     },
 };
