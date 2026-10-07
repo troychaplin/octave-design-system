@@ -55,6 +55,12 @@ The stories read their projects from `src/data/ProjectData.json`, which uses the
 
 <Canvas of={ProjectCardStories.Grid} />
 
+### Colours
+
+`backgroundColor` sets the surface, and the text, icon, divider and hover colours follow it: dark text on `white` and `light`, light text on `medium` and `dark`. Pass a matching `borderColor` for an edge in the same tone.
+
+<Canvas of={ProjectCardStories.Colors} />
+
 ### Without a link
 
 Without `href`, the title is plain text and the arrow is left out.
@@ -87,21 +93,30 @@ Padding comes from `Card`'s `paddingInline` and `paddingBlock` props, which `Pro
 
 ## Design tokens
 
-The surface, border and padding come from `Card`; see its [design tokens](?path=/docs/components-cards-card--docs). `ProjectCard` adds:
+The surface, border and padding come from `Card`; see its [design tokens](?path=/docs/components-cards-card--docs). `ProjectCard` sets each part's colour to suit the card's `backgroundColor`:
+
+| Part                           | `white` and `light`                 | `medium` and `dark`                       |
+| ------------------------------ | ----------------------------------- | ----------------------------------------- |
+| Type eyebrow and icon          | `--parlour--color-neutral-600`      | `--parlour--color-neutral-300`            |
+| Title                          | `--parlour--color-neutral-950`      | `--parlour--color-white`                  |
+| Version                        | `--parlour--color-neutral-600`      | `--parlour--color-neutral-400`            |
+| Description                    | `--parlour--color-neutral-800`      | `--parlour--color-neutral-200`            |
+| Footer text                    | `--parlour--color-neutral-900`      | `--parlour--color-neutral-100`            |
+| Footer divider                 | `--parlour--color-neutral-300`      | `--parlour--color-neutral-700`            |
+| Title and footer while hovered | `--parlour--color-accent-secondary` | `--parlour--color-accent-secondary-light` |
+| Icon and version while hovered | `--parlour--color-accent-primary`   | `--parlour--color-accent-primary-light`   |
+
+Each colour is held in a `--parlour-project-card-*` custom property on the card: `-type`, `-icon`, `-title`, `-version`, `-description`, `-footer`, `-divider`, `-hover` and `-hover-alt`. Set one on a card, or on a `className` you pass, to change a single part without touching the rest.
+
+The type and colour tokens it uses:
 
 | Token                                   | Used for                                         |
 | --------------------------------------- | ------------------------------------------------ |
-| `--parlour--color-accent-primary`       | Title while hovered                              |
-| `--parlour--color-neutral-950`          | Title                                            |
-| `--parlour--color-neutral-800`          | Description                                      |
-| `--parlour--color-neutral-900`          | Footer text                                      |
-| `--parlour--color-neutral-600`          | Type eyebrow, icon and version                   |
-| `--parlour--color-neutral-300`          | Footer divider                                   |
 | `--parlour--font-family-jetbrains-mono` | Eyebrow, version and footer                      |
 | `--parlour--font-family-inter-tight`    | Title and description                            |
-| `--parlour--font-size-2-x-small`        | Eyebrow and version                              |
-| `--parlour--font-size-x-small`          | Footer                                           |
-| `--parlour--font-size-medium`           | Description and icon size                        |
+| `--parlour--font-size-2-x-small`        | Eyebrow, version and footer                      |
+| `--parlour--font-size-small`            | Description                                      |
+| `--parlour--font-size-medium`           | Icon size                                        |
 | `--parlour--font-size-large`            | Title                                            |
 | `--parlour--font-weight-medium`         | Title                                            |
 | `--parlour--line-height-tight`          | Title                                            |
@@ -120,4 +135,5 @@ The title's `letter-spacing` (`-0.5px`) and the footer divider's `1px` width are
 - The icon is announced by its brand name, such as "WordPress", when screen reader users read through the card. It sits inside the link but doesn't change the link's name, which comes from the title alone.
 - The type eyebrow is a paragraph before the heading, so screen reader users jumping between headings skip it — the same as `SectionHeader`'s eyebrow.
 - Set `headingLevel` to fit the page outline: `h3` suits cards under a section's `h2`.
-- The eyebrow and the version (`neutral-600`) pass WCAG AA on `light` (5.5:1) and `white` (5.9:1) cards, but not on `medium` and `dark` ones.
+- Every part passes WCAG AA on all four backgrounds. The lowest are the eyebrow and version: 5.5:1 on `light`, 5.9:1 on `white`, 7.5:1 on `medium` and 11:1 on `dark`.
+- The hover colours on `medium` and `dark` cards are the light accents, 4.55:1 or better. The base accents are under 3:1 there, which is why they swap.

@@ -6,6 +6,14 @@ import { GridGroup } from '../GridGroup/GridGroup';
 import { ProjectData } from '../../data/ProjectData';
 import { brandIcons } from '../BrandIcon/brandIcons';
 
+const surfaceOptions = ['white', 'light', 'medium', 'dark'] as const;
+
+// One card per background, cycling through the sample projects
+const colorCards = surfaceOptions.map((surface, i) => ({
+    surface,
+    project: ProjectData[i % ProjectData.length],
+}));
+
 const meta: Meta<typeof ProjectCard> = {
     title: 'Components/Cards/Project Card',
     component: ProjectCard,
@@ -25,6 +33,14 @@ const meta: Meta<typeof ProjectCard> = {
         headingLevel: {
             control: 'inline-radio',
             options: ['h2', 'h3', 'h4'],
+        },
+        backgroundColor: {
+            control: 'select',
+            options: surfaceOptions,
+        },
+        borderColor: {
+            control: 'select',
+            options: surfaceOptions,
         },
     },
     parameters: {
@@ -51,6 +67,23 @@ export const Grid: Story = {
             <GridGroup>
                 {ProjectData.map(({ id, ...project }) => (
                     <ProjectCard key={id} {...project} />
+                ))}
+            </GridGroup>
+        </Container>
+    ),
+};
+
+export const Colors: Story = {
+    render: () => (
+        <Container color="light" maxWidth="alignfull" contentWidth="alignwide">
+            <GridGroup columns={2}>
+                {colorCards.map(({ surface, project: { id, ...project } }) => (
+                    <ProjectCard
+                        key={`${surface}-${id}`}
+                        {...project}
+                        backgroundColor={surface}
+                        borderColor={surface}
+                    />
                 ))}
             </GridGroup>
         </Container>

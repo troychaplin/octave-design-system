@@ -12,6 +12,35 @@
     }
 }
 
+// Each part's colour is a custom property, so medium and dark cards can swap the whole set at
+// once. The defaults suit white and light cards.
+.parlour-project-card {
+    --parlour-project-card-type: var(--parlour--color-neutral-600);
+    --parlour-project-card-icon: var(--parlour--color-neutral-600);
+    --parlour-project-card-title: var(--parlour--color-neutral-950);
+    --parlour-project-card-version: var(--parlour--color-neutral-600);
+    --parlour-project-card-description: var(--parlour--color-neutral-800);
+    --parlour-project-card-footer: var(--parlour--color-neutral-900);
+    --parlour-project-card-divider: var(--parlour--color-neutral-300);
+    --parlour-project-card-hover: var(--parlour--color-accent-secondary);
+    --parlour-project-card-hover-alt: var(--parlour--color-accent-primary);
+}
+
+// Card adds the background class to the same element. The base accents are too dark to read here,
+// so the hover colours use their light variants.
+.parlour-project-card.parlour-card--bg-medium,
+.parlour-project-card.parlour-card--bg-dark {
+    --parlour-project-card-type: var(--parlour--color-neutral-300);
+    --parlour-project-card-icon: var(--parlour--color-neutral-300);
+    --parlour-project-card-title: var(--parlour--color-white);
+    --parlour-project-card-version: var(--parlour--color-neutral-400);
+    --parlour-project-card-description: var(--parlour--color-neutral-200);
+    --parlour-project-card-footer: var(--parlour--color-neutral-100);
+    --parlour-project-card-divider: var(--parlour--color-neutral-700);
+    --parlour-project-card-hover: var(--parlour--color-accent-secondary-light);
+    --parlour-project-card-hover-alt: var(--parlour--color-accent-primary-light);
+}
+
 .parlour-project-card__meta {
     display: flex;
     justify-content: space-between;
@@ -23,7 +52,7 @@
 .parlour-project-card__type {
     font-family: var(--parlour--font-family-jetbrains-mono);
     font-size: var(--parlour--font-size-2-x-small);
-    color: var(--parlour--color-neutral-600);
+    color: var(--parlour-project-card-type);
     text-transform: uppercase;
     margin: 0;
 }
@@ -32,7 +61,7 @@
 .parlour-project-card__icon {
     margin-inline-start: auto;
     font-size: var(--parlour--font-size-medium);
-    color: var(--parlour--color-neutral-600);
+    color: var(--parlour-project-card-icon);
 }
 
 // Doubled class beats Card's `:is(h1…h6) { color: inherit }` rule.
@@ -42,14 +71,14 @@
     font-weight: var(--parlour--font-weight-medium);
     line-height: var(--parlour--line-height-tight);
     letter-spacing: -0.5px;
-    color: var(--parlour--color-neutral-950);
+    color: var(--parlour-project-card-title);
     transition: color var(--parlour--transition-fast);
 }
 
 .parlour-project-card__version {
     font-family: var(--parlour--font-family-jetbrains-mono);
     font-size: var(--parlour--font-size-2-x-small);
-    color: var(--parlour--color-neutral-600);
+    color: var(--parlour-project-card-version);
     margin-block-start: var(--parlour--spacing-2-x-small);
 }
 
@@ -58,7 +87,7 @@
     font-family: var(--parlour--font-family-inter-tight);
     font-size: var(--parlour--font-size-small);
     line-height: var(--parlour--line-height-normal);
-    color: var(--parlour--color-neutral-800);
+    color: var(--parlour-project-card-description);
 }
 
 .parlour-project-card__footer {
@@ -68,8 +97,8 @@
     gap: var(--parlour--spacing-small);
     font-family: var(--parlour--font-family-jetbrains-mono);
     font-size: var(--parlour--font-size-2-x-small);
-    color: var(--parlour--color-neutral-900);
-    border-top: 1px solid var(--parlour--color-neutral-300);
+    color: var(--parlour-project-card-footer);
+    border-top: 1px solid var(--parlour-project-card-divider);
     margin-block-start: auto;
     padding-block-start: var(--parlour--spacing-medium);
 }
@@ -79,12 +108,12 @@
 .parlour-project-card .parlour-card__link:hover {
     .parlour-project-card__title,
     .parlour-project-card__footer {
-        color: var(--parlour--color-accent-secondary);
+        color: var(--parlour-project-card-hover);
     }
 
     .parlour-project-card__icon,
     .parlour-project-card__version {
-        color: var(--parlour--color-accent-primary);
+        color: var(--parlour-project-card-hover-alt);
     }
 }
 

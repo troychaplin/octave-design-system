@@ -156,3 +156,11 @@ li.parlour-card {
         outline-offset: var(--parlour--spacing-2-x-small);
     }
 }
+
+// accent-primary falls below the 3:1 a focus outline needs on these backgrounds
+.parlour-card--bg-medium,
+.parlour-card--bg-dark {
+    .parlour-card__link:focus-visible {
+        outline-color: var(--parlour--color-accent-primary-light);
+    }
+}

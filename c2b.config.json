@@ -30,6 +30,8 @@
             "white": "#ffffff",
             "accent-primary": { "value": "#a34f3e" },
             "accent-secondary": { "value": "#ca2135" },
+            "accent-primary-light": { "value": "#cc9e95" },
+            "accent-secondary-light": { "value": "#e4909a" },
             "neutral-50": { "value": "#f9f7f3" },
             "neutral-100": { "value": "#f2f0ea" },
             "neutral-200": { "value": "#efeae2" },

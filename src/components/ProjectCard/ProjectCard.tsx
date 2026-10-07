@@ -30,11 +30,16 @@ export const ProjectCard = ({
 }: ProjectCardProps) => {
     const Heading = headingLevel;
     const titleId = useId();
-
     const rootClasses = ['parlour-project-card', className].filter(Boolean).join(' ');
 
-    const content = (
-        <>
+    return (
+        <Card
+            className={rootClasses}
+            borderRadius="sm"
+            href={href}
+            linkProps={{ 'aria-labelledby': titleId }}
+            {...rest}
+        >
             {(type || icon) && (
                 <div className="parlour-project-card__meta">
                     {type && <p className="parlour-project-card__type">{type}</p>}
@@ -66,18 +71,6 @@ export const ProjectCard = ({
                     )}
                 </div>
             )}
-        </>
-    );
-
-    return (
-        <Card
-            className={rootClasses}
-            borderRadius="sm"
-            href={href}
-            linkProps={{ 'aria-labelledby': titleId }}
-            {...rest}
-        >
-            {content}
         </Card>
     );
 };

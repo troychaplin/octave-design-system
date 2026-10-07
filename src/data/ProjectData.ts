@@ -39,4 +39,37 @@ export const ProjectData: ProjectItem[] = [
             'The heroes of Eldermoor were never what they seemed. The gem chose you to learn the truth.',
         footer: 'play it here',
     },
+    {
+        id: 4,
+        title: 'Comma Sense — Sync CSV to Table',
+        href: 'https://wordpress.org/plugins/comma-sense/',
+        type: 'WordPress Plugin',
+        icon: 'wordpress',
+        version: 'version 1.0.0',
+        description:
+            'Hand-building tables cell by cell is the final boss nobody asked for. Comma Sense plugs a CSV from your site into a core table block.',
+        footer: 'download it here',
+    },
+    {
+        id: 5,
+        title: 'Planned Outage',
+        href: 'https://wordpress.org/plugins/planned-outage/',
+        type: 'WordPress Plugin',
+        icon: 'wordpress',
+        version: 'version 1.4.0',
+        description:
+            'Simple maintenance mode for block themes. Shows a maintenance template to logged-out visitors while allowing logged-in users to browse normally.',
+        footer: 'download it here',
+    },
+    {
+        id: 6,
+        title: 'Priority Plus Navigation',
+        href: 'https://wordpress.org/plugins/priority-plus-navigation/',
+        type: 'WordPress Plugin',
+        icon: 'wordpress',
+        version: 'version 1.1.0',
+        description:
+            'A WordPress block plugin that adds Priority Plus pattern functionality to core WordPress navigation block.',
+        footer: 'download it here',
+    },
 ];

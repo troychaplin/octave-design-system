@@ -17,6 +17,17 @@ Prefix the change with one of these keywords:
 
 ## [Unreleased]
 
+_Added_ `--parlour--color-accent-primary-light` and `--parlour--color-accent-secondary-light`, light
+versions of the accents that stay readable on `neutral-900` and darker. Both are in the WordPress
+palette too.
+
+_Added_ `ProjectCard` colours for `medium` and `dark` backgrounds: light neutrals for the text,
+icon and divider, and the light accents for the hover colours. Each part's colour is a
+`--parlour-project-card-*` custom property you can override.
+
+_Fixed_ The focus outline on a linked `Card` with a `medium` or `dark` background uses
+`accent-primary-light`, since `accent-primary` was too dark to see there.
+
 ## [0.2.3] - 2026-10-07
 
 _Changed_ `Hero` renders its row straight away as a `<div>` at the wide content width, without the

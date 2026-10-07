@@ -3,10 +3,11 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Main } from '../components/Main/Main';
 import { Container } from '../components/Container/Container';
 import { SkipLink } from '../components/SkipLink';
-import { SiteHeader } from '../components/SiteHeader/SiteHeader';
+import { ExperimentsData } from '../data/ExperimentsData';
 import { Button } from '../components/Button/Button';
 import { ButtonGroup } from '../components/ButtonGroup/ButtonGroup';
 import { SiteFooter } from '../components/SiteFooter/SiteFooter';
+import { SiteHeader } from '../components/SiteHeader/SiteHeader';
 import { InfoBar } from '../components/InfoBar/InfoBar';
 import { Hero } from '../components/Hero/Hero';
 import { HeroHeader } from '../components/HeroHeader/HeroHeader';
@@ -86,13 +87,20 @@ export const WorkLayout: Story = {
                 </Container>
 
                 <Container color="dark" maxWidth="alignfull" contentWidth="alignwide">
-                    <SectionHeader prefix="Section Prefix" title="Dark Container" />
-                    <p>
-                        This is an example page. It is different from a blog post because it will
-                        stay in one place and will show up in your site navigation (in most themes).
-                        Most people start with an About page that introduces them to potential site
-                        visitors. It might say something like this:
-                    </p>
+                    <SectionHeader
+                        prefix="Experiments · Open source"
+                        title="Things I experiment with."
+                    />
+                    <GridGroup>
+                        {ExperimentsData.map(({ id, ...experiment }) => (
+                            <ProjectCard
+                                key={id}
+                                backgroundColor="dark"
+                                borderColor="dark"
+                                {...experiment}
+                            />
+                        ))}
+                    </GridGroup>
                 </Container>
             </Main>
 
