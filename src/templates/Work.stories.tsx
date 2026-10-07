@@ -85,7 +85,7 @@ export const WorkLayout: Story = {
                     </GridGroup>
                 </Container>
 
-                {/* <Container color="dark" maxWidth="alignfull" contentWidth="alignwide">
+                <Container color="dark" maxWidth="alignfull" contentWidth="alignwide">
                     <SectionHeader prefix="Section Prefix" title="Dark Container" />
                     <p>
                         This is an example page. It is different from a blog post because it will
@@ -93,7 +93,7 @@ export const WorkLayout: Story = {
                         Most people start with an About page that introduces them to potential site
                         visitors. It might say something like this:
                     </p>
-                </Container> */}
+                </Container>
             </Main>
 
             <SiteFooter

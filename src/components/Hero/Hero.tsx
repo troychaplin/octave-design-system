@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Container } from '../Container/Container';
 import { FlexGroup } from '../FlexGroup/FlexGroup';
 
 import './styles.scss';
@@ -14,15 +13,14 @@ export const Hero = ({ className = '', children }: HeroProps) => {
     const rootClasses = ['parlour-hero', className].filter(Boolean).join(' ');
 
     return (
-        <Container
-            as="section"
+        <FlexGroup
             className={rootClasses}
-            maxWidth="alignfull"
-            contentWidth="alignwide"
+            gap="normal"
+            maxWidth="alignwide"
+            justify="space-between"
+            align="center"
         >
-            <FlexGroup gap="normal" maxWidth="alignwide" justify="space-between" align="center">
-                {children}
-            </FlexGroup>
-        </Container>
+            {children}
+        </FlexGroup>
     );
 };
